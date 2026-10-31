@@ -342,6 +342,8 @@ def build():
     # Refresh planner chrome
     p = read("planner.html")
     p = re.sub(r'<header class="site-header">.*?</header>\n', lambda m: header("", "planner.html"), p, flags=re.S)
+    pj = json.dumps(PRODUCTS, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    p = re.sub(r'<script type="application/json" id="ogs-products">.*?</script>', lambda m: f'<script type="application/json" id="ogs-products">{pj}</script>', p, flags=re.S)
     p = re.sub(r'<footer class="site-footer">.*?</footer>\n', lambda m: footer(""), p, flags=re.S)
     with open(os.path.join(ROOT, "planner.html"), "w") as f:
         f.write(p)

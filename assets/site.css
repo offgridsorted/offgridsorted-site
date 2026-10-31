@@ -486,3 +486,25 @@ section.step{position:relative}
   .kit-table .totrow th.ph{padding:8px 0}
 }
 @media (max-width:760px){.tier-tabs{top:var(--hdr,112px)}}
+/* Planner results: colour cards */
+.kit .item.t-sun{background:color-mix(in srgb,var(--hi) 22%,var(--paper))}
+.kit .item.t-mari{background:color-mix(in srgb,#e0a12e 18%,var(--paper))}
+.kit .item.t-green{background:color-mix(in srgb,var(--sign) 13%,var(--paper))}
+.kit .item.t-sand{background:var(--sand)}
+.kit .item .v span{background:none}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.why .aside{grid-column:1 / -1}
+.why-card{border-radius:16px;padding:14px 16px;border-left:5px solid var(--tone,var(--faint));background:color-mix(in srgb,var(--tone,var(--faint)) 12%,var(--paper))}
+.why-card h4{margin:0 0 4px;font-family:var(--font-display);font-size:1.1rem;text-transform:none}
+.why-card p{margin:0;font-size:.97rem;line-height:1.5}
+.why-card.t-sun{--tone:#f5cb3c}
+.why-card.t-mari{--tone:#e0a12e}
+.why-card.t-green{--tone:#1d5c3a}
+.why-card.t-blue{--tone:#2443a3}
+.why-card.t-warn{--tone:#c0562f}
+.why-card.t-sand{--tone:#b9ab8a}
+.results .kit-table td.c1{background:color-mix(in srgb,var(--hi) 9%,transparent)}
+.prod .pname.plain{text-decoration:none}
+.checkbox-card{background:var(--sand);border-radius:16px;padding:14px 18px !important;border-top:0 !important;margin-top:14px}
+@media (max-width:760px){ .why{grid-template-columns:1fr} }
+@media (max-width:760px){.results .kit-table td.c1{background:none}}
