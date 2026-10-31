@@ -30,7 +30,7 @@
     "store": "Outbax",
     "url": "https://outbax.com.au/products/voltx-12v-100ah-lithium-ion-battery-lifepo4-deep-cycle-recycle-camping-rv-solar",
     "why": "Similar money to the Kings, bought online, with a longer warranty.",
-    "downside": "Outbax runs discount codes most weeks, so check for one before you pay full price.",
+    "downside": "Online only, and the warranty wording on the listing is unclear, so check it before you buy.",
     "kg": 10.8
    },
    {
@@ -117,7 +117,7 @@
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/kings-lithium-batteries/200ah-lithium-battery.html",
     "why": "Easy to buy in store, and people who've opened one up say it's decent inside for the money.",
-    "downside": "At full price it costs the same as our mid-range pick, which does more. Only buy it on sale (it has been around $400).",
+    "downside": "Kings prices swing a lot (it has been around $400 on sale), so watch for a deal before you buy.",
     "warranty": 3,
     "kg": 23,
     "stores": [
@@ -129,19 +129,8 @@
     ]
    },
    {
-    "tier": "Budget",
-    "role": "other",
-    "name": "VoltX 200Ah Slim Lithium",
-    "price": 999,
-    "store": "Outbax",
-    "url": "https://outbax.com.au/products/voltx-12v-200ah-lithium-lifepo4-battery-slim",
-    "why": "A slim shape (11cm wide) that fits behind seats or under a bed.",
-    "downside": "Look for an Outbax discount code first.",
-    "kg": 21
-   },
-   {
     "tier": "Mid-range",
-    "role": "main",
+    "role": "other",
     "name": "Renogy Reserve Mini 200Ah",
     "price": 849.99,
     "store": "Renogy Australia",
@@ -163,13 +152,13 @@
    },
    {
     "tier": "Mid-range",
-    "role": "other",
+    "role": "main",
     "name": "iTechworld iTECH200SS Super Slim",
     "price": 1149,
     "store": "iTechworld",
     "url": "https://itechworld.com.au/products/12v-200ah-super-slim-lithium-battery-with-bluetooth-itech200ss",
-    "why": "Only 12.6cm wide, for tight spots like a van wall.",
-    "downside": "Heavier and dearer than the Renogy, and no heater.",
+    "why": "Phone app, a strong 200A output and a 5-year Aussie warranty, in a slim 12.6cm shape that fits a van wall or under a seat. In stock.",
+    "downside": "No heater, so it won't charge in freezing weather. The Renogy below has one.",
     "warranty": 5,
     "kg": 25.5
    },
@@ -662,16 +651,6 @@
       "store": "Zero Grid",
       "price": 369.99,
       "url": "https://www.zerogrid.com.au/products/dcc50s-12v-50a-dual-input-dc-to-dc-battery-charger-with-mppt"
-     },
-     {
-      "store": "Renogy Australia",
-      "price": null,
-      "url": "https://au.renogy.com/products/12v-30-50a-dc-dc-on-board-battery-charger-with-mppt"
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/renogy-dcc50s-12v-50a-dual-input-dc-to-dc-battery-charger-with-mppt/SPO10045300.html"
      }
     ]
    },
@@ -798,16 +777,6 @@
       "price": 369.0,
       "url": "https://hardkorr.com/products/200w-solar-blanket-with-perc-cell-technology",
       "was": 469.0
-     },
-     {
-      "store": "BCF",
-      "price": null,
-      "url": "https://www.bcf.com.au/p/hardkorr-200w-portable-solar-blanket-with-15a-smart-solar-regulator/660050.html"
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/hardkorr-hardkorr-200w-portable-solar-blanket-with-15a-smart-solar-regulator/660050.html"
      }
     ]
    },
@@ -879,11 +848,6 @@
       "price": 260.0,
       "url": "https://mygenerator.com.au/product/renogy-200w-12v-monocrystalline-fixed-solar-panel",
       "was": 300.0
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/renogy-200-watt-12-volt-monocrystalline-solar-panel/SPO10064741.html"
      }
     ]
    },
@@ -920,18 +884,6 @@
       "url": "https://www.redarcelectronics.com/au/200w-monocrystalline-solar-panel-black"
      }
     ]
-   },
-   {
-    "tier": "Premium",
-    "role": "other",
-    "name": "Hard Korr 200W Narrow Panel",
-    "price": 229,
-    "store": "Hard Korr",
-    "url": "https://hardkorr.com/products/200w-fixed-solar-panel-narrow",
-    "why": "10-year warranty and a narrow, van-friendly shape for mid-range money.",
-    "downside": "Sold out when we checked.",
-    "warranty": 10,
-    "kg": 10.2
    },
    {
     "tier": "Premium",
@@ -981,11 +933,6 @@
       "price": 780.0,
       "url": "https://mygenerator.com.au/product/renogy-200w-12v-monocrystalline-fixed-solar-panel",
       "was": 900.0
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/renogy-200-watt-12-volt-monocrystalline-solar-panel/SPO10064741.html"
      }
     ]
    },
@@ -1081,11 +1028,6 @@
       "price": 358,
       "url": "https://www.mygenerator.com.au/product/victron-phoenix-inverter-12-800",
       "was": 430
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/victron-phoenix-inverter-12-800-230v-ve.direct-au-nz/SPO10064791.html"
      }
     ]
    },
@@ -1167,16 +1109,6 @@
       "store": "Hard Korr",
       "price": 449.0,
       "url": "https://hardkorr.com/products/2000w-pure-sine-wave-inverter"
-     },
-     {
-      "store": "BCF",
-      "price": null,
-      "url": "https://www.bcf.com.au/p/hardkorr-2000w-pure-sine-wave-inverter---ls-series/731063.html"
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/hardkorr-hardkorr-2000w-pure-sine-wave-inverter---ls-series/731063.html"
      }
     ]
    },
@@ -1217,11 +1149,6 @@
       "price": 1120.0,
       "url": "https://www.caravansplus.com.au/enerdrive-epower-true-sine-wave-inverter-12v-2000w-p-21920.html",
       "was": 1306.0
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/enerdrive-2000w-12v-true-sine-wave-inverter/SPO10358617.html"
      }
     ]
    },
@@ -1336,11 +1263,6 @@
       "store": "Bunnings",
       "price": 215.0,
       "url": "https://www.bunnings.com.au/victron-black-smart-bmv-712-battery-monitor_p0609911"
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/victron-battery-monitor-bmv-712-black-smart-retail/SPO10064765.html?cgid=SCA01061008"
      }
     ]
    },

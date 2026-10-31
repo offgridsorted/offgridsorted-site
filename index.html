@@ -18,10 +18,11 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@500;700&family=Permanent+Marker&family=Kalam:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Barlow:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@500;700&family=Permanent+Marker&family=Kalam:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="in">
     <a class="logo" href="index.html" aria-label="Off-Grid Sorted home"><svg viewBox="0 0 420 300" width="170" height="121" role="img" aria-label="Off-Grid Sorted">
@@ -34,10 +35,10 @@
 <path d="M36 288c60-10 140-10 236 2" fill="none" stroke="#e0a12e" stroke-width="8" stroke-linecap="round" filter="url(#rLogoH)"></path>
 </svg></a>
     <nav class="nav" aria-label="Main menu"><a href="kits/index.html">Kits</a><a href="guides/index.html">Guides</a><a href="about.html">About</a><a class="cta" href="planner.html">Power Planner</a></nav>
-    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a href="planner.html"><b>Power Planner →</b></a><a href="kits/index.html">Kits</a><a href="guides/index.html">Guides</a><a href="about.html">About</a></div></details>
+    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a href="planner.html"><b>Power Planner →</b></a><a href="kits/index.html">Kits</a><a href="guides/index.html">Guides</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></details>
   </div>
 </header>
-<main class="page">
+<main id="main" class="page">
 <section class="hero">
   <div>
     <span class="step-label">For Australian vans, caravans &amp; 4WDs</span>
@@ -86,7 +87,7 @@
       </g>
       <text class="lbl" x="6" y="80">sun</text>
       <text class="lbl" x="226" y="58">solar panel</text>
-      <text class="lbl" x="200" y="100">battery</text>
+      <text class="lbl" x="196" y="104">battery</text>
       <text class="lbl" x="352" y="178" text-anchor="end">engine → DC-DC</text>
       <text class="lbl" x="8" y="178">inverter → plug</text>
     </svg>
@@ -110,7 +111,8 @@
     <li><a href="guides/van-power-basics.html"><span class="n">01</span><span><h3>Van power in plain English</h3><span class="small">The four parts and how they fit together.</span></span><span aria-hidden="true">→</span></a></li>
     <li><a href="guides/lithium-vs-agm.html"><span class="n">02</span><span><h3>Lithium vs AGM</h3><span class="small">Which battery, and what it means for size, weight and cost.</span></span><span aria-hidden="true">→</span></a></li>
     <li><a href="guides/how-much-solar-australia.html"><span class="n">03</span><span><h3>How much solar do I need?</h3><span class="small">By state and season, with a table for every state.</span></span><span aria-hidden="true">→</span></a></li>
-    <li><a href="guides/index.html"><span class="n">04</span><span><h3>DC-DC chargers explained</h3><span class="small">Charging while you drive.</span></span><span class="soon">Coming soon</span></a></li>
+    <li><a href="guides/dc-dc-chargers-explained.html"><span class="n">04</span><span><h3>DC-DC chargers explained</h3><span class="small">Charging while you drive.</span></span></a></li>
+    <li><a href="guides/will-my-fridge-last.html"><span class="n">05</span><span><h3>Will my fridge last the weekend?</h3><span class="small">What your fridge really uses, and how to make it sip less.</span></span></a></li>
   </ol>
 </section>
 
@@ -143,7 +145,7 @@
 </section>
 </main>
 <footer class="site-footer">
-  <svg class="horizon" viewBox="0 0 1200 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M0 100c120-40 180-60 260-30s150 10 230-30 170-30 260 10 160 30 250-10 140-20 200 10"/><circle cx="980" cy="38" r="20" fill="#f5cb3c"/><path d="M980 6v-6M1018 38h6M948 14l-4-4M1012 14l4-4" /><path d="M0 112h1200" stroke-dasharray="14 12"/><g transform="translate(560 64) scale(.42)"><path d="M14 66V30c0-6 4-10 10-10h82c10 0 17 4 22 11l16 21c3 4 4 7 4 12v2z" fill="var(--sand, #ebe4d3)"/><path d="M108 22l0 26h32"/><path d="M48 14l5-8h40l-5 8z" fill="#f5cb3c"/><circle cx="44" cy="68" r="11" fill="var(--sand, #ebe4d3)"/><circle cx="118" cy="68" r="11" fill="var(--sand, #ebe4d3)"/></g><path d="M520 92h-30M512 84h-40" stroke-dasharray="4 8"/></svg>
+  <svg class="horizon" viewBox="0 -30 1200 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M0 100c120-40 180-60 260-30s150 10 230-30 170-30 260 10 160 30 250-10 140-20 200 10"/><circle cx="980" cy="38" r="20" fill="#f5cb3c"/><path d="M980 6v-6M1018 38h6M948 14l-4-4M1012 14l4-4" /><path d="M0 112h1200" stroke-dasharray="14 12"/><g transform="translate(560 64) scale(.42)"><path d="M14 66V30c0-6 4-10 10-10h82c10 0 17 4 22 11l16 21c3 4 4 7 4 12v2z" fill="var(--sand, #ebe4d3)"/><path d="M108 22l0 26h32"/><path d="M48 14l5-8h40l-5 8z" fill="#f5cb3c"/><circle cx="44" cy="68" r="11" fill="var(--sand, #ebe4d3)"/><circle cx="118" cy="68" r="11" fill="var(--sand, #ebe4d3)"/></g><path d="M520 92h-30M512 84h-40" stroke-dasharray="4 8"/></svg>
   <div class="in">
     <div class="about">
       <div style="color:var(--ink)"><svg viewBox="0 0 420 300" width="130" height="93" role="img" aria-label="Off-Grid Sorted">
@@ -158,11 +160,18 @@
       <p>Plain-English help to get the power setup in your van, caravan or 4WD sorted. Independent and Australian.</p>
       <p class="small">Some links earn us a small commission at no cost to you. <a href="disclosure.html" style="display:inline;color:var(--sign)">How we make money</a>.</p>
     </div>
-    <div><h4>Tools</h4><a href="planner.html">Power Planner</a><a href="planner.html#check">Check what I've got</a><a href="kits/index.html">Ready-made kits</a></div>
-    <div><h4>Guides</h4><a href="guides/van-power-basics.html">Van power in plain English</a><a href="guides/lithium-vs-agm.html">Lithium vs AGM</a><a href="guides/how-much-solar-australia.html">How much solar do I need? By state and season</a><a href="guides/dc-dc-chargers-explained.html">DC-DC chargers explained</a><a href="guides/caravan-power-setup.html">Caravan power</a><a href="guides/4wd-dual-battery-basics.html">4WD dual battery basics</a><a href="guides/will-my-fridge-last.html">Will my fridge last the weekend?</a><a href="guides/portable-power-stations.html">Portable power stations vs a proper dual battery setup</a><a href="guides/index.html">All guides</a></div>
-    <div><h4>Off-Grid Sorted</h4><a href="about.html">About</a><a href="disclosure.html">Disclosure &amp; disclaimer</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a><a href="https://www.instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
+    <div><p class="fh">Tools</p><a href="planner.html">Power Planner</a><a href="planner.html#check">Check what I've got</a><a href="kits/index.html">Ready-made kits</a></div>
+    <div><p class="fh">Guides</p><a href="guides/van-power-basics.html">Van power basics</a><a href="guides/lithium-vs-agm.html">Lithium vs AGM</a><a href="guides/how-much-solar-australia.html">How much solar?</a><a href="guides/dc-dc-chargers-explained.html">DC-DC chargers</a><a href="guides/will-my-fridge-last.html">Will my fridge last?</a><a href="guides/index.html">All guides</a></div>
+    <div><p class="fh">Off-Grid Sorted</p><a href="about.html">About</a><a href="disclosure.html">Disclosure &amp; disclaimer</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a><a href="https://instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
   </div>
   <p class="small" style="max-width:1080px;margin:0 auto;padding:0 18px 24px">© 2026 Off-Grid Sorted. Estimates only. Always have a licensed auto electrician install or check your system.</p>
 </footer>
+<script data-menu>
+(function(){var m=document.querySelector('.menu-toggle');if(!m)return;var s=m.querySelector('summary');
+function set(){s.textContent=m.open?'Close':'Menu';}m.addEventListener('toggle',set);
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.open){m.open=false;s.focus();}});
+document.addEventListener('click',function(e){if(m.open&&!m.contains(e.target))m.open=false;});
+m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',function(){m.open=false;});});})();
+</script>
 </body>
 </html>

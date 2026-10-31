@@ -18,7 +18,7 @@ Off-Grid Sorted is an independent Australian website that helps people work out 
 ## Brand
 - Logo: the smiling sunny battery with "off-grid SORTED" (Permanent Marker for the word SORTED only).
 - Colours: paper #f3f0e8, ink #1c1f1b, sunshine #f5cb3c, marigold #e0a12e, road-sign green #1d5c3a.
-- Type: Barlow Condensed (headings), Source Serif 4 (body), Barlow (UI), Caveat/Kalam (small handwritten notes).
+- Type: Bitter (headings), Source Serif 4 (body), Barlow (UI), Caveat (small handwritten notes). The logo uses Kalam for "off-grid" and Permanent Marker for "SORTED".
 
 ## Site structure
 - Pages are built by `python3 tools/build.py` from `content/`. Edit content, run the build, commit the generated HTML too (Netlify has no build step).
