@@ -508,3 +508,14 @@ section.step{position:relative}
 .checkbox-card{background:var(--sand);border-radius:16px;padding:14px 18px !important;border-top:0 !important;margin-top:14px}
 @media (max-width:760px){ .why{grid-template-columns:1fr} }
 @media (max-width:760px){.results .kit-table td.c1{background:none}}
+.wtb{list-style:none;margin:8px 0 2px;padding:8px 10px;background:var(--paper);border-radius:10px;display:flex;flex-direction:column;gap:4px}
+.wtb li{display:flex;justify-content:space-between;gap:10px;font-family:var(--font-ui);font-size:.85rem;margin:0}
+.wtb li::before{content:none}
+.wtb a{color:var(--sign);font-weight:600}
+.wtb span{font-weight:700;white-space:nowrap}
+.wtb s{color:var(--muted);font-weight:500}
+.wtb em{color:#c0562f;font-weight:600;font-style:normal}
+.kit-table .wtb,.results .wtb{margin:8px 0 2px !important;padding:8px 10px !important;border:1px solid var(--faint)}
+.wtb li{flex-wrap:wrap;padding:0 !important}
+.wtb li span{text-align:right}
+.wtb em{display:block;font-size:.75rem}

@@ -133,6 +133,24 @@ PRODUCTS = json.load(open(os.path.join(ROOT, "data", "products.json")))
 TIER_NAMES = ["Budget", "Mid-range", "Premium"]
 
 
+def normalise_products():
+    """Give every product a sorted 'stores' list (in stock, then cheapest) and set
+    price/store/url to the best one, so totals always use the cheapest in-stock shop."""
+    for ps in PRODUCTS["cats"].values():
+        for p in ps:
+            st = p.get("stores") or [{"store": p["store"], "price": p.get("price"), "url": p.get("url"), "was": p.get("rrp")}]
+            st = [x for x in st if x.get("url")]
+            st.sort(key=lambda x: (x.get("in_stock") is False, x.get("price") is None, x.get("price") or 0))
+            p["stores"] = st
+            best = next((x for x in st if x.get("price") and x.get("in_stock") is not False), st[0] if st else None)
+            if best:
+                p["price"], p["store"], p["url"] = best.get("price") or p.get("price"), best["store"], best["url"]
+                p["rrp"] = best.get("was")
+
+
+normalise_products()
+
+
 def money(n):
     return f"${n:,.0f}"
 
@@ -150,9 +168,23 @@ def facts(p):
     return " · ".join(bits)
 
 
+def where_to_buy(p):
+    st = p.get("stores") or []
+    if len(st) < 2:
+        return ""
+    out = '<ul class="wtb">'
+    for x in st:
+        pr = money(x["price"]) if x.get("price") else "Check price"
+        was = f' <s>{money(x["was"])}</s>' if x.get("was") and x.get("price") and x["was"] > x["price"] else ""
+        sold = f' <em>{html.escape(x["label"])}</em>' if x.get("label") else (' <em>sold out</em>' if x.get("in_stock") is False else "")
+        out += f'<li><a href="{html.escape(x["url"])}" target="_blank" rel="sponsored nofollow noopener">{html.escape(x["store"])}</a><span>{pr}{was}{sold}</span></li>'
+    return out + '</ul>'
+
+
 def product_line(p, main=True):
-    price = ("About " if p.get("approx") else "") + money(p["price"]) if p.get("price") else "Check price"
-    was = f' <s>{money(p["rrp"])}</s>' if p.get("rrp") and p.get("price") and p["rrp"] > p["price"] else ""
+    multi = len(p.get("stores") or []) > 1
+    price = ("About " if p.get("approx") else ("From " if multi else "")) + money(p["price"]) if p.get("price") else "Check price"
+    was = f' <s>{money(p["rrp"])}</s>' if p.get("rrp") and p.get("price") and p["rrp"] > p["price"] and not multi else ""
     url = html.escape(p["url"]) if p.get("url") else "#"
     cls = "prod" if main else "prod alt"
     return (f'<div class="{cls}"><a class="pname" href="{url}" rel="sponsored nofollow noopener" target="_blank">{html.escape(p["name"])}</a>'
@@ -160,6 +192,7 @@ def product_line(p, main=True):
             + (f'<span class="facts">{facts(p)}</span>' if facts(p) else "")
             + f'<span class="tn">{html.escape(p["why"])}</span>'
             + (f'<span class="tn down">Catch: {html.escape(p["downside"])}</span>' if p.get("downside") else "")
+            + where_to_buy(p)
             + f'<label class="got"><input type="checkbox" data-key="{html.escape(p["name"])}"> In my cart</label>'
             + '</div>')
 
