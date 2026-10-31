@@ -404,3 +404,7 @@ section.step{position:relative}
 .related .guide-list{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media (min-width:1000px){ .related .guide-list{grid-template-columns:repeat(4,minmax(0,1fr))} }
 @media (max-width:760px){ .related .guide-list{grid-template-columns:1fr} }
+.mast{align-items:center;text-align:center}
+.mast .lede{margin:0 auto}
+.mast .diagram{margin-left:auto !important;margin-right:auto !important;width:100%}
+.mast .legend-dl{margin-left:auto;margin-right:auto;text-align:left;width:100%}
