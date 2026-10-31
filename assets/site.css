@@ -399,3 +399,8 @@ section.step{position:relative}
   .step-doodle{width:64px;height:auto;top:20px}
   .sec-head .doodle{width:64px;height:auto}
 }
+.article{max-width:780px}
+.related{width:min(1080px, calc(100vw - 36px));position:relative;left:50%;transform:translateX(-50%)}
+.related .guide-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:1000px){ .related .guide-list{grid-template-columns:repeat(4,minmax(0,1fr))} }
+@media (max-width:760px){ .related .guide-list{grid-template-columns:1fr} }
