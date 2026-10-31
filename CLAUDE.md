@@ -28,6 +28,11 @@ Off-Grid Sorted is an independent Australian website that helps people work out 
 - about.html, disclosure.html, privacy.html (from content/).
 - assets/site.css: shared styles.
 
+## Saving Netlify credits
+- Netlify's free plan gives 300 credits a month and every push to main is a production deploy costing 15 credits (about 20 deploys a month).
+- So: commit work locally or on a branch, and push to main in one batch at the end of a session, not after every change.
+- For Kiran to preview before it goes live, push a branch and open a pull request: deploy previews are free.
+
 ## Workflow for scheduled guide runs
 - Write new guides on a branch and open a pull request for Kiran to review. Do not push guides straight to main unless she has said auto-publish is on.
 - Price and link checks may be committed directly once she approves that.
