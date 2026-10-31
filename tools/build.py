@@ -15,7 +15,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "Off-Grid Sorted"
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-         '<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@500;700&family=Permanent+Marker&family=Kalam:wght@700&display=swap" rel="stylesheet">')
+         '<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@500;700&family=Permanent+Marker&family=Kalam:wght@700&display=swap" rel="stylesheet">')
 
 # Guides: (slug, title, tag, blurb, status)  status "live" or "soon"
 GUIDES = [
