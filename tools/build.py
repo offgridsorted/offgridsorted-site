@@ -160,6 +160,7 @@ def product_line(p, main=True):
             + (f'<span class="facts">{facts(p)}</span>' if facts(p) else "")
             + f'<span class="tn">{html.escape(p["why"])}</span>'
             + (f'<span class="tn down">Catch: {html.escape(p["downside"])}</span>' if p.get("downside") else "")
+            + f'<label class="got"><input type="checkbox" data-key="{html.escape(p["name"])}"> In my cart</label>'
             + '</div>')
 
 
@@ -175,6 +176,39 @@ def tier_cards(cat):
             out += f'<details class="more"><summary>Other good options ({len(others)})</summary>' + ''.join(product_line(o, False) for o in others) + '</details>'
         out += '</div>'
     return out + '</div>'
+
+
+def kit_table(k):
+    """Rows are parts, columns are Budget / Mid-range / Premium. On phones a tab picks one column."""
+    tabs = ''.join(f'<button type="button" data-t="{i}"{" aria-pressed=\"true\"" if i == 1 else ""}>{t}</button>' for i, t in enumerate(TIER_NAMES))
+    head = '<tr><th class="ph">Part</th>' + ''.join(f'<th class="c{i}">{t}</th>' for i, t in enumerate(TIER_NAMES)) + '</tr>'
+    core, extra = "", ""
+    for part in k["parts"]:
+        name, size, key, note = part[:4]
+        opt = len(part) > 4 and not part[4]
+        row = f'<tr><th scope="row" class="ph"><b>{name}</b><span class="kp-size">{size}</span><span class="pn">{note}</span></th>'
+        if not key:
+            row += '<td class="none" colspan="3">Not needed for this kit.</td></tr>'
+        else:
+            for i, t in enumerate(TIER_NAMES):
+                mains, others = pick_for(key, t), pick_for(key, t, "other")
+                cell = product_line(mains[0]) if mains else '<span class="tn">No pick at this level.</span>'
+                if others:
+                    cell += f'<details class="more"><summary>Other good options ({len(others)})</summary>' + ''.join(product_line(o, False) for o in others) + '</details>'
+                row += f'<td class="c{i}"><span class="mlabel">{t}</span>{cell}</td>'
+            row += '</tr>'
+        if opt:
+            extra += row
+        else:
+            core += row
+    if extra:
+        extra = '<tr class="sub"><th colspan="4">Extras (not in the totals)</th></tr>' + extra
+    tot = ""
+    for i, t in enumerate(TIER_NAMES):
+        total = sum((pick_for(p[2], t)[0].get("price") or 0) for p in k["parts"] if p[2] and (len(p) < 5 or p[4]) and pick_for(p[2], t))
+        tot += f'<td class="c{i}"><span class="mlabel">{t} total</span><span class="tot">{money(round(total, -1))}</span></td>'
+    return (f'<div class="kit-table" data-tier="1"><div class="tier-tabs" role="group" aria-label="Price level">{tabs}</div>'
+            f'<table><thead>{head}</thead><tbody>{core}<tr class="totrow"><th scope="row" class="ph"><b>Kit total</b><span class="pn">Parts only, main picks</span></th>{tot}</tr>{extra}</tbody></table></div>')
 
 
 def kit_totals(k):
@@ -228,6 +262,29 @@ KITS = [
 ]
 
 
+KIT_JS = """<script>
+(function(){
+  var box=document.querySelector('.kit-table'); if(!box) return;
+  box.querySelectorAll('.tier-tabs button').forEach(function(b){
+    b.addEventListener('click',function(){
+      box.setAttribute('data-tier',b.dataset.t);
+      box.querySelectorAll('.tier-tabs button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    });
+  });
+  var key='ogs-cart:'+location.pathname, saved={};
+  try{ saved=JSON.parse(localStorage.getItem(key)||'{}'); }catch(e){}
+  document.querySelectorAll('.got input').forEach(function(c){
+    if(saved[c.dataset.key]) c.checked=true;
+    c.addEventListener('change',function(){
+      document.querySelectorAll('.got input[data-key="'+c.dataset.key.replace(/"/g,'\\"')+'"]').forEach(function(o){o.checked=c.checked;});
+      saved[c.dataset.key]=c.checked;
+      try{ localStorage.setItem(key,JSON.stringify(saved)); }catch(e){}
+    });
+  });
+})();
+</script>"""
+
+
 def build_kits():
     os.makedirs(os.path.join(ROOT, "kits"), exist_ok=True)
     cards = ''.join(f'<a class="card" href="{{pre}}kits/{k["slug"]}.html">[[d:{k["doodle"]}:110]]<h3>{k["name"]}</h3><p>{k["who"]}</p><span class="go">See the full kit →</span></a>' for k in KITS)
@@ -238,26 +295,22 @@ def build_kits():
            '<div class="aside" style="margin-top:30px">Not quite you? The <a href="{pre}planner.html" style="color:var(--sign)">Power Planner</a> sizes a kit around exactly what you run and where you travel.</div></main>')
     page("kits/index.html", "Ready-made kits", "Three ready-made power kits for Australian vans, caravans and 4WDs: Weekender, Long trips and Living in it.", hub, "kits/index.html")
     for k in KITS:
-        parts = ""
-        for part in k["parts"]:
-            name, size, key, note = part[:4]
-            opt = len(part) > 4 and not part[4]
-            parts += f'<div class="kit-part"><div class="kp-head"><h3>{name}{" <em>(optional)</em>" if opt and key else ""}</h3><span class="kp-size">{size}</span></div><p>{note}</p>{tier_cards(key) if key else ""}</div>'
-        body = (f'<main class="article"><div class="crumbs"><a href="{{pre}}index.html">Home</a> › <a href="{{pre}}kits/index.html">Kits</a> › {k["name"]}</div>'
+        body = (f'<main class="article kitpage"><div class="crumbs"><a href="{{pre}}index.html">Home</a> › <a href="{{pre}}kits/index.html">Kits</a> › {k["name"]}</div>'
                 f'[[d:{k["doodle"]}:150]]'.replace('<svg class="doodle"', '<svg class="doodle guide-doodle"') +
                 f'<h1>The {k["name"]} kit</h1><div class="meta"><span>Uses {k["daily"]}</span><span>Sized for a campervan</span><a href="{{pre}}disclosure.html">How we make money</a></div>'
                 f'<p class="hint" style="font-size:1.15rem">{k["who"]}</p>'
                 '<div class="tldr"><h2>What it runs</h2><ul>' + ''.join(f'<li>{r}</li>' for r in k["runs"]) + '</ul></div>'
-                f'<div class="kit-total"><h2>Roughly what it costs</h2><div class="kt-row">{kit_totals(k)}</div>'
+                f'<h2>What\'s in the kit</h2><p class="small">Links open in a new tab, so this page stays put while you shop. Tick "In my cart" as you go and we\'ll remember it on this device.</p>{kit_table(k)}'
+                f'<div class="kit-total"><h2>What it costs all up</h2><div class="kt-row">{kit_totals(k)}</div>'
                 f'<p class="small">Parts only, using our main pick at each level{k.get("total_note", "")}. Add about $150 to $400 for cables, fuses and mounts, and installation. Auto electricians quote roughly $300 to $2,500 for a dual battery fit-out depending on the job (The Quote Yard 2026 price guide), so get a written quote. Prices checked {PRODUCTS["checked_label"]}; they change often.</p></div>'
-                f'<h2>What\'s in the kit</h2>{parts}'
+                ''
                 '<div class="kit-part"><div class="kp-head"><h3>The bits that hold it together</h3></div><ul><li>Battery box or mount, to hold it firmly in place</li><li>Correctly sized cables and lugs</li><li>Fuses or circuit breakers on every circuit</li><li>An isolator switch</li><li>Anderson plugs and a fuse block</li></ul><p class="small">Your auto electrician sizes these for your exact install.</p></div>'
                 f'<h2>Easiest way to build it</h2><p>{k["easy"]}</p>'
                 f'<h2>Travelling south in winter?</h2><p>{k["south"]}</p>'
                 f'<div class="cta-box"><p>Change anything you like: your fridge, your state, how much you drive. The Power Planner starts from this kit.</p><a class="btn-link" href="{{pre}}planner.html#{k["preset"]}">Customise this kit</a></div>'
                 '<div class="aside" style="margin:24px 0"><b>Get a pro to wire it in.</b> Have a licensed auto electrician install or check your setup, with the right cable sizes and fuses. Sizes here are estimates for typical use.</div>'
                 '<p class="small">We pick products by how well they fit the job, not by what pays us. Some links earn us a small commission at no cost to you. <a href="{pre}disclosure.html">How we make money</a>.</p>'
-                '</main>')
+                + KIT_JS + '</main>')
         page(f"kits/{k['slug']}.html", f"The {k['name']} kit", f"Everything in the {k['name']} power kit for an Australian campervan: battery, solar, DC-DC charger and more, with budget to premium options.", body, "kits/index.html")
 
 

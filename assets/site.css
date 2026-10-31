@@ -444,3 +444,45 @@ section.step{position:relative}
 .kt-row span{font-family:var(--font-display);font-weight:800;font-size:1.6rem}
 .prod .facts{font-family:var(--font-ui);font-size:.8rem;font-weight:600;color:var(--sign)}
 .tiers .prod a.pname{display:inline;padding:0;margin:0;border:0;background:none;flex-direction:unset}
+/* Kit comparison table */
+.article.kitpage{max-width:1120px}
+.kitpage > p, .kitpage > h2, .kitpage .tldr, .kitpage .cta-box, .kitpage .aside, .kitpage .kit-total{max-width:780px}
+.kit-table{margin:14px 0 26px}
+.kit-table table{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
+.kit-table th,.kit-table td{vertical-align:top;text-align:left;padding:14px 12px;border-bottom:1px solid var(--faint)}
+.kit-table thead th{font-family:var(--font-ui);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--sign);border-bottom:2px solid var(--ink);position:sticky;top:0;background:var(--paper);z-index:1}
+.kit-table .ph{width:22%}
+.kit-table th.ph b{display:block;font-family:var(--font-display);font-size:1.15rem;margin-bottom:6px}
+.kit-table th.ph .kp-size{display:inline-block;font-size:.8rem;margin-bottom:6px}
+.kit-table .pn{display:block;font-family:var(--font-ui);font-weight:500;font-size:.82rem;color:var(--muted);line-height:1.4}
+.kit-table td.c1{background:color-mix(in srgb,var(--hi) 9%,transparent)}
+.kit-table thead th.c1::after{content:" ★ most people";text-transform:none;letter-spacing:0;color:var(--muted);font-weight:500}
+.kit-table td.none{color:var(--muted);font-family:var(--font-ui);font-style:italic}
+.kit-table .totrow th,.kit-table .totrow td{background:var(--sand);border-bottom:0}
+.kit-table .totrow .tot{font-family:var(--font-display);font-weight:800;font-size:1.6rem}
+.kit-table .sub th{font-family:var(--font-ui);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding-top:24px;border-bottom:2px solid var(--faint)}
+.kit-table .mlabel{display:none}
+.tier-tabs{display:none}
+.got{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-family:var(--font-ui);font-size:.82rem;font-weight:600;color:var(--sign);cursor:pointer}
+.got input{width:18px;height:18px;accent-color:var(--sign)}
+@media (max-width:760px){
+  .tier-tabs{display:flex;gap:6px;position:sticky;top:64px;z-index:2;background:var(--paper);padding:8px 0}
+  .tier-tabs button{flex:1;font-family:var(--font-ui);font-weight:700;font-size:.9rem;padding:9px 6px;border-radius:999px;border:1.5px solid var(--ink);background:transparent;color:var(--ink)}
+  .tier-tabs button[aria-pressed="true"]{background:var(--hi);border-color:var(--hi);color:#1c1f1b}
+  .kit-table table,.kit-table tbody,.kit-table tr,.kit-table th,.kit-table td{display:block;width:auto}
+  .kit-table thead{display:none}
+  .kit-table tr{border-bottom:1px solid var(--faint);padding:6px 0}
+  .kit-table th,.kit-table td{border-bottom:0;padding:8px 2px}
+  .kit-table td.c1{background:none}
+  .kit-table[data-tier="0"] td.c1,.kit-table[data-tier="0"] td.c2,
+  .kit-table[data-tier="1"] td.c0,.kit-table[data-tier="1"] td.c2,
+  .kit-table[data-tier="2"] td.c0,.kit-table[data-tier="2"] td.c1{display:none}
+  .kit-table .totrow{display:flex;justify-content:space-between;align-items:center;border-radius:14px;background:var(--sand);padding:4px 12px}
+  .kit-table .totrow .pn{display:none}
+}
+@media (max-width:760px){
+  .kit-table th.ph{width:auto}
+  .kit-table th.ph b{display:inline;margin-right:8px}
+  .kit-table .totrow th.ph{padding:8px 0}
+}
+@media (max-width:760px){.tier-tabs{top:var(--hdr,112px)}}
