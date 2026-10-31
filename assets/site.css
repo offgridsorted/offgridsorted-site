@@ -418,3 +418,9 @@ section.step{position:relative}
 #custom-list .app:first-child{border-top:0}
 @media (max-width:760px){ .custom-grid{grid-template-columns:1fr 1fr} .custom-grid .field:first-child,.custom-grid .field:last-of-type{grid-column:1 / -1} .custom-grid .btn{grid-column:1 / -1} }
 .sheet{max-height:80vh;overflow-y:auto}
+.kit-part{padding:18px 0;border-bottom:1px solid var(--faint)}
+.kp-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 14px;margin-bottom:6px}
+.kp-head h3{margin:0 !important}
+.kp-size{font-family:var(--font-ui);font-weight:700;background:var(--hi);color:#1c1f1b;border-radius:999px;padding:3px 12px}
+.kit-part .tiers{margin-top:8px}
+.kit-part .tiers a{background:var(--field)}
