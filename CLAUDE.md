@@ -21,9 +21,12 @@ Off-Grid Sorted is an independent Australian website that helps people work out 
 - Type: Barlow Condensed (headings), Source Serif 4 (body), Barlow (UI), Caveat/Kalam (small handwritten notes).
 
 ## Site structure
-- index.html: the Power Planner calculator (single self-contained page).
-- guides/: one HTML page per guide, linking back to the planner.
-- about.html, disclosure.html, privacy.html.
+- Pages are built by `python3 tools/build.py` from `content/`. Edit content, run the build, commit the generated HTML too (Netlify has no build step).
+- index.html: homepage (from content/home.html).
+- planner.html: the Power Planner calculator, hand-written (the build only refreshes its header and footer).
+- guides/: one page per guide. Write the body in content/guides/<slug>.html and add it to GUIDES in tools/build.py (status "live" or "soon").
+- about.html, disclosure.html, privacy.html (from content/).
+- assets/site.css: shared styles.
 
 ## Workflow for scheduled guide runs
 - Write new guides on a branch and open a pull request for Kiran to review. Do not push guides straight to main unless she has said auto-publish is on.

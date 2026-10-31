@@ -3,209 +3,43 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Power Planner · Off-Grid Sorted</title>
-<meta name="description" content="Work out the battery, solar and charger your van, caravan or 4WD needs, in plain English. A free Australian power planner.">
+<title>Off-Grid Sorted · Off-grid power for Australian vans, caravans and 4WDs</title>
+<meta name="description" content="Free plain-English power planner and guides for Australian vans, caravans and 4WDs. Work out the battery, solar and charger you need.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@500;700&family=Permanent+Marker&family=Kalam:wght@700&display=swap" rel="stylesheet">
-<style>
-/* Plan: a printed roadside field guide. Paper, ink rules, road-sign green, highlighter yellow, biro notes in the margin. Square edges, no floating cards. One column. */
-:root{
-  --paper:#f3f0e8;
-  --ink:#1c1f1b;
-  --muted:#5c6058;
-  --rule:#1c1f1b;
-  --faint:#cfc9ba;
-  --sign:#1d5c3a;
-  --hi:#f5cb3c;
-  --biro:#2443a3;
-  --good:#1d6b3f;
-  --warn:#9a5a12;
-  --bad:#a52d2d;
-  --field:#fbfaf6;
-  --font-display:"Barlow Condensed", "Arial Narrow", sans-serif;
-  --font-ui:"Barlow", "Segoe UI", sans-serif;
-  --font-body:"Source Serif 4", Georgia, serif;
-  --font-hand:"Caveat", "Comic Sans MS", cursive;
-  color-scheme:light;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --paper:#181b17; --ink:#ebe6da; --muted:#a8a596; --rule:#ebe6da; --faint:#3a3d35;
-    --sign:#74c493; --hi:#d9ad22; --biro:#93aaf5; --good:#74c493; --warn:#e6a04f; --bad:#ef8a8a; --field:#20241f;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --paper:#181b17; --ink:#ebe6da; --muted:#a8a596; --rule:#ebe6da; --faint:#3a3d35;
-  --sign:#74c493; --hi:#d9ad22; --biro:#93aaf5; --good:#74c493; --warn:#e6a04f; --bad:#ef8a8a; --field:#20241f;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-html,body{margin:0}
-body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17.5px;line-height:1.6}
-.wrap{max-width:960px;margin:0 auto;padding:18px 18px 72px;display:flex;flex-direction:column;gap:0}
-h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0;line-height:1.05;text-transform:uppercase;letter-spacing:.01em}
-h1{font-size:3rem;font-weight:800}
-h2{font-size:1.75rem;font-weight:700}
-h3{font-size:1.2rem;font-weight:700}
-p{margin:0}
-b,strong{font-weight:600}
-.hl{background:linear-gradient(transparent 55%, var(--hi) 55%, var(--hi) 92%, transparent 92%);padding:0 2px}
-.note{font-family:var(--font-hand);color:var(--biro);font-size:1.45rem;line-height:1.2;transform:rotate(-1.2deg);display:block}
-.note::before{content:"→ "}
-.muted{color:var(--muted)}
-.small{font-size:.9rem;color:var(--muted);font-family:var(--font-ui);font-weight:500;line-height:1.45}
-
-/* masthead */
-.mast{border-bottom:4px solid var(--rule);padding:6px 0 18px;display:flex;flex-direction:column;gap:10px}
-.brand{display:inline-block;color:var(--ink);align-self:flex-start;margin-bottom:-4px}
-.mast .kicker{font-family:var(--font-ui);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sign)}
-.mast p.lede{font-size:1.1rem;max-width:56ch}
-.diagram{margin-top:6px;border:2px solid var(--rule);background:var(--field);padding:8px}
-.diagram svg{display:block;width:100%;height:auto}
-.diagram svg text{font-family:var(--font-hand);fill:var(--ink)}
-.diagram .lbl{font-size:19px}
-.diagram .sub{font-size:15px;fill:var(--muted)}
-.legend-dl{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;margin:12px 0 0;font-size:.95rem}
-.legend-dl div{border-top:1px solid var(--faint);padding-top:6px}
-.legend-dl b{font-family:var(--font-ui);font-weight:700;display:block}
-
-/* sections */
-section.step{border-bottom:2px solid var(--rule);padding:22px 0;display:flex;flex-direction:column;gap:14px}
-.step-label{font-family:var(--font-ui);font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sign)}
-.hint{color:var(--muted);max-width:60ch}
-
-/* mode switch: two big tabs like folder dividers */
-.modes{display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid var(--rule);margin-top:20px}
-.modes button{font-family:var(--font-display);font-size:1.25rem;font-weight:700;text-transform:uppercase;border:2px solid var(--rule);border-bottom:0;background:transparent;color:var(--muted);padding:12px 8px;cursor:pointer;margin-right:-2px}
-.modes button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--hi);outline-offset:2px}
-
-/* ready-made kits */
-.presets{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--rule)}
-.presets button{font:inherit;text-align:left;background:var(--field);color:var(--ink);border:0;border-left:2px solid var(--rule);padding:12px;cursor:pointer;display:flex;flex-direction:column;gap:2px}
-.presets button:first-child{border-left:0}
-.presets button b{font-family:var(--font-display);text-transform:uppercase;font-size:1.2rem;font-weight:700}
-.presets button span{font-family:var(--font-ui);font-size:.85rem;color:var(--muted);font-weight:500;line-height:1.35}
-.presets button[aria-pressed="true"]{background:var(--hi);color:#1c1f1b}
-.presets button[aria-pressed="true"] span{color:#1c1f1b}
-
-/* form bits */
-label,.flabel{font-family:var(--font-ui);font-weight:700}
-.field{display:flex;flex-direction:column;gap:6px}
-select,input[type=number],input[type=email]{font-family:var(--font-ui);font-weight:600;font-size:1rem;color:var(--ink);background:var(--field);border:2px solid var(--rule);border-radius:0;padding:10px 12px;width:100%}
-.chips{display:flex;flex-wrap:wrap;gap:0}
-.chips input{position:absolute;opacity:0;pointer-events:none}
-.chips label{font-family:var(--font-ui);font-weight:600;border:2px solid var(--rule);margin:0 -2px -2px 0;background:var(--field);padding:8px 14px;cursor:pointer}
-.chips input:checked + label{background:var(--ink);color:var(--paper)}
-.chips input:focus-visible + label{outline:3px solid var(--hi);outline-offset:2px;position:relative;z-index:1}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.aside{border-left:4px solid var(--hi);padding:4px 0 4px 12px;font-size:.98rem}
-
-/* appliance list, like a printed checklist */
-.apps{display:flex;flex-direction:column}
-.group-label{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:1.05rem;border-bottom:2px solid var(--rule);padding:14px 0 4px}
-.app{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:10px 0;border-bottom:1px dashed var(--faint);align-items:center}
-.app .name{font-family:var(--font-ui);font-weight:600}
-.app .meta{grid-column:1 / -1;color:var(--muted);font-size:.9rem;font-style:italic}
-.app .ctrls{display:flex;gap:8px;align-items:center}
-.stepper{display:flex;align-items:center;border:2px solid var(--rule)}
-.stepper button{font-family:var(--font-ui);font-weight:700;font-size:1.05rem;width:34px;height:34px;border:0;background:var(--field);color:var(--ink);cursor:pointer}
-.stepper output{min-width:28px;text-align:center;font-family:var(--font-ui);font-weight:700;font-variant-numeric:tabular-nums}
-.hrs{width:70px !important;padding:6px 6px !important;text-align:center}
-.hrs-wrap{display:flex;align-items:center;gap:4px;font-family:var(--font-ui);font-size:.85rem;color:var(--muted)}
-
-/* results: printed docket */
-.results{margin-top:26px;border:3px solid var(--rule);background:var(--field);padding:20px 18px;display:flex;flex-direction:column;gap:18px}
-.results > h2{border-bottom:2px solid var(--rule);padding-bottom:8px}
-.verdict{font-family:var(--font-display);font-size:1.7rem;font-weight:700;line-height:1.1;text-transform:none}
-.kit{display:grid;grid-template-columns:1fr 1fr;border-top:2px solid var(--rule);border-left:2px solid var(--rule)}
-.kit .item{border-right:2px solid var(--rule);border-bottom:2px solid var(--rule);padding:10px 12px;display:flex;flex-direction:column;gap:0}
-.kit .item .k{font-family:var(--font-ui);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.kit .item .v{font-family:var(--font-display);font-size:2.2rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
-.kit .item .v span{background:linear-gradient(transparent 58%, var(--hi) 58%, var(--hi) 90%, transparent 90%)}
-.kit .item .s{font-family:var(--font-ui);font-size:.88rem;font-weight:500}
-.bar{display:flex;height:20px;border:2px solid var(--rule);background:var(--paper)}
-.bar span{display:block;height:100%;border-right:1px solid var(--field)}
-.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-family:var(--font-ui);font-size:.88rem;font-weight:500}
-.legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:middle;border:1px solid var(--rule)}
-.why{display:flex;flex-direction:column;gap:12px}
-.why p{max-width:62ch}
-.why p b:first-child{font-family:var(--font-ui);font-weight:700}
-.pill{display:inline-block;font-family:var(--font-ui);font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:2px solid currentColor;padding:1px 8px;margin-right:6px;vertical-align:middle}
-.pill.good{color:var(--good)} .pill.warn{color:var(--warn)} .pill.bad{color:var(--bad)}
-.shop{display:flex;flex-direction:column;gap:0}
-.shop .row{border-top:2px solid var(--rule);padding:14px 0;display:flex;flex-direction:column;gap:8px}
-.shop .row h3{font-size:1.15rem}
-.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px dashed var(--faint)}
-.tiers a{display:flex;flex-direction:column;gap:3px;text-decoration:none;color:var(--ink);padding:10px 10px 4px 0;border-right:1px dashed var(--faint);margin-right:10px}
-.tiers a:last-child{border-right:0;margin-right:0}
-.tiers a b{font-family:var(--font-ui);color:var(--sign);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em}
-.tiers a .pick{font-family:var(--font-ui);font-weight:700;font-size:.95rem;text-decoration:underline;text-decoration-color:var(--hi);text-decoration-thickness:3px;text-underline-offset:3px}
-.tiers a .tn{color:var(--muted);font-size:.88rem;line-height:1.45}
-.gaps{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
-.save{border-top:3px double var(--rule);padding-top:14px;display:flex;flex-direction:column;gap:10px}
-.save .row2{display:flex;gap:0}
-.save .row2 input{flex:1;border-right:0}
-.btn{font-family:var(--font-display);text-transform:uppercase;font-size:1.1rem;font-weight:700;background:var(--ink);color:var(--paper);border:2px solid var(--rule);padding:10px 16px;cursor:pointer}
-.btn.ghost{background:transparent;color:var(--ink)}
-.save .msg{font-family:var(--font-ui);font-size:.9rem;font-weight:600;color:var(--sign);min-height:1.3em}
-.safety{border:2px dashed var(--warn);padding:12px;font-size:.95rem}
-.byline{display:flex;gap:12px;align-items:center;border-top:2px solid var(--rule);padding-top:14px;margin-top:22px}
-.byline .ph{flex:0 0 64px;height:64px;border:2px dashed var(--muted);display:grid;place-items:center;font-family:var(--font-ui);font-size:.7rem;color:var(--muted);text-align:center}
-details{border-top:2px solid var(--rule);padding-top:10px}
-summary{cursor:pointer;font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:1.15rem}
-dl{margin:10px 0 0;display:grid;grid-template-columns:auto 1fr;gap:8px 12px;font-size:.95rem}
-dt{font-family:var(--font-ui);font-weight:700}
-dd{margin:0}
-
-/* tap-to-explain words */
-button.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:help;text-decoration:underline dotted var(--sign);text-decoration-thickness:2px;text-underline-offset:3px}
-.sheet{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--paper);border-top:4px solid var(--rule);padding:16px 18px 22px;box-shadow:0 -6px 0 rgba(0,0,0,.08);max-width:960px;margin:0 auto}
-.sheet h3{font-size:1.4rem;margin-bottom:6px}
-.sheet .close{position:absolute;top:10px;right:12px}
-[hidden]{display:none !important}
-@media (max-width:440px){
-  h1{font-size:2.4rem}
-  .presets{grid-template-columns:1fr}
-  .presets button{border-left:0;border-top:2px solid var(--rule)}
-  .presets button:first-child{border-top:0}
-  .tiers{grid-template-columns:1fr}
-  .tiers a{border-right:0;margin-right:0;border-bottom:1px dashed var(--faint);padding-bottom:10px}
-  .tiers a:last-child{border-bottom:0}
-  .legend-dl{grid-template-columns:1fr}
-  .kit .item .v{font-size:1.8rem}
-}
-@media (prefers-reduced-motion:no-preference){ .bar span{transition:width .25s ease} }
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<main class="wrap">
-
-<header class="mast">
-<a href="/" class="brand" aria-label="Off-Grid Sorted home">
-    <svg viewBox="0 0 420 300" width="200" height="143" role="img" aria-label="Off-Grid Sorted">
-      <defs><filter id="rLogo" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"></feTurbulence><feDisplacementMap in="SourceGraphic" scale="3.2"></feDisplacementMap></filter></defs>
-      <g filter="url(#rLogo)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M60 52l-12-18M110 38l-2-22M160 52l12-18M28 92l-20-6M192 92l20-6" stroke="#e0a12e" stroke-width="6"></path>
-        </g><g  fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="34" y="70" width="152" height="86" rx="14" fill="#f5cb3c"></rect>
-        <path d="M186 98h12v30h-12" fill="currentColor"></path></g><g filter="url(#rLogo)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M58 132v-34M80 132v-34M102 132v-34" stroke-width="7"></path>
-        <circle cx="138" cy="106" r="3.5" fill="currentColor"></circle><circle cx="160" cy="106" r="3.5" fill="currentColor"></circle>
-        <path d="M136 122c6 8 20 8 26 0"></path>
-      </g>
-      <text x="34" y="214" font-family="Kalam, cursive" font-weight="700" font-size="34" fill="var(--sign)" letter-spacing="1">off-grid</text>
-      <text x="30" y="272" font-family="'Permanent Marker', cursive" font-size="66" fill="currentColor">SORTED</text>
-      <path d="M36 288c60-10 140-10 236 2" fill="none" stroke="#e0a12e" stroke-width="8" stroke-linecap="round" filter="url(#rLogo)"></path>
-    </svg>
-  </a>
-  <span class="kicker">For Australian vans, caravans &amp; 4WDs</span>
-  <h1>Power Planner</h1>
-  <p class="lede">Work out the battery, solar and charger your van, caravan or 4WD actually needs, in plain English. Tell it what you run and where you travel. It shows you the numbers and explains why.</p>
-
-  <figure class="diagram" style="margin:6px 0 0">
+<header class="site-header">
+  <div class="in">
+    <a class="logo" href="index.html" aria-label="Off-Grid Sorted home"><svg viewBox="0 0 420 300" width="118" height="84" role="img" aria-label="Off-Grid Sorted">
+<defs><filter id="rLogoH" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"></feTurbulence><feDisplacementMap in="SourceGraphic" scale="3.2"></feDisplacementMap></filter></defs>
+<g filter="url(#rLogoH)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M60 52l-12-18M110 38l-2-22M160 52l12-18M28 92l-20-6M192 92l20-6" stroke="#e0a12e" stroke-width="6"></path></g>
+<g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="34" y="70" width="152" height="86" rx="14" fill="#f5cb3c"></rect><path d="M186 98h12v30h-12" fill="currentColor"></path></g>
+<g filter="url(#rLogoH)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M58 132v-34M80 132v-34M102 132v-34" stroke-width="7"></path><circle cx="138" cy="106" r="3.5" fill="currentColor"></circle><circle cx="160" cy="106" r="3.5" fill="currentColor"></circle><path d="M136 122c6 8 20 8 26 0"></path></g>
+<text x="34" y="214" font-family="Kalam, cursive" font-weight="700" font-size="34" fill="#1d5c3a" letter-spacing="1">off-grid</text>
+<text x="30" y="272" font-family="'Permanent Marker', cursive" font-size="66" fill="currentColor">SORTED</text>
+<path d="M36 288c60-10 140-10 236 2" fill="none" stroke="#e0a12e" stroke-width="8" stroke-linecap="round" filter="url(#rLogoH)"></path>
+</svg></a>
+    <nav class="nav" aria-label="Main menu"><a href="planner.html">Power Planner</a><a href="guides/index.html">Guides</a><a href="about.html">About</a><a class="cta" href="planner.html">Plan my setup</a></nav>
+    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a href="planner.html">Power Planner</a><a href="guides/index.html">Guides</a><a href="about.html">About</a><a href="planner.html"><b>Plan my setup →</b></a></div></details>
+  </div>
+</header>
+<main class="page">
+<section class="hero">
+  <div>
+    <span class="step-label">For Australian vans, caravans &amp; 4WDs</span>
+    <h1>Get your off-grid power sorted</h1>
+    <p class="lede">Work out the battery, solar and charger you actually need, in plain English. No sales pitch, no jargon, just honest numbers for Australian conditions.</p>
+    <div class="ctas">
+      <a class="btn-link solid" href="planner.html">Plan a new setup</a>
+      <a class="btn-link ghost" href="planner.html#check">Check what I've got</a>
+    </div>
+    <p class="small" style="margin-top:12px">Free. Takes about two minutes. Works on your phone.</p>
+  </div>
+  <div class="art">
     <svg viewBox="0 0 360 190" role="img" aria-label="Sketch of a van: the sun charges a solar panel on the roof, the engine charges through a DC-DC charger, both fill the battery, and an inverter feeds a house plug.">
       <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ink)">
         <!-- sun -->
@@ -246,763 +80,82 @@ button.term{font:inherit;color:inherit;background:none;border:0;padding:0;cursor
       <text class="lbl" x="352" y="178" text-anchor="end">engine → DC-DC</text>
       <text class="lbl" x="8" y="178">inverter → plug</text>
     </svg>
-  </figure>
-  <div class="legend-dl">
-    <div><b>Battery</b>Stores your power. Bigger battery, more days off-grid.</div>
-    <div><b>Solar</b>Tops the battery up for free. Weaker in winter.</div>
-    <div><b>DC-DC charger</b>Charges the battery from your engine while you drive.</div>
-    <div><b>Inverter</b>Turns van power into house power for normal plugs.</div>
-  </div>
-</header>
-
-<nav class="modes" aria-label="Choose what you want to do">
-  <button type="button" id="mode-plan" aria-pressed="true">Plan a new setup</button>
-  <button type="button" id="mode-check" aria-pressed="false">Check what I've got</button>
-</nav>
-
-<section class="step" id="preset-card" aria-labelledby="s0">
-  <span class="step-label">Short on time?</span>
-  <h2 id="s0">Start with a ready-made kit</h2>
-  <p class="hint">Pick the one that sounds most like you. It fills everything in below, and you can tweak from there.</p>
-  <div class="presets" role="group" aria-label="Ready-made kits">
-    <button type="button" data-preset="weekender" aria-pressed="false"><b>Weekender</b><span>Two or three nights, medium fridge, lights and phones. You drive most days.</span></button>
-    <button type="button" data-preset="long" aria-pressed="false"><b>Long trips</b><span>A week or more, bigger fridge, laptop. Some days parked up.</span></button>
-    <button type="button" data-preset="living" aria-pressed="false"><b>Living in it</b><span>Full-time: fridge-freezer, work-from-van, heater, Starlink, coffee.</span></button>
   </div>
 </section>
 
-<section class="step" aria-labelledby="s1">
-  <span class="step-label">Step 1</span>
-  <h2 id="s1">Your setup, and where you travel</h2>
-  <div class="field">
-    <span id="veh-l" class="flabel">What are you powering?</span>
-    <div class="chips" role="radiogroup" aria-labelledby="veh-l">
-      <input type="radio" name="vehicle" id="vh-van" value="van" checked><label for="vh-van">Campervan</label>
-      <input type="radio" name="vehicle" id="vh-car" value="caravan"><label for="vh-car">Caravan or camper trailer</label>
-      <input type="radio" name="vehicle" id="vh-4wd" value="4wd"><label for="vh-4wd">4WD</label>
-    </div>
-  </div>
-  <p class="hint">The sun is much weaker in a Hobart winter than a Darwin one. Same panel, very different result.</p>
-  <div class="field">
-    <label for="loc">Where will you mostly be?</label>
-    <select id="loc">
-      <option value="qld" selected>Queensland</option>
-      <option value="nsw">New South Wales</option>
-      <option value="vic">Victoria</option>
-      <option value="tas">Tasmania</option>
-      <option value="sa">South Australia</option>
-      <option value="wa">Western Australia</option>
-      <option value="nt">Northern Territory</option>
-      <option value="act">ACT</option>
-      <option value="all">Touring all over (plan for the worst spot)</option>
-    </select>
-  </div>
-  <div class="field">
-    <span id="season-l" class="flabel">When do you travel?</span>
-    <div class="chips" role="radiogroup" aria-labelledby="season-l">
-      <input type="radio" name="season" id="se-s" value="summer"><label for="se-s">Mostly summer</label>
-      <input type="radio" name="season" id="se-w" value="winter"><label for="se-w">Mostly winter</label>
-      <input type="radio" name="season" id="se-a" value="all" checked><label for="se-a">All year</label>
-    </div>
-    <p class="small">All year is the safe choice. We size for the hardest month, so you're covered either way.</p>
+<section class="band" aria-labelledby="ways">
+  <h2 id="ways">Three ways in</h2>
+  <p class="hint">Wherever you're starting from, there's a quick way to get answers.</p>
+  <div class="cards">
+    <a class="card" href="planner.html"><span class="num">1</span><h3>Planning a new setup?</h3><p>Tell the Power Planner what you run and where you travel. It sizes your battery, solar, charger and inverter, and explains why.</p><span class="go">Open the Power Planner →</span></a>
+    <a class="card" href="planner.html#check"><span class="num">2</span><h3>Already got gear?</h3><p>Enter your battery and solar. Find out how many days you'll last, and exactly what's missing.</p><span class="go">Check my setup →</span></a>
+    <a class="card" href="guides/van-power-basics.html"><span class="num">3</span><h3>New to all this?</h3><p>Start with the basics: what a battery, solar panel, DC-DC charger and inverter actually do, in five minutes.</p><span class="go">Read the basics →</span></a>
   </div>
 </section>
 
-<section class="step" aria-labelledby="s2">
-  <span class="step-label">Step 2</span>
-  <h2 id="s2">What do you run?</h2>
-  <p class="hint">We've filled in typical hours. Change anything that doesn't sound like you, and set the number to 0 to switch something off.</p>
-  <div class="field">
-    <label for="fridge">Your fridge</label>
-    <select id="fridge">
-      <option value="0">No fridge</option>
-      <option value="18">Small (15–30L), drinks and snacks</option>
-      <option value="28" selected>Medium (35–50L), a weekend's food</option>
-      <option value="38">Large (55–75L), a week's food</option>
-      <option value="50">Big fridge-freezer (80–100L)</option>
-    </select>
-    <span class="note">Start with the fridge. It's nearly always the biggest user.</span>
-    <p class="small">It runs day and night, so it usually uses more than everything else combined. Hot weather and opening the lid a lot make it work harder.</p>
-  </div>
-  <div class="apps" id="apps"></div>
+<section class="band" aria-labelledby="start">
+  <h2 id="start">Start here</h2>
+  <p class="hint">Read these in order and you'll know more than most people at the caravan show.</p>
+  <ol class="path">
+    <li><a href="guides/van-power-basics.html"><span class="n">01</span><span><h3>Van power in plain English</h3><span class="small">The four parts and how they fit together.</span></span><span aria-hidden="true">→</span></a></li>
+    <li><a href="guides/lithium-vs-agm.html"><span class="n">02</span><span><h3>Lithium vs AGM</h3><span class="small">Which battery, and what it means for size, weight and cost.</span></span><span aria-hidden="true">→</span></a></li>
+    <li><a href="guides/how-much-solar-australia.html"><span class="n">03</span><span><h3>How much solar do I need?</h3><span class="small">By state and season, with a table for every state.</span></span><span aria-hidden="true">→</span></a></li>
+    <li><a href="guides/index.html"><span class="n">04</span><span><h3>DC-DC chargers explained</h3><span class="small">Charging while you drive.</span></span><span class="soon">Coming soon</span></a></li>
+  </ol>
 </section>
 
-<section class="step" aria-labelledby="s3">
-  <span class="step-label">Step 3</span>
-  <h2 id="s3">How do you travel?</h2>
-  <p class="hint">Driving charges your battery too, through the DC-DC charger.</p>
-  <div class="field">
-    <span id="drive-l" class="flabel">On a typical day, how long do you drive?</span>
-    <div class="chips" role="radiogroup" aria-labelledby="drive-l">
-      <input type="radio" name="drive" id="dr-0" value="0"><label for="dr-0">I stay put</label>
-      <input type="radio" name="drive" id="dr-1" value="1" checked><label for="dr-1">About an hour</label>
-      <input type="radio" name="drive" id="dr-3" value="2.5"><label for="dr-3">2–3 hours</label>
-      <input type="radio" name="drive" id="dr-4" value="4"><label for="dr-4">4+ hours</label>
-    </div>
-  </div>
-  <div class="field">
-    <span id="buf-l" class="flabel">How many grey, cloudy days should you get through without driving?</span>
-    <div class="chips" role="radiogroup" aria-labelledby="buf-l">
-      <input type="radio" name="buffer" id="bf-1" value="1"><label for="bf-1">1 day</label>
-      <input type="radio" name="buffer" id="bf-2" value="2" checked><label for="bf-2">2 days</label>
-      <input type="radio" name="buffer" id="bf-3" value="3"><label for="bf-3">3 days</label>
-    </div>
-    <p class="small">Two days suits most people.</p>
+<section class="band" aria-labelledby="kits">
+  <h2 id="kits">Ready-made kits</h2>
+  <p class="hint">Don't want to fiddle with numbers? Pick the one that sounds like you. You can tweak it after.</p>
+  <div class="cards">
+    <a class="card" href="planner.html#weekender"><h3>Weekender</h3><p>Two or three nights, a medium fridge, lights and phones. You drive most days.</p><span class="go">See the kit →</span></a>
+    <a class="card" href="planner.html#long"><h3>Long trips</h3><p>A week or more, a bigger fridge and a laptop. Some days parked up.</p><span class="go">See the kit →</span></a>
+    <a class="card" href="planner.html#living"><h3>Living in it</h3><p>Full-time: fridge-freezer, work-from-van, heater, Starlink and coffee.</p><span class="go">See the kit →</span></a>
   </div>
 </section>
 
-<section class="step" aria-labelledby="s4p" id="build-card">
-  <span class="step-label">Step 4</span>
-  <h2 id="s4p">How do you want it built?</h2>
-  <div class="field">
-    <span id="bt-l" class="flabel">Battery type</span>
-    <div class="chips" role="radiogroup" aria-labelledby="bt-l">
-      <input type="radio" name="battype" id="bt-l1" value="lith" checked><label for="bt-l1">Lithium</label>
-      <input type="radio" name="battype" id="bt-a1" value="agm"><label for="bt-a1">AGM</label>
-    </div>
-    <p class="aside"><b>The short version:</b> you can use almost all of a lithium battery, but only about half of an AGM before it starts wearing out. So AGM needs to be about twice the size for the same job, and it's around three times heavier. AGM is cheaper to buy; lithium lasts years longer.</p>
+<section class="band" aria-labelledby="why">
+  <h2 id="why">Why trust us?</h2>
+  <p class="hint">Most power advice online comes from people selling batteries. We don't make or sell any.</p>
+  <div class="trust">
+    <div><h3>Independent</h3><p>We recommend gear by what fits your setup, with budget, mid-range and premium options. Some links earn us a small commission; it never decides what we suggest.</p></div>
+    <div><h3>Made for Australia</h3><p>Sun hours by state and season, Aussie stores, AUD prices, and the real conditions you'll camp in, from Cape York to Cradle Mountain.</p></div>
+    <div><h3>Honest numbers</h3><p>We show our working and say when something won't fit or won't work. And we'll always tell you to get a licensed auto electrician to wire it in.</p></div>
   </div>
-  <div class="field">
-    <span id="bs-l" class="flabel">One box or separate parts?</span>
-    <div class="chips" role="radiogroup" aria-labelledby="bs-l">
-      <input type="radio" name="build" id="bs-box" value="box"><label for="bs-box">All-in-one box</label>
-      <input type="radio" name="build" id="bs-parts" value="parts" checked><label for="bs-parts">Separate parts</label>
-    </div>
-    <p class="small"><b>All-in-one box:</b> battery, chargers and plugs built in. Simplest, and it can move between vehicles. <b>Separate parts:</b> more work and an installer, but you choose every piece and it can grow with you.</p>
-  </div>
+  <div class="placeholder" style="margin-top:22px">[Kiran's note: a photo of your van and two or three lines about your own setup and why you built this. A real person here is the biggest trust signal on the site.]</div>
 </section>
 
-<section class="step" aria-labelledby="s4" id="gear-card" hidden>
-  <span class="step-label">Step 4</span>
-  <h2 id="s4">What have you already got?</h2>
-  <p class="hint">Check the label or the box. Not sure? Leave it at 0.</p>
-  <div class="grid2">
-    <div class="field">
-      <label for="g-bat">Battery size (Ah)</label>
-      <input type="number" id="g-bat" min="0" step="10" value="100" inputmode="numeric">
-    </div>
-    <div class="field">
-      <label for="g-type">Battery type</label>
-      <select id="g-type">
-        <option value="lith" selected>Lithium (LiFePO4)</option>
-        <option value="agm">AGM / lead-acid</option>
-      </select>
-    </div>
-    <div class="field">
-      <label for="g-sol">Solar panels (total watts)</label>
-      <input type="number" id="g-sol" min="0" step="10" value="200" inputmode="numeric">
-    </div>
-    <div class="field">
-      <label for="g-dc">DC-DC charger (amps)</label>
-      <input type="number" id="g-dc" min="0" step="5" value="0" inputmode="numeric">
-    </div>
-  </div>
-  <p class="small">Example filled in: a 200W solar blanket and a 100Ah lithium battery, no DC-DC charger yet.</p>
-</section>
-
-<section class="results" aria-labelledby="res-h" aria-live="polite">
-  <h2 id="res-h">Your results</h2>
-  <p class="verdict" id="verdict"></p>
-  <div class="kit" id="kit"></div>
-
-  <div class="field">
-    <h3>What uses your power each day</h3>
-    <div class="bar" id="bar" role="img"></div>
-    <div class="legend" id="legend"></div>
-  </div>
-
-  <div class="why" id="why"></div>
-
-  <div id="gaps-wrap" hidden>
-    <h3>What's missing</h3>
-    <ul class="gaps" id="gaps"></ul>
-  </div>
-
-  <div class="shop" id="shop-wrap">
-    <h3 id="shop-h" style="font-size:1.5rem">Build your kit</h3>
-    <p class="small">Placeholder links in this prototype. Under each option: what the extra money gets you.</p>
-    <div class="shop" id="shop"></div>
-  </div>
-
-  <div class="save" id="save">
-    <h3>Keep your list</h3>
-    <p class="small">Copy it to your notes, or have it emailed so you've got it when you're in the shop.</p>
-    <button type="button" class="btn ghost" id="copy-btn">Copy my list</button>
-    <form id="email-form" class="field" novalidate>
-      <label for="email">Email me my list</label>
-      <div class="row2">
-        <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
-        <button type="submit" class="btn">Send</button>
-      </div>
+<section class="band" style="border-bottom:0">
+  <div class="signup">
+    <div><h2>Get the good stuff by email</h2><p class="hint" style="margin-top:6px">New guides, gear deals worth knowing about, and seasonal reminders like "check your battery before winter". About once a fortnight. No spam.</p></div>
+    <form onsubmit="event.preventDefault(); this.nextElementSibling.textContent='Thanks! Email sign-up goes live soon.';" class="field">
+      <label for="home-email">Your email</label>
+      <div style="display:flex"><input type="email" id="home-email" placeholder="you@example.com" autocomplete="email" style="flex:1;border-right:0"><button type="submit" class="btn">Join</button></div>
     </form>
-    <p class="msg" id="save-msg" role="status"></p>
+    <p class="small" role="status"></p>
   </div>
-
-  <div class="safety">
-    <b>Get a pro to wire it in.</b> Batteries store a lot of energy. Have an auto electrician install or check your setup, with the right cable thickness and fuses. These results are a planning guide, not an install spec.
-    <span class="note" style="margin-top:6px">Don't skip the fuses.</span>
-  </div>
-
-  <details>
-    <summary>The jargon, translated</summary>
-    <dl id="glossary"></dl>
-    <p class="small" style="margin-top:10px">Sun figures are approximate long-term averages based on Bureau of Meteorology data for each capital. Inland and northern spots are usually sunnier. Fridge figures are typical daily averages and vary by brand, heat and how often you open the lid.</p>
-  </details>
 </section>
-
-<footer class="byline">
-  <div class="ph">your photo</div>
-  <p class="small">[Your name and a line about your own van setup goes here. A real person behind the tool is what makes people trust it.]</p>
-</footer>
-<nav class="small" aria-label="Site links" style="display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:16px">
-  <a href="about.html" style="color:var(--sign)">About</a>
-  <a href="disclosure.html" style="color:var(--sign)">Affiliate disclosure &amp; disclaimer</a>
-  <a href="privacy.html" style="color:var(--sign)">Privacy</a>
-  <span>© 2026 Off-Grid Sorted</span>
-</nav>
-
 </main>
-
-<div class="sheet" id="sheet" role="dialog" aria-modal="false" aria-labelledby="sheet-h" hidden>
-  <button type="button" class="btn ghost close" id="sheet-close">Close</button>
-  <h3 id="sheet-h"></h3>
-  <p id="sheet-p"></p>
-</div>
-
-<script>
-(function(){
-  // ---- Data ----
-  // Approx. daily peak sun hours (kWh/m2/day), capital-city long-term averages, Dec/Jan (summer) vs Jun/Jul (winter)
-  var SUN = {
-    qld:{summer:6.3, winter:4.0, name:"Queensland"},
-    nsw:{summer:6.6, winter:2.9, name:"New South Wales"},
-    vic:{summer:6.8, winter:1.9, name:"Victoria"},
-    tas:{summer:6.4, winter:1.6, name:"Tasmania"},
-    sa:{summer:7.4, winter:2.6, name:"South Australia"},
-    wa:{summer:7.9, winter:2.9, name:"Western Australia"},
-    nt:{summer:5.5, winter:5.7, name:"the Northern Territory"},
-    act:{summer:7.2, winter:2.4, name:"the ACT"},
-    all:{summer:5.5, winter:1.6, name:"all over Australia"}
-  };
-  var V = 12;            // nominal system voltage
-  var SOLAR_REAL = 0.7;  // heat, dust, flat roof angle, controller losses
-  var INV_EFF = 0.85;    // inverter spills ~15%
-  var FRIDGE_WINTER = 0.7;
-
-  // Appliances: w = watts, h = default hours/day, q = default qty, ac = needs inverter
-  var APPS = [
-    {g:"Van power (12V)", id:"led", n:"LED lights", w:5, h:4, q:4, meta:"Barely uses anything."},
-    {id:"phone", n:"Phone charging", w:10, h:2, q:2, meta:"Tiny amounts. Count one per phone."},
-    {id:"laptop", n:"Laptop (12V / USB-C charger)", w:60, h:3, q:0, meta:"A steady, modest draw while you work."},
-    {id:"fan", n:"12V fan", w:15, h:8, q:1, meta:"Cheap to run, even all night."},
-    {id:"heater", n:"Diesel heater (electrics only)", w:15, h:6, q:0, meta:"Burns diesel for heat; the battery just runs the fan and pump."},
-    {id:"pump", n:"Water pump", w:50, h:0.25, q:1, meta:"Strong draw, but only for a few minutes a day."},
-    {id:"starlink", n:"Starlink Mini", w:30, h:6, q:0, meta:"Uses more than people expect if it stays on all day."},
-    {id:"tv", n:"12V TV", w:40, h:2, q:0, meta:""},
-    {id:"cpap", n:"CPAP machine", w:40, h:8, q:0, meta:"Runs all night, so it adds up. Check your model's figure."},
-    {g:"House plugs (needs an inverter)", id:"aircon", n:"Caravan air-con", w:900, h:0, q:0, ac:true, meta:"The biggest power user there is. Running it off-grid needs a very large battery and lots of solar: set the hours honestly."},
-    {id:"kettle", n:"Kettle", w:2000, h:0.1, q:0, ac:true, meta:"Like flooring the accelerator: a huge draw for a few minutes. Needs a big inverter."},
-    {id:"coffee", n:"Coffee machine", w:1300, h:0.1, q:0, ac:true, meta:"Short, strong bursts."},
-    {id:"induction", n:"Induction cooktop", w:1800, h:0.5, q:0, ac:true, meta:"A huge draw for the whole time you cook. Plan big."},
-    {id:"hair", n:"Hair dryer", w:1200, h:0.1, q:0, ac:true, meta:""},
-    {id:"camlaptop", n:"Laptop / camera on a wall charger", w:65, h:2, q:0, ac:true, meta:"Works, but a 12V charger wastes less."}
-  ];
-
-  var COLORS = ["#1d5c3a","#f5cb3c","#2443a3","#b5651d","#7a8b6f","#c9a227","#6b4f8a","#4f8f6f","#a33d3d","#8a8a7a","#3d7fa3","#d98c3d","#5e7a3d","#9b6b5c"];
-
-  var BAT_SIZES = [100,120,150,200,300,400,600];
-  var INV_SIZES = [300,600,1000,1500,2000,3000];
-
-  var PICKS = {
-    battery:{budget:"Adventure Kings or VoltX lithium", mid:"Renogy or iTechworld lithium", premium:"REDARC, Enerdrive or Victron lithium"},
-    solar:{budget:"Kings folding blanket or fixed panels", mid:"Renogy or Baintech panels", premium:"REDARC or Victron panels"},
-    dcdc:{budget:"Kings or Projecta DC-DC", mid:"Renogy or Projecta DC-DC with solar input", premium:"REDARC BCDC or Victron Orion"},
-    inverter:{budget:"Projecta or Giandel pure sine", mid:"Renogy pure sine", premium:"Victron or Enerdrive pure sine"},
-    agm:{budget:"Kings or VoltX AGM deep cycle", mid:"Century or Fullriver AGM", premium:"Odyssey or Optima deep cycle"},
-    box:{budget:"Kings battery box", mid:"Projecta or Baintech battery box", premium:"MSA or REDARC battery mount/box"},
-    allinone:{budget:"Adventure Kings lithium power box", mid:"iTechworld or Projecta all-in-one box", premium:"REDARC or Enerdrive all-in-one system"},
-    monitor:{budget:"Kings battery monitor", mid:"Renogy shunt monitor", premium:"Victron SmartShunt"}
-  };
-  // What you get for the extra money, per tier
-  var TIER_NOTES = {
-    battery:{budget:"Does the job for weekends and lighter use. Usually a shorter warranty and fewer smarts, like no app or cold-weather charging protection.", mid:"The sweet spot for most vans: a phone app to check charge, cold-weather protection, and a longer warranty.", premium:"Built for heavy use and big inverters, with local Australian support and the longest warranties. Talks to the rest of your gear."},
-    agm:{budget:"Cheapest way in. Fine for occasional trips, but wears out sooner if you run it low often.", mid:"Better build quality, so it lasts more charge cycles.", premium:"Toughest AGM, handles heat and corrugations best. At this price, compare it with lithium."},
-    solar:{budget:"Gets the job done. Blankets can be heavier and panels a bit less efficient, so you need more space for the same watts.", mid:"Better cells: more power from the same size, and holds up better in heat.", premium:"Most durable and efficient, with long warranties. Best if they'll live on your roof for years."},
-    dcdc:{budget:"Charges while you drive. Fewer settings and often no solar input, so you may need a separate solar regulator.", mid:"Usually has solar input built in (one box does two jobs), plus adjustable settings for your battery type.", premium:"App monitoring, handles heat and modern 'smart' alternators well, strong Australian support. Set and forget."},
-    inverter:{budget:"Fine for laptops, cameras and the odd short use. Can struggle with big start-up surges and the fan may be noisy.", mid:"Handles surges better (coffee machines, kettles) and wastes less power sitting idle.", premium:"Most efficient, quietest and sips the least power when idle. Often app-controlled and built to run all day."},
-    box:{budget:"A tough plastic box with a lid and a few plugs on the side. Great for a portable setup.", mid:"Better plugs and a built-in volt meter or display, sturdier build.", premium:"Metal mounts, drawers or slides bolted into the van. Neat, permanent and very secure."},
-    allinone:{budget:"Easiest way to start. Smaller built-in chargers, so it fills up more slowly from driving and solar.", mid:"Bigger built-in chargers, a proper display or app, more plugs.", premium:"A complete managed system with the best chargers and monitoring. Close to a professional fit-out in one unit."},
-    monitor:{budget:"Shows a percentage and voltage on a small screen. Good enough to know when you're getting low, but the reading can drift over time.", mid:"A proper shunt counts every bit of power in and out, so the percentage is genuinely reliable. Screen, and often Bluetooth.", premium:"Very accurate, with a phone app that shows hours remaining and history. Tells you exactly what's using power and when. Usually no screen: your phone is the screen."}
-  };
-  var KG_PER_AH = {lith:0.11, agm:0.29};
-
-  // ---- State ----
-  var state = {mode:"plan", apps:{}};
-  APPS.forEach(function(a){ state.apps[a.id] = {q:a.q, h:a.h}; });
-
-  // ---- Build appliance list ----
-  var appsEl = document.getElementById("apps");
-  APPS.forEach(function(a){
-    if(a.g){
-      var gl = document.createElement("div");
-      gl.className = "group-label";
-      gl.textContent = a.g;
-      appsEl.appendChild(gl);
-    }
-    var row = document.createElement("div");
-    row.className = "app";
-    row.id = "row-" + a.id;
-    row.innerHTML =
-      '<div class="name">' + a.n + '</div>' +
-      '<div class="ctrls">' +
-        '<div class="stepper" role="group" aria-label="How many: ' + a.n + '">' +
-          '<button type="button" data-d="-1" aria-label="One fewer">−</button>' +
-          '<output id="q-' + a.id + '">' + a.q + '</output>' +
-          '<button type="button" data-d="1" aria-label="One more">+</button>' +
-        '</div>' +
-        '<span class="hrs-wrap"><input class="hrs" type="number" id="h-' + a.id + '" min="0" max="24" step="0.25" value="' + a.h + '" aria-label="Hours a day: ' + a.n + '"> hrs</span>' +
-      '</div>' +
-      (a.meta ? '<div class="meta">' + a.meta + '</div>' : '');
-    appsEl.appendChild(row);
-    row.querySelectorAll(".stepper button").forEach(function(b){
-      b.addEventListener("click", function(){
-        var s = state.apps[a.id];
-        s.q = Math.max(0, Math.min(20, s.q + parseInt(b.getAttribute("data-d"),10)));
-        document.getElementById("q-" + a.id).textContent = s.q;
-        calc();
-      });
-    });
-    row.querySelector(".hrs").addEventListener("input", function(e){
-      var v = parseFloat(e.target.value);
-      state.apps[a.id].h = isNaN(v) ? 0 : Math.max(0, Math.min(24, v));
-      calc();
-    });
-  });
-
-  // ---- Inputs ----
-  function radio(name){ var el = document.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : null; }
-  function num(id){ var v = parseFloat(document.getElementById(id).value); return isNaN(v) || v < 0 ? 0 : v; }
-
-  document.querySelectorAll("select, input[type=radio], #gear-card input").forEach(function(el){
-    el.addEventListener("change", calc);
-    el.addEventListener("input", calc);
-  });
-
-  var btnPlan = document.getElementById("mode-plan"), btnCheck = document.getElementById("mode-check");
-  function setMode(m){
-    state.mode = m;
-    btnPlan.setAttribute("aria-pressed", m === "plan");
-    btnCheck.setAttribute("aria-pressed", m === "check");
-    document.getElementById("gear-card").hidden = (m !== "check");
-    document.getElementById("build-card").hidden = (m === "check");
-    calc();
-  }
-  btnPlan.addEventListener("click", function(){ setMode("plan"); });
-  btnCheck.addEventListener("click", function(){ setMode("check"); });
-
-  // ---- Helpers ----
-  function roundUp(v, list){ for(var i=0;i<list.length;i++){ if(list[i] >= v) return list[i]; } return null; }
-  function ceilTo(v, step){ return Math.ceil(v/step)*step; }
-  function fmt(n){ return Math.round(n).toLocaleString("en-AU"); }
-  function fmt1(n){ return (Math.round(n*10)/10).toLocaleString("en-AU"); }
-  function el(tag, cls, html){ var e = document.createElement(tag); if(cls) e.className = cls; if(html != null) e.innerHTML = html; return e; }
-
-  function loads(season){
-    var list = [];
-    var fridgeAh = parseFloat(document.getElementById("fridge").value) || 0;
-    if(fridgeAh > 0){
-      var f = fridgeAh * V * (season === "winter" ? FRIDGE_WINTER : 1);
-      list.push({id:"fridge", n:"Fridge", wh:f});
-    }
-    APPS.forEach(function(a){
-      var s = state.apps[a.id];
-      var wh = a.w * s.q * s.h;
-      if(a.ac) wh = wh / INV_EFF;
-      if(wh > 0) list.push({id:a.id, n:a.n, wh:wh});
-    });
-    return list;
-  }
-  function biggestAC(){
-    var max = 0, name = "";
-    APPS.forEach(function(a){
-      if(a.ac && state.apps[a.id].q > 0 && state.apps[a.id].h > 0 && a.w > max){ max = a.w; name = a.n; }
-    });
-    return {w:max, n:name};
-  }
-  function vehicle(){ var r = document.querySelector('input[name="vehicle"]:checked'); return r ? r.value : "van"; }
-  // Caravans charge through the trailer plug: long cable runs lose a chunk of the charge
-  function driveEff(){ return vehicle() === "caravan" ? 0.65 : 0.9; }
-  function dcdcFor(batAh){ return batAh <= 120 ? 25 : (batAh <= 200 ? 40 : 50); }
-
-  // ---- Main calc ----
-  function calc(){
-    var loc = document.getElementById("loc").value;
-    var season = radio("season") || "all";
-    var driveH = parseFloat(radio("drive") || "0");
-    var buffer = parseFloat(radio("buffer") || "2");
-    var seasons = season === "all" ? ["summer","winter"] : [season];
-    var batType = radio("battype") || "lith";
-    var dodPlan = batType === "lith" ? 0.9 : 0.5;
-    var maxDaily = 0;
-
-    // Work out each season; keep the hardest
-    var plan = null, all = [];
-    seasons.forEach(function(se){
-      var L = loads(se);
-      var daily = L.reduce(function(t,x){ return t + x.wh; }, 0);
-      var sun = SUN[loc][se];
-      if(daily > maxDaily) maxDaily = daily;
-      var batAhRaw = (daily * buffer) / (V * dodPlan);   // lithium ~90% usable, AGM ~50%
-      var batAh = roundUp(Math.max(batAhRaw, 1), BAT_SIZES) || ceilTo(batAhRaw, 100);
-      var dc = dcdcFor(batAh);
-      var driveWh = dc * V * driveH * driveEff();
-      var solarRaw = Math.max(0, daily - driveWh) / (sun * SOLAR_REAL);
-      var solarNoDrive = daily / (sun * SOLAR_REAL);
-      var r = {se:se, L:L, daily:daily, sun:sun, batAh:batAh, dc:dc, driveWh:driveWh,
-               solarW:solarRaw > 0 ? Math.max(100, ceilTo(solarRaw, 50)) : 0,
-               solarNoDrive:Math.max(100, ceilTo(solarNoDrive, 50))};
-      all.push({se:se, L:L, daily:daily, sun:sun});
-      if(!plan){ plan = r; }
-      else {
-        var hard = (r.solarW > plan.solarW || (r.solarW === plan.solarW && r.daily > plan.daily)) ? r : plan;
-        hard.batAh = Math.max(r.batAh, plan.batAh);
-        hard.dc = dcdcFor(hard.batAh);
-        plan = hard;
-      }
-    });
-
-    var ac = biggestAC();
-    var inv = ac.w > 0 ? roundUp(ac.w * 1.2, INV_SIZES) : 0;
-    var bigMin = batType === "lith" ? 200 : 400;
-    if(inv && inv >= 2000 && plan.batAh < bigMin){ plan.batAh = bigMin; plan.dc = dcdcFor(bigMin); }
-    plan.batType = batType; plan.dod = dodPlan; plan.maxDaily = maxDaily; plan.build = radio("build") || "parts";
-
-    plan.all = all;
-    render(plan, inv, ac, loc, season, driveH, buffer);
-  }
-
-  function seasonWord(se){ return se === "winter" ? "winter" : "summer"; }
-
-  function render(p, inv, ac, loc, season, driveH, buffer){
-    var verdict = document.getElementById("verdict");
-    var kit = document.getElementById("kit");
-    var why = document.getElementById("why");
-    var gapsWrap = document.getElementById("gaps-wrap");
-    var gaps = document.getElementById("gaps");
-    var shop = document.getElementById("shop");
-    var shopH = document.getElementById("shop-h");
-    kit.innerHTML = ""; why.innerHTML = ""; gaps.innerHTML = ""; shop.innerHTML = "";
-
-    var dailyAh = p.daily / V;
-    var placeName = SUN[loc].name;
-
-    // Usage bar (hardest season)
-    var bar = document.getElementById("bar"), legend = document.getElementById("legend");
-    bar.innerHTML = ""; legend.innerHTML = "";
-    var sorted = p.L.slice().sort(function(a,b){ return b.wh - a.wh; });
-    sorted.forEach(function(x, i){
-      var pct = p.daily > 0 ? (x.wh / p.daily * 100) : 0;
-      var c = COLORS[i % COLORS.length];
-      var s = el("span"); s.style.width = pct + "%"; s.style.background = c; bar.appendChild(s);
-      legend.appendChild(el("span", null, '<i style="background:' + c + '"></i>' + x.n + " · " + Math.round(pct) + "%"));
-    });
-    bar.setAttribute("aria-label", sorted.map(function(x){ return x.n + " " + Math.round(x.wh / p.daily * 100) + "%"; }).join(", "));
-
-    if(p.daily === 0){
-      verdict.textContent = "Add something you'll run to see your results.";
-      document.getElementById("shop-wrap").hidden = true;
-      gapsWrap.hidden = true;
-      return;
-    }
-    document.getElementById("shop-wrap").hidden = false;
-
-    if(state.mode === "plan"){
-      gapsWrap.hidden = true;
-      
-      verdict.textContent = "You'll use about " + fmt(dailyAh) + "Ah a day. Here's a setup that keeps up.";
-
-      var typeName = p.batType === "lith" ? "Lithium (LiFePO4)" : "AGM";
-      addKit(kit, "Battery", p.batAh + "Ah", typeName + " · about " + fmt(p.batAh * KG_PER_AH[p.batType]) + "kg");
-      addKit(kit, "Solar", p.solarW ? p.solarW + "W" : "Optional", p.solarW ? "Roof panels or a blanket" : "Driving covers your daily use");
-      addKit(kit, "DC-DC charger", p.dc + "A", "Fills up while you drive");
-      addKit(kit, "Inverter", inv ? fmt(inv) + "W" : "Not needed", inv ? "Pure sine wave" : "Everything you run is 12V");
-
-      var top = sorted[0];
-      var otherType = p.batType === "lith" ? "agm" : "lith";
-      var otherDod = otherType === "lith" ? 0.9 : 0.5;
-      var otherAh = roundUp(p.maxDaily * buffer / (V * otherDod), BAT_SIZES) || ceilTo(p.maxDaily * buffer / (V * otherDod), 100);
-      why.appendChild(el("p", null, "<b>Battery:</b> " + p.batAh + "Ah of " + (p.batType === "lith" ? "lithium" : "AGM") + " gives you about " + fmt1(p.batAh * V * p.dod / 1000) + "kWh you can actually use" + (p.batType === "agm" ? " (you only use the top half of an AGM)" : "") + ". That's enough to get through " + buffer + " grey day" + (buffer > 1 ? "s" : "") + " with no sun and no driving."));
-      why.appendChild(el("p", null, "<b>Same job, other battery:</b> with " + (otherType === "lith" ? "lithium" : "AGM") + " you'd need about " + otherAh + "Ah, weighing roughly " + fmt(otherAh * KG_PER_AH[otherType]) + "kg, versus " + fmt(p.batAh * KG_PER_AH[p.batType]) + "kg for your " + (p.batType === "lith" ? "lithium" : "AGM") + ". " + "Lithium saves about " + fmt(Math.abs(otherAh * KG_PER_AH[otherType] - p.batAh * KG_PER_AH[p.batType])) + "kg, like leaving a fully loaded esky at home."));
-      if(top){
-        why.appendChild(el("p", null, "<b>Biggest user:</b> your " + top.n.toLowerCase() + " uses " + Math.round(top.wh / p.daily * 100) + "% of what you use each day. If you ever need to cut back, start there."));
-      }
-      var sunLine = "<b>Sun:</b> in " + placeName + " in " + seasonWord(p.se) + ", a day gives you about " + fmt1(p.sun) + " hours of full-strength sun.";
-      if(p.solarW){
-        sunLine += " " + p.solarW + "W of panels makes roughly what you use each day" + (driveH > 0 ? ", with your driving doing the rest." : ".");
-        if(driveH > 0 && p.solarNoDrive > p.solarW) sunLine += " If you parked up and didn't drive at all, you'd want closer to " + p.solarNoDrive + "W.";
-      } else {
-        sunLine += " Your driving alone keeps the battery charged. Solar is still worth it for days you stay put.";
-      }
-      why.appendChild(el("p", null, sunLine));
-      if(season === "all"){
-        why.appendChild(el("p", null, "<b>Why " + seasonWord(p.se) + "?</b> You chose all year, so we sized for the harder season. In the easier months you'll have spare."));
-      }
-      var vh = vehicle();
-      if(vh === "caravan" && driveH > 0){
-        why.appendChild(el("p", null, "<b>Caravans:</b> charging through the trailer plug loses power over the long cable from the car, so we've assumed about a third less from driving. A DC-DC charger fitted in the van, close to the battery, gets more of it back."));
-      }
-      if(vh === "4wd"){
-        why.appendChild(el("p", null, "<b>4WDs:</b> roof space for solar is tight on most 4WDs, so a folding blanket or panels on a canopy or rooftop tent are common. Many modern 4WDs have smart alternators, so choose a DC-DC charger that supports them."));
-      }
-      if(inv){
-        why.appendChild(el("p", null, "<b>Inverter:</b> your " + ac.n.toLowerCase() + " pulls about " + fmt(ac.w) + "W at once, so the inverter needs headroom: " + fmt(inv) + "W. Big house-plug items drain the battery fast. Use them when the sun's out or you're driving." + (inv >= 2000 ? " An inverter this size also needs a hefty battery (200Ah or more) and thick cables." : "")));
-      }
-
-      shopH.textContent = "Build your kit";
-      var batLabel = p.batAh + "Ah " + (p.batType === "lith" ? "lithium" : "AGM");
-      if(p.build === "box"){
-        addShop(shop, "All-in-one power box · " + batLabel + ", with built-in DC-DC and solar charger", "allinone", "Everything in one box. Check it includes a DC-DC charger and solar input (MPPT) before you buy." + (p.batType === "agm" ? " Most all-in-one boxes are lithium; AGM versions get very heavy at this size." : ""));
-        if(p.solarW) addShop(shop, "Solar · " + p.solarW + "W", "solar", "Plugs straight into the box. A folding blanket is easiest to start with.");
-        if(inv) addShop(shop, "Inverter · " + fmt(inv) + "W pure sine", "inverter", "Some boxes have a small inverter built in, but rarely big enough for this.");
-        addChecklist(shop, "The small bits", [
-          ["Anderson plug lead from your engine battery", "Connects the box to your engine battery so it charges while you drive."],
-          ["Tie-down straps or a mounting bracket", "A loose box becomes a missile in a sudden stop. Strap it down."],
-          ["Solar extension lead (if using a blanket)", "So the panel can sit in the sun while the van sits in the shade."]
-        ]);
-      } else {
-        addShop(shop, "Battery · " + batLabel, p.batType === "lith" ? "battery" : "agm", "Stores your power.");
-        addShop(shop, "DC-DC charger · " + p.dc + "A, with solar input", "dcdc", "Charges from your engine while you drive. Get one with a solar input (MPPT) built in and it doubles as your solar regulator, so you don't need a separate one.");
-        if(p.solarW) addShop(shop, "Solar · " + p.solarW + "W", "solar", "Free charging from the sun. Fixed roof panels for set-and-forget, or a blanket you can point at the sun.");
-        if(inv) addShop(shop, "Inverter · " + fmt(inv) + "W pure sine", "inverter", "The travel adaptor for house plugs.");
-        addShop(shop, "Battery box or mount", "box", "Holds the battery firmly in place and protects it from knocks" + (p.batType === "agm" ? ", and AGM inside the living space should be sealed and vented." : ".") );
-        addShop(shop, "Battery monitor", "monitor", "Your fuel gauge. Shows exactly how full the battery is, instead of guessing from the voltage.");
-        addChecklist(shop, "Wiring bits your installer will size", [
-          ["Cables and lugs", "Too thin and they heat up and waste power. Your installer sizes these to the job."],
-          ["Fuses or circuit breakers", "If something shorts, they cut the power before anything overheats."],
-          ["Isolator switch", "One switch to turn everything off when you're working on it or parking up for months."],
-          ["Anderson plugs and a fuse block", "Tidy, safe connection points instead of a tangle of wires."]
-        ]);
-      }
-    } else {
-      // ---- Check what I've got ----
-      var gBat = num("g-bat"), gType = document.getElementById("g-type").value, gSol = num("g-sol"), gDc = num("g-dc");
-      var dod = gType === "lith" ? 0.9 : 0.5;
-      var usable = gBat * V * dod;
-      // pick the season where this gear struggles most
-      var worst = null;
-      p.all.forEach(function(r){
-        var i = gSol * r.sun * SOLAR_REAL + gDc * V * driveH * driveEff();
-        if(!worst || (i - r.daily) < worst.net){ worst = {r:r, inWh:i, net:i - r.daily}; }
-      });
-      p.se = worst.r.se; p.sun = worst.r.sun; p.daily = worst.r.daily; dailyAh = p.daily / V;
-      var inWh = worst.inWh;
-      var net = worst.net;
-      var noSunDays = usable / p.daily;
-
-      var status, pillCls;
-      if(usable === 0){ status = "No battery entered yet"; pillCls = "bad"; }
-      else if(net >= 0){ status = "Keeps up"; pillCls = "good"; }
-      else if(usable / -net >= 4){ status = "Nearly there"; pillCls = "warn"; }
-      else { status = "Runs dry"; pillCls = "bad"; }
-
-      var vText;
-      if(usable === 0) vText = "Pop in your battery size above to see how long you'd last.";
-      else if(net >= 0) vText = "Good news: in " + seasonWord(p.se) + " your setup puts back more than you use each day.";
-      else vText = "In " + seasonWord(p.se) + " you'd run dry after about " + fmt1(usable / -net) + " day" + (usable / -net >= 1.5 ? "s" : "") + ", then need to drive or plug in.";
-      verdict.innerHTML = '<span class="pill ' + pillCls + '">' + status + "</span> " + vText;
-
-      addKit(kit, "You use", fmt(dailyAh) + "Ah", "per day");
-      addKit(kit, "You top up", fmt(inWh / V) + "Ah", "per day from sun" + (gDc && driveH ? " and driving" : ""));
-      addKit(kit, "Usable battery", fmt(usable / V) + "Ah", gType === "lith" ? "about 90% of " + fmt(gBat) + "Ah" : "only half of " + fmt(gBat) + "Ah (AGM)");
-      addKit(kit, "With no sun", usable ? fmt1(noSunDays) + " days" : "–", "before the battery is flat");
-
-      why.appendChild(el("p", null, "<b>How to read this:</b> each day you use " + fmt(dailyAh) + "Ah and put " + fmt(inWh / V) + "Ah back in. " + (net >= 0 ? "More going in than out, so the battery stays topped up." : "More going out than in, so the battery drops a little every day.")));
-      if(gType === "agm"){
-        why.appendChild(el("p", null, "<b>About AGM:</b> you can only safely use about the top half of it. Draining it further shortens its life. Swapping to lithium of the same size nearly doubles what you can use."));
-      }
-
-      // Gaps vs recommended plan
-      var list = [];
-      var needBatAh = p.batAh;
-      var effBat = gType === "lith" ? gBat : gBat * (0.5 / 0.9);
-      var needSolar = Math.max(0, p.daily - gDc * V * driveH * driveEff()) / (p.sun * SOLAR_REAL);
-      needSolar = needSolar > 0 ? ceilTo(needSolar, 50) : 0;
-      if(effBat < needBatAh * 0.95){
-        list.push({t:"<b>A bigger battery:</b> aim for about " + needBatAh + "Ah of lithium" + (gType === "agm" ? " (your " + fmt(gBat) + "Ah AGM gives you the same usable power as about " + fmt(effBat) + "Ah of lithium)." : " (you have " + fmt(gBat) + "Ah)."), k:"battery", label:"Battery · " + needBatAh + "Ah lithium"});
-      }
-      if(gSol < needSolar){
-        var add = ceilTo(needSolar - gSol, 50);
-        list.push({t:"<b>More solar:</b> add about " + add + "W of solar, for roughly " + fmt(gSol + add) + "W in total.", k:"solar", label:"Solar · add " + add + "W"});
-      }
-      if(gDc === 0 && driveH > 0){
-        var dcNeed = dcdcFor(Math.max(gBat, 100));
-        list.push({t:"<b>A DC-DC charger:</b> a " + dcNeed + "A DC-DC charger would put about " + fmt(dcNeed * driveH * driveEff()) + "Ah back in on a typical driving day.", k:"dcdc", label:"DC-DC charger · " + dcNeed + "A"});
-      }
-      if(inv){
-        list.push({t:"<b>An inverter:</b> your " + ac.n.toLowerCase() + " needs an inverter of about " + fmt(inv) + "W. Skip this if you already have one that size.", k:"inverter", label:"Inverter · " + fmt(inv) + "W pure sine"});
-      }
-      gapsWrap.hidden = false;
-      if(list.length === 0){
-        gaps.appendChild(el("li", null, "Nothing. Your setup covers what you run. Enjoy it."));
-        document.getElementById("shop-wrap").hidden = true;
-      } else {
-        list.forEach(function(x){ gaps.appendChild(el("li", null, x.t)); });
-        shopH.textContent = "Your shopping list";
-        list.forEach(function(x){ addShop(shop, x.label, x.k); });
-      }
-    }
-  }
-
-  function addKit(parent, k, v, s){
-    parent.appendChild(el("div", "item", '<span class="k">' + k + '</span><span class="v"><span>' + v + '</span></span><span class="s">' + s + '</span>'));
-  }
-  function addChecklist(parent, title, items){
-    var row = el("div", "row");
-    row.appendChild(el("h3", null, title));
-    var ul = el("ul", "gaps");
-    items.forEach(function(it){ ul.appendChild(el("li", null, "<b>" + it[0] + ":</b> " + it[1])); });
-    row.appendChild(ul);
-    parent.appendChild(row);
-  }
-  function addShop(parent, title, key, note){
-    var picks = PICKS[key], tn = TIER_NOTES[key] || {};
-    var row = el("div", "row");
-    row.appendChild(el("h3", null, title));
-    if(note) row.appendChild(el("p", "small", note));
-    var t = el("div", "tiers");
-    [["budget","Budget"],["mid","Mid-range"],["premium","Premium"]].forEach(function(tr){
-      t.appendChild(el("a", null, "<b>" + tr[1] + "</b><span class=\"pick\">" + picks[tr[0]] + "</span>" + (tn[tr[0]] ? "<span class=\"tn\">" + tn[tr[0]] + "</span>" : "")));
-      t.lastChild.setAttribute("href", "#");
-      t.lastChild.setAttribute("data-affiliate", "placeholder");
-      t.lastChild.addEventListener("click", function(e){ e.preventDefault(); });
-    });
-    row.appendChild(t);
-    parent.appendChild(row);
-  }
-
-  // ---- Jargon: tap to explain ----
-  var TERMS = [
-    {re:/(?<=\d)Ah\b/, k:"Ah (amp-hours)", d:"How much power a battery holds. A 200Ah battery holds twice as much as a 100Ah one. Your daily use is measured the same way, so you can compare the two directly."},
-    {re:/\bDC-DC\b/, k:"DC-DC charger", d:"A smart charger that fills your house battery from the engine while you drive, without draining the battery that starts the van."},
-    {re:/\binverters?\b/i, k:"Inverter", d:"Turns your van's 12V power into 240V house power so you can use normal plugs. Handy, but it wastes about 15% along the way, so run things on 12V where you can."},
-    {re:/\bMPPT\b/, k:"MPPT (solar regulator)", d:"The box that sits between your solar panels and battery and squeezes the most charge out of the sun. Many DC-DC chargers have one built in."},
-    {re:/\bshunt\b/i, k:"Shunt", d:"A small sensor on your battery cable that counts every bit of power going in and out. It's what makes a battery monitor accurate."},
-    {re:/\bpure sine\b/i, k:"Pure sine wave", d:"The clean kind of house power that laptops, CPAP machines and coffee machines need. Cheaper 'modified sine' inverters can damage sensitive gear."},
-    {re:/\bAGM\b/, k:"AGM battery", d:"The older, cheaper type of deep-cycle battery. You should only use about the top half of it, and it's roughly three times heavier than lithium for the same usable power."},
-    {re:/\blithium\b/i, k:"Lithium (LiFePO4)", d:"The modern battery type for vans. You can use nearly all of it, it's light, and it lasts thousands of charges. Costs more upfront."},
-    {re:/\bAnderson plug\b/i, k:"Anderson plug", d:"A chunky, standard connector used for 12V gear in Australia. Grey or red, clicks together, handles high current safely."},
-    {re:/\bisolator switch\b/i, k:"Isolator switch", d:"A single switch that cuts all power from the battery. Useful when working on the system or storing the van."},
-    {re:/\bfull-strength sun\b/i, k:"Peak sun hours", d:"How many hours of full-strength sunshine a day is worth. A Queensland winter day gives about 4; a Tasmanian one, under 2."}
-  ];
-  var sheet = document.getElementById("sheet"), sheetH = document.getElementById("sheet-h"), sheetP = document.getElementById("sheet-p");
-  var lastTerm = null;
-  function openTerm(i, btn){
-    sheetH.textContent = TERMS[i].k; sheetP.textContent = TERMS[i].d;
-    sheet.hidden = false; lastTerm = btn;
-    document.getElementById("sheet-close").focus();
-  }
-  function closeSheet(){ sheet.hidden = true; if(lastTerm) lastTerm.focus(); }
-  document.getElementById("sheet-close").addEventListener("click", closeSheet);
-  document.addEventListener("keydown", function(e){ if(e.key === "Escape" && !sheet.hidden) closeSheet(); });
-  document.addEventListener("click", function(e){
-    var t = e.target.closest && e.target.closest("button.term");
-    if(t){ openTerm(+t.getAttribute("data-t"), t); return; }
-    if(!sheet.hidden && !sheet.contains(e.target)) closeSheet();
-  });
-  function wrapTerms(root){
-    TERMS.forEach(function(term, i){
-      var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {acceptNode:function(n){
-        var p = n.parentElement;
-        if(!p || p.closest("button, label, select, option, h1, h2, h3, a, .kit, .legend, .term")) return NodeFilter.FILTER_REJECT;
-        return NodeFilter.FILTER_ACCEPT;
-      }});
-      var n;
-      while((n = walker.nextNode())){
-        var m = term.re.exec(n.nodeValue);
-        if(m){
-          var after = n.splitText(m.index);
-          after.splitText(m[0].length);
-          var b = document.createElement("button");
-          b.type = "button"; b.className = "term"; b.setAttribute("data-t", i);
-          b.setAttribute("aria-label", m[0] + ": what does this mean?");
-          b.textContent = m[0];
-          after.parentNode.replaceChild(b, after);
-          break;
-        }
-      }
-    });
-  }
-  // glossary
-  var gl = document.getElementById("glossary");
-  TERMS.forEach(function(t){ gl.appendChild(el("dt", null, t.k)); gl.appendChild(el("dd", null, t.d)); });
-  // static text gets tap-to-explain once
-  document.querySelectorAll(".hint, .small, .aside, .legend-dl, .app .meta").forEach(wrapTerms);
-
-  // wrap results text after every render
-  var _render = render;
-  render = function(){
-    _render.apply(null, arguments);
-    ["why","gaps","shop"].forEach(function(id){ wrapTerms(document.getElementById(id)); });
-    document.querySelectorAll("#shop .small").forEach(wrapTerms);
-  };
-
-  // ---- Ready-made kits ----
-  var PRESETS = {
-    weekender:{fridge:"28", drive:"2.5", buffer:"1", apps:{led:[4,4], phone:[2,2], fan:[1,8], pump:[1,0.25]}},
-    long:{fridge:"38", drive:"1", buffer:"2", apps:{led:[4,4], phone:[2,2], laptop:[1,3], fan:[1,8], pump:[1,0.25]}},
-    living:{fridge:"50", drive:"0", buffer:"3", apps:{led:[6,5], phone:[2,2], laptop:[1,5], fan:[1,8], heater:[1,6], pump:[1,0.3], starlink:[1,6], coffee:[1,0.1]}}
-  };
-  function setRadio(name, val){ var r = document.querySelector('input[name="' + name + '"][value="' + val + '"]'); if(r) r.checked = true; }
-  document.querySelectorAll(".presets button").forEach(function(b){
-    b.addEventListener("click", function(){
-      var p = PRESETS[b.getAttribute("data-preset")];
-      document.querySelectorAll(".presets button").forEach(function(x){ x.setAttribute("aria-pressed", x === b); });
-      document.getElementById("fridge").value = p.fridge;
-      setRadio("drive", p.drive); setRadio("buffer", p.buffer);
-      APPS.forEach(function(a){
-        var v = p.apps[a.id] || [0, a.h];
-        state.apps[a.id] = {q:v[0], h:v[1]};
-        document.getElementById("q-" + a.id).textContent = v[0];
-        document.getElementById("h-" + a.id).value = v[1];
-      });
-      calc();
-      var msg = document.getElementById("save-msg"); msg.textContent = "";
-      document.querySelector(".results").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
-    });
-  });
-
-  // ---- Keep your list ----
-  function listText(){
-    var lines = ["My power setup (Off-Grid Sorted Power Planner)", ""];
-    document.querySelectorAll("#kit .item").forEach(function(it){
-      lines.push(it.querySelector(".k").textContent + ": " + it.querySelector(".v").textContent + " (" + it.querySelector(".s").textContent + ")");
-    });
-    var rows = document.querySelectorAll("#shop .row h3");
-    if(rows.length){
-      lines.push("", document.getElementById("shop-h").textContent + ":");
-      rows.forEach(function(h){ lines.push("- " + h.textContent); });
-    }
-    lines.push("", "Have an auto electrician install or check it.");
-    return lines.join("\n");
-  }
-  var saveMsg = document.getElementById("save-msg");
-  document.getElementById("copy-btn").addEventListener("click", function(){
-    var txt = listText();
-    try{
-      navigator.clipboard.writeText(txt).then(function(){ saveMsg.textContent = "Copied. Paste it into your notes."; }, function(){ saveMsg.textContent = "Couldn't copy here. Try a long-press on the results instead."; });
-    }catch(e){ saveMsg.textContent = "Couldn't copy here. Try a long-press on the results instead."; }
-  });
-  document.getElementById("email-form").addEventListener("submit", function(e){
-    e.preventDefault();
-    var v = document.getElementById("email").value.trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){ saveMsg.textContent = "That email doesn't look right. Check it and try again."; return; }
-    saveMsg.textContent = "Prototype only: nothing was sent. On the live site this connects to your email list tool.";
-  });
-
-  calc();
-})();
-</script>
-
-
+<footer class="site-footer">
+  <div class="in">
+    <div class="about">
+      <div style="color:var(--ink)"><svg viewBox="0 0 420 300" width="130" height="93" role="img" aria-label="Off-Grid Sorted">
+<defs><filter id="rLogoF" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"></feTurbulence><feDisplacementMap in="SourceGraphic" scale="3.2"></feDisplacementMap></filter></defs>
+<g filter="url(#rLogoF)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M60 52l-12-18M110 38l-2-22M160 52l12-18M28 92l-20-6M192 92l20-6" stroke="#e0a12e" stroke-width="6"></path></g>
+<g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="34" y="70" width="152" height="86" rx="14" fill="#f5cb3c"></rect><path d="M186 98h12v30h-12" fill="currentColor"></path></g>
+<g filter="url(#rLogoF)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M58 132v-34M80 132v-34M102 132v-34" stroke-width="7"></path><circle cx="138" cy="106" r="3.5" fill="currentColor"></circle><circle cx="160" cy="106" r="3.5" fill="currentColor"></circle><path d="M136 122c6 8 20 8 26 0"></path></g>
+<text x="34" y="214" font-family="Kalam, cursive" font-weight="700" font-size="34" fill="#1d5c3a" letter-spacing="1">off-grid</text>
+<text x="30" y="272" font-family="'Permanent Marker', cursive" font-size="66" fill="currentColor">SORTED</text>
+<path d="M36 288c60-10 140-10 236 2" fill="none" stroke="#e0a12e" stroke-width="8" stroke-linecap="round" filter="url(#rLogoF)"></path>
+</svg></div>
+      <p>Plain-English help to get the power setup in your van, caravan or 4WD sorted. Independent and Australian.</p>
+      <p class="small">Some links earn us a small commission at no cost to you. <a href="disclosure.html" style="display:inline;color:var(--sign)">How we make money</a>.</p>
+    </div>
+    <div><h4>Tools</h4><a href="planner.html">Power Planner</a><a href="planner.html#check">Check what I've got</a></div>
+    <div><h4>Guides</h4><a href="guides/van-power-basics.html">Van power in plain English</a><a href="guides/lithium-vs-agm.html">Lithium vs AGM</a><a href="guides/how-much-solar-australia.html">How much solar do I need? By state and season</a><a href="guides/index.html">All guides</a></div>
+    <div><h4>Off-Grid Sorted</h4><a href="about.html">About</a><a href="disclosure.html">Disclosure &amp; disclaimer</a><a href="privacy.html">Privacy</a><a href="https://www.instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
+  </div>
+  <p class="small" style="max-width:1080px;margin:0 auto;padding:0 18px 24px">© 2026 Off-Grid Sorted. Estimates only. Always have a licensed auto electrician install or check your system.</p>
+</footer>
 </body>
 </html>

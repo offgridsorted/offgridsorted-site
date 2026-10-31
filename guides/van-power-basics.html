@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Van power in plain English · Off-Grid Sorted</title>
+<meta name="description" content="Battery, solar, DC-DC charger and inverter, explained without the jargon.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@500;700&family=Permanent+Marker&family=Kalam:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="in">
+    <a class="logo" href="../index.html" aria-label="Off-Grid Sorted home"><svg viewBox="0 0 420 300" width="118" height="84" role="img" aria-label="Off-Grid Sorted">
+<defs><filter id="rLogoH" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"></feTurbulence><feDisplacementMap in="SourceGraphic" scale="3.2"></feDisplacementMap></filter></defs>
+<g filter="url(#rLogoH)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M60 52l-12-18M110 38l-2-22M160 52l12-18M28 92l-20-6M192 92l20-6" stroke="#e0a12e" stroke-width="6"></path></g>
+<g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="34" y="70" width="152" height="86" rx="14" fill="#f5cb3c"></rect><path d="M186 98h12v30h-12" fill="currentColor"></path></g>
+<g filter="url(#rLogoH)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M58 132v-34M80 132v-34M102 132v-34" stroke-width="7"></path><circle cx="138" cy="106" r="3.5" fill="currentColor"></circle><circle cx="160" cy="106" r="3.5" fill="currentColor"></circle><path d="M136 122c6 8 20 8 26 0"></path></g>
+<text x="34" y="214" font-family="Kalam, cursive" font-weight="700" font-size="34" fill="#1d5c3a" letter-spacing="1">off-grid</text>
+<text x="30" y="272" font-family="'Permanent Marker', cursive" font-size="66" fill="currentColor">SORTED</text>
+<path d="M36 288c60-10 140-10 236 2" fill="none" stroke="#e0a12e" stroke-width="8" stroke-linecap="round" filter="url(#rLogoH)"></path>
+</svg></a>
+    <nav class="nav" aria-label="Main menu"><a href="../planner.html">Power Planner</a><a href="../guides/index.html" aria-current="page">Guides</a><a href="../about.html">About</a><a class="cta" href="../planner.html">Plan my setup</a></nav>
+    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a href="../planner.html">Power Planner</a><a href="../guides/index.html">Guides</a><a href="../about.html">About</a><a href="../planner.html"><b>Plan my setup →</b></a></div></details>
+  </div>
+</header>
+<main class="article"><div class="crumbs"><a href="../index.html">Home</a> › <a href="../guides/index.html">Guides</a> › Start here</div><h1>Van power in plain English: the four parts and how they fit</h1>
+<div class="meta"><span>By Off-Grid Sorted</span><span>Updated October 2026</span><span>5 minute read</span><a href="../disclosure.html">How we make money</a></div>
+<div class="tldr"><h2>The short version</h2><ul>
+<li>A <b>battery</b> stores your power. A <b>solar panel</b> and a <b>DC-DC charger</b> fill it up. An <b>inverter</b> lets you use normal plugs.</li>
+<li>Size everything from one number: how much power you use in a day.</li>
+<li>Winter, heat and your fridge are what catch most people out.</li></ul></div>
+
+<p>If you've ever stood in a camping store while someone talks about amp-hours, MPPT and pure sine, and nodded along while understanding none of it, this guide is for you. A van, caravan or 4WD power system is really just four parts doing four jobs.</p>
+
+<h2>1. The battery stores the power</h2>
+<p>Your house battery (the second battery, separate from the one that starts your engine) is where all your power lives. Everything else either fills it up or uses it.</p>
+<p>Battery size is measured in <b>amp-hours (Ah)</b>. A 200Ah battery holds twice as much as a 100Ah one. Your daily use can be measured the same way, which makes the maths easy: if your fridge, lights and phones use 50Ah a day, a battery that gives you 100Ah of usable power lasts about two days with no charging at all.</p>
+<p>The type matters a lot. With <b>lithium</b> you can use almost all of it. With <b>AGM</b> you should only use about half. We cover that properly in <a href="lithium-vs-agm.html">Lithium vs AGM</a>.</p>
+
+<h2>2. Solar panels top it up for free</h2>
+<p>Solar panels turn sunlight into charge for your battery. They're measured in <b>watts (W)</b>, which tells you how much they make in perfect, full-strength sun. In real life you get less: heat, dust, a flat roof and cloud all take a cut.</p>
+<p>How much solar you need depends hugely on where and when you travel. The same 200W panel makes several times more power in a Darwin winter than a Hobart one. Our guide <a href="how-much-solar-australia.html">How much solar do I need?</a> has the numbers for every state.</p>
+<p>Solar needs a <b>regulator</b> (often called an MPPT controller) between the panels and the battery. It stops the battery overcharging and squeezes the most out of the sun. Many DC-DC chargers have one built in.</p>
+
+<h2>3. A DC-DC charger fills up while you drive</h2>
+<p>Your engine's alternator makes power while you drive. A <b>DC-DC charger</b> takes some of that and charges your house battery properly, without draining the battery that starts your car.</p>
+<p>It's sized in <b>amps (A)</b>: a 25A charger puts back up to about 25Ah for every hour of driving. If you drive a few hours most days, a DC-DC charger can do more work than your solar. Most modern vehicles have "smart" alternators, so choose a charger that says it supports them.</p>
+
+<h2>4. An inverter turns van power into house power</h2>
+<p>Your battery runs at 12 volts. Normal plugs need 240 volts. An <b>inverter</b> converts one to the other so you can run a laptop charger, a coffee machine or a hair dryer.</p>
+<p>You only need one if you have 240V appliances, and it should be a <b>pure sine wave</b> inverter, which makes clean power that sensitive gear needs. Inverters waste about 15% of what passes through them, so run things on 12V wherever you can. Big items like kettles and induction cooktops need big inverters, a big battery and thick cables.</p>
+
+<h2>How it all fits together</h2>
+<p>Think of it as income and spending. Your appliances spend power every day. Your solar and driving earn it back. The battery is your savings for days when you earn nothing, like a grey, rainy day parked up. A good setup earns at least as much as it spends on a normal day, and has enough savings to ride out the bad ones.</p>
+<p>So everything starts with one number: <b>how much power you use in a day</b>. From there:</p>
+<ol><li>Your <b>battery</b> covers a day or two with no charging.</li>
+<li>Your <b>solar and driving</b> put back what you use on a typical day, in the hardest season you travel.</li>
+<li>Your <b>inverter</b> handles the biggest 240V thing you'll run.</li></ol>
+<div class="cta-box"><p>The Power Planner does all of this for you. Pick what you run and where you travel, and it sizes each part.</p><a class="btn-link" href="../planner.html">Open the Power Planner</a></div>
+
+<h2>The bits that hold it together</h2>
+<ul><li><b>Cables</b> sized for the job. Too thin and they heat up and waste power.</li>
+<li><b>Fuses or circuit breakers</b> on every circuit, so a fault can't start a fire.</li>
+<li>An <b>isolator switch</b> to turn everything off when you're working on it or storing the van.</li>
+<li>A <b>battery monitor</b> with a shunt, your fuel gauge, so you know exactly how full the battery is.</li></ul>
+
+<h2>The mistakes we see most</h2>
+<ul><li><b>Sizing for summer.</b> Winter sun is much weaker in the south. If you travel all year, plan for winter.</li>
+<li><b>Forgetting the fridge.</b> It runs day and night and is usually your biggest user, more so in hot weather.</li>
+<li><b>Running an AGM flat.</b> Regularly using more than half shortens its life a lot.</li>
+<li><b>A cheap inverter for a coffee machine.</b> Big start-up surges trip small or cheap inverters.</li>
+<li><b>Skipping the fuses</b> to save a few dollars.</li></ul>
+<div class="placeholder">[Kiran's note: what you'd tell a friend starting out, or a lesson from your own van setup.]</div>
+<div class="aside" style="margin:24px 0"><b>Get a pro to wire it in.</b> 12V systems store and move a lot of energy. Have a licensed auto electrician install or check your setup, with the right cable sizes and fuses, and never work on 240V wiring yourself.</div>
+<div class="related"><h2 style="font-size:1.4rem;margin:0 0 12px">Keep reading</h2><div class="guide-list"><a href="../guides/lithium-vs-agm.html"><span class="tag">Batteries</span><h3>Lithium vs AGM: which battery should you get?</h3><span class="small">The real difference, what it means for size, weight and cost, and when AGM still makes sense.</span></a><a href="../guides/how-much-solar-australia.html"><span class="tag">Solar</span><h3>How much solar do I need? By state and season</h3><span class="small">Why a Hobart winter and a Darwin winter need very different setups, with a table for every state.</span></a><div class="soon"><span class="tag">Charging · coming soon</span><h3>DC-DC chargers explained: charging while you drive</h3><span class="small">What they do, what size you need, and why modern cars with smart alternators need one.</span></div><div class="soon"><span class="tag">Caravans · coming soon</span><h3>Caravan power: getting charge through the trailer plug</h3><span class="small">Why caravans lose charge over long cables, and how to fix it.</span></div></div></div></main><footer class="site-footer">
+  <div class="in">
+    <div class="about">
+      <div style="color:var(--ink)"><svg viewBox="0 0 420 300" width="130" height="93" role="img" aria-label="Off-Grid Sorted">
+<defs><filter id="rLogoF" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"></feTurbulence><feDisplacementMap in="SourceGraphic" scale="3.2"></feDisplacementMap></filter></defs>
+<g filter="url(#rLogoF)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M60 52l-12-18M110 38l-2-22M160 52l12-18M28 92l-20-6M192 92l20-6" stroke="#e0a12e" stroke-width="6"></path></g>
+<g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="34" y="70" width="152" height="86" rx="14" fill="#f5cb3c"></rect><path d="M186 98h12v30h-12" fill="currentColor"></path></g>
+<g filter="url(#rLogoF)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M58 132v-34M80 132v-34M102 132v-34" stroke-width="7"></path><circle cx="138" cy="106" r="3.5" fill="currentColor"></circle><circle cx="160" cy="106" r="3.5" fill="currentColor"></circle><path d="M136 122c6 8 20 8 26 0"></path></g>
+<text x="34" y="214" font-family="Kalam, cursive" font-weight="700" font-size="34" fill="#1d5c3a" letter-spacing="1">off-grid</text>
+<text x="30" y="272" font-family="'Permanent Marker', cursive" font-size="66" fill="currentColor">SORTED</text>
+<path d="M36 288c60-10 140-10 236 2" fill="none" stroke="#e0a12e" stroke-width="8" stroke-linecap="round" filter="url(#rLogoF)"></path>
+</svg></div>
+      <p>Plain-English help to get the power setup in your van, caravan or 4WD sorted. Independent and Australian.</p>
+      <p class="small">Some links earn us a small commission at no cost to you. <a href="../disclosure.html" style="display:inline;color:var(--sign)">How we make money</a>.</p>
+    </div>
+    <div><h4>Tools</h4><a href="../planner.html">Power Planner</a><a href="../planner.html#check">Check what I've got</a></div>
+    <div><h4>Guides</h4><a href="../guides/van-power-basics.html">Van power in plain English</a><a href="../guides/lithium-vs-agm.html">Lithium vs AGM</a><a href="../guides/how-much-solar-australia.html">How much solar do I need? By state and season</a><a href="../guides/index.html">All guides</a></div>
+    <div><h4>Off-Grid Sorted</h4><a href="../about.html">About</a><a href="../disclosure.html">Disclosure &amp; disclaimer</a><a href="../privacy.html">Privacy</a><a href="https://www.instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
+  </div>
+  <p class="small" style="max-width:1080px;margin:0 auto;padding:0 18px 24px">© 2026 Off-Grid Sorted. Estimates only. Always have a licensed auto electrician install or check your system.</p>
+</footer>
+</body>
+</html>
