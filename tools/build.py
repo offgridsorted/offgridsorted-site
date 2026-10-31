@@ -28,15 +28,15 @@ GUIDES = [
     ("how-much-solar-australia", "How much solar do I need? By state and season", "Solar",
      "Why a Hobart winter and a Darwin winter need very different setups, with a table for every state.", "live"),
     ("dc-dc-chargers-explained", "DC-DC chargers explained: charging while you drive", "Charging",
-     "What they do, what size you need, and why modern cars with smart alternators need one.", "soon"),
+     "What they do, what size you need, and why modern cars with smart alternators need one.", "live"),
     ("caravan-power-setup", "Caravan power: getting charge through the trailer plug", "Caravans",
-     "Why caravans lose charge over long cables, and how to fix it.", "soon"),
+     "Why caravans lose charge over long cables, and how to fix it.", "live"),
     ("4wd-dual-battery-basics", "4WD dual battery basics", "4WDs",
-     "Under-bonnet or in the tray, smart alternators, and fitting solar on a 4WD.", "soon"),
+     "Under-bonnet or in the tray, smart alternators, and fitting solar on a 4WD.", "live"),
     ("will-my-fridge-last", "Will my fridge last the weekend?", "Fridges",
-     "How much power camping fridges really use, and how to make yours sip less.", "soon"),
+     "How much power camping fridges really use, and how to make yours sip less.", "live"),
     ("portable-power-stations", "Portable power stations vs a proper dual battery setup", "Batteries",
-     "When an all-in-one box is all you need, and when it isn't.", "soon"),
+     "When an all-in-one box is all you need, and when it isn't.", "live"),
 ]
 
 LOGO = '''<svg viewBox="0 0 420 300" width="{w}" height="{h}" role="img" aria-label="Off-Grid Sorted">
@@ -293,7 +293,7 @@ KITS = [
                ("Or: an all-in-one power box", "Replaces the battery and charger", "powerbox_100", "The easy option. Battery, DC-DC charger and solar input in one box you can move between cars.", False),
                ("Inverter", "Not needed", None, "Everything here runs on 12V or USB.")],
      "total_note": ", battery and DC-DC charger only (the blanket and power box are extras)",
-     "easy": "This size is perfect for an <b>all-in-one power box</b>: battery, DC-DC charger and solar input in one box you can move between cars. No installer needed for the box itself, just a proper Anderson plug lead from your engine battery.",
+     "easy": "This size is perfect for an <b>all-in-one power box</b>: battery, DC-DC charger and solar input in one box you can move between cars. The box itself just straps in. The heavy lead that charges it from your engine battery should be run and fused by an auto electrician.",
      "south": "Southern winters barely change this kit, because driving does most of the charging. If you often stay put in Victoria or Tasmania in winter, go for the 200W blanket."},
     {"slug": "long-trips", "name": "Long trips", "doodle": "van", "preset": "long",
      "who": "A week or more away, a bigger fridge and a laptop. Some days driving, some days parked up.",
@@ -378,7 +378,7 @@ def build():
     page("index.html", SITE, "Free plain-English power planner and guides for Australian vans, caravans and 4WDs. Work out the battery, solar and charger you need.", read("content/home.html"))
     # Guides hub
     hub = '<main class="page"><div class="crumbs"><a href="{pre}index.html">Home</a> › Guides</div>'
-    hub += '<div class="sec-head"><h1 style="font-size:3rem;margin:4px 0 8px">Guides</h1>[[d:road:120]]</div><p class="hint" style="margin-bottom:22px">Plain-English guides to off-grid power. New ones land every week. Start at the top if you\'re new to all this.</p>'
+    hub += '<div class="sec-head"><h1 style="font-size:3rem;margin:4px 0 8px">Guides</h1>[[d:road:120]]</div><p class="hint" style="margin-bottom:22px">Plain-English guides to off-grid power. Start at the top if you\'re new to all this.</p>'
     hub += '<div class="guide-list">' + "".join(guide_card(g, "{pre}") for g in GUIDES) + '</div></main>'
     page("guides/index.html", "Guides", "Plain-English guides to batteries, solar, DC-DC chargers and inverters for Australian vans, caravans and 4WDs.", hub, "guides/index.html")
     # Each live guide

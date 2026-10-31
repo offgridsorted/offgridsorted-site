@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caravan power · Off-Grid Sorted</title>
+<meta name="description" content="Why caravans lose charge over long cables, and how to fix it.">
+<!--seo--><link rel="canonical" href="https://offgridsorted.com.au/guides/caravan-power-setup.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Off-Grid Sorted">
+<meta property="og:title" content="Caravan power · Off-Grid Sorted">
+<meta property="og:description" content="Why caravans lose charge over long cables, and how to fix it.">
+<meta property="og:url" content="https://offgridsorted.com.au/guides/caravan-power-setup.html">
+<meta property="og:image" content="https://offgridsorted.com.au/assets/og.png">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f3f0e8"><!--/seo-->
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@500;700&family=Permanent+Marker&family=Kalam:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="in">
+    <a class="logo" href="../index.html" aria-label="Off-Grid Sorted home"><svg viewBox="0 0 420 300" width="170" height="121" role="img" aria-label="Off-Grid Sorted">
+<defs><filter id="rLogoH" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"></feTurbulence><feDisplacementMap in="SourceGraphic" scale="3.2"></feDisplacementMap></filter></defs>
+<g filter="url(#rLogoH)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M60 52l-12-18M110 38l-2-22M160 52l12-18M28 92l-20-6M192 92l20-6" stroke="#e0a12e" stroke-width="6"></path></g>
+<g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="34" y="70" width="152" height="86" rx="14" fill="#f5cb3c"></rect><path d="M186 98h12v30h-12" fill="currentColor"></path></g>
+<g filter="url(#rLogoH)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M58 132v-34M80 132v-34M102 132v-34" stroke-width="7"></path><circle cx="138" cy="106" r="3.5" fill="currentColor"></circle><circle cx="160" cy="106" r="3.5" fill="currentColor"></circle><path d="M136 122c6 8 20 8 26 0"></path></g>
+<text x="34" y="214" font-family="Kalam, cursive" font-weight="700" font-size="34" fill="#1d5c3a" letter-spacing="1">off-grid</text>
+<text x="30" y="272" font-family="'Permanent Marker', cursive" font-size="66" fill="currentColor">SORTED</text>
+<path d="M36 288c60-10 140-10 236 2" fill="none" stroke="#e0a12e" stroke-width="8" stroke-linecap="round" filter="url(#rLogoH)"></path>
+</svg></a>
+    <nav class="nav" aria-label="Main menu"><a href="../kits/index.html">Kits</a><a href="../guides/index.html" aria-current="page">Guides</a><a href="../about.html">About</a><a class="cta" href="../planner.html">Power Planner</a></nav>
+    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a href="../planner.html"><b>Power Planner →</b></a><a href="../kits/index.html">Kits</a><a href="../guides/index.html">Guides</a><a href="../about.html">About</a></div></details>
+  </div>
+</header>
+<main class="article"><div class="crumbs"><a href="../index.html">Home</a> › <a href="../guides/index.html">Guides</a> › Caravans</div><svg class="doodle guide-doodle" viewBox="0 0 170 90" width="130" height="69" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 64V30c0-10 8-16 18-16h82c12 0 22 10 22 22v28z"/><rect x="36" y="28" width="30" height="16" rx="3"/><path d="M84 30h16v34H84"/><path d="M142 58h20M6 64h14"/><circle cx="64" cy="68" r="10" fill="var(--paper, #f3f0e8)"/><circle cx="64" cy="68" r="3"/></svg><h1>Caravan power: getting charge through the trailer plug</h1>
+<div class="meta"><span>By Off-Grid Sorted</span><span>Updated October 2026</span><span>7 minute read</span><a href="../disclosure.html">How we make money</a></div>
+<div class="tldr"><h2>The short version</h2><ul>
+<li>A caravan battery sits a long way from the car's alternator, and a long, thin cable loses a lot of charge. The trailer plug alone can't charge it well.</li>
+<li>The fix: run a <b>heavy cable to an Anderson plug</b> at the tow bar, and fit the <b>DC-DC charger in the van</b>, close to the battery.</li>
+<li>Caravans have big roofs, so <b>solar</b> often does most of the work. Add a blanket for shady camps and a <b>240V charger</b> for powered sites.</li></ul></div>
+
+<p>In a campervan, the house battery is usually a few metres from the engine. In a caravan or camper trailer, it can be 10 metres away, through a plug at the tow bar. That's why a long drive can leave a caravan battery barely charged.</p>
+
+<h2>Why the long cable loses charge</h2>
+<p>Think of electricity like water in a garden hose. <b>Voltage</b> is the water pressure. <b>Amps</b> (current) is how much water flows. A long, skinny hose loses pressure along the way, so only a dribble comes out the far end. A short, fat hose keeps the pressure up.</p>
+<p>Your battery is a tank you're filling. Water only goes in if the pressure at the hose end beats the pressure in the tank. A lithium battery typically needs about <b>14.2 to 14.6 volts</b> to charge fully (check your battery's manual). An older alternator aims for about 14V, and a modern "smart" alternator can drop to about 12.5V once you're cruising. So there's very little pressure to spare before you even add a long cable.</p>
+<p>This loss is called <b>voltage drop</b>. It gets worse with more distance, more amps and thinner wire. Here are rough numbers for about 10 metres from car battery to van battery (about 20 metres of wire there and back).</p>
+<div class="tbl"><table>
+<thead><tr><th>Wire (copper area)</th><th>Current</th><th>Voltage lost</th><th>What that means</th></tr></thead>
+<tbody>
+<tr><td>2.5mm² (a typical trailer plug wire)</td><td>15A</td><td>About 2.1V</td><td>14V at the car would be about 11.9V at the van. In practice, very little goes in.</td></tr>
+<tr><td>About 6mm²</td><td>25A</td><td>About 1.4V</td><td>Still not enough pressure to fill a lithium battery on its own.</td></tr>
+<tr><td>16mm²</td><td>25A</td><td>About 0.5V</td><td>Much better. A good feed for a DC-DC charger in the van.</td></tr>
+</tbody></table></div>
+<p class="small">Estimates for copper wire with no allowance for plugs, joins or heat, which all add more loss. Have an auto electrician measure yours.</p>
+<p>One trap: "6mm" auto cable is often named for its outside size, insulation included, and can have well under 6mm² of copper inside. Check the copper area (mm²) or B&amp;S size (a wire gauge where a smaller number means thicker) on the spec sheet, not the name.</p>
+
+<h2>What the trailer plug can and can't do</h2>
+<p>The 7-pin or 12-pin plug at your tow bar was designed mainly for <b>lights and brakes</b>, not charging.</p>
+<ul><li>Some trailer plugs have a 12V feed pin, but it uses thin wire. Fine for an "ignition on" signal, but as the table shows, not a real charge over 10 metres.</li>
+<li><b>Don't add power to a trailer plug pin yourself.</b> Pin layouts vary, and on some trailers a pin controls the brakes. Leave plug wiring to an auto electrician.</li></ul>
+<p>So treat the trailer plug as the signal wire. Charging power needs its own heavy cable.</p>
+
+<h2>The fix: Anderson plug plus a DC-DC charger in the van</h2>
+<p>An <b>Anderson plug</b> is a chunky two-pin connector, often grey. The common size is rated for about 50A. The usual setup looks like this:</p>
+<ol><li>A heavy twin cable runs from the car's starting battery to an Anderson plug at the tow bar, with a fuse close to the battery.</li>
+<li>A matching heavy cable runs from the van's Anderson plug to a <b>DC-DC charger</b> inside the van.</li>
+<li>The DC-DC charger sits <b>close to the house battery</b>. REDARC recommends mounting its chargers less than 1 metre from the battery they charge.</li></ol>
+<p>A DC-DC charger is like a pump at the end of the hose. It takes whatever pressure arrives and boosts it back up to what your battery needs. If the charger is in the car, you lose pressure on the long run <i>after</i> the pump, and the battery never quite fills.</p>
+<p>As an example, one Australian camper trailer maker recommends 16mm² twin cable and a 50A Anderson plug for a 30A in-van charger. Your auto electrician will size it for your charger and cable length.</p>
+<p>In-van chargers come at every price level: budget (Kings, Renogy), mid-range (REDARC BCDC Core, Projecta) and premium (REDARC Alpha, Enerdrive, Victron). Extra money mostly buys a longer warranty, app control and local support. As a rough guide, 25A units cost about $250 to $800.</p>
+<p class="small">Prices are approximate and change often. Check the charger suits your battery type and has a smart alternator setting.</p>
+
+<h2>How much charge you'll really get from driving</h2>
+<p>Even with a good setup, caravans usually get less from driving than a van, because of the long cable and plugs. So when you choose "Caravan or camper trailer", the <a href="../planner.html">Power Planner</a> counts about 65% of the charger's rated amps, roughly a third less than the label. For a van or 4WD it counts about 90%.</p>
+<p>For example, a 40A charger and 3 hours of driving could put in 120Ah on paper. The planner counts about 78Ah for a caravan. It's safer to plan low. More in <a href="../guides/dc-dc-chargers-explained.html">DC-DC chargers explained</a>.</p>
+
+<h2>Solar: caravans have room to spare</h2>
+<p>A caravan roof usually has more flat space than a campervan or 4WD. The planner allows up to about 800W of fixed panels on a caravan. Real-world output is roughly 70% of the panel rating times your peak sun hours. Peak sun hours are how many hours of full-strength sun a day is worth. So 400W in a spot with 5 peak sun hours gives about 400 x 0.7 x 5 = 1,400Wh (watt-hours), or roughly 115Ah a day at 12V. In a Melbourne winter, with about 2 peak sun hours, the same panels give about 47Ah.</p>
+<p>The catch: in summer you'll want to park in the shade, which shades the roof panels too. A portable <b>solar blanket</b> fixes that. Leave the van under a tree and lay the blanket in the sun, plugged into a solar input that runs through a regulator. See <a href="../guides/how-much-solar-australia.html">How much solar do I need?</a> for the numbers in your state.</p>
+
+<h2>Powered sites: a 240V battery charger</h2>
+<p>At a powered site you plug the van into the power pillar with a 15A lead. A <b>mains battery charger</b> in the van uses that power to top up your battery, so you leave for your next bush camp full. Anything connected to the caravan's 240V wiring must be installed by a <b>licensed electrician</b>. No DIY on mains wiring.</p>
+
+<h2>Sizing for typical caravan loads</h2>
+<p>Here's a typical caravan day with a compressor fridge, using the planner's figures. Amp-hours (Ah) are how much charge you use.</p>
+<div class="tbl"><table>
+<thead><tr><th>Item</th><th>Rough use per day (summer)</th></tr></thead>
+<tbody>
+<tr><td>Compressor fridge-freezer, 80 to 100L</td><td>About 50Ah</td></tr>
+<tr><td>Fan overnight (8 hours)</td><td>About 10Ah</td></tr>
+<tr><td>12V TV (2 hours)</td><td>About 7Ah</td></tr>
+<tr><td>A few LED lights (4 hours)</td><td>About 5Ah</td></tr>
+<tr><td>Two phones charging</td><td>About 3Ah</td></tr>
+<tr><td>Water pump (a few minutes at a time)</td><td>About 1Ah</td></tr>
+<tr><td><b>Total</b></td><td><b>About 76Ah</b></td></tr>
+</tbody></table></div>
+<p class="small">Estimates only. Your appliances and habits will differ. Fridges use about 30% less in winter.</p>
+<p>For two days with no sun or driving, that's about 150Ah. A lithium battery gives you about 90% of its rating, so a 200Ah lithium battery covers it, paired with a 40A DC-DC charger. Your fridge is the big one, so <a href="../guides/will-my-fridge-last.html">Will my fridge last?</a> is worth a read.</p>
+
+<h3>A note on 3-way fridges</h3>
+<p>Many caravans have a <b>3-way fridge</b> (an absorption fridge) that runs on gas, 240V or 12V. On 12V it uses a heating element and draws a lot. One popular 90L model is rated at 175W on 12V, which is about 14.5A. Run all day, that would be around 350Ah, several times what a compressor fridge uses. So 12V mode is usually meant <b>only while driving</b>, to hold the temperature. At camp, switch to gas or 240V.</p>
+
+<!-- Kiran's note: your own caravan or camper trailer setup, and how much it charges on a day's drive -->
+
+<div class="cta-box"><p>Choose "Caravan or camper trailer" in the Power Planner. It allows for the trailer cable loss, sizes your battery, solar and charger, and shows budget to premium options.</p><a class="btn-link" href="../planner.html">Plan my caravan power</a></div>
+<div class="aside" style="margin:24px 0"><b>Get a pro to wire it in.</b> 12V systems store and move a lot of energy. Have a licensed auto electrician install or check your setup, with the right cable sizes and fuses, and never work on 240V wiring yourself.</div>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.redarcelectronics.com/us/discover/choosing-the-right-bcdc-trailer-charger-for-your-towing-setup/">REDARC: Choosing the right BCDC trailer charger for your towing setup</a></li>
+<li><a href="https://us.support.redarcelectronics.com/hc/en-us/articles/13864896026511-Where-to-mount-your-BCDC">REDARC: Where to mount your BCDC</a></li>
+<li><a href="https://eu.support.redarcelectronics.com/hc/en-au/articles/13916869521551-How-to-set-BCDC-Classic-Core-battery-profiles">REDARC: How to set BCDC Classic and Core battery profiles</a></li>
+<li><a href="https://www.redarcelectronics.com/us/resources/chargers-isolators-faqs/smart-alternator-fixed-alternator/">REDARC: Smart alternator vs fixed alternator</a></li>
+<li><a href="https://us.support.redarcelectronics.com/hc/en-us/articles/13917059935247-How-to-wire-a-Manager30-from-a-caravan-to-a-vehicle-with-a-smart-alternator">REDARC: How to wire a Manager30 from a caravan to a vehicle with a smart alternator</a></li>
+<li><a href="https://signaturecampertrailers.com.au/vehicle-charging-electrical/">Signature Camper Trailers: Vehicle electrical setup guide</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Trailer_connectors_in_Australia">Wikipedia: Trailer connectors in Australia</a></li>
+<li><a href="https://www.engineeringtoolbox.com/12-volt-wire-loss-chart-d_1689.html">Engineering ToolBox: 12 volt wire loss chart</a></li>
+<li><a href="https://www.homeof12voltonline.com.au/blogs/news/cable-12-volt-automotive-awg-b-s">Home of 12 Volt: Understanding 12 volt automotive cable</a></li>
+<li><a href="https://www.mygenerator.com.au/assets/images/resource/pdf/Dometic_RM2350_Upright_Absorption_Fridge_Brochure.pdf">Dometic RM2350 absorption fridge brochure</a></li>
+<li><a href="https://support.cruisinmotorhomes.com.au/support/solutions/articles/51000508881-fiat-2-berth-dometic-fridge-user-guide">Cruisin Motorhomes: Dometic fridge user guide</a></li>
+<li><a href="https://cbos.tas.gov.au/topics/technical-regulation/electrical-standard-safety/using-electricity-safely-in-caravans-and-tents">CBOS Tasmania: Using electricity safely in caravans and tents</a></li>
+<li><a href="https://caravanworld.com.au/blogs/reviews/tech-caravan-electrics-explained">Caravan World: Caravan electrics explained</a></li>
+</ul>
+<div class="related"><h2 style="font-size:1.4rem;margin:0 0 12px">Keep reading</h2><div class="guide-list"><a href="../guides/van-power-basics.html"><svg class="doodle" viewBox="0 0 100 100" width="64" height="64" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M50 14c-18 0-28 14-28 28 0 12 8 18 12 26h32c4-8 12-14 12-26 0-14-10-28-28-28z" fill="#f5cb3c"/><path d="M36 76h28M38 86h24M46 46l4 10 4-10"/><path d="M14 20l-6-4M86 20l6-4M50 4v-2" stroke-dasharray="3 4"/></svg><span class="tag">Start here</span><h3>Van power in plain English: the four parts and how they fit</h3><span class="small">Battery, solar, DC-DC charger and inverter, explained without the jargon.</span></a><a href="../guides/lithium-vs-agm.html"><svg class="doodle" viewBox="0 0 130 90" width="64" height="44" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="18" width="100" height="58" rx="10" fill="#f5cb3c"/><path d="M110 37h9v20h-9"/><path d="M28 62V34M42 62V34" stroke-width="5"/><path d="M78 42v5M96 42v5M76 56c5 6 17 6 22 0"/></svg><span class="tag">Batteries</span><h3>Lithium vs AGM: which battery should you get?</h3><span class="small">The real difference, what it means for size, weight and cost, and when AGM still makes sense.</span></a><a href="../guides/how-much-solar-australia.html"><svg class="doodle" viewBox="0 0 130 80" width="64" height="39" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 22h96l-12 36H10z"/><path d="M54 22l-10 36M86 22l-10 36M16 40h96"/><path d="M60 58v14M46 72h28"/></svg><span class="tag">Solar</span><h3>How much solar do I need? By state and season</h3><span class="small">Why a Hobart winter and a Darwin winter need very different setups, with a table for every state.</span></a><a href="../guides/dc-dc-chargers-explained.html"><svg class="doodle" viewBox="0 0 140 90" width="64" height="41" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="24" width="38" height="40" rx="8" fill="#f5cb3c"/><path d="M22 24V10M40 24V10M31 64v6c0 16 30 18 48 6s40-12 52 2"/></svg><span class="tag">Charging</span><h3>DC-DC chargers explained: charging while you drive</h3><span class="small">What they do, what size you need, and why modern cars with smart alternators need one.</span></a></div></div></main><footer class="site-footer">
+  <svg class="horizon" viewBox="0 0 1200 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M0 100c120-40 180-60 260-30s150 10 230-30 170-30 260 10 160 30 250-10 140-20 200 10"/><circle cx="980" cy="38" r="20" fill="#f5cb3c"/><path d="M980 6v-6M1018 38h6M948 14l-4-4M1012 14l4-4" /><path d="M0 112h1200" stroke-dasharray="14 12"/><g transform="translate(560 64) scale(.42)"><path d="M14 66V30c0-6 4-10 10-10h82c10 0 17 4 22 11l16 21c3 4 4 7 4 12v2z" fill="var(--sand, #ebe4d3)"/><path d="M108 22l0 26h32"/><path d="M48 14l5-8h40l-5 8z" fill="#f5cb3c"/><circle cx="44" cy="68" r="11" fill="var(--sand, #ebe4d3)"/><circle cx="118" cy="68" r="11" fill="var(--sand, #ebe4d3)"/></g><path d="M520 92h-30M512 84h-40" stroke-dasharray="4 8"/></svg>
+  <div class="in">
+    <div class="about">
+      <div style="color:var(--ink)"><svg viewBox="0 0 420 300" width="130" height="93" role="img" aria-label="Off-Grid Sorted">
+<defs><filter id="rLogoF" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4"></feTurbulence><feDisplacementMap in="SourceGraphic" scale="3.2"></feDisplacementMap></filter></defs>
+<g filter="url(#rLogoF)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M60 52l-12-18M110 38l-2-22M160 52l12-18M28 92l-20-6M192 92l20-6" stroke="#e0a12e" stroke-width="6"></path></g>
+<g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><rect x="34" y="70" width="152" height="86" rx="14" fill="#f5cb3c"></rect><path d="M186 98h12v30h-12" fill="currentColor"></path></g>
+<g filter="url(#rLogoF)" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M58 132v-34M80 132v-34M102 132v-34" stroke-width="7"></path><circle cx="138" cy="106" r="3.5" fill="currentColor"></circle><circle cx="160" cy="106" r="3.5" fill="currentColor"></circle><path d="M136 122c6 8 20 8 26 0"></path></g>
+<text x="34" y="214" font-family="Kalam, cursive" font-weight="700" font-size="34" fill="#1d5c3a" letter-spacing="1">off-grid</text>
+<text x="30" y="272" font-family="'Permanent Marker', cursive" font-size="66" fill="currentColor">SORTED</text>
+<path d="M36 288c60-10 140-10 236 2" fill="none" stroke="#e0a12e" stroke-width="8" stroke-linecap="round" filter="url(#rLogoF)"></path>
+</svg></div>
+      <p>Plain-English help to get the power setup in your van, caravan or 4WD sorted. Independent and Australian.</p>
+      <p class="small">Some links earn us a small commission at no cost to you. <a href="../disclosure.html" style="display:inline;color:var(--sign)">How we make money</a>.</p>
+    </div>
+    <div><h4>Tools</h4><a href="../planner.html">Power Planner</a><a href="../planner.html#check">Check what I've got</a><a href="../kits/index.html">Ready-made kits</a></div>
+    <div><h4>Guides</h4><a href="../guides/van-power-basics.html">Van power in plain English</a><a href="../guides/lithium-vs-agm.html">Lithium vs AGM</a><a href="../guides/how-much-solar-australia.html">How much solar do I need? By state and season</a><a href="../guides/dc-dc-chargers-explained.html">DC-DC chargers explained</a><a href="../guides/caravan-power-setup.html">Caravan power</a><a href="../guides/4wd-dual-battery-basics.html">4WD dual battery basics</a><a href="../guides/will-my-fridge-last.html">Will my fridge last the weekend?</a><a href="../guides/portable-power-stations.html">Portable power stations vs a proper dual battery setup</a><a href="../guides/index.html">All guides</a></div>
+    <div><h4>Off-Grid Sorted</h4><a href="../about.html">About</a><a href="../disclosure.html">Disclosure &amp; disclaimer</a><a href="../privacy.html">Privacy</a><a href="../contact.html">Contact</a><a href="https://www.instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
+  </div>
+  <p class="small" style="max-width:1080px;margin:0 auto;padding:0 18px 24px">© 2026 Off-Grid Sorted. Estimates only. Always have a licensed auto electrician install or check your system.</p>
+</footer>
+</body>
+</html>
