@@ -224,6 +224,15 @@
     <p class="aside"><b>The short version:</b> you can use almost all of a lithium battery, but only about half of an AGM before it starts wearing out. So AGM needs to be about twice the size for the same job, and it's around three to four times heavier. AGM is cheaper to buy; lithium lasts years longer.</p>
   </div>
   <div class="field">
+    <span id="st-l" class="flabel">What kind of solar?</span>
+    <div class="chips" role="radiogroup" aria-labelledby="st-l">
+      <input type="radio" name="soltype" id="st-fixed" value="fixed"><label for="st-fixed">Fixed roof panels</label>
+      <input type="radio" name="soltype" id="st-blanket" value="blanket"><label for="st-blanket">Portable blanket</label>
+      <input type="radio" name="soltype" id="st-any" value="any" checked><label for="st-any">Not sure</label>
+    </div>
+    <p class="small"><b>Fixed panels:</b> set and forget, and they charge while you drive, but the van has to sit in the sun. <b>Blanket:</b> park in the shade and lay it in the sun. It packs away, but you set it up each time.</p>
+  </div>
+  <div class="field">
     <span id="bs-l" class="flabel">One box or separate parts?</span>
     <div class="chips" role="radiogroup" aria-labelledby="bs-l">
       <input type="radio" name="build" id="bs-box" value="box"><label for="bs-box">All-in-one box</label>
@@ -645,7 +654,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
 
       var typeName = p.batType === "lith" ? "Lithium (LiFePO4)" : "AGM";
       addKit(kit, "Battery", p.batAh + "Ah", typeName + " · about " + fmt(p.batAh * KG_PER_AH[p.batType]) + "kg");
-      addKit(kit, "Solar", p.solarW ? p.solarW + "W" : "Optional", p.solarW ? (tooMuchSolar ? "More than fits on most " + VEH_NAME[p.veh] + " roofs (about " + p.roofMax + "W)" : "Roof panels or a blanket") : "Driving covers your daily use");
+      addKit(kit, "Solar", p.solarW ? p.solarW + "W" : "Optional", p.solarW ? (tooMuchSolar ? "More than fits on most " + VEH_NAME[p.veh] + " roofs (about " + p.roofMax + "W)" : ({fixed:"Fixed roof panels", blanket:"Portable blanket" + (p.solarW > 250 ? " (about " + Math.ceil(p.solarW / 200) + " of them)" : "")}[radio("soltype")] || "Roof panels or a blanket")) : "Driving covers your daily use");
       addKit(kit, "DC-DC charger", driveH > 0 ? p.dc + "A" : "Optional", driveH > 0 ? "Fills up while you drive" : "Only if you drive or tow between stays (" + p.dc + "A)");
       addKit(kit, "Inverter", inv ? fmt(inv) + "W" : "Not needed", inv ? "Pure sine wave" : "Everything you run is 12V");
 
@@ -722,7 +731,8 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
       } else {
         addShop(shop, "Battery · " + batLabel, p.batType === "lith" ? "battery" : "agm", "Stores your power." + (p.batType === "lith" && p.batAh > 460 ? " Our picks top out around 400Ah, so you'd link two or more." : ""), catFor("battery", p.batAh, p.batType));
         addShop(shop, "DC-DC charger" + (driveH > 0 ? "" : " (optional)") + " · " + p.dc + "A, with solar input", "dcdc", (driveH > 0 ? "" : "Only if you drive or tow between stays. Not counted in the total. ") + "Charges from your engine while you drive. One with a solar input (MPPT) doubles as your solar regulator.", catFor("dcdc", p.dc), driveH === 0);
-        if(p.solarW) addShop(shop, "Solar · " + p.solarW + "W", "solar", (p.veh === "4wd" ? "Roof space is tight on most 4WDs, so a folding blanket is the easy option." : "Free charging from the sun. Fixed roof panels for set-and-forget, or a blanket you can point at the sun."), catFor("solar", p.solarW, p.veh === "4wd" ? "box" : null));
+        var solNote = {fixed:"Fixed roof panels: set and forget, and they charge while you drive.", blanket:"A portable blanket: park in the shade and lay it in the sun." + (p.solarW > 250 ? " That's more than one blanket can make, so use two, or mix in a roof panel." : "")}[radio("soltype")] || (p.veh === "4wd" ? "Roof space is tight on most 4WDs, so a folding blanket is the easy option." : "Free charging from the sun. Fixed roof panels for set-and-forget, or a blanket you can point at the sun.");
+        if(p.solarW) addShop(shop, "Solar · " + p.solarW + "W", "solar", solNote, catFor("solar", p.solarW, p.veh === "4wd" ? "box" : null));
         if(inv) addShop(shop, "Inverter · " + fmt(inv) + "W pure sine", "inverter", "The travel adaptor for house plugs.", catFor("inverter", inv));
         addShop(shop, "Battery box or mount", "box", "Holds the battery firmly in place and protects it from knocks" + (p.batType === "agm" ? ", and AGM inside the living space should be sealed and vented." : ".") );
         addShop(shop, "Battery monitor", "monitor", "Your fuel gauge. Shows exactly how full the battery is, instead of guessing from the voltage.", "monitor");
@@ -832,7 +842,12 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     if(kind === "battery") return extra === "lith" ? (n <= 120 ? "battery_100" : n <= 230 ? "battery_200" : "battery_400") : null;
     if(kind === "allinone") return (extra === "lith" && n <= 120) ? "powerbox_100" : null;
     if(kind === "dcdc") return n <= 25 ? "dcdc_25" : n <= 40 ? "dcdc_40" : "dcdc_50";
-    if(kind === "solar") return extra === "box" && n <= 250 ? "blanket_200" : (n <= 300 ? "roof_200" : "roof_600");
+    if(kind === "solar"){
+      var pref = radio("soltype") || "any";
+      if(pref === "blanket") return "blanket_200";
+      if(pref === "fixed") return n <= 300 ? "roof_200" : "roof_600";
+      return extra === "box" && n <= 250 ? "blanket_200" : (n <= 300 ? "roof_200" : "roof_600");
+    }
     if(kind === "inverter") return n <= 800 ? "inverter_600" : "inverter_2000";
     if(kind === "monitor") return "monitor";
     return null;
