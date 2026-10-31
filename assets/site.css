@@ -376,3 +376,26 @@ summary{font-family:var(--font-display);text-transform:none}
 .mast{padding-top:22px}
 .mast .diagram{max-width:520px}
 .legend-dl{max-width:760px}
+
+/* ---------- Doodles ---------- */
+.doodle{display:block;color:var(--ink);flex-shrink:0}
+.cards .doodle{margin-bottom:10px;height:auto}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.sec-head .doodle{transform:rotate(-3deg);margin-bottom:4px}
+.guide-list .doodle{margin-bottom:4px}
+.guide-doodle{float:right;margin:4px 0 12px 18px;transform:rotate(3deg)}
+.hand-note{display:flex;align-items:center;gap:6px;margin-top:14px;font-family:var(--font-hand);font-size:1.45rem;color:var(--biro)}
+.hand-note .doodle{color:var(--biro);transform:scaleY(-1) rotate(10deg)}
+.signup .doodle{margin-bottom:8px}
+.site-header .logo svg{width:170px;height:auto}
+.site-footer .horizon{display:block;width:100%;height:110px;color:var(--ink);background:var(--paper)}
+section.step{position:relative}
+.step-doodle{position:absolute;right:0;top:26px;transform:rotate(4deg)}
+.results{position:relative}
+.results .step-doodle{top:18px;right:18px}
+@media (max-width:760px){
+  .site-header .logo svg{width:132px}
+  .guide-doodle{width:90px;height:auto}
+  .step-doodle{width:64px;height:auto;top:20px}
+  .sec-head .doodle{width:64px;height:auto}
+}

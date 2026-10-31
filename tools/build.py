@@ -8,7 +8,9 @@ Run from the repo root:  python3 tools/build.py
 - about/disclosure/privacy     -> from content/<name>.html
 The Power Planner (planner.html) is hand-written; this script only refreshes its header and footer.
 """
-import os, re, html
+import os, re, html, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from doodles import doodle, horizon, TAG_DOODLE
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -77,7 +79,7 @@ def header(pre, active=""):
     drop = "".join(f'<a href="{pre}{href}">{label}</a>' for href, label in NAV)
     return f'''<header class="site-header">
   <div class="in">
-    <a class="logo" href="{pre}index.html" aria-label="Off-Grid Sorted home">{logo(118)}</a>
+    <a class="logo" href="{pre}index.html" aria-label="Off-Grid Sorted home">{logo(170)}</a>
     <nav class="nav" aria-label="Main menu">{links}<a class="cta" href="{pre}planner.html">Plan my setup</a></nav>
     <details class="menu-toggle"><summary>Menu</summary><div class="drop">{drop}<a href="{pre}planner.html"><b>Plan my setup →</b></a></div></details>
   </div>
@@ -89,6 +91,7 @@ def footer(pre):
     live = [g for g in GUIDES if g[4] == "live"]
     glinks = "".join(f'<a href="{pre}guides/{g[0]}.html">{html.escape(g[1].split(":")[0])}</a>' for g in live)
     return f'''<footer class="site-footer">
+  {horizon()}
   <div class="in">
     <div class="about">
       <div style="color:var(--ink)">{logo(130, "F")}</div>
@@ -106,6 +109,7 @@ def footer(pre):
 
 def page(path, title, desc, body, active=""):
     pre = "../" * path.count("/")
+    body = re.sub(r"\[\[d:([\w-]+):(\d+)\]\]", lambda m: doodle(m.group(1), int(m.group(2))), body)
     out = head(title, desc, pre) + header(pre, active) + body.replace("{pre}", pre) + footer(pre) + "</body>\n</html>\n"
     with open(os.path.join(ROOT, path), "w") as f:
         f.write(out)
@@ -119,8 +123,8 @@ def read(p):
 def guide_card(g, pre):
     slug, title, tag, blurb, status = g
     if status == "live":
-        return f'<a href="{pre}guides/{slug}.html"><span class="tag">{tag}</span><h3>{html.escape(title)}</h3><span class="small">{html.escape(blurb)}</span></a>'
-    return f'<div class="soon"><span class="tag">{tag} · coming soon</span><h3>{html.escape(title)}</h3><span class="small">{html.escape(blurb)}</span></div>'
+        return f'<a href="{pre}guides/{slug}.html">{doodle(TAG_DOODLE.get(tag, "sun"), 64)}<span class="tag">{tag}</span><h3>{html.escape(title)}</h3><span class="small">{html.escape(blurb)}</span></a>'
+    return f'<div class="soon">{doodle(TAG_DOODLE.get(tag, "sun"), 64)}<span class="tag">{tag} · coming soon</span><h3>{html.escape(title)}</h3><span class="small">{html.escape(blurb)}</span></div>'
 
 
 def build():
@@ -128,7 +132,7 @@ def build():
     page("index.html", SITE, "Free plain-English power planner and guides for Australian vans, caravans and 4WDs. Work out the battery, solar and charger you need.", read("content/home.html"))
     # Guides hub
     hub = '<main class="page"><div class="crumbs"><a href="{pre}index.html">Home</a> › Guides</div>'
-    hub += '<h1 style="font-size:3rem;margin:4px 0 8px">Guides</h1><p class="hint" style="margin-bottom:22px">Plain-English guides to off-grid power. New ones land every week. Start at the top if you\'re new to all this.</p>'
+    hub += '<div class="sec-head"><h1 style="font-size:3rem;margin:4px 0 8px">Guides</h1>[[d:road:120]]</div><p class="hint" style="margin-bottom:22px">Plain-English guides to off-grid power. New ones land every week. Start at the top if you\'re new to all this.</p>'
     hub += '<div class="guide-list">' + "".join(guide_card(g, "{pre}") for g in GUIDES) + '</div></main>'
     page("guides/index.html", "Guides", "Plain-English guides to batteries, solar, DC-DC chargers and inverters for Australian vans, caravans and 4WDs.", hub, "guides/index.html")
     # Each live guide
@@ -139,7 +143,8 @@ def build():
         body = read(f"content/guides/{slug}.html")
         others = [x for x in GUIDES if x[0] != slug][:4]
         rel = '<div class="related"><h2 style="font-size:1.4rem;margin:0 0 12px">Keep reading</h2><div class="guide-list">' + "".join(guide_card(x, "{pre}") for x in others) + '</div></div>'
-        wrapped = f'<main class="article"><div class="crumbs"><a href="{{pre}}index.html">Home</a> › <a href="{{pre}}guides/index.html">Guides</a> › {tag}</div>{body}{rel}</main>'
+        dd = doodle(TAG_DOODLE.get(tag, "sun"), 130, cls="doodle guide-doodle")
+        wrapped = f'<main class="article"><div class="crumbs"><a href="{{pre}}index.html">Home</a> › <a href="{{pre}}guides/index.html">Guides</a> › {tag}</div>{dd}{body}{rel}</main>'
         page(f"guides/{slug}.html", title.split(":")[0], blurb, wrapped, "guides/index.html")
     # Info pages
     for name, title, desc in [("about", "About", "Who is behind Off-Grid Sorted, and why it exists."),
