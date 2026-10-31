@@ -56,7 +56,22 @@ def logo(w=120, ident="H"):
     return LOGO.format(w=w, h=round(w * 300 / 420), id=ident)
 
 
-def head(title, desc, pre):
+BASE = "https://offgridsorted.com.au/"
+BUILT = []
+
+
+def seo_tags(path, full, desc):
+    url = BASE + ("" if path == "index.html" else path)
+    t, d = html.escape(full), html.escape(desc)
+    return (f'<!--seo--><link rel="canonical" href="{url}">\n'
+            f'<meta property="og:type" content="website">\n<meta property="og:site_name" content="Off-Grid Sorted">\n'
+            f'<meta property="og:title" content="{t}">\n<meta property="og:description" content="{d}">\n'
+            f'<meta property="og:url" content="{url}">\n<meta property="og:image" content="{BASE}assets/og.png">\n'
+            f'<meta property="og:locale" content="en_AU">\n<meta name="twitter:card" content="summary_large_image">\n'
+            f'<meta name="theme-color" content="#f3f0e8"><!--/seo-->')
+
+
+def head(title, desc, pre, path="index.html"):
     full = f"{title} · {SITE}" if title != SITE else f"{SITE} · Off-grid power for Australian vans, caravans and 4WDs"
     return f'''<!DOCTYPE html>
 <html lang="en-AU">
@@ -65,6 +80,7 @@ def head(title, desc, pre):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(full)}</title>
 <meta name="description" content="{html.escape(desc)}">
+{seo_tags(path, full, desc)}
 <link rel="icon" href="{pre}favicon.svg" type="image/svg+xml">
 {FONTS}
 <link rel="stylesheet" href="{pre}assets/site.css">
@@ -100,7 +116,7 @@ def footer(pre):
     </div>
     <div><h4>Tools</h4><a href="{pre}planner.html">Power Planner</a><a href="{pre}planner.html#check">Check what I've got</a><a href="{pre}kits/index.html">Ready-made kits</a></div>
     <div><h4>Guides</h4>{glinks}<a href="{pre}guides/index.html">All guides</a></div>
-    <div><h4>Off-Grid Sorted</h4><a href="{pre}about.html">About</a><a href="{pre}disclosure.html">Disclosure &amp; disclaimer</a><a href="{pre}privacy.html">Privacy</a><a href="https://www.instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
+    <div><h4>Off-Grid Sorted</h4><a href="{pre}about.html">About</a><a href="{pre}disclosure.html">Disclosure &amp; disclaimer</a><a href="{pre}privacy.html">Privacy</a><a href="{pre}contact.html">Contact</a><a href="https://www.instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
   </div>
   <p class="small" style="max-width:1080px;margin:0 auto;padding:0 18px 24px">© 2026 Off-Grid Sorted. Estimates only. Always have a licensed auto electrician install or check your system.</p>
 </footer>
@@ -110,7 +126,17 @@ def footer(pre):
 def page(path, title, desc, body, active=""):
     pre = "../" * path.count("/")
     body = re.sub(r"\[\[d:([\w-]+):(\d+)\]\]", lambda m: doodle(m.group(1), int(m.group(2))), body)
-    out = head(title, desc, pre) + header(pre, active) + body.replace("{pre}", pre) + footer(pre) + "</body>\n</html>\n"
+    BUILT.append(path)
+    out = head(title, desc, pre, path) + header(pre, active) + body.replace("{pre}", pre) + footer(pre) + "</body>\n</html>\n"
+    with open(os.path.join(ROOT, path), "w") as f:
+        f.write(out)
+
+
+def page_abs(path, title, desc, body):
+    """Like page() but with root-absolute links, for pages served at any URL (404)."""
+    BUILT.append(path)
+    body = re.sub(r"\[\[d:([\w-]+):(\d+)\]\]", lambda m: doodle(m.group(1), int(m.group(2))), body)
+    out = head(title, desc, "/", path) + header("/") + body + footer("/") + "</body>\n</html>\n"
     with open(os.path.join(ROOT, path), "w") as f:
         f.write(out)
 
@@ -369,7 +395,8 @@ def build():
     # Info pages
     for name, title, desc in [("about", "About", "Who is behind Off-Grid Sorted, and why it exists."),
                               ("disclosure", "Affiliate disclosure & disclaimer", "How Off-Grid Sorted earns money, and the limits of our advice."),
-                              ("privacy", "Privacy", "How Off-Grid Sorted handles your information.")]:
+                              ("privacy", "Privacy", "How Off-Grid Sorted handles your information."),
+                              ("contact", "Contact", "How to get in touch with Off-Grid Sorted.")]:
         page(f"{name}.html", title, desc, '<main class="article"><div class="crumbs"><a href="{pre}index.html">Home</a> › ' + title + '</div>' + read(f"content/{name}.html") + '</main>', f"{name}.html" if name == "about" else "")
     build_kits()
     # Refresh planner chrome
@@ -378,8 +405,27 @@ def build():
     pj = json.dumps(PRODUCTS, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     p = re.sub(r'<script type="application/json" id="ogs-products">.*?</script>', lambda m: f'<script type="application/json" id="ogs-products">{pj}</script>', p, flags=re.S)
     p = re.sub(r'<footer class="site-footer">.*?</footer>\n', lambda m: footer(""), p, flags=re.S)
+    seo = seo_tags("planner.html", "Power Planner · Off-Grid Sorted", "Free calculator for Australian vans, caravans and 4WDs: work out the battery, solar, DC-DC charger and inverter you need, with real products at three price levels.")
+    if "<!--seo-->" in p:
+        p = re.sub(r"<!--seo-->.*?<!--/seo-->", lambda m: seo, p, flags=re.S)
+    else:
+        p = p.replace('<link rel="icon"', seo + '\n<link rel="icon"', 1)
     with open(os.path.join(ROOT, "planner.html"), "w") as f:
         f.write(p)
+    BUILT.append("planner.html")
+    # 404 page (Netlify serves /404.html automatically)
+    page_abs("404.html", "Page not found", "That page doesn't exist.",
+             '<main class="article" style="text-align:center"><h1>Flat battery</h1>[[d:battery:140]]'
+             '<p class="hint">We couldn\'t find that page. It may have moved, or the link has a typo.</p>'
+             '<p><a class="btn-link" href="/planner.html">Open the Power Planner</a></p>'
+             '<p><a href="/index.html">Home</a> · <a href="/guides/index.html">Guides</a> · <a href="/kits/index.html">Kits</a></p></main>')
+    BUILT.remove("404.html")
+    # robots + sitemap
+    with open(os.path.join(ROOT, "robots.txt"), "w") as f:
+        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}sitemap.xml\n")
+    urls = "".join(f"  <url><loc>{BASE}{'' if p_ == 'index.html' else p_}</loc></url>\n" for p_ in sorted(set(BUILT)))
+    with open(os.path.join(ROOT, "sitemap.xml"), "w") as f:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + '</urlset>\n')
 
 
 if __name__ == "__main__":

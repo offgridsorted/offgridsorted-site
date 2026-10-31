@@ -519,3 +519,4 @@ section.step{position:relative}
 .wtb li{flex-wrap:wrap;padding:0 !important}
 .wtb li span{text-align:right}
 .wtb em{display:block;font-size:.75rem}
+a.btn{text-decoration:none;display:inline-block}

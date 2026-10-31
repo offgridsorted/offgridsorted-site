@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Power Planner · Off-Grid Sorted</title>
 <meta name="description" content="Work out the battery, solar and charger your van, caravan or 4WD needs, in plain English. A free Australian power planner.">
+<!--seo--><link rel="canonical" href="https://offgridsorted.com.au/planner.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Off-Grid Sorted">
+<meta property="og:title" content="Power Planner · Off-Grid Sorted">
+<meta property="og:description" content="Free calculator for Australian vans, caravans and 4WDs: work out the battery, solar, DC-DC charger and inverter you need, with real products at three price levels.">
+<meta property="og:url" content="https://offgridsorted.com.au/planner.html">
+<meta property="og:image" content="https://offgridsorted.com.au/assets/og.png">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f3f0e8"><!--/seo-->
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -275,15 +285,8 @@
 
   <div class="save" id="save">
     <h3>Keep your list</h3>
-    <p class="small">Copy it to your notes, or have it emailed so you've got it when you're in the shop.</p>
+    <p class="small">Copy it to your notes so you've got it when you're talking to your auto electrician or in the shop.</p>
     <button type="button" class="btn ghost" id="copy-btn">Copy my list</button>
-    <form id="email-form" class="field" novalidate>
-      <label for="email">Email me my list</label>
-      <div class="row2">
-        <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
-        <button type="submit" class="btn">Send</button>
-      </div>
-    </form>
     <p class="msg" id="save-msg" role="status"></p>
   </div>
 
@@ -319,7 +322,7 @@
     </div>
     <div><h4>Tools</h4><a href="planner.html">Power Planner</a><a href="planner.html#check">Check what I've got</a><a href="kits/index.html">Ready-made kits</a></div>
     <div><h4>Guides</h4><a href="guides/van-power-basics.html">Van power in plain English</a><a href="guides/lithium-vs-agm.html">Lithium vs AGM</a><a href="guides/how-much-solar-australia.html">How much solar do I need? By state and season</a><a href="guides/index.html">All guides</a></div>
-    <div><h4>Off-Grid Sorted</h4><a href="about.html">About</a><a href="disclosure.html">Disclosure &amp; disclaimer</a><a href="privacy.html">Privacy</a><a href="https://www.instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
+    <div><h4>Off-Grid Sorted</h4><a href="about.html">About</a><a href="disclosure.html">Disclosure &amp; disclaimer</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a><a href="https://www.instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
   </div>
   <p class="small" style="max-width:1080px;margin:0 auto;padding:0 18px 24px">© 2026 Off-Grid Sorted. Estimates only. Always have a licensed auto electrician install or check your system.</p>
 </footer>
@@ -998,12 +1001,6 @@
     try{
       navigator.clipboard.writeText(txt).then(function(){ saveMsg.textContent = "Copied. Paste it into your notes."; }, function(){ saveMsg.textContent = "Couldn't copy here. Try a long-press on the results instead."; });
     }catch(e){ saveMsg.textContent = "Couldn't copy here. Try a long-press on the results instead."; }
-  });
-  document.getElementById("email-form").addEventListener("submit", function(e){
-    e.preventDefault();
-    var v = document.getElementById("email").value.trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){ saveMsg.textContent = "That email doesn't look right. Check it and try again."; return; }
-    saveMsg.textContent = "Prototype only: nothing was sent. On the live site this connects to your email list tool.";
   });
 
   calc();
