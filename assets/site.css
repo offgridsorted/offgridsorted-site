@@ -408,3 +408,13 @@ section.step{position:relative}
 .mast .lede{margin:0 auto}
 .mast .diagram{margin-left:auto !important;margin-right:auto !important;width:100%}
 .mast .legend-dl{margin-left:auto;margin-right:auto;text-align:left;width:100%}
+.custom-add{margin-top:22px;padding:18px;background:var(--sand);border-radius:var(--radius);display:flex;flex-direction:column;gap:10px}
+.custom-add h3{font-size:1.25rem}
+.sec-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 14px}
+.link-btn{font:inherit;font-family:var(--font-ui);font-weight:600;color:var(--sign);background:none;border:0;padding:6px 0;text-decoration:underline;text-underline-offset:3px;cursor:pointer;min-height:36px}
+.custom-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.6fr auto;gap:10px;align-items:end}
+.custom-grid input[type=text]{font-family:var(--font-ui);font-weight:600;font-size:1rem;color:var(--ink);background:var(--field);border:1.5px solid color-mix(in srgb,var(--ink) 35%,transparent);border-radius:12px;padding:10px 12px;width:100%}
+.custom-grid .btn{min-height:46px}
+#custom-list .app:first-child{border-top:0}
+@media (max-width:760px){ .custom-grid{grid-template-columns:1fr 1fr} .custom-grid .field:first-child,.custom-grid .field:last-of-type{grid-column:1 / -1} .custom-grid .btn{grid-column:1 / -1} }
+.sheet{max-height:80vh;overflow-y:auto}
