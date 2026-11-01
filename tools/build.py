@@ -114,7 +114,7 @@ def footer(pre):
   <div class="in">
     <div class="about">
       <div style="color:var(--ink)">{logo(130, "F")}</div>
-      <p>Plain-English help to get the power setup in your van, caravan or 4WD sorted. Independent and Australian.</p>
+      <p>Plain-English help to get the power setup in your van, caravan or 4WD sorted. Independent and Australian, made by Kiran and Mitch on the Gold Coast.</p>
       <p class="small">Some links earn us a small commission at no cost to you. <a href="{pre}disclosure.html" style="display:inline;color:var(--sign)">How we make money</a>.</p>
     </div>
     <div><p class="fh">Tools</p><a href="{pre}planner.html">Power Planner</a><a href="{pre}planner.html#check">Check what I've got</a><a href="{pre}kits/index.html">Ready-made kits</a></div>

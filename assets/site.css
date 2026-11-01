@@ -592,3 +592,12 @@ body{font-size:1.09375rem}
 .kit-facts{font-family:var(--font-ui);font-size:.95rem;margin:2px 0 6px;color:var(--ink)}
 @media (min-width:761px){ :root{--hdr:112px} .site-header .logo svg{width:124px} }
 .site-footer .horizon{height:clamp(110px,12vw,160px)}
+/* Founder story */
+.our-note{position:relative;background:var(--field);border-radius:16px;padding:16px 18px 14px;margin:26px 0;box-shadow:0 1px 0 var(--faint),0 10px 24px rgba(60,45,20,.08);transform:rotate(-.4deg)}
+.our-note::before{content:"";position:absolute;top:-10px;left:28px;width:70px;height:20px;background:color-mix(in srgb,var(--hi) 70%,transparent);transform:rotate(-3deg);border-radius:2px}
+.our-note .who{display:block;font-family:var(--font-hand);font-size:1.35rem;color:var(--biro);margin-bottom:4px}
+.our-note p{margin:0}
+.founders{margin-top:24px;background:var(--field);border-radius:18px;padding:20px 22px;max-width:720px}
+.founders h3{margin:0 0 6px;font-size:1.35rem}
+.founders p{margin:0 0 8px}
+.founders a{color:var(--sign);font-weight:700;font-family:var(--font-ui)}
