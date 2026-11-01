@@ -617,3 +617,33 @@ body{font-size:1.09375rem}
 @media (max-width:700px){ .founders{grid-template-columns:1fr} }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .photo{background:#2a2e29} :root:not([data-theme="light"]) .photo figcaption{color:var(--ink)} }
 .photo.portrait{max-width:440px;margin-left:auto;margin-right:auto}
+/* Kit choices */
+.kit-choices{display:flex;flex-wrap:wrap;gap:14px 28px;margin:6px 0 14px}
+.kit-choices .kc{display:flex;flex-direction:column;gap:6px}
+.kit-choices .flabel{font-family:var(--font-ui);font-weight:700;font-size:.9rem}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{font-family:var(--font-ui);font-weight:600;font-size:.95rem;padding:9px 14px;min-height:44px;border-radius:999px;border:1.5px solid color-mix(in srgb,var(--ink) 35%,transparent);background:var(--paper);color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.hub-choices{margin-bottom:26px}
+.veh-tip{background:var(--field);border-left:4px solid var(--hi);border-radius:12px;padding:12px 16px;margin:0 0 20px;font-size:.98rem}
+.veh-tip a{color:var(--sign)}
+/* Add to my list */
+.add-list{align-self:flex-start;margin-top:8px;font-family:var(--font-ui);font-weight:700;font-size:.88rem;padding:8px 14px;min-height:40px;border-radius:999px;border:1.5px solid var(--sign);background:transparent;color:var(--sign);cursor:pointer}
+.add-list:hover{background:color-mix(in srgb,var(--sign) 10%,transparent)}
+.add-list.on{background:var(--sign);color:#fff}
+.my-list{background:var(--sand);border-radius:18px;padding:18px 20px;margin:28px 0}
+.my-list h2{margin:0 0 6px !important}
+.ml-sum{font-family:var(--font-ui);margin:0 0 12px}
+.ml-store{background:var(--paper);border-radius:12px;padding:10px 14px;margin:10px 0}
+.ml-store h3{margin:0 0 6px;font-size:1.05rem}
+.ml-store ul{list-style:none;margin:0;padding:0}
+.ml-store li{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:8px 0;border-top:1px dashed var(--faint);margin:0}
+.ml-store li:first-child{border-top:0}
+.ml-store li::before{content:none}
+.ml-name{font-family:var(--font-ui);font-weight:600}
+.ml-price{font-family:var(--font-ui);font-weight:800;text-align:right}
+.ml-buy{color:var(--sign);font-family:var(--font-ui);font-weight:700;font-size:.9rem}
+.ml-rm{justify-self:end;background:none;border:0;color:var(--muted);font-family:var(--font-ui);font-size:.85rem;text-decoration:underline;cursor:pointer;padding:4px 0}
+.ml-actions{display:flex;gap:16px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.list-pill{position:fixed;right:14px;bottom:14px;z-index:21;background:var(--sign);color:#fff;font-family:var(--font-ui);font-weight:700;font-size:.92rem;padding:12px 16px;border-radius:999px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+body:has(#res-pill:not([hidden])) .list-pill{bottom:72px}

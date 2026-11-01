@@ -1277,6 +1277,540 @@
     "downside": "Dearest option, and the screen is extra.",
     "warranty": 2
    }
+  ],
+  "fridge_medium": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Kings 45L Stayzcool MKII",
+    "why": "A proper compressor fridge-freezer with a 5-year warranty for about $750, holds about 72 cans.",
+    "downside": "Kings doesn't publish a lot of detail, and it's heavier than the Dometic.",
+    "warranty": 5,
+    "kg": 20.8,
+    "draw": "0.65 to 1.25Ah per hour (Kings figure, fridge at 3°C, 32°C outside, 13.2V)",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 749.0,
+      "url": "https://au.adventurekings.com/45l-stayzcool-mkii-fridge-freezer.html"
+     },
+     {
+      "store": "Everyday Rewards Shop",
+      "price": 749.0,
+      "url": "https://www.everyday.com.au/shop/product/kings-45l-stayzcool-mkii-fridgefreezer-genuine-acdc-compressor-technology-fits-72-cans-15291879/15291879-1"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Brass Monkey 42L Ultra-Portable (Jaycar)",
+    "why": "On clearance for about $250 with wheels and a 3-year warranty, if you just want something cold cheaply.",
+    "downside": "Jaycar publishes no power use figure, it's 12/24V DC only, and stock is check-your-store.",
+    "warranty": 3,
+    "kg": 14.7,
+    "stores": [
+     {
+      "store": "Jaycar",
+      "price": 249.0,
+      "url": "https://jaycar.com.au/p/GH2030"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Dometic CFF45",
+    "why": "The fridge we run in our Hiace: light on power for a 45L and currently cheaper than the Kings while it's being cleared out.",
+    "downside": "Being run out, so stock is patchy and BCF/Snowys may sell out. 3-year warranty, not 5.",
+    "warranty": 3,
+    "kg": 18.6,
+    "draw": "0.88Ah per hour (Dometic figure, 5°C inside, 32°C outside, 12V); 4.5A max",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 699.0,
+      "url": "https://snowys.com.au/cff-45-fridge-and-cover",
+      "was": 949.0
+     },
+     {
+      "store": "Dometic",
+      "price": 949.0,
+      "url": "https://www.dometic.com/en-au/product/dometic-cff-45-pack-9600028653"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "Dometic CFX5 45",
+    "why": "Dometic's top portable: lower power use than the CFF, a phone app, a 5-year warranty and tougher build.",
+    "downside": "About double the price of the CFF45 for the same size.",
+    "warranty": 5,
+    "kg": 18.9,
+    "draw": "0.76Ah per hour (Dometic figure, 4°C inside, 32°C outside, 12V)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1349.0,
+      "url": "https://www.snowys.com.au/cfx5-45-portable-fridgefreezer-46l",
+      "was": 1449.0
+     },
+     {
+      "store": "Dometic",
+      "price": 1449.0,
+      "url": "https://www.dometic.com/en-au/product/dometic-cfx5-45-9620015959"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "Engel MT-V45 (40L)",
+    "why": "Engel's swing-motor compressor has a long reputation for running for decades on rough roads.",
+    "downside": "Heavy (24kg), smaller inside (40L) and Snowys gives no test conditions for its power figure.",
+    "kg": 24,
+    "draw": "0.5A to 2.6A max per hour at 12V (no test conditions given)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1339.0,
+      "url": "https://www.snowys.com.au/mt-v45f-40-litre-fridge-freezer",
+      "was": 1499.0
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "Bushman 35-52L",
+    "why": "Clever lid swap lets it grow from 35L to 52L, and it sips power (Australian-designed).",
+    "downside": "Pricey and heavy at 24.5kg, and the stated compressor warranty differs between listing and staff answer.",
+    "kg": 24.5,
+    "draw": "0.67Ah per hour (maker figure, -4°C inside, 25°C outside, 52L setup)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1475.0,
+      "url": "https://www.snowys.com.au/35-52l-portable-fridge-freezer",
+      "was": 1599.0
+     }
+    ]
+   }
+  ],
+  "fridge_large": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Kings 60L Stayzcool MKII",
+    "why": "60L with a 5-year warranty for about $850, a lot of fridge for the money.",
+    "downside": "Kings publishes no power use figure or weight on the product page.",
+    "warranty": 5,
+    "draw": "Not published by Kings",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 849.0,
+      "url": "https://au.adventurekings.com/60l-stayzcool-mkii-fridge-freezer.html"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Dometic CFF 70DZ",
+    "why": "Dual zone (fridge one side, freezer the other) from a big brand, heavily discounted to under $1,000 with a cover.",
+    "downside": "Draws a fair bit with the freezer side running, and 3-year warranty.",
+    "warranty": 3,
+    "kg": 26.4,
+    "draw": "2.9Ah per hour (Dometic figure, 4°C large side, -15°C small side, 32°C outside, 12V); 4A max",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 928.0,
+      "url": "https://www.snowys.com.au/cff-70dz-fridge-cover",
+      "was": 1299.0
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Kings 75L Stayzcool MKII Dual Zone",
+    "why": "Bigger dual zone with a 5-year warranty for about $1,000.",
+    "downside": "No published power use figure, so it's harder to size your battery.",
+    "warranty": 5,
+    "draw": "Not published by Kings",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 999.0,
+      "url": "https://au.adventurekings.com/75l-stayzcool-mkii-dual-zone-fridge-freezer.html"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "Dometic CFX5 55",
+    "why": "Low power use for its size, phone app and a 5-year warranty.",
+    "downside": "Single zone, so no separate freezer side.",
+    "warranty": 5,
+    "kg": 20.7,
+    "draw": "0.87Ah per hour average (Dometic figure, 4°C inside, 32°C outside, 12V); 9.6A max",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1549.0,
+      "url": "https://www.snowys.com.au/cfx5-55-portable-fridgefreezer-55l",
+      "was": 1649.0
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "Dometic CFX5 75DZ",
+    "why": "Dual zone version with separate fridge and freezer sides that you set from your phone.",
+    "downside": "Heavy at 27.7kg and uses close to three times the power of the single-zone 55.",
+    "warranty": 5,
+    "kg": 27.7,
+    "draw": "2.45Ah per hour average (Dometic figure, 4°C large, -15°C small, 32°C outside, 12V)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1799.0,
+      "url": "https://www.snowys.com.au/cfx5-75dz-dual-zone-fridgefreezer-75l",
+      "was": 1999.0
+     },
+     {
+      "store": "Dometic",
+      "price": 1999.0,
+      "url": "https://www.dometic.com/en-au/product/dometic-cfx5-75dz-9620015962"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "Engel MT-V60",
+    "why": "Engel's famously tough swing-motor compressor for people who want it to last decades.",
+    "downside": "Very heavy at 33kg, and no test conditions given for the power figure.",
+    "kg": 33,
+    "draw": "0.5A to 4.2A max per hour at 12V (no test conditions given)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1799.0,
+      "url": "https://www.snowys.com.au/mt-v60f-60-litre-fridge-freezer",
+      "was": 1999.0
+     }
+    ]
+   }
+  ],
+  "fridge_ff": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Kings 90L Stayzcool MKII Dual Zone",
+    "why": "90L with two zones you can set separately, and a 5-year warranty, for about $1,100.",
+    "downside": "No published power use figure or weight; expect it to be heavy.",
+    "warranty": 5,
+    "draw": "Not published by Kings",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 1099.0,
+      "url": "https://au.adventurekings.com/90l-stayzcool-mkii-dual-zone-fridge-freezer.html"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "EvaKool DU295-DZ Down Under 95L",
+    "why": "Australian brand with a Secop compressor, low published power use for a 95L dual zone and a 5-year full warranty.",
+    "downside": "Heavy at 34kg, and a big footprint for a van.",
+    "warranty": 5,
+    "kg": 34,
+    "draw": "2.2Ah per hour (maker figure, 2°C fridge, -16°C freezer, 32°C outside, over 24h)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1449.0,
+      "url": "https://www.snowys.com.au/du295-dz-down-under-series-ii-dual-zone-fridge-freezer-95l-phantom-grey",
+      "was": 1799.0
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "EvaKool DU280-DZ Down Under 80L",
+    "why": "Same build in a smaller 80L size that fits more vans and uses a bit less power.",
+    "downside": "Still 29kg.",
+    "warranty": 5,
+    "kg": 29,
+    "draw": "2Ah per hour (maker figure, 2°C fridge, -16°C freezer, 32°C outside, over 24h)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1349.0,
+      "url": "https://www.snowys.com.au/du280-dz-down-under-series-ii-dual-zone-fridge-freezer-80l-phantom-grey",
+      "was": 1699.0
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "myCOOLMAN CCP96DZ 96L",
+    "why": "Australian-owned brand, 96L dual zone with a 5-year warranty.",
+    "downside": "Higher published power use than the EvaKool and nearly 35kg.",
+    "warranty": 5,
+    "kg": 34.9,
+    "draw": "3.1Ah per hour (maker figure, 3°C fridge, -15°C freezer, 32°C outside, 12V)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1545.0,
+      "url": "https://www.snowys.com.au/ccp96dz-dual-zone-portable-fridge-freezer-96l",
+      "was": 1899.0
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "Dometic CFX5 95DZ",
+    "why": "Dometic's top dual zone: phone app control, strong build and a 5-year warranty.",
+    "downside": "About $400 to $650 more than the EvaKool, and Snowys showed it out of stock online.",
+    "warranty": 5,
+    "kg": 29.5,
+    "draw": "2.83Ah per hour average (Dometic figure, 4°C large, -15°C small, 32°C outside, 12V); 10.4A max",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1899.0,
+      "url": "https://www.snowys.com.au/cfx5-95dz-dual-zone-fridgefreezer-94l",
+      "was": 2099.0
+     },
+     {
+      "store": "Dometic",
+      "price": 2099.0,
+      "url": "https://dometic.com/en-au/outdoor/fridgefreezers-and-coolers/portable-fridgefreezers/07-0703-070328-070328007-368998"
+     }
+    ]
+   }
+  ],
+  "lights": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Kings 4m 12V LED Camping Strip",
+    "why": "A 4-metre dimmable strip with a cigarette plug for $30, easy to hang in a van or under an awning.",
+    "downside": "No warranty period stated and no brightness figure published.",
+    "draw": "about 1.5A on full brightness",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 29.95,
+      "url": "https://au.adventurekings.com/illuminator-4m-max-led-strip-light.html"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Kings Illuminator 4 Bar Camp Light Kit",
+    "why": "Four 50cm magnetic bars with extension leads and a dimmer for $50, so you can light several spots.",
+    "downside": "White only (no bug-friendly orange), no power or warranty figure listed.",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 49.95,
+      "url": "https://au.adventurekings.com/illuminator-4-bar-camp-light-kit.html"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Hard Korr Lifestyle 4 Bar Orange/White Kit",
+    "why": "Australian brand with an orange mode that attracts fewer bugs, and a published 2,300 lumens.",
+    "downside": "Two of the bars are white only, and warranty isn't shown on the page.",
+    "draw": "2.4A at 12V (all on)",
+    "stores": [
+     {
+      "store": "Hard Korr",
+      "price": 89.0,
+      "url": "https://hardkorr.com/collections/led-camp-light-kits/products/lifestyle-4-bar-orange-white-led-camping-light-kit",
+      "was": 99.0
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Narva 285mm White/Amber LED Strip Light",
+    "why": "A fixed, sealed light you screw inside the van or under the awning, with a bug-friendly amber mode.",
+    "downside": "Needs wiring in with a separate switch, so get an auto electrician to fit it. 1-year warranty.",
+    "warranty": 1,
+    "draw": "0.41A white, 0.19A amber",
+    "stores": [
+     {
+      "store": "Caravansplus",
+      "price": 76.95,
+      "url": "https://www.caravansplus.com.au/narva-12v-led-strip-light-white-amber-285mm-p-22187.html",
+      "was": 125.0
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "Hard Korr 6 Bar Tri-Colour Camp Light Kit",
+    "why": "Every bar does cool white, warm white or orange, with 6 bars and lots of leads to light a whole camp, plus a 5-year replacement warranty.",
+    "downside": "Overkill for inside a small van, and Hard Korr's own store shows it sold out.",
+    "warranty": 5,
+    "kg": 5,
+    "draw": "3.0A at 12V (all on)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 189.0,
+      "url": "https://www.snowys.com.au/6-bar-orangewhite-led-camping-light-kit-with-diffusers",
+      "was": 239.0
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "Hard Korr 4 Bar Tri-Colour Camp Light Kit",
+    "why": "Same tri-colour bars and 5-year warranty in a smaller kit that suits a van or small camp.",
+    "downside": "Only $30 less than the 6 bar at current Snowys prices.",
+    "warranty": 5,
+    "kg": 3,
+    "draw": "2.4A at 12V (all on)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 159.9,
+      "url": "https://www.snowys.com.au/4-bar-orangewhite-led-camping-light-kit-with-diffusers",
+      "was": 199.0
+     }
+    ]
+   }
+  ],
+  "fans": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Rovin 12V Oscillating Clamp Fan 6\"",
+    "why": "Clamps on anywhere and plugs into a 12V socket, for about $33.",
+    "downside": "No official power figure (staff estimate under 7W), 1-year warranty.",
+    "warranty": 1,
+    "kg": 0.6,
+    "draw": "about 7W or less (staff estimate, not a spec)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 32.95,
+      "url": "https://www.snowys.com.au/12v-portable-oscillating-fan-with-clamp-6",
+      "was": 36.95
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Kings 2in1 Rechargeable LED Light/Fan",
+    "why": "Cordless with a built-in battery and light, charged by USB-C, so no wiring at all.",
+    "downside": "Runs about 6 hours on full, and no warranty period stated.",
+    "draw": "USB-C rechargeable; up to 25h on low, 6h on high",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 49.95,
+      "url": "https://au.adventurekings.com/lithium-rechargeable-led-light-fan.html"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Rovin Dual 100mm 12V Clamp Fans",
+    "why": "Two fan heads on one clamp, so you can point air at two people in bed.",
+    "downside": "1-year warranty and limited stock.",
+    "warranty": 1,
+    "kg": 0.6,
+    "draw": "about 7W (0.5A), staff figure",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 49.9,
+      "url": "https://www.snowys.com.au/12v-portable-oscillating-dual-4-fans-with-clamp-mount",
+      "was": 56.95
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Caframo Sirocco II 12/24V Fan",
+    "why": "The quiet, very low-power fan many caravanners fit; it folds flat and swivels in any direction.",
+    "downside": "Needs screwing to a wall or ceiling and wiring to 12V, ideally by an auto electrician.",
+    "draw": "0.12A low, 0.22A medium, 0.35A high",
+    "stores": [
+     {
+      "store": "Campervan Builders",
+      "price": 189.0,
+      "url": "https://campervanbuilders.com.au/products/sirocco-ii-12-24v-marine-rv-360-fan-black"
+     },
+     {
+      "store": "Caravansplus",
+      "price": 195.0,
+      "url": "https://www.caravansplus.com.au/caframo-sirocco-ii-fan-black-12v-24v-p-14748.html",
+      "was": 229.0
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "MaxxAir MaxxFan Deluxe (power lift, remote, 355mm)",
+    "why": "A roof vent fan that pulls hot air out or brings cool air in, with a thermostat, remote and a rain dome so it can run in the rain.",
+    "downside": "Needs a 355mm square hole in the roof, sealing and wiring, so it's a professional install. Only 1-year warranty on Australian stock.",
+    "warranty": 1,
+    "kg": 5.4,
+    "draw": "0.16A on low, 2.5A on high",
+    "stores": [
+     {
+      "store": "Caravansplus",
+      "price": 530.0,
+      "url": "https://www.caravansplus.com.au/maxxfan-deluxe-with-rain-dome-thermostat-power-lift-remote-355x355mm-p-15885.html",
+      "was": 747.6
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "Fiamma Turbo-Vent fan kit (for Vent 28 F)",
+    "why": "If your van already has a Fiamma Vent 28 F hatch, this adds a 12V fan for far less than a MaxxFan.",
+    "downside": "Fan kit only, it needs the Fiamma Vent 28 F hatch, no rain dome, 1-year warranty.",
+    "warranty": 1,
+    "draw": "25W, 1.9A max at 12V",
+    "stores": [
+     {
+      "store": "Caravansplus",
+      "price": 180.0,
+      "url": "https://www.caravansplus.com.au/12v-turbo-vent-fan-garnish-kit-suits-fiamma-vent-28-f-roof-vents-p-18734.html",
+      "was": 201.0
+     }
+    ]
+   }
   ]
  }
 }

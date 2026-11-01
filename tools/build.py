@@ -234,7 +234,7 @@ def product_line(p, main=True):
             + f'<span class="tn">{html.escape(p["why"])}</span>'
             + (f'<span class="tn down">Catch: {html.escape(p["downside"])}</span>' if p.get("downside") else "")
             + where_to_buy(p)
-            + f'<label class="got"><input type="checkbox" data-key="{html.escape(p["name"])}"> In my cart</label>'
+            + f'<button type="button" class="add-list" data-item="{html.escape(json.dumps({"n": p["name"], "p": p.get("price"), "s": p.get("store"), "u": p.get("url"), "a": bool(p.get("approx"))}))}">+ Add to my list</button>'
             + '</div>')
 
 
@@ -252,15 +252,51 @@ def tier_cards(cat):
     return out + '</div>'
 
 
-def kit_table(k):
-    """Rows are parts, columns are Budget / Mid-range / Premium. On phones a tab picks one column."""
-    tabs = ''.join(f'<button type="button" data-t="{i}"{" aria-pressed=\"true\"" if i == 1 else ""}>{t}</button>' for i, t in enumerate(TIER_NAMES))
-    head = '<tr><th class="ph">Part</th>' + ''.join(f'<th class="c{i}">{t}</th>' for i, t in enumerate(TIER_NAMES)) + '</tr>'
+def part_tag(part):
+    return part[5] if len(part) > 5 else ""
+
+
+def in_total(part):
+    return bool(part[2]) and (len(part) < 5 or part[4])
+
+
+def combo_totals(k):
+    """Totals per tier for every combination of the kit's choices, keyed 'build=parts|solar=fixed'."""
+    import itertools
+    chs = k.get("choices") or []
+    out = {}
+    for combo in itertools.product(*[[o[0] for o in c[2]] for c in chs]) if chs else [()]:
+        sel = {c[0]: v for c, v in zip(chs, combo)}
+        key = "|".join(f"{g}={v}" for g, v in sel.items())
+        tots, names = [], []
+        for t in TIER_NAMES:
+            tot = 0
+            for p in k["parts"]:
+                tag = part_tag(p)
+                if not in_total(p) or not PRODUCTS["cats"].get(p[2]):
+                    continue
+                if tag and sel.get(tag.split(":")[0]) != tag.split(":")[1]:
+                    continue
+                m = pick_for(p[2], t)
+                tot += (m[0].get("price") or 0) if m else 0
+            tots.append(round(tot, -1))
+        for p in k["parts"]:
+            tag = part_tag(p)
+            if in_total(p) and PRODUCTS["cats"].get(p[2]) and (not tag or sel.get(tag.split(":")[0]) == tag.split(":")[1]) and p[0] not in names:
+                names.append(p[0])
+        out[key] = {"t": tots, "n": " + ".join(names)}
+    return out
+
+
+def table_rows(parts, show_totals=True):
     core, extra = "", ""
-    for part in k["parts"]:
+    for part in parts:
         name, size, key, note = part[:4]
-        opt = len(part) > 4 and not part[4]
-        row = f'<tr><th scope="row" class="ph"><b>{name}</b><span class="kp-size">{size}</span><span class="pn">{note}</span></th>'
+        if key and not PRODUCTS["cats"].get(key):
+            continue
+        tag = part_tag(part)
+        attrs = f' data-g="{tag.split(":")[0]}" data-v="{tag.split(":")[1]}"' if tag else ""
+        row = f'<tr{attrs}><th scope="row" class="ph"><b>{name}</b><span class="kp-size">{size}</span><span class="pn">{note}</span></th>'
         if not key:
             row += '<td class="none" colspan="3"></td></tr>'
         else:
@@ -271,19 +307,36 @@ def kit_table(k):
                     cell += f'<details class="more"><summary>Other good options ({len(others)})</summary>' + ''.join(product_line(o, False) for o in others) + '</details>'
                 row += f'<td class="c{i}"><span class="mlabel">{t}</span>{cell}</td>'
             row += '</tr>'
-        if opt:
+        if show_totals and not in_total(part) and key:
             extra += row
         else:
             core += row
+    return core, extra
+
+
+def kit_table(k):
+    """Rows are parts, columns are Budget / Mid-range / Premium. On phones a tab picks one column."""
+    tabs = ''.join(f'<button type="button" data-t="{i}"{" aria-pressed=\"true\"" if i == 1 else ""}>{t}</button>' for i, t in enumerate(TIER_NAMES))
+    head = '<tr><th class="ph">Part</th>' + ''.join(f'<th class="c{i}">{t}</th>' for i, t in enumerate(TIER_NAMES)) + '</tr>'
+    core, extra = table_rows(k["parts"])
     if extra:
         extra = '<tr class="sub"><th colspan="4">Extras (not in the totals)</th></tr>' + extra
-    tot = ""
-    for i, t in enumerate(TIER_NAMES):
-        total = sum((pick_for(p[2], t)[0].get("price") or 0) for p in k["parts"] if p[2] and (len(p) < 5 or p[4]) and pick_for(p[2], t))
-        tot += f'<td class="c{i}"><span class="mlabel">{t} total</span><span class="tot">{money(round(total, -1))}</span></td>'
-    return (f'<div class="kit-table" data-tier="1"><div class="tier-tabs" role="group" aria-label="Price level">{tabs}</div>'
-            f'<table><thead>{head}</thead><tbody>{core}<tr class="totrow"><th scope="row" class="ph"><b>Kit total</b><span class="pn">Parts only: {" + ".join(p[0] for p in k["parts"] if p[2] and (len(p) < 5 or p[4]))}</span></th>{tot}</tr>{extra}</tbody></table></div>')
+    totals = combo_totals(k)
+    default = "|".join(f"{c[0]}={c[3]}" for c in (k.get("choices") or []))
+    d = totals[default]
+    tot = ''.join(f'<td class="c{i}"><span class="mlabel">{t} total</span><span class="tot">{money(d["t"][i])}</span></td>' for i, t in enumerate(TIER_NAMES))
+    return (f'<div class="kit-table" data-tier="1" data-totals="{html.escape(json.dumps(totals))}"><div class="tier-tabs" role="group" aria-label="Price level">{tabs}</div>'
+            f'<table><thead>{head}</thead><tbody>{core}<tr class="totrow"><th scope="row" class="ph"><b>Kit total</b><span class="pn">Parts only: <span class="tot-names">{d["n"]}</span></span></th>{tot}</tr>{extra}</tbody></table></div>')
 
+
+def gear_table(k):
+    if not k.get("gear") or not any(PRODUCTS["cats"].get(g[2]) for g in k["gear"]):
+        return ""
+    tabs = ''.join(f'<button type="button" data-t="{i}"{" aria-pressed=\"true\"" if i == 1 else ""}>{t}</button>' for i, t in enumerate(TIER_NAMES))
+    head = '<tr><th class="ph">Gear</th>' + ''.join(f'<th class="c{i}">{t}</th>' for i, t in enumerate(TIER_NAMES)) + '</tr>'
+    core, _ = table_rows([g + (True, "") for g in k["gear"]], show_totals=False)
+    return ('<h2>Complete your setup</h2><p class="small">Gear that suits this kit. Not counted in the totals above.</p>'
+            f'<div class="kit-table" data-tier="1"><div class="tier-tabs" role="group" aria-label="Price level">{tabs}</div><table><thead>{head}</thead><tbody>{core}</tbody></table></div>')
 
 def kit_totals(k):
     cats = [p[2] for p in k["parts"] if p[2] and (len(p) < 5 or p[4])]
@@ -302,13 +355,20 @@ KITS = [
      "who": "Two or three nights away, a medium fridge, lights and phones. You drive somewhere most days.",
      "runs": ["Medium 35 to 50L fridge", "4 LED lights, about 4 hours a night", "2 phones charging", "A 12V fan overnight", "Water pump"],
      "daily": "about 50Ah a day",
-     "parts": [("Battery", "100 to 120Ah lithium", "battery_100", "Holds about two days of your use with no charging. About 10 to 13kg.", True),
-               ("DC-DC charger", "25A, with solar input", "dcdc_25", "Driving 2 to 3 hours puts back more than you use in a day.", True),
-               ("Solar", "160 to 240W portable blanket", "blanket_200", "Handy for days you stay put. Point it at the sun and park the van in the shade. If your DC-DC charger has a solar input, plug the blanket straight into that without a separate regulator.", False),
-               ("Or: a fixed roof panel", "200W fixed panel", "roof_200", "Prefer set and forget? A roof panel charges whenever the van sits in the sun, and while you drive.", False),
-               ("Or: an all-in-one power box", "Replaces the battery and charger", "powerbox_100", "The easy option. Battery, DC-DC charger and solar input in one box you can move between cars.", False),
+     "parts": [("Battery", "100 to 120Ah lithium", "battery_100", "Holds about two days of your use with no charging. About 10 to 13kg.", True, "build:parts"),
+               ("DC-DC charger", "25A, with solar input", "dcdc_25", "Driving 2 to 3 hours puts back more than you use in a day.", True, "build:parts"),
+               ("Battery box", "For a 100Ah battery", "box_100", "Holds the battery firmly and gives you plugs to run things from.", True, "build:parts"),
+               ("All-in-one power box", "Battery, charger and plugs in one", "powerbox_100", "The easy option. Battery, DC-DC charger and solar input in one box you can move between cars.", True, "build:box"),
+               ("Wiring kit", "Engine battery to the back", "install_kit", "The heavy cable, fuses and plugs that let your engine charge the house battery. Your auto electrician fits it.", True, ""),
+               ("Fuses and isolator", "Protection and an off switch", "fuse_isolator", "Fuses stop a fault turning into a fire, and an isolator turns everything off.", True, "build:parts"),
+               ("Solar", "160 to 240W portable blanket", "blanket_200", "Optional if you drive most days, handy when you stay put. Park in the shade and lay it in the sun.", True, "solar:blanket"),
+               ("Solar", "200W fixed roof panel", "roof_200", "Set and forget: it charges whenever the van sits in the sun, and while you drive.", True, "solar:fixed"),
                ("Inverter", "Not needed", None, "Everything here runs on 12V or USB.")],
-     "total_note": ", battery and DC-DC charger only (the blanket and power box are extras)",
+     "choices": [("build", "How do you want it built?", [("parts", "Separate parts"), ("box", "All-in-one box")], "parts"),
+                 ("solar", "What kind of solar?", [("blanket", "Portable blanket"), ("fixed", "Fixed roof panel")], "blanket")],
+     "gear": [("Fridge", "35 to 50L", "fridge_medium", "The kit is sized for a medium fridge like these."),
+              ("Lights", "12V LED", "lights", "LEDs barely use anything."),
+              ("Fan", "12V", "fans", "Cheap to run, even all night.")],
      "easy": "This size is perfect for an <b>all-in-one power box</b>: battery, DC-DC charger and solar input in one box you can move between cars. The box itself just straps in. The heavy lead that charges it from your engine battery should be run and fused by an auto electrician.",
      "fourwd": "Works well in a 4WD too. Use the solar blanket rather than roof panels, and if the battery goes under the bonnet, pick one rated for the heat. See <a href=\"{pre}guides/4wd-dual-battery-basics.html\">4WD dual battery basics</a>.",
      "install": "With a power box, the main job is the charging lead, so expect the lower end of that range.",
@@ -317,13 +377,19 @@ KITS = [
      "who": "A week or more away, a bigger fridge and a laptop. Some days driving, some days parked up.",
      "runs": ["Large 55 to 75L fridge", "4 LED lights", "2 phones charging", "A laptop on a 12V or USB-C charger, about 3 hours a day", "A 12V fan overnight", "Water pump"],
      "daily": "about 65 to 75Ah a day",
-     "parts": [("Battery", "200Ah lithium", "battery_200", "Two days of buffer for grey days. About 20 to 25kg.", True),
-               ("DC-DC charger", "40A, with solar input", "dcdc_40", "Refills fast on driving days, and doubles as your solar regulator.", True),
-               ("Solar", "200 to 300W fixed roof panels", "roof_200", "About 150W keeps up in Queensland and a Victorian winter needs 250 to 300W, so we've picked a 200W panel. Add a 100W panel if you head south.", True),
-               ("Battery monitor", "Shunt type", "monitor", "Your fuel gauge, so you know exactly how many days you've got left.", True),
-               ("Or: a portable blanket", "160 to 240W blanket", "blanket_200", "Rather not drill the roof? Park in the shade and lay a blanket in the sun. It packs away when you leave.", False),
-               ("Inverter", "300 to 800W", "inverter_600", "Only if you'd rather use a normal laptop charger or charge camera batteries.", False)],
-     "total_note": ", with one 200W panel and no inverter",
+     "parts": [("Battery", "200Ah lithium", "battery_200", "Two days of buffer for grey days. About 20 to 25kg.", True, ""),
+               ("DC-DC charger", "40A, with solar input", "dcdc_40", "Refills fast on driving days, and doubles as your solar regulator.", True, ""),
+               ("Battery box or mount", "For a 200Ah battery", "box_200", "Holds the battery firmly in place.", True, ""),
+               ("Wiring kit", "Engine battery to the back", "install_kit", "The heavy cable, fuses and plugs between your engine battery and the house battery. Your auto electrician fits it.", True, ""),
+               ("Fuses and isolator", "Protection and an off switch", "fuse_isolator", "Fuses on every circuit, and one switch to turn it all off.", True, ""),
+               ("Solar", "200 to 300W fixed roof panels", "roof_200", "About 150W keeps up in Queensland and a Victorian winter needs 250 to 300W, so we've picked a 200W panel. Add a 100W panel if you head south.", True, "solar:fixed"),
+               ("Solar", "160 to 240W portable blanket", "blanket_200", "Rather not drill the roof? Park in the shade and lay a blanket in the sun. It packs away when you leave.", True, "solar:blanket"),
+               ("Battery monitor", "Shunt type", "monitor", "Your fuel gauge, so you know exactly how many days you've got left.", True, ""),
+               ("Inverter", "300 to 800W", "inverter_600", "Only if you'd rather use a normal laptop charger or charge camera batteries.", False, "")],
+     "choices": [("solar", "What kind of solar?", [("fixed", "Fixed roof panels"), ("blanket", "Portable blanket")], "fixed")],
+     "gear": [("Fridge", "55 to 75L", "fridge_large", "The kit is sized for a large fridge like these."),
+              ("Lights", "12V LED", "lights", "LEDs barely use anything."),
+              ("Fan", "12V", "fans", "Cheap to run, even all night.")],
      "easy": "Separate parts suit this kit best, fitted by an auto electrician. Fixed roof panels are set-and-forget, and the 200Ah battery gives room to add a small inverter later.",
      "fourwd": "In a 4WD, roof space usually fits one 200W panel at most. Pair it with a folding blanket for parked days, and a canopy is a good home for the battery. See <a href=\"{pre}guides/4wd-dual-battery-basics.html\">4WD dual battery basics</a>.",
      "install": "A battery, DC-DC charger, roof panel and monitor is a typical mid-sized job.",
@@ -332,12 +398,19 @@ KITS = [
      "who": "Full-time or close to it. Fridge-freezer, working from the van, a diesel heater, Starlink and a morning coffee.",
      "runs": ["Big 80 to 100L fridge-freezer", "6 LED lights", "2 phones, a laptop about 5 hours a day", "Starlink Mini about 6 hours a day", "Diesel heater electrics", "12V fan and water pump", "A 1,300W coffee machine, once a day"],
      "daily": "about 120Ah a day",
-     "parts": [("Battery", "400 to 460Ah lithium", "battery_400", "About three days of buffer, 40 to 50kg. One big battery or two linked together. A serious system, priced like one.", True),
-               ("DC-DC charger", "50A, with solar input", "dcdc_50", "Big battery, big charger, so driving days count.", True),
-               ("Solar", "About 600W fixed roof panels", "roof_600", "Keeps up most of the year up north. Fills most van roofs.", True),
-               ("Inverter", "2,000W pure sine", "inverter_2000", "Handles the coffee machine's start-up surge. Needs thick cables and a proper fit.", True),
-               ("Battery monitor", "Shunt type", "monitor", "Essential at this size.", True),
-               ("Add: a portable blanket", "160 to 240W blanket", "blanket_200", "Tops up the roof panels on grey days, or when you park in the shade.", False)],
+     "parts": [("Battery", "400 to 460Ah lithium", "battery_400", "About three days of buffer, 40 to 50kg. One big battery or two linked together. A serious system, priced like one.", True, ""),
+               ("DC-DC charger", "50A, with solar input", "dcdc_50", "Big battery, big charger, so driving days count.", True, ""),
+               ("Battery mount", "Heavy-duty", "box_200", "At this weight the battery must be bolted down properly. Your auto electrician will advise.", True, ""),
+               ("Wiring kit", "Engine battery to the back", "install_kit", "Heavy cable, fuses and plugs. At this size your auto electrician will size the cable for the job.", True, ""),
+               ("Fuses and isolator", "Protection and an off switch", "fuse_isolator", "Essential with a big battery and inverter.", True, ""),
+               ("Solar", "About 600W fixed roof panels", "roof_600", "Keeps up most of the year up north. Fills most van roofs.", True, ""),
+               ("Inverter", "2,000W pure sine", "inverter_2000", "Handles the coffee machine's start-up surge. Needs thick cables and a proper fit.", True, ""),
+               ("Battery monitor", "Shunt type", "monitor", "Essential at this size.", True, ""),
+               ("Add: a portable blanket", "160 to 240W blanket", "blanket_200", "Tops up the roof panels on grey days, or when you park in the shade.", False, "")],
+     "choices": [],
+     "gear": [("Fridge-freezer", "80 to 100L", "fridge_ff", "The kit is sized for a big fridge-freezer like these."),
+              ("Lights", "12V LED", "lights", "LEDs barely use anything."),
+              ("Fan", "12V", "fans", "A roof fan makes full-time living far more comfortable.")],
      "easy": "This is a full install job: separate parts, fitted and fused by an auto electrician. Ask them about a lithium-ready battery charger too, for when you plug in at a campsite.",
      "fourwd": "Full-time power in a 4WD is a squeeze. The battery alone weighs 40 to 50kg, which eats into your payload, and 600W of panels won't fit on the roof. Check your vehicle's GVM, and plan on blankets and regular driving.",
      "install": "With a 2,000W inverter, 600W of solar and a big battery bank, expect the top end of that range, or more.",
@@ -368,36 +441,56 @@ KIT_JS = """<script>
 </script>"""
 
 
+VEH = [("van", "Campervan"), ("caravan", "Caravan or camper trailer"), ("4wd", "4WD")]
+CARAVAN_TIP = ("<b>Caravans and camper trailers:</b> fit the DC-DC charger in the van, close to the battery, fed by a heavy cable from the car through an Anderson plug. "
+               "You'll get about a third less charge from driving than in a campervan because of the long cable, so lean on solar, and you'll usually have more roof space for it. "
+               "A 240V battery charger for powered sites is worth adding (fitted by a licensed electrician). See <a href=\"{pre}guides/caravan-power-setup.html\">Caravan power</a>.")
+VAN_TIP = "<b>Campervans:</b> these kits are sized for you. The battery usually lives inside, so it stays cool, and the wiring run from the engine is short."
+
+
+def chips(group, label, opts, default):
+    btns = ''.join(f'<button type="button" data-g="{group}" data-v="{v}" aria-pressed="{"true" if v == default else "false"}">{t}</button>' for v, t in opts)
+    return f'<div class="kc"><span class="flabel">{label}</span><div class="seg" role="group" aria-label="{label}">{btns}</div></div>'
+
+
 def build_kits():
     os.makedirs(os.path.join(ROOT, "kits"), exist_ok=True)
+
     def from_price(k):
-        return money(round(sum((pick_for(p[2], "Budget")[0].get("price") or 0) for p in k["parts"] if p[2] and (len(p) < 5 or p[4]) and pick_for(p[2], "Budget")), -1))
-    cards = ''.join(f'<a class="card" href="{{pre}}kits/{k["slug"]}.html">[[d:{k["doodle"]}:110]]<h3>{k["name"]}</h3><p class="kit-facts"><b>{k["parts"][0][1]}</b> · parts from {from_price(k)}</p><p>{k["who"]}</p><span class="go">See the full kit →</span></a>' for k in KITS)
+        t = combo_totals(k)["|".join(f"{c[0]}={c[3]}" for c in (k.get("choices") or []))]["t"][0]
+        return money(t)
+    cards = ''.join(f'<a class="card kit-card" href="{{pre}}kits/{k["slug"]}.html">[[d:{k["doodle"]}:110]]<h3>{k["name"]}</h3><p class="kit-facts"><b>{k["parts"][0][1]}</b> · parts from {from_price(k)}</p><p>{k["who"]}</p><span class="go">See the full kit →</span></a>' for k in KITS)
     hub = ('<main class="page"><div class="crumbs"><a href="{pre}index.html">Home</a> › Kits</div>'
            '<div class="sec-head"><h1 style="font-size:3rem;margin:4px 0 8px">Ready-made kits</h1>[[d:fridge:100]]</div>'
-           '<p class="hint" style="margin-bottom:26px">Three common setups, sized with the Power Planner. Pick the one that sounds most like you, see everything in it, then fine-tune it in the Power Planner.</p>'
+           '<p class="hint" style="margin-bottom:18px">Three common setups, sized with the Power Planner. Tell us what you\'re powering, then pick the kit that sounds most like you.</p>'
+           '<div class="kit-choices hub-choices">' + chips("veh", "What are you powering?", VEH, "van") + '</div>'
            f'<div class="cards">{cards}</div>'
-           '<div class="aside" style="margin-top:30px">Not quite you? The <a href="{pre}planner.html" style="color:var(--sign)">Power Planner</a> sizes a kit around exactly what you run and where you travel.</div></main>')
+           '<div class="aside" style="margin-top:30px">Not quite you? The <a href="{pre}planner.html" style="color:var(--sign)">Power Planner</a> sizes a kit around exactly what you run and where you travel.</div>'
+           '<script src="{pre}assets/kits.js" defer></script></main>')
     page("kits/index.html", "Ready-made kits", "Three ready-made power kits for Australian vans, caravans and 4WDs: Weekender, Long trips and Living in it.", hub, "kits/index.html")
     for k in KITS:
-        body = (f'<main class="article kitpage"><div class="crumbs"><a href="{{pre}}index.html">Home</a> › <a href="{{pre}}kits/index.html">Kits</a> › {k["name"]}</div>'
+        choice_ui = chips("veh", "What are you powering?", VEH, "van") + ''.join(chips(c[0], c[1], c[2], c[3]) for c in (k.get("choices") or []))
+        tips = (f'<div class="veh-tip" data-for="van">{VAN_TIP}</div>'
+                f'<div class="veh-tip" data-for="caravan" hidden>{CARAVAN_TIP}</div>'
+                f'<div class="veh-tip" data-for="4wd" hidden><b>4WDs:</b> {k["fourwd"]}</div>')
+        body = (f'<main class="article kitpage" data-preset="{k["preset"]}"><div class="crumbs"><a href="{{pre}}index.html">Home</a> › <a href="{{pre}}kits/index.html">Kits</a> › {k["name"]}</div>'
                 f'[[d:{k["doodle"]}:150]]'.replace('<svg class="doodle"', '<svg class="doodle guide-doodle"') +
-                f'<h1>The {k["name"]} kit</h1><div class="meta"><span>Uses {k["daily"]}</span><span>Sized for a campervan</span><a href="{{pre}}disclosure.html">How we make money</a></div>'
+                f'<h1>The {k["name"]} kit</h1><div class="meta"><span>Uses {k["daily"]}</span><a href="{{pre}}disclosure.html">How we make money</a></div>'
                 f'<p class="hint" style="font-size:1.15rem">{k["who"]}</p>'
                 '<div class="tldr"><h2>What it runs</h2><ul>' + ''.join(f'<li>{r}</li>' for r in k["runs"]) + '</ul></div>'
-                f'<h2>What\'s in the kit</h2><p class="small">Links open in a new tab, so this page stays put while you shop. Tick "In my cart" as you go and we\'ll remember it on this device.</p>{kit_table(k)}'
-                f'<div class="kit-total"><h2>What it costs all up</h2><div class="kt-row">{kit_totals(k)}</div>'
-                f'<p class="small">Parts only, using our main pick at each level{k.get("total_note", "")}. On top of that, allow about $150 to $400 for cables, fuses and mounts.</p><p class="small"><b>Installation:</b> auto electricians quote roughly $300 to $2,500 for a dual battery fit-out depending on the job (The Quote Yard 2026 price guide). {k["install"]} Get a written quote.</p><p class="small"> Prices checked {PRODUCTS["checked_label"]}; they change often.</p></div>'
-                ''
-                '<div class="kit-part"><div class="kp-head"><h3>The bits that hold it together</h3></div><ul><li>Battery box or mount, to hold it firmly in place</li><li>Correctly sized cables and lugs</li><li>Fuses or circuit breakers on every circuit</li><li>An isolator switch</li><li>Anderson plugs and a fuse block</li></ul><p class="small">Your auto electrician sizes these for your exact install.</p></div>'
+                f'<h2>Make it yours</h2><div class="kit-choices">{choice_ui}</div>{tips}'
+                f'<h2>What\'s in the kit</h2><p class="small">Tap <b>+ Add to my list</b> on anything you want. Your list builds at the bottom of the page with a link to each shop. Links open in a new tab.</p>{kit_table(k)}'
+                f'<div class="kit-total"><h2>What it costs all up</h2>'
+                f'<p class="small">The kit total above is parts only, using our main pick at each level. Prices checked {PRODUCTS["checked_label"]}; they change often.</p><p class="small"><b>Installation:</b> auto electricians quote roughly $300 to $2,500 for a dual battery fit-out depending on the job (The Quote Yard 2026 price guide). {k["install"]} Get a written quote.</p></div>'
+                + gear_table(k) +
+                '<section class="my-list" id="my-list" aria-live="polite"></section>'
                 f'<h2>Easiest way to build it</h2><p>{k["easy"]}</p>'
                 f'<h2>Travelling south in winter?</h2><p>{k["south"]}</p>'
-                f'<h2>In a 4WD?</h2><p>{k["fourwd"]}</p>'
-                f'<div class="cta-box"><p>Change anything you like: your fridge, your state, how much you drive. The Power Planner starts from this kit.</p><a class="btn-link" href="{{pre}}planner.html#{k["preset"]}">Customise this kit</a></div>'
+                f'<div class="cta-box"><p>Change anything you like: your fridge, your state, how much you drive. The Power Planner starts from this kit.</p><a class="btn-link" id="customise" href="{{pre}}planner.html#{k["preset"]}">Customise this kit</a></div>'
                 '<div class="aside" style="margin:24px 0"><b>Get a pro to wire it in.</b> Have a licensed auto electrician install or check your setup, with the right cable sizes and fuses. Sizes here are estimates for typical use.</div>'
                 '<p class="small">We pick products by how well they fit the job, not by what pays us. Some links earn us a small commission at no cost to you. <a href="{pre}disclosure.html">How we make money</a>.</p>'
-                + KIT_JS + '</main>')
-        page(f"kits/{k['slug']}.html", f"The {k['name']} kit", f"Everything in the {k['name']} power kit for an Australian campervan: battery, solar, DC-DC charger and more, with budget to premium options.", body, "kits/index.html")
+                '<script src="{pre}assets/list.js" defer></script><script src="{pre}assets/kits.js" defer></script></main>')
+        page(f"kits/{k['slug']}.html", f"The {k['name']} kit", f"Everything in the {k['name']} power kit for Australian vans, caravans and 4WDs: battery, solar, DC-DC charger, wiring and more, with budget to premium options.", body, "kits/index.html")
 
 
 def build():
