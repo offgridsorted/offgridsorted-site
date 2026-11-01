@@ -664,3 +664,8 @@ body:has(#res-pill:not([hidden])) .list-pill{bottom:72px}
 .trust-strip span{white-space:nowrap}
 .trust-strip a{color:var(--hi);margin-left:auto}
 .about-hero + h2{margin-top:10px}
+.faq{margin:30px 0}
+.faq details{border-top:1px solid var(--faint);padding:10px 0}
+.faq details:last-child{border-bottom:1px solid var(--faint)}
+.faq summary{font-family:var(--font-ui);font-weight:700;font-size:1.05rem;cursor:pointer;list-style-position:outside}
+.faq details p{margin:8px 0 2px}

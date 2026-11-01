@@ -8,7 +8,7 @@ Run from the repo root:  python3 tools/build.py
 - about/disclosure/privacy     -> from content/<name>.html
 The Power Planner (planner.html) is hand-written; this script only refreshes its header and footer.
 """
-import json, os, re, html, sys
+import json, os, re, html, sys, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from doodles import doodle, horizon, TAG_DOODLE
 
@@ -49,6 +49,50 @@ LOGO = '''<svg viewBox="0 0 420 300" width="{w}" height="{h}" role="img" aria-la
 <path d="M36 288c60-10 140-10 236 2" fill="none" stroke="#e0a12e" stroke-width="8" stroke-linecap="round" filter="url(#rLogo{id})"></path>
 </svg>'''
 
+FAQS = {
+    "van-power-basics": [
+        ("What do I need for off-grid power in a van?", "A battery to store power, solar panels and a DC-DC charger to fill it up, and an inverter only if you want normal 240V plugs. Size everything from one number: how much power you use in a day."),
+        ("What does a DC-DC charger do?", "It charges your second battery from the car while you drive. It works properly with modern smart alternators, which a simple isolator doesn't."),
+        ("Do I need an inverter in my van?", "Only if you want to run things with a normal 240V plug. Fridges, lights, fans and USB chargers run straight off 12V, which wastes less power."),
+    ],
+    "lithium-vs-agm": [
+        ("Is lithium better than AGM for a van or caravan?", "For most vans, caravans and 4WDs, yes. You can use almost all of a lithium battery but only about half of an AGM, so AGM needs to be about twice the size and ends up around three to four times heavier. Lithium costs more upfront but lasts many more years."),
+        ("What size AGM battery equals a 100Ah lithium?", "About 200Ah, because you can only use about half of an AGM's rated capacity without shortening its life."),
+        ("Can a lithium battery charge in freezing weather?", "Most lithium batteries shouldn't be charged below 0°C. If you camp somewhere frosty, pick one with a built-in heater."),
+    ],
+    "how-much-solar-australia": [
+        ("How do I work out how much solar I need?", "Work out how much power you use in a day, divide it by the peak sun hours where you'll be, then allow for real-world losses. Our Power Planner does this with Bureau of Meteorology averages for each state and season."),
+        ("How much more solar do I need in winter?", "In southern Australia, winter can need two to four times more solar than summer for the same daily use."),
+        ("What if the solar I need won't fit on my roof?", "Add a portable panel or solar blanket you can put in the sun while you park in the shade, or plan to drive or plug in more often."),
+    ],
+    "dc-dc-chargers-explained": [
+        ("How much does a DC-DC charger charge per hour of driving?", "Roughly up to its amp rating. A 25A charger puts back about 22 to 25Ah for every hour you drive. Towing a caravan with the charger in the van, plan on about a third less."),
+        ("Do I need a DC-DC charger with a smart alternator?", "Yes. Smart alternators lower their voltage to save fuel, so a simple isolator won't charge your second battery properly. A DC-DC charger fixes that."),
+        ("Can a DC-DC charger take solar too?", "Most do. Many DC-DC chargers have a solar input built in, so one box handles both driving and solar."),
+    ],
+    "caravan-power-setup": [
+        ("Can I charge my caravan battery through the trailer plug?", "Not well. The cable from the car to the caravan battery is long and usually thin, so a lot of charge is lost on the way. The trailer plug alone can't charge a caravan battery properly."),
+        ("What's the best way to charge a caravan battery while driving?", "Run a heavy cable to an Anderson plug at the tow bar, and fit a DC-DC charger in the caravan, close to the battery. Have a licensed auto electrician fit it."),
+        ("How much charge will my caravan get from driving?", "Plan on about a third less than the charger's label, because of the long cable between the car and the van."),
+    ],
+    "4wd-dual-battery-basics": [
+        ("Do I need a DC-DC charger or an isolator in my 4WD?", "Many 4WDs built since about 2015 have a smart alternator, so you need a DC-DC charger rather than a simple isolator."),
+        ("What size dual battery do I need for a weekend?", "For a fridge-and-lights weekend, around 100Ah of lithium with a 25A DC-DC charger is a common starting point."),
+        ("Can a lithium battery go under the bonnet?", "It's best kept out of engine heat. If it has to go under the bonnet, choose a battery rated for it and get your auto electrician's advice."),
+    ],
+    "will-my-fridge-last": [
+        ("How much power does a 12V camping fridge use?", "A typical 35 to 50 litre compressor fridge uses about 20 to 30Ah a day, depending mostly on how hot it is."),
+        ("How long will a 100Ah battery run a fridge?", "A 100Ah lithium battery runs a typical 35 to 50 litre fridge on its own for about three days in summer with no charging. A 100Ah AGM gets you closer to two."),
+        ("How can I make my fridge use less power?", "Pre-cool it at home, keep it full, keep it in the shade and set it to 3 to 4°C. Those four habits save more power than anything you can buy."),
+    ],
+    "portable-power-stations": [
+        ("Can I charge a portable power station from my car?", "Yes, but charging from the cigarette socket is very slow, often around 100W, so a day of driving may not fill it."),
+        ("Is a portable power station or a dual battery better?", "A power station is easiest but charges slowly from the car. A 12V power box charges several times faster while you drive and can still move between cars. A fixed dual battery costs the most but suits regular trips and bigger setups."),
+        ("What's the difference between Wh and Ah?", "Watt-hours (Wh) are amp-hours (Ah) multiplied by the voltage. At 12V, a 1,000Wh power station holds roughly 80Ah, so don't compare the two numbers directly."),
+    ],
+}
+
+
 NAV = [("kits/index.html", "Kits"), ("guides/index.html", "Guides"), ("about.html", "About")]
 
 
@@ -60,15 +104,43 @@ BASE = "https://offgridsorted.com.au/"
 BUILT = []
 
 
+def git_date(rel):
+    import subprocess
+    try:
+        d = subprocess.run(["git", "log", "-1", "--format=%cs", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+    except Exception:
+        d = ""
+    return d or datetime.date.today().isoformat()
+
+
+LD = {}  # path -> list of JSON-LD objects
+ORG_ID = BASE + "#org"
+PEOPLE = [{"@type": "Person", "@id": BASE + "about.html#kiran", "name": "Kiran", "url": BASE + "about.html", "description": "Co-founder of Off-Grid Sorted. Van life since converting a Mitsubishi Delica in Japan about 15 years ago; the more electrical-minded half."},
+          {"@type": "Person", "@id": BASE + "about.html#mitch", "name": "Mitch", "url": BASE + "about.html", "description": "Co-founder of Off-Grid Sorted. Road-trip co-pilot who handles the building side of van conversions."}]
+ORG = {"@type": "Organization", "@id": ORG_ID, "name": "Off-Grid Sorted", "url": BASE,
+       "logo": BASE + "favicon.svg", "sameAs": ["https://www.instagram.com/offgridsorted"],
+       "founder": [{"@id": p["@id"]} for p in PEOPLE], "areaServed": "AU",
+       "description": "Independent, plain-English help working out off-grid power (battery, solar, DC-DC charger, inverter) for Australian campervans, caravans and 4WDs."}
+
+
+def ld_json(path):
+    items = LD.get(path)
+    if not items:
+        return ""
+    data = {"@context": "https://schema.org", "@graph": items}
+    return '\n<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace("</", "<\\/") + '</script>'
+
+
 def seo_tags(path, full, desc):
     url = BASE + ("" if path == "index.html" else path)
     t, d = html.escape(full), html.escape(desc)
+    ogtype = "article" if path.startswith("guides/") and path != "guides/index.html" else "website"
     return (f'<!--seo--><link rel="canonical" href="{url}">\n'
-            f'<meta property="og:type" content="website">\n<meta property="og:site_name" content="Off-Grid Sorted">\n'
+            f'<meta property="og:type" content="{ogtype}">\n<meta property="og:site_name" content="Off-Grid Sorted">\n'
             f'<meta property="og:title" content="{t}">\n<meta property="og:description" content="{d}">\n'
             f'<meta property="og:url" content="{url}">\n<meta property="og:image" content="{BASE}assets/og.png">\n'
             f'<meta property="og:locale" content="en_AU">\n<meta name="twitter:card" content="summary_large_image">\n'
-            f'<meta name="theme-color" content="#f3f0e8"><!--/seo-->')
+            f'<meta name="theme-color" content="#f3f0e8">{ld_json(path)}<!--/seo-->')
 
 
 def head(title, desc, pre, path="index.html"):
@@ -498,6 +570,7 @@ def build_kits():
 
 def build():
     # Home
+    LD["index.html"] = [ORG, {"@type": "WebSite", "@id": BASE + "#site", "name": "Off-Grid Sorted", "url": BASE, "inLanguage": "en-AU", "publisher": {"@id": ORG_ID}}] + PEOPLE
     page("index.html", SITE, "Free plain-English power planner and guides for Australian vans, caravans and 4WDs. Work out the battery, solar and charger you need.", read("content/home.html"))
     # Guides hub
     hub = '<main class="page"><div class="crumbs"><a href="{pre}index.html">Home</a> › Guides</div>'
@@ -515,8 +588,24 @@ def build():
         dd = doodle(TAG_DOODLE.get(tag, "sun"), 130, cls="doodle guide-doodle")
         cta_href = {"Caravans": "planner.html#caravan", "4WDs": "planner.html#4wd"}.get(tag, "planner.html")
         body = body.replace('</ul></div>', f'</ul></div><p class="early-cta"><a href="{{pre}}{cta_href}">Want your own numbers? Open the Power Planner →</a> <span>or see the <a href="{{pre}}kits/index.html">ready-made kits</a></span></p>', 1)
+        body = body.replace('<span>By Kiran and Mitch</span>', '<span>By <a href="{pre}about.html">Kiran and Mitch</a></span>', 1)
+        faqs = FAQS.get(slug, [])
+        if faqs:
+            fq = '<section class="faq"><h2>Quick answers</h2>' + "".join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in faqs) + '</section>'
+            body = body.replace("<h2>Sources</h2>", fq + "<h2>Sources</h2>", 1) if "<h2>Sources</h2>" in body else body.replace('<div class="aside" style="margin:24px 0"><b>Get a pro', fq + '<div class="aside" style="margin:24px 0"><b>Get a pro', 1)
+        gurl = f"{BASE}guides/{slug}.html"
+        LD[f"guides/{slug}.html"] = [
+            {"@type": "Article", "@id": gurl + "#article", "headline": title, "description": blurb, "url": gurl,
+             "inLanguage": "en-AU", "author": PEOPLE, "publisher": {"@id": ORG_ID}, "image": BASE + "assets/og.png",
+             "dateModified": git_date(f"content/guides/{slug}.html"), "about": tag},
+            {"@type": "BreadcrumbList", "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE},
+                {"@type": "ListItem", "position": 2, "name": "Guides", "item": BASE + "guides/index.html"},
+                {"@type": "ListItem", "position": 3, "name": title.split(":")[0], "item": gurl}]},
+            ORG] + ([{"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]}] if faqs else [])
         wrapped = f'<main class="article"><div class="crumbs"><a href="{{pre}}index.html">Home</a> › <a href="{{pre}}guides/index.html">Guides</a> › {tag}</div>{dd}{body}{rel}</main>'
         page(f"guides/{slug}.html", title.split(":")[0], blurb, wrapped, "guides/index.html")
+    LD["about.html"] = [{"@type": "AboutPage", "url": BASE + "about.html", "name": "About Off-Grid Sorted", "about": {"@id": ORG_ID}, "mainEntity": PEOPLE}, ORG]
     # Info pages
     for name, title, desc in [("about", "About", "Who is behind Off-Grid Sorted, and why it exists."),
                               ("disclosure", "Affiliate disclosure & disclaimer", "How Off-Grid Sorted earns money, and the limits of our advice."),
@@ -530,6 +619,11 @@ def build():
     pj = json.dumps(PRODUCTS, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     p = re.sub(r'<script type="application/json" id="ogs-products">.*?</script>', lambda m: f'<script type="application/json" id="ogs-products">{pj}</script>', p, flags=re.S)
     p = re.sub(r'<footer class="site-footer">.*?</footer>\n(<script data-menu>.*?</script>\n)?', lambda m: footer("") + MENU_JS, p, flags=re.S)
+    LD["planner.html"] = [{"@type": "WebApplication", "name": "Power Planner", "url": BASE + "planner.html",
+        "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any web browser", "inLanguage": "en-AU",
+        "isAccessibleForFree": True, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "AUD"},
+        "description": "Free calculator for Australian campervans, caravans and 4WDs. Tell it what you run and where you travel, and it works out the battery, solar, DC-DC charger and inverter you need, using Bureau of Meteorology sun averages.",
+        "publisher": {"@id": ORG_ID}, "creator": PEOPLE}, ORG]
     seo = seo_tags("planner.html", "Power Planner · Off-Grid Sorted", "Free calculator for Australian vans, caravans and 4WDs: work out the battery, solar, DC-DC charger and inverter you need, with real products at three price levels.")
     if "<!--seo-->" in p:
         p = re.sub(r"<!--seo-->.*?<!--/seo-->", lambda m: seo, p, flags=re.S)
@@ -545,6 +639,13 @@ def build():
              '<p><a class="btn-link solid" href="/planner.html">Open the Power Planner</a></p>'
              '<p><a href="/index.html">Home</a> · <a href="/guides/index.html">Guides</a> · <a href="/kits/index.html">Kits</a></p></main>')
     BUILT.remove("404.html")
+    # llms.txt: a plain map of the site for AI tools
+    lines = ["# Off-Grid Sorted", "", "> " + ORG["description"] + " Run by Kiran and Mitch on the southern Gold Coast. Prices in AUD; sun figures from Bureau of Meteorology averages. All numbers are planning estimates; have a licensed auto electrician install or check any system.", "",
+             "## Tools", f"- [Power Planner]({BASE}planner.html): free calculator for battery, solar, DC-DC charger and inverter size, by state and season", "",
+             "## Ready-made kits"] + [f"- [{k['name']}]({BASE}kits/{k['slug']}.html)" for k in KITS] + ["", "## Guides"] + \
+            [f"- [{g[1]}]({BASE}guides/{g[0]}.html): {g[3]}" for g in GUIDES if g[4] == "live"] + ["", "## About", f"- [About us]({BASE}about.html)", f"- [Affiliate disclosure]({BASE}disclosure.html)", ""]
+    with open(os.path.join(ROOT, "llms.txt"), "w") as f:
+        f.write("\n".join(lines))
     # robots + sitemap
     with open(os.path.join(ROOT, "robots.txt"), "w") as f:
         f.write(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}sitemap.xml\n")
