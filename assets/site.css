@@ -601,3 +601,19 @@ body{font-size:1.09375rem}
 .founders h3{margin:0 0 6px;font-size:1.35rem}
 .founders p{margin:0 0 8px}
 .founders a{color:var(--sign);font-weight:700;font-family:var(--font-ui)}
+/* Photos */
+.photo{margin:22px 0;background:#fff;padding:10px 10px 6px;border-radius:6px;box-shadow:0 1px 0 var(--faint),0 14px 30px rgba(60,45,20,.14);transform:rotate(-.6deg)}
+.photo:nth-of-type(even){transform:rotate(.6deg)}
+.photo img{display:block;width:100%;height:auto;border-radius:3px}
+.photo figcaption{font-family:var(--font-hand);font-size:1.25rem;color:#2c2f2b;padding:6px 2px 2px;line-height:1.2}
+.photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.photo-pair .photo{margin:10px 0}
+@media (max-width:620px){ .photo-pair{grid-template-columns:1fr} }
+.photo.in-note{float:right;width:44%;margin:0 0 10px 16px;transform:rotate(1.2deg)}
+@media (max-width:620px){ .photo.in-note{float:none;width:auto;margin:6px 0 12px} }
+.our-note::after{content:"";display:block;clear:both}
+.founders{display:grid;grid-template-columns:260px 1fr;gap:22px;align-items:center}
+.founders-photo{margin:0}
+@media (max-width:700px){ .founders{grid-template-columns:1fr} }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .photo{background:#2a2e29} :root:not([data-theme="light"]) .photo figcaption{color:var(--ink)} }
+.photo.portrait{max-width:440px;margin-left:auto;margin-right:auto}
