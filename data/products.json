@@ -1234,7 +1234,8 @@
     "price": 143.1,
     "store": "Campervan Builders",
     "url": "https://campervanbuilders.com.au/products/victron-smartshunt-500a-50mv-supplier-code-shu050150050",
-    "why": "Same monitor from a van-build specialist."
+    "why": "Same monitor from a van-build specialist.",
+    "downside": ""
    },
    {
     "tier": "Premium",
@@ -1808,6 +1809,399 @@
       "price": 180.0,
       "url": "https://www.caravansplus.com.au/12v-turbo-vent-fan-garnish-kit-suits-fiamma-vent-28-f-roof-vents-p-18734.html",
       "was": 201.0
+     }
+    ]
+   }
+  ],
+  "box_100": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Powertech Battery Box with Power Accessories (HB8504)",
+    "why": "A cheap, light plastic box for a battery up to 100Ah, with two 50A Anderson plugs, a 12V socket, USB-A and USB-C, a voltmeter and a 16A circuit breaker.",
+    "downside": "Basic plastic and a webbing strap, so it needs tying down well in a moving vehicle. No warranty period listed.",
+    "kg": 2.0,
+    "stores": [
+     {
+      "store": "Jaycar",
+      "price": 59.95,
+      "url": "https://www.jaycar.com.au/p/HB8504",
+      "was": 69.95
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "KT Solar Battery Box Quad Connect (KT71201)",
+    "why": "Four 50A Anderson-style ports instead of two, plus 12V sockets and USB, for about $50 more. Handy if you plug in solar, a fridge and a charger at once.",
+    "downside": "No warranty or weight listed, and internal size isn't published, so measure your battery first.",
+    "stores": [
+     {
+      "store": "Bunnings",
+      "price": 109,
+      "url": "https://www.bunnings.com.au/kt-solar-battery-box-quad-connect-kt71201_p0510990"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Mean Mother Portable 12V Battery Box + Bluetooth Monitor (MMPB01)",
+    "why": "Comes with an app battery monitor, so you can see charge on your phone, plus two 50A Anderson plugs on 60A fuses.",
+    "downside": "1-year warranty, and it doesn't list which battery sizes fit beyond internal size 338 x 220 x 206mm.",
+    "warranty": 1,
+    "stores": [
+     {
+      "store": "Auto One",
+      "price": 149,
+      "url": "https://autoone.com.au/products/mmpb01-meanmother-powered-battery-box-bundle"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "iTechworld GoFurther Premium Battery Box (with BM500 monitor)",
+    "why": "A tougher box that takes batteries up to 360 x 174 x 234mm (most 100 to 120Ah lithiums), with a 175A Anderson for an inverter, four 50A Andersons, USB-C and a battery monitor with shunt.",
+    "downside": "No built-in charger, and a reviewer says the inner bracket only suits a few battery sizes. Warranty period isn't shown on the page.",
+    "stores": [
+     {
+      "store": "iTechworld",
+      "price": 299,
+      "url": "https://www.itechworld.com.au/products/gofurther-premium-battery-box",
+      "was": 399
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Hardkorr Heavy Duty Battery Box (HKPBATTBOXB)",
+    "why": "A similar job for about $100 less: fire-rated ABS case, 200A isolator switch, four 50A Andersons and a 175A Anderson, with a 2-year replacement warranty.",
+    "downside": "Max battery 330 x 180 x 240mm, so many 120Ah lithiums are a tight fit. No monitor included.",
+    "warranty": 2,
+    "kg": 3.2,
+    "stores": [
+     {
+      "store": "Hardkorr",
+      "price": 199,
+      "url": "https://hardkorr.com/au/product/heavy-duty-battery-box/"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "MSA 4X4 Battery Box Large (40018)",
+    "why": "A proper bolt-down 2mm powder-coated steel box for a permanent install in a drawer system or canopy, with foam padding, bolt-down saddles and a plate to mount your DC-DC charger. Lifetime guarantee.",
+    "downside": "Heavy at 11kg, has no outlets, and fitting it needs drilling (a reviewer also needed rivnuts). Internal size 330 x 244 x 194mm.",
+    "kg": 11,
+    "stores": [
+     {
+      "store": "MSA 4X4",
+      "price": 295,
+      "url": "https://msa4x4.com.au/shop/storage-drawer-systems/drawer-accessories/40018-msa-4x4-battery-box-large/"
+     }
+    ]
+   }
+  ],
+  "box_200": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "ORD Universal Battery Tray for 200Ah Lithium",
+    "why": "A universal tray (not tied to one battery brand) in 2mm zinc-coated, powder-coated steel with two load-rated cam-buckle straps. Takes batteries up to 492 x 175mm at the base.",
+    "downside": "Out of stock when checked, and no warranty listed. Too narrow for wider 200Ah batteries.",
+    "stores": [
+     {
+      "store": "Off Road Downunder",
+      "price": 159.95,
+      "url": "https://offroaddownunder.com.au/product/ord-battery-tray-universal-mounting-suits-lithium-200ah-batteries/",
+      "in_stock": false,
+      "label": "out of stock when checked"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Invicta Battery Tray to suit 200Ah Battery",
+    "why": "The matching tray for Invicta's SNL12V200BT 200Ah battery, if that's the battery you bought.",
+    "downside": "Only for Invicta batteries, and no size or material is listed.",
+    "stores": [
+     {
+      "store": "My Generator",
+      "price": 99,
+      "url": "https://mygenerator.com.au/product/invicta-tray-to-suit-200ah-battery"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Cobra Large Caravan Battery Box for 200Ah Lithium",
+    "why": "For caravans and camper trailers: a steel and aluminium box that mounts underneath and keeps a 200Ah battery out of the weather. In a van, a bolt-down tray does the job.",
+    "downside": "Internal size isn't listed (outer 600 x 260 x 240mm), so check your battery fits. Mounting details and warranty aren't stated. A knob and nut hold it shut, not a lock.",
+    "stores": [
+     {
+      "store": "Cobra Caravan Toolboxes",
+      "price": 281.82,
+      "url": "https://www.cobracaravantoolboxes.com.au/product/Large-Caravan-Battery-Box-Black-for-200AH-Lithium-Battery-600L-X-260W-x-240H"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Roadking Weld-On Battery Box 200Amp",
+    "why": "For trailers and camper chassis: a steel box that welds on, with an aluminium slide-down lid and a long internal space (715 x 190 x 250).",
+    "downside": "Must be welded on by a fabricator, and it was sold out when checked. No warranty listed.",
+    "stores": [
+     {
+      "store": "Roadking",
+      "price": 230,
+      "url": "https://roadkingstore.com.au/products/roadking-weld-on-battery-box",
+      "in_stock": false,
+      "label": "out of stock when checked"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "REDARC 200Ah REDLAB Icon Lithium Battery Tray (LBATN12200-MB)",
+    "why": "The matching galvanised tray and heavy-duty strap for the REDARC Icon 200Ah, our premium battery pick. It bolts down with four fasteners.",
+    "downside": "Only fits the REDARC Icon200. It costs less than the other tiers because it's just a tray, not a box.",
+    "warranty": 2,
+    "stores": [
+     {
+      "store": "REDARC",
+      "price": 79,
+      "url": "https://www.redarcelectronics.com/au/200ah-redlab-lithium-battery-tray"
+     }
+    ]
+   }
+  ],
+  "install_kit": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Jaycar Premium DC-DC Wiring Kit (HB8507)",
+    "why": "6 metres of 8 B&S cable, an 80A fuse and a 3-pin Anderson plug that carries the ignition wire many newer cars need, plus a 3m ignition lead. Good for a 25A charger.",
+    "downside": "Jaycar lists both 50A and 80A ratings, which don't match. No warranty period stated.",
+    "stores": [
+     {
+      "store": "Jaycar",
+      "price": 79.95,
+      "url": "https://www.jaycar.com.au/premium-dc-dc-wiring-kit/p/HB8507"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Hardkorr Dual Battery Wiring Kit with Midi Fuse (HKPBATTWIR2)",
+    "why": "6 metres of twin 8AWG (10mm2) cable with a 60A midi fuse, an Anderson plug and ring lugs, good for a 25A DC-DC charger with the battery in the back.",
+    "downside": "Rated 50A max and made for a VSR, so it needs adapting for a DC-DC charger. No ignition wire, which many smart-alternator vehicles need. 1-year warranty.",
+    "warranty": 1,
+    "stores": [
+     {
+      "store": "Hardkorr",
+      "price": 79,
+      "url": "https://hardkorr.com/products/dual-battery-wiring-kit-with-midi-fuse"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Drivetech 4x4 DC-DC Wiring Kit 5m (DT-02022W5)",
+    "why": "Thicker 6 B&S (16mm2) tinned copper cable, which resists corrosion and loses less power, with two midi fuse holders (40A and 60A fuses), two Anderson plugs and a negative block. Suits 25A to 40A chargers.",
+    "downside": "5m may be too short for a long wheelbase or a trailer. It is ordered in (3 to 7 business days). No warranty listed.",
+    "stores": [
+     {
+      "store": "Frankie's Auto Electrics",
+      "price": 215,
+      "url": "https://frankiesautoelectrics.com.au/products/drivetech-4x4-dt-02022w5-dc-dc-wiring-kit"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Home of 12V DCDC Quick Connect Wiring Loom (QC-Loom)",
+    "why": "A longer 7m run of 8 B&S cable in split conduit, with both 40A and 60A midi fuses, lugs, heatshrink and fuse taps for the ignition lead.",
+    "downside": "8 B&S is thinner than 6 B&S, so it's better for 25A than 40A over 7m. No warranty listed.",
+    "stores": [
+     {
+      "store": "Home of 12 Volt",
+      "price": 169,
+      "url": "https://www.homeof12voltonline.com.au/products/dcdc-quick-connect-wiring-loom-heavy-duty-8b-s-complete-kit-qc-loom",
+      "was": 205
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Hardkorr 40A DC-DC Charger Wiring Kit (HKPDCDCWIRM40)",
+    "why": "About $45 less: 6.5m of 6AWG cable, a 60A midi fuse, a 3-pin Anderson plug with ignition wire and a 3m wire for smart alternators. 2-year replacement warranty.",
+    "downside": "Sold out when checked.",
+    "warranty": 2,
+    "stores": [
+     {
+      "store": "Hardkorr",
+      "price": 169,
+      "url": "https://hardkorr.com/products/40a-dc-dc-charger-wiring-kit-with-60a-fuse",
+      "in_stock": false,
+      "label": "out of stock when checked"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "REDARC BCDC 50A Rear Install Wiring Kit (BCDCWK-006)",
+    "why": "REDARC's own kit for its 40A and 50A BCDC chargers with the battery at the other end of the vehicle (up to 8.5m). Pre-crimped cables, terminal block, fuses and conduit, so an auto electrician fits it quickly.",
+    "downside": "Pricey, and only matched to REDARC BCDC1240D/1250D. Battery earth cable and solar cable are sold separately.",
+    "warranty": 2,
+    "stores": [
+     {
+      "store": "REDARC",
+      "price": 444.8,
+      "url": "https://www.redarcelectronics.com/au/bcdc-50amp-rear-install-wiring-kit"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "REDARC BCDC Alpha 50A Rear Install Wiring Kit (BCDCWK-108)",
+    "why": "The matching kit for the newer BCDC Alpha 50 charger, about $100 less, with 60A midi fuses and pre-crimped cables for runs up to 6.5m.",
+    "downside": "Only for BCDC Alpha 50A chargers. Cable sizes are only listed in the manual.",
+    "warranty": 2,
+    "stores": [
+     {
+      "store": "REDARC",
+      "price": 344.85,
+      "url": "https://www.redarcelectronics.com/au/bcdc-alpha50-rear-install-wiring-kit"
+     }
+    ]
+   }
+  ],
+  "fuse_block": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Narva 6-Way ATS Blade Fuse Box (54422BL)",
+    "why": "A simple fuse box so each 12V item (fridge, lights, USB) has its own fuse. Takes up to 30A per circuit, with a clear sealed cover.",
+    "downside": "No negative bus, so you need a separate earth point. Pair it with an isolator switch and a main fuse at the battery.",
+    "warranty": 1,
+    "stores": [
+     {
+      "store": "Caravansplus",
+      "price": 10.75,
+      "url": "https://www.caravansplus.com.au/narva-6-way-ats-blade-fuse-box-p-9523.html",
+      "was": 32
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Blue Sea ST Blade Fuse Block 6 Circuit with Negative Bus (5025)",
+    "why": "A marine-grade fuse block that installers trust, rated 100A total, with a built-in negative bus so positives and earths land in one tidy place.",
+    "downside": "Only 6 circuits. Still needs a main fuse and an isolator switch.",
+    "stores": [
+     {
+      "store": "Solar 4 RVs",
+      "price": 78,
+      "url": "https://www.solar4rvs.com.au/products/blue-sea-blade-fuse-block-holder-6-circuits-with-n"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Enerdrive 12-Way Blade Fuse Block with Negative Busbar (EA-FB-07)",
+    "why": "Double the circuits of the Blue Sea for a similar price (100A total, 30A per circuit), with a negative busbar and a 5-year warranty. Good for a bigger build.",
+    "downside": "Bigger to mount, and low stock at both stores when checked.",
+    "warranty": 5,
+    "stores": [
+     {
+      "store": "Everything Caravans",
+      "price": 81.5,
+      "url": "https://www.everythingcaravans.com.au/products/enerdrive-blade-fuse-block-12-way-with-negative-busbar"
+     },
+     {
+      "store": "Caravansplus",
+      "price": 81.95,
+      "url": "https://www.caravansplus.com.au/enerdrive-12-way-ats-blade-fuse-block-with-negative-busbar-p-24927.html"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "Blue Sea SafetyHub 150 Fuse Block (7748)",
+    "why": "All the fusing in one sealed (IP66) box: four MIDI fuses up to 200A for big items like the inverter and DC-DC charger, six blade fuses for small circuits, and a negative bus.",
+    "downside": "Costs about three times a basic block, and you still need an isolator switch. Stores list different total ratings (200A vs 280A at 12V).",
+    "stores": [
+     {
+      "store": "Solar 4 RVs",
+      "price": 234,
+      "url": "https://www.solar4rvs.com.au/blue-sea-safety-hub-150-fuse-block-w-neg-bar"
+     },
+     {
+      "store": "Everything Caravans",
+      "price": 238,
+      "url": "https://www.everythingcaravans.com.au/products/safetyhub-150-fuse-block"
+     }
+    ]
+   }
+  ],
+  "isolator": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Narva 100A Rotary Battery Master Switch (61036BL)",
+    "why": "A compact on/off isolator with a removable key, so you can cut all power from the house battery when parked or working on it.",
+    "downside": "Only 100A, fine for fridges and lights but too small for a big inverter. No warranty listed.",
+    "stores": [
+     {
+      "store": "Frankie's Auto Electrics",
+      "price": 48,
+      "url": "https://frankiesautoelectrics.com.au/products/narva-61036bl"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Blue Sea m-Series Mini On-Off Battery Switch (6006)",
+    "why": "The isolator to pair with it: rated 300A continuous, so it copes with an inverter, and small enough to fit in a van or canopy.",
+    "downside": "Single circuit on/off only, with no key lock.",
+    "stores": [
+     {
+      "store": "Outback Marine",
+      "price": 52.69,
+      "url": "https://outbackmarine.com.au/switch-battery-m-on-off-w-knob",
+      "was": 72
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "Narva Heavy Duty Battery Master Switch 300A IP67 (61044BL)",
+    "why": "A sealed, heavy-duty isolator rated 300A continuous (1000A for 5 seconds), so it suits exposed spots like a ute tray or under a trailer.",
+    "downside": "Pricier than the Blue Sea switch for the same continuous rating. No warranty listed.",
+    "stores": [
+     {
+      "store": "Narva",
+      "price": 126.5,
+      "url": "https://narva.com.au/products/narva-automotive-marine-battery-master-switch-1-pack"
      }
     ]
    }
