@@ -660,3 +660,7 @@ body:has(#res-pill:not([hidden])) .list-pill{bottom:72px}
 .trust-banner span{font-size:.95rem;opacity:.88;line-height:1.45}
 @media (min-width:640px){.trust-banner ul{grid-template-columns:1fr 1fr;gap:18px 28px}}
 .about-hero .hint{font-size:1.25rem;line-height:1.55}
+.trust-strip{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;background:var(--ink);color:var(--paper);border-radius:12px;padding:10px 16px;margin:4px 0 14px;font-family:var(--font-ui);font-size:.9rem;font-weight:600}
+.trust-strip span{white-space:nowrap}
+.trust-strip a{color:var(--hi);margin-left:auto}
+.about-hero + h2{margin-top:10px}

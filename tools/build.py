@@ -482,7 +482,7 @@ def build_kits():
                 f'<p class="hint" style="font-size:1.15rem">{k["who"]}</p>'
                 '<div class="tldr"><h2>What it runs</h2><ul>' + ''.join(f'<li>{r}</li>' for r in k["runs"]) + '</ul></div>'
                 f'<h2>Make it yours</h2><div class="kit-choices">{choice_ui}</div>{tips}'
-                f'<h2>What\'s in the kit</h2><p class="small">Tap <b>+ Add to my list</b> on anything you want. Your list builds at the bottom of the page with a link to each shop. Links open in a new tab.</p>{kit_table(k)}'
+                f'<h2>What\'s in the kit</h2><p class="trust-strip"><span>✓ Picked for fit, not commission</span><span>✓ Aussie shops, AUD prices</span><span>✓ Estimates, not promises</span><span>✓ Auto electrician to wire it in</span><a href="../about.html#how-we-work">How we work</a></p><p class="small">Tap <b>+ Add to my list</b> on anything you want. Your list builds at the bottom of the page with a link to each shop. Links open in a new tab.</p>{kit_table(k)}'
                 f'<div class="kit-total"><h2>What it costs all up</h2>'
                 f'<p class="small">The kit total above is parts only, using our main pick at each level. Prices checked {PRODUCTS["checked_label"]}; they change often.</p><p class="small"><b>Installation:</b> auto electricians quote roughly $300 to $2,500 for a dual battery fit-out depending on the job (The Quote Yard 2026 price guide). {k["install"]} Get a written quote.</p></div>'
                 + gear_table(k) +
