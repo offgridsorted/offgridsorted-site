@@ -1,0 +1,86 @@
+<h1>Caravan battery not charging while driving? A step-by-step fix</h1>
+<div class="meta"><span>By Kiran and Mitch</span><span>Updated November 2026</span><span>7 minute read</span><a href="{pre}disclosure.html">How we make money</a></div>
+<div class="tldr"><h2>The short version</h2><ul>
+<li>Work from the car back to the van: <b>power at the tow bar</b>, then <b>cable size</b>, the <b>Anderson plug</b>, the <b>alternator</b>, the <b>DC-DC charger</b>, and last of all the <b>battery</b>.</li>
+<li>The most common culprits are a blown fuse or dead trigger in the car, cable that's too thin for the distance, and a smart alternator with no DC-DC charger to boost it.</li>
+<li>A battery sitting at about 13.3V on a drive may simply be <b>full</b>. Check the charger's lights or app before you start pulling things apart.</li></ul></div>
+
+<p>You've driven all day, pulled into camp, and the caravan battery is no fuller than when you left. This page is a checklist to find out why. If you want the background on how caravan charging works, read <a href="{pre}guides/caravan-power-setup.html">Caravan power: getting charge through the trailer plug</a> first.</p>
+<p>You'll need a <b>multimeter</b>, a cheap handheld meter that reads voltage. Set it to DC volts. Red probe on positive (+), black on negative (−). A helper to start the car is handy too.</p>
+
+<div class="aside" style="margin:24px 0"><b>Look and measure, don't rewire.</b> These checks are about finding the problem. Fixing wiring, fuses and chargers is a job for a licensed auto electrician. Never let a probe or tool bridge positive and negative, keep clear of the fan and belts with the engine running, and never work on the van's 240V wiring yourself.</div>
+
+<h2>First: what "working" looks like</h2>
+<p>Most caravans charge through a heavy cable to an <b>Anderson plug</b> (a chunky two-pin connector) at the tow bar, then a <b>DC-DC charger</b> inside the van. The charger boosts whatever arrives into a proper charge for your battery.</p>
+<p>When it's all working, with the engine running:</p>
+<ul><li>The Anderson plug at the tow bar is live, and close to what you read at the car's starter battery.</li>
+<li>The DC-DC charger's lights, screen or app show it <b>charging</b>, not a fault, and show some amps going in.</li>
+<li>The caravan battery's voltage or percentage climbs while you drive.</li></ul>
+<p>Don't expect the label figure. Long cables and plugs lose charge, so our <a href="{pre}planner.html">Power Planner</a> counts about 65% of a charger's rated amps for a caravan, roughly a third less than the box says. So a 25A charger putting in about 16A is in line with what the planner expects.</p>
+
+<h2>Step 1: Is there power at the tow bar?</h2>
+<p>Start the engine. Measure across the two pins of the car's Anderson plug at the tow bar. Then turn the engine off and measure again.</p>
+<ul><li><b>Nothing with the engine running?</b> The feed from the car is dead. The usual causes are a <b>blown fuse</b> near the starter battery, a faulty <b>isolator or relay</b> (the switch that connects the plug only when the engine runs), or a broken <b>ignition trigger</b>. In REDARC's caravan wiring diagram, an isolator in the car has its blue wire connected to ignition, so the plug only goes live when the key is on. If that ignition wire has come loose, the plug stays dead.</li>
+<li><b>Live with the engine off too?</b> Then the van can drain the car's starter battery when parked. Get it checked.</li>
+<li><b>Live, but well below the starter battery reading?</b> That's voltage drop. Go to step 2.</li></ul>
+<p>If the car side is fine, plug the van in and measure at the DC-DC charger's input terminals with the engine running, if you can reach them safely. A big drop between the tow bar and the charger points to the van's cable or the plug.</p>
+
+<h2>Step 2: Is the cable thick enough?</h2>
+<p>Electricity loses push (voltage) as it travels along a cable. The longer and thinner the cable, the more it loses. This is called <b>voltage drop</b>. It's like a long, skinny garden hose: plenty of pressure at the tap, a dribble at the far end.</p>
+<p>A caravan battery can be around 10 metres of cable from the car's battery, and the current has to go there and back. Here's how Victron, a battery and charger maker, sizes cable for low losses.</p>
+<div class="tbl"><table>
+<thead><tr><th>Copper area</th><th>2.5m away</th><th>5m away</th><th>7.5m away</th><th>10m away</th></tr></thead>
+<tbody>
+<tr><td>6mm²</td><td>18A</td><td>9A</td><td>6A</td><td>5A</td></tr>
+<tr><td>16mm²</td><td>48A</td><td>24A</td><td>16A</td><td>12A</td></tr>
+<tr><td>25mm²</td><td>75A</td><td>38A</td><td>25A</td><td>19A</td></tr>
+</tbody></table></div>
+<p class="small">Maximum current for each cable size, from Victron's Wiring Unlimited "recommended battery cables" table. Victron's lengths are the positive and negative cables added together. We've halved them to show how far away the battery is. Victron's table is a strict, low-loss target and doesn't allow for plugs or joins. A DC-DC charger copes with more drop than a battery wired straight in, so always follow your charger maker's cable size for your length.</p>
+<p>The point isn't the exact number. It's that a caravan run needs far thicker cable than most people expect. Cable names vary between sellers, so check the copper area (mm²) or B&amp;S size (a wire gauge where a smaller number means thicker) on the spec sheet, not just the name on the roll.</p>
+<p>Signs of thin cable: the charger keeps dropping out, or the cable or plug feels warm after a drive. Warm cable is wasted charge, and a fire risk. Get it checked.</p>
+
+<h2>Step 3: Check the Anderson plugs</h2>
+<p>Unplug the van with the engine off. Look at both halves.</p>
+<ul><li><b>Burn marks, melted plastic or green crusty corrosion</b> on the metal contacts mean a poor connection. Replace, don't clean and hope.</li>
+<li><b>Loose wires.</b> GoRV's guide says to gently pull on each cable after assembly. It shouldn't come out of the plug.</li>
+<li><b>Polarity.</b> GoRV notes the positive (+) and negative (−) symbols are moulded into the plastic. If someone wired one side of the plug the wrong way round, the car's positive meets the van's negative. Compare your multimeter reading on both halves against the markings.</li>
+<li><b>Mismatched plugs.</b> GoRV warns that cheap imitations don't always mate properly with genuine plugs, which can leave a poor connection. Both halves need to be the same colour to join.</li></ul>
+
+<h2>Step 4: Do you have a smart alternator?</h2>
+<p>Many newer tow vehicles have a <b>smart alternator</b>, which turns its voltage down to save fuel. REDARC says that voltage is often as low as 12.3V, which is too low to charge a deep cycle battery. Add a long cable and almost nothing gets through.</p>
+<p>If your car has one, you need a DC-DC charger in the van, and it needs to know the engine is running (step 5). Here's how to check: <a href="{pre}guides/smart-alternator-check.html">Does my car have a smart alternator?</a></p>
+
+<h2>Step 5: Check the DC-DC charger in the van</h2>
+<ul><li><b>Is it switching on?</b> With a smart alternator, many chargers need an <b>ignition signal</b> to know the engine is on. REDARC says its BCDC chargers must receive starter battery voltage when the engine is running and be grounded or disconnected when it's off. In REDARC's caravan diagram, the charger's red and blue wires are joined to the Anderson plug's positive, so the charger wakes up whenever the plug is live. If that join is missing, the charger may sit idle.</li>
+<li><b>Any fault lights?</b> Look up the light pattern or error code in the manual. It will often tell you exactly what's wrong, such as input voltage too low.</li>
+<li><b>Is the battery type right?</b> Chargers have a setting for lithium, AGM and other types. If it's set wrong, a lithium battery may never fill properly. Check the switch, dial or app against your battery.</li>
+<li><b>Only one DC-DC charger.</b> Harvok, a caravan maker, warns that a DC-DC charger in the car can interfere with one in the caravan. You generally want one, in the van, close to the battery.</li></ul>
+<p>More on how these work in <a href="{pre}guides/dc-dc-chargers-explained.html">DC-DC chargers explained</a>.</p>
+
+<h2>Step 6: Check the battery itself</h2>
+<ul><li><b>Is it already full?</b> REDARC says when its BCDC sees the battery is full, it drops to a lower "float" voltage of 13.3V. So a reading around 13.3V on a long drive can mean "done", not "broken".</li>
+<li><b>Is it old or tired?</b> A worn-out battery may fill quickly then drop flat overnight. A battery shop or auto electrician can load test it.</li>
+<li><b>Does the battery's own system cut off charging?</b> Lithium batteries have a built-in BMS (battery management system) that can stop charging to protect the battery, for example when it's too cold. Check the battery's app or manual.</li></ul>
+
+<h2>The quick flow</h2>
+<ol><li>Engine on. Power at the tow bar? No: fuse, isolator or ignition trigger in the car.</li>
+<li>Power at the tow bar, but much lower than at the starter battery? Cable too thin or a bad join.</li>
+<li>Good at the tow bar, poor in the van? Anderson plugs and the van's cable.</li>
+<li>Low voltage everywhere after a few minutes of driving? Probably a smart alternator. You need a DC-DC charger with an ignition signal.</li>
+<li>Good voltage at the charger, but no charge? Charger settings, ignition wire or a fault code.</li>
+<li>Charger says it's working, battery still won't hold? Check the battery, or it may already be full.</li></ol>
+
+<div class="cta-box"><p>Choose "Caravan or camper trailer" in the Power Planner. It allows for the cable loss and shows what a day of driving really puts back.</p><a class="btn-link" href="{pre}planner.html">Plan my caravan power</a></div>
+
+<div class="aside" style="margin:24px 0"><b>Get a pro to wire it in.</b> 12V systems store and move a lot of energy. Have a licensed auto electrician install or check your setup, with the right cable sizes and fuses, and never work on 240V wiring yourself.</div>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://au.support.redarcelectronics.com/hc/en-au/articles/14105873814287-How-to-use-a-BCDC-to-charge-a-secondary-battery-in-any-vehicle">REDARC: How to use a BCDC to charge a secondary battery in any vehicle</a></li>
+<li><a href="https://eu.support.redarcelectronics.com/hc/en-au/articles/13865269001103-How-to-wire-a-BCDC-from-a-caravan-to-a-vehicle-with-a-smart-alternator">REDARC: How to wire a BCDC from a caravan to a vehicle with a smart alternator</a></li>
+<li><a href="https://us.support.redarcelectronics.com/hc/en-us/articles/14352122806543-Accessing-ignition-source-in-BCDC-trailer-installs">REDARC: Accessing ignition source in BCDC trailer installs</a></li>
+<li><a href="https://www.victronenergy.com/media/pg/The_Wiring_Unlimited_book/en/dc-wiring.html">Victron Energy: Wiring Unlimited, DC wiring</a></li>
+<li><a href="https://www.gorv.com.au/?p=193336">GoRV: Anderson plug connection tech guide</a></li>
+<li><a href="https://support.harvok.com.au/docs/harvok-knowledge-base/caravan-electrical-system/towing-charge-via-anderson-style-plug">Harvok: Towing charge via Anderson style plug</a></li>
+<li><a href="https://www.homeof12voltonline.com.au/blogs/news/cable-12-volt-automotive-awg-b-s">Home of 12 Volt: Understanding 12 volt automotive cable</a></li>
+</ul>
