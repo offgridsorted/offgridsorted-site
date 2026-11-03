@@ -49,6 +49,8 @@ GUIDES = [
      "A step-by-step checklist: tow bar power, cable size, Anderson plugs, alternator, DC-DC charger and battery.", "live"),
     ("solar-blanket-vs-fixed-panel", "Solar blanket vs fixed panel: which suits you?", "Solar",
      "Shade, driving, theft, weight, heat and cost per watt compared, plus who each one suits and why many get both.", "live"),
+    ("winter-solar-not-keeping-up", "Winter solar: why your panels aren't keeping up", "Solar",
+     "Short days, a low sun and long shadows, with BOM-based winter numbers for every state and what helps.", "live"),
 ]
 
 LOGO = '''<svg viewBox="0 0 420 300" width="{w}" height="{h}" role="img" aria-label="Off-Grid Sorted">
@@ -131,6 +133,11 @@ FAQS = {
         ("Is a solar blanket better than a fixed panel?", "It depends on how you camp. A blanket lets you park in the shade and put the panel in the sun, but it can't charge while driving and is easy to steal. A fixed panel charges whenever there's sun, including on the road, with no setup."),
         ("Can a solar blanket charge while driving?", "No. REDARC says its solar blankets must be disconnected and securely stored when the vehicle is moving. Only fixed panels charge on the road."),
         ("Do solar panels lose power in the heat?", "Yes. SolarQuotes says a typical panel loses about 0.4% of its output for every degree above 25\u00b0C, so a 300W panel at 45\u00b0C gives about 276W."),
+    ],
+    "winter-solar-not-keeping-up": [
+        ("Why is my solar not keeping up in winter?", "Shorter days, a low sun that hits flat roof panels at a glancing angle, and longer shadows. In southern Australia a winter day can hold only a quarter to a half of a summer day's sun, based on Bureau of Meteorology averages."),
+        ("How much does a 200W solar panel make in winter?", "As a rough estimate after real-world losses, about 47Ah a day in Queensland, 34Ah in New South Wales, 22Ah in Victoria and 19Ah in Tasmania, using capital city averages."),
+        ("How can I get more from my solar in winter?", "Point a portable panel or blanket at the sun and move it during the day, park in the open, keep panels clean, top up by driving through a DC-DC charger, and use a bit less power."),
     ],
 }
 

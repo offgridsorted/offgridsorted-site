@@ -25,6 +25,7 @@ PINS = {
     'smart-alternator-check': ("Does my car have a smart alternator?", "2 quick checks to find out"),
     'caravan-not-charging-while-driving': ("Caravan not charging while driving?", "a step-by-step fix"),
     'solar-blanket-vs-fixed-panel': ("Solar blanket or fixed panel?", "who each one suits"),
+    'winter-solar-not-keeping-up': ("Why isn't my solar keeping up in winter?", "it's probably not your panel"),
 }
 THEMES = [("#f3f0e8", "#1c1f1b", "#1d5c3a", "#f5cb3c"), ("#f5cb3c", "#1c1f1b", "#1d5c3a", "#1d5c3a"), ("#1d5c3a", "#f3f0e8", "#f5cb3c", "#f5cb3c")]
 
