@@ -35,4 +35,4 @@ Off-Grid Sorted is an independent Australian website that helps people work out 
 
 ## Workflow for scheduled guide runs
 - Write new guides on a branch and open a pull request for Kiran to review. Do not push guides straight to main unless she has said auto-publish is on.
-- Price and link checks may be committed directly once she approves that.
+- Price and link checks: approved by Kiran on 3 Nov 2026 to commit straight to main without asking. Run them twice a week (Monday and Thursday), and only push when something actually changed (a price, stock, or a dead link), so it stays within the Netlify credit budget.
