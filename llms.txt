@@ -17,8 +17,14 @@
 - [DC-DC chargers explained: charging while you drive](https://offgridsorted.com.au/guides/dc-dc-chargers-explained.html): What they do, what size you need, and why modern cars with smart alternators need one.
 - [Caravan power: getting charge through the trailer plug](https://offgridsorted.com.au/guides/caravan-power-setup.html): Why caravans lose charge over long cables, and how to fix it.
 - [4WD dual battery basics](https://offgridsorted.com.au/guides/4wd-dual-battery-basics.html): Under-bonnet or in the tray, smart alternators, and fitting solar on a 4WD.
-- [Will my fridge last the weekend?](https://offgridsorted.com.au/guides/will-my-fridge-last.html): How much power camping fridges really use, and how to make yours sip less.
+- [How long will a 100Ah battery run my fridge?](https://offgridsorted.com.au/guides/will-my-fridge-last.html): How much power camping fridges really use, and how to make yours sip less.
 - [Portable power stations vs a proper dual battery setup](https://offgridsorted.com.au/guides/portable-power-stations.html): When an all-in-one box is all you need, and when it isn't.
+- [What size battery do I need for a 12V fridge?](https://offgridsorted.com.au/guides/battery-size-for-12v-fridge.html): Size your battery for your fridge: daily use, usable capacity and days without charging, with a simple table.
+- [Why is my fridge flattening my battery?](https://offgridsorted.com.au/guides/fridge-flattening-battery.html): Fridge beeping or flattening your battery? Check charging, the battery, cut-out, cables and heat, in that order.
+- [Can I put a lithium battery under the bonnet?](https://offgridsorted.com.au/guides/lithium-under-the-bonnet.html): Why most lithium batteries don't belong in a hot engine bay, which ones do, and better places to fit one.
+- [Does my car have a smart alternator?](https://offgridsorted.com.au/guides/smart-alternator-check.html): Two quick checks to spot a smart alternator, a list of common Aussie vehicles, and what to do if you have one.
+- [Caravan battery not charging while driving? A step-by-step fix](https://offgridsorted.com.au/guides/caravan-not-charging-while-driving.html): A step-by-step checklist: tow bar power, cable size, Anderson plugs, alternator, DC-DC charger and battery.
+- [Solar blanket vs fixed panel: which suits you?](https://offgridsorted.com.au/guides/solar-blanket-vs-fixed-panel.html): Shade, driving, theft, weight, heat and cost per watt compared, plus who each one suits and why many get both.
 
 ## About
 - [About us](https://offgridsorted.com.au/about.html)

@@ -33,10 +33,22 @@ GUIDES = [
      "Why caravans lose charge over long cables, and how to fix it.", "live"),
     ("4wd-dual-battery-basics", "4WD dual battery basics", "4WDs",
      "Under-bonnet or in the tray, smart alternators, and fitting solar on a 4WD.", "live"),
-    ("will-my-fridge-last", "Will my fridge last the weekend?", "Fridges",
+    ("will-my-fridge-last", "How long will a 100Ah battery run my fridge?", "Fridges",
      "How much power camping fridges really use, and how to make yours sip less.", "live"),
     ("portable-power-stations", "Portable power stations vs a proper dual battery setup", "Batteries",
      "When an all-in-one box is all you need, and when it isn't.", "live"),
+    ("battery-size-for-12v-fridge", "What size battery do I need for a 12V fridge?", "Fridges",
+     "Size your battery for your fridge: daily use, usable capacity and days without charging, with a simple table.", "live"),
+    ("fridge-flattening-battery", "Why is my fridge flattening my battery?", "Fridges",
+     "Fridge beeping or flattening your battery? Check charging, the battery, cut-out, cables and heat, in that order.", "live"),
+    ("lithium-under-the-bonnet", "Can I put a lithium battery under the bonnet?", "Batteries",
+     "Why most lithium batteries don't belong in a hot engine bay, which ones do, and better places to fit one.", "live"),
+    ("smart-alternator-check", "Does my car have a smart alternator?", "Charging",
+     "Two quick checks to spot a smart alternator, a list of common Aussie vehicles, and what to do if you have one.", "live"),
+    ("caravan-not-charging-while-driving", "Caravan battery not charging while driving? A step-by-step fix", "Caravans",
+     "A step-by-step checklist: tow bar power, cable size, Anderson plugs, alternator, DC-DC charger and battery.", "live"),
+    ("solar-blanket-vs-fixed-panel", "Solar blanket vs fixed panel: which suits you?", "Solar",
+     "Shade, driving, theft, weight, heat and cost per watt compared, plus who each one suits and why many get both.", "live"),
 ]
 
 LOGO = '''<svg viewBox="0 0 420 300" width="{w}" height="{h}" role="img" aria-label="Off-Grid Sorted">
@@ -89,6 +101,36 @@ FAQS = {
         ("Can I charge a portable power station from my car?", "Yes, but charging from the cigarette socket is very slow, often around 100W, so a day of driving may not fill it."),
         ("Is a portable power station or a dual battery better?", "A power station is easiest but charges slowly from the car. A 12V power box charges several times faster while you drive and can still move between cars. A fixed dual battery costs the most but suits regular trips and bigger setups."),
         ("What's the difference between Wh and Ah?", "Watt-hours (Wh) are amp-hours (Ah) multiplied by the voltage. At 12V, a 1,000Wh power station holds roughly 80Ah, so don't compare the two numbers directly."),
+    ],
+    "battery-size-for-12v-fridge": [
+        ("What size battery do I need for a 35 to 50L fridge?", "A medium fridge uses about 28Ah a day in summer. A 100Ah lithium battery runs it for about three days with no charging, and a 100Ah AGM for closer to two. These are estimates."),
+        ("How much of an AGM or lithium battery can I use?", "About 50% of an AGM, because running it lower shortens its life. About 80 to 100% of a lithium battery depending on the brand, and our planner counts 90%."),
+        ("Can I run my fridge off my car's starter battery?", "Not for long. A starter battery is built for a short burst to start the engine and can be damaged by being run down too often, and a flat one means the car won't start. Use a second, deep cycle battery."),
+    ],
+    "fridge-flattening-battery": [
+        ("Why does my 12V fridge beep and switch off?", "Usually its low-voltage cut-out has kicked in because the voltage reaching it is too low. That can be a flat battery, a cut-out setting that's too high, or voltage lost on thin or long cables and plugs."),
+        ("What battery protection setting should I use?", "Dometic recommends High or Medium when running from a starter battery, and Low for a second battery. Low suits lithium, but on an AGM it can let the battery get close to flat, so Medium or a battery monitor is safer."),
+        ("Why does my battery go flat after a few days of camping?", "Most often the battery isn't getting enough charge back each day. A roof panel that looks big enough on paper can fall a little short every day, especially when you stay put or park in shade. A portable solar blanket you can aim at the sun helps."),
+    ],
+    "lithium-under-the-bonnet": [
+        ("Can a lithium battery go in the engine bay?", "Usually not. Engine bays often sit around 50 to 60\u00b0C and go above 70\u00b0C on hot days, while many lithium batteries are rated to about 45 to 60\u00b0C. Only fit one there if the maker says in writing it's designed for the engine bay."),
+        ("Will mounting lithium under the bonnet void the warranty?", "It can. REDARC notes battery makers won't warrant batteries mounted in high heat, and even batteries built for engine bays may carry a shorter under-bonnet warranty."),
+        ("Where should I put a lithium battery instead?", "The canopy, tray, cabin or rear of a wagon or van, out of direct sun with good airflow. Mount the DC-DC charger close to the battery, ideally within about 1 metre, as REDARC recommends."),
+    ],
+    "smart-alternator-check": [
+        ("How can I tell if my car has a smart alternator?", "Look for a battery sensor on the starter battery's terminals, usually the negative. REDARC says that sensor is the sign of a smart alternator. You can also check the voltage with a multimeter after a drive: readings that sag towards 12.5V or lower suggest a smart one."),
+        ("Does the Ford Ranger have a smart alternator?", "Yes, CarsGuide lists the Ford Ranger as having a smart alternator. REDARC says a Ranger with Smart Charge doesn't need the system disabled, just a compatible DC-DC charger."),
+        ("Can I use an isolator with a smart alternator?", "Not well. REDARC says a smart alternator's voltage is often as low as 12.3V, which is too low to charge a deep cycle battery, and recommends a DC-DC charger instead of its simple isolator."),
+    ],
+    "caravan-not-charging-while-driving": [
+        ("Why is my caravan battery not charging from the car?", "The most common causes are a blown fuse or dead ignition trigger in the car, cable that's too thin for the distance, or a smart alternator with no DC-DC charger in the van. Work from the car back to the van to find it."),
+        ("Why does my caravan battery only show 13.3V while driving?", "It may simply be full. REDARC says its BCDC chargers drop to a float voltage of 13.3V once the battery is full, so check the charger's lights or app first."),
+        ("How much should my caravan charge while driving?", "Less than the charger's label. Our Power Planner counts about 65% of the charger's rated amps for a caravan, so a 25A charger putting in about 16A is in line with what we'd expect."),
+    ],
+    "solar-blanket-vs-fixed-panel": [
+        ("Is a solar blanket better than a fixed panel?", "It depends on how you camp. A blanket lets you park in the shade and put the panel in the sun, but it can't charge while driving and is easy to steal. A fixed panel charges whenever there's sun, including on the road, with no setup."),
+        ("Can a solar blanket charge while driving?", "No. REDARC says its solar blankets must be disconnected and securely stored when the vehicle is moving. Only fixed panels charge on the road."),
+        ("Do solar panels lose power in the heat?", "Yes. SolarQuotes says a typical panel loses about 0.4% of its output for every degree above 25\u00b0C, so a 300W panel at 45\u00b0C gives about 276W."),
     ],
 }
 
