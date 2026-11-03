@@ -18,7 +18,7 @@ Off-Grid Sorted is an independent Australian website that helps people work out 
 ## Brand
 - Logo: the smiling sunny battery with "off-grid SORTED" (Permanent Marker for the word SORTED only).
 - Colours: paper #f3f0e8, ink #1c1f1b, sunshine #f5cb3c, marigold #e0a12e, road-sign green #1d5c3a.
-- Type: Barlow Condensed (headings), Source Serif 4 (body), Barlow (UI), Caveat/Kalam (small handwritten notes).
+- Type: Bitter (headings), Source Serif 4 (body), Barlow (UI), Caveat (small handwritten notes). The logo uses Kalam for "off-grid" and Permanent Marker for "SORTED".
 
 ## Site structure
 - Pages are built by `python3 tools/build.py` from `content/`. Edit content, run the build, commit the generated HTML too (Netlify has no build step).
@@ -28,6 +28,11 @@ Off-Grid Sorted is an independent Australian website that helps people work out 
 - about.html, disclosure.html, privacy.html (from content/).
 - assets/site.css: shared styles.
 
+## Saving Netlify credits
+- Netlify's free plan gives 300 credits a month and every push to main is a production deploy costing 15 credits (about 20 deploys a month).
+- So: commit work locally or on a branch, and push to main in one batch at the end of a session, not after every change.
+- For Kiran to preview before it goes live, push a branch and open a pull request: deploy previews are free.
+
 ## Workflow for scheduled guide runs
 - Write new guides on a branch and open a pull request for Kiran to review. Do not push guides straight to main unless she has said auto-publish is on.
-- Price and link checks may be committed directly once she approves that.
+- Price and link checks: approved by Kiran on 3 Nov 2026 to commit straight to main without asking. Run them twice a week (Monday and Thursday), and only push when something actually changed (a price, stock, or a dead link), so it stays within the Netlify credit budget.

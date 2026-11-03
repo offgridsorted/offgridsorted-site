@@ -30,7 +30,7 @@
     "store": "Outbax",
     "url": "https://outbax.com.au/products/voltx-12v-100ah-lithium-ion-battery-lifepo4-deep-cycle-recycle-camping-rv-solar",
     "why": "Similar money to the Kings, bought online, with a longer warranty.",
-    "downside": "Outbax runs discount codes most weeks, so check for one before you pay full price.",
+    "downside": "Online only, and the warranty wording on the listing is unclear, so check it before you buy.",
     "kg": 10.8
    },
    {
@@ -117,7 +117,7 @@
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/kings-lithium-batteries/200ah-lithium-battery.html",
     "why": "Easy to buy in store, and people who've opened one up say it's decent inside for the money.",
-    "downside": "At full price it costs the same as our mid-range pick, which does more. Only buy it on sale (it has been around $400).",
+    "downside": "Kings prices swing a lot (it has been around $400 on sale), so watch for a deal before you buy.",
     "warranty": 3,
     "kg": 23,
     "stores": [
@@ -129,19 +129,8 @@
     ]
    },
    {
-    "tier": "Budget",
-    "role": "other",
-    "name": "VoltX 200Ah Slim Lithium",
-    "price": 999,
-    "store": "Outbax",
-    "url": "https://outbax.com.au/products/voltx-12v-200ah-lithium-lifepo4-battery-slim",
-    "why": "A slim shape (11cm wide) that fits behind seats or under a bed.",
-    "downside": "Look for an Outbax discount code first.",
-    "kg": 21
-   },
-   {
     "tier": "Mid-range",
-    "role": "main",
+    "role": "other",
     "name": "Renogy Reserve Mini 200Ah",
     "price": 849.99,
     "store": "Renogy Australia",
@@ -163,13 +152,13 @@
    },
    {
     "tier": "Mid-range",
-    "role": "other",
+    "role": "main",
     "name": "iTechworld iTECH200SS Super Slim",
     "price": 1149,
     "store": "iTechworld",
     "url": "https://itechworld.com.au/products/12v-200ah-super-slim-lithium-battery-with-bluetooth-itech200ss",
-    "why": "Only 12.6cm wide, for tight spots like a van wall.",
-    "downside": "Heavier and dearer than the Renogy, and no heater.",
+    "why": "Phone app, a strong 200A output and a 5-year Aussie warranty, in a slim 12.6cm shape that fits a van wall or under a seat. In stock.",
+    "downside": "No heater, so it won't charge in freezing weather. The Renogy below has one.",
     "warranty": 5,
     "kg": 25.5
    },
@@ -662,16 +651,6 @@
       "store": "Zero Grid",
       "price": 369.99,
       "url": "https://www.zerogrid.com.au/products/dcc50s-12v-50a-dual-input-dc-to-dc-battery-charger-with-mppt"
-     },
-     {
-      "store": "Renogy Australia",
-      "price": null,
-      "url": "https://au.renogy.com/products/12v-30-50a-dc-dc-on-board-battery-charger-with-mppt"
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/renogy-dcc50s-12v-50a-dual-input-dc-to-dc-battery-charger-with-mppt/SPO10045300.html"
      }
     ]
    },
@@ -798,16 +777,6 @@
       "price": 369.0,
       "url": "https://hardkorr.com/products/200w-solar-blanket-with-perc-cell-technology",
       "was": 469.0
-     },
-     {
-      "store": "BCF",
-      "price": null,
-      "url": "https://www.bcf.com.au/p/hardkorr-200w-portable-solar-blanket-with-15a-smart-solar-regulator/660050.html"
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/hardkorr-hardkorr-200w-portable-solar-blanket-with-15a-smart-solar-regulator/660050.html"
      }
     ]
    },
@@ -879,11 +848,6 @@
       "price": 260.0,
       "url": "https://mygenerator.com.au/product/renogy-200w-12v-monocrystalline-fixed-solar-panel",
       "was": 300.0
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/renogy-200-watt-12-volt-monocrystalline-solar-panel/SPO10064741.html"
      }
     ]
    },
@@ -920,18 +884,6 @@
       "url": "https://www.redarcelectronics.com/au/200w-monocrystalline-solar-panel-black"
      }
     ]
-   },
-   {
-    "tier": "Premium",
-    "role": "other",
-    "name": "Hard Korr 200W Narrow Panel",
-    "price": 229,
-    "store": "Hard Korr",
-    "url": "https://hardkorr.com/products/200w-fixed-solar-panel-narrow",
-    "why": "10-year warranty and a narrow, van-friendly shape for mid-range money.",
-    "downside": "Sold out when we checked.",
-    "warranty": 10,
-    "kg": 10.2
    },
    {
     "tier": "Premium",
@@ -981,11 +933,6 @@
       "price": 780.0,
       "url": "https://mygenerator.com.au/product/renogy-200w-12v-monocrystalline-fixed-solar-panel",
       "was": 900.0
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/renogy-200-watt-12-volt-monocrystalline-solar-panel/SPO10064741.html"
      }
     ]
    },
@@ -1081,11 +1028,6 @@
       "price": 358,
       "url": "https://www.mygenerator.com.au/product/victron-phoenix-inverter-12-800",
       "was": 430
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/victron-phoenix-inverter-12-800-230v-ve.direct-au-nz/SPO10064791.html"
      }
     ]
    },
@@ -1167,16 +1109,6 @@
       "store": "Hard Korr",
       "price": 449.0,
       "url": "https://hardkorr.com/products/2000w-pure-sine-wave-inverter"
-     },
-     {
-      "store": "BCF",
-      "price": null,
-      "url": "https://www.bcf.com.au/p/hardkorr-2000w-pure-sine-wave-inverter---ls-series/731063.html"
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/hardkorr-hardkorr-2000w-pure-sine-wave-inverter---ls-series/731063.html"
      }
     ]
    },
@@ -1217,11 +1149,6 @@
       "price": 1120.0,
       "url": "https://www.caravansplus.com.au/enerdrive-epower-true-sine-wave-inverter-12v-2000w-p-21920.html",
       "was": 1306.0
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/enerdrive-2000w-12v-true-sine-wave-inverter/SPO10358617.html"
      }
     ]
    },
@@ -1307,7 +1234,8 @@
     "price": 143.1,
     "store": "Campervan Builders",
     "url": "https://campervanbuilders.com.au/products/victron-smartshunt-500a-50mv-supplier-code-shu050150050",
-    "why": "Same monitor from a van-build specialist."
+    "why": "Same monitor from a van-build specialist.",
+    "downside": ""
    },
    {
     "tier": "Premium",
@@ -1336,11 +1264,6 @@
       "store": "Bunnings",
       "price": 215.0,
       "url": "https://www.bunnings.com.au/victron-black-smart-bmv-712-battery-monitor_p0609911"
-     },
-     {
-      "store": "Supercheap Auto",
-      "price": null,
-      "url": "https://www.supercheapauto.com.au/p/victron-battery-monitor-bmv-712-black-smart-retail/SPO10064765.html?cgid=SCA01061008"
      }
     ]
    },
@@ -1354,6 +1277,933 @@
     "why": "Best in a REDARC setup, with everything in one app.",
     "downside": "Dearest option, and the screen is extra.",
     "warranty": 2
+   }
+  ],
+  "fridge_medium": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Kings 45L Stayzcool MKII",
+    "why": "A proper compressor fridge-freezer with a 5-year warranty for about $750, holds about 72 cans.",
+    "downside": "Kings doesn't publish a lot of detail, and it's heavier than the Dometic.",
+    "warranty": 5,
+    "kg": 20.8,
+    "draw": "0.65 to 1.25Ah per hour (Kings figure, fridge at 3°C, 32°C outside, 13.2V)",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 749.0,
+      "url": "https://au.adventurekings.com/45l-stayzcool-mkii-fridge-freezer.html"
+     },
+     {
+      "store": "Everyday Rewards Shop",
+      "price": 749.0,
+      "url": "https://www.everyday.com.au/shop/product/kings-45l-stayzcool-mkii-fridgefreezer-genuine-acdc-compressor-technology-fits-72-cans-15291879/15291879-1"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Brass Monkey 42L Ultra-Portable (Jaycar)",
+    "why": "On clearance for about $250 with wheels and a 3-year warranty, if you just want something cold cheaply.",
+    "downside": "Jaycar publishes no power use figure, it's 12/24V DC only, and stock is check-your-store.",
+    "warranty": 3,
+    "kg": 14.7,
+    "stores": [
+     {
+      "store": "Jaycar",
+      "price": 249.0,
+      "url": "https://jaycar.com.au/p/GH2030"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Dometic CFF45",
+    "why": "The fridge we run in our Hiace: light on power for a 45L and currently cheaper than the Kings while it's being cleared out.",
+    "downside": "Being run out, so stock is patchy and BCF/Snowys may sell out. 3-year warranty, not 5.",
+    "warranty": 3,
+    "kg": 18.6,
+    "draw": "0.88Ah per hour (Dometic figure, 5°C inside, 32°C outside, 12V); 4.5A max",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 699.0,
+      "url": "https://snowys.com.au/cff-45-fridge-and-cover",
+      "was": 949.0
+     },
+     {
+      "store": "Dometic",
+      "price": 949.0,
+      "url": "https://www.dometic.com/en-au/product/dometic-cff-45-pack-9600028653"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "Dometic CFX5 45",
+    "why": "Dometic's top portable: lower power use than the CFF, a phone app, a 5-year warranty and tougher build.",
+    "downside": "About double the price of the CFF45 for the same size.",
+    "warranty": 5,
+    "kg": 18.9,
+    "draw": "0.76Ah per hour (Dometic figure, 4°C inside, 32°C outside, 12V)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1349.0,
+      "url": "https://www.snowys.com.au/cfx5-45-portable-fridgefreezer-46l",
+      "was": 1449.0
+     },
+     {
+      "store": "Dometic",
+      "price": 1449.0,
+      "url": "https://www.dometic.com/en-au/product/dometic-cfx5-45-9620015959"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "Engel MT-V45 (40L)",
+    "why": "Engel's swing-motor compressor has a long reputation for running for decades on rough roads.",
+    "downside": "Heavy (24kg), smaller inside (40L) and Snowys gives no test conditions for its power figure.",
+    "kg": 24,
+    "draw": "0.5A to 2.6A max per hour at 12V (no test conditions given)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1339.0,
+      "url": "https://www.snowys.com.au/mt-v45f-40-litre-fridge-freezer",
+      "was": 1499.0
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "Bushman 35-52L",
+    "why": "Clever lid swap lets it grow from 35L to 52L, and it sips power (Australian-designed).",
+    "downside": "Pricey and heavy at 24.5kg, and the stated compressor warranty differs between listing and staff answer.",
+    "kg": 24.5,
+    "draw": "0.67Ah per hour (maker figure, -4°C inside, 25°C outside, 52L setup)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1475.0,
+      "url": "https://www.snowys.com.au/35-52l-portable-fridge-freezer",
+      "was": 1599.0
+     }
+    ]
+   }
+  ],
+  "fridge_large": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Kings 60L Stayzcool MKII",
+    "why": "60L with a 5-year warranty for about $850, a lot of fridge for the money.",
+    "downside": "Kings publishes no power use figure or weight on the product page.",
+    "warranty": 5,
+    "draw": "Not published by Kings",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 849.0,
+      "url": "https://au.adventurekings.com/60l-stayzcool-mkii-fridge-freezer.html"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Dometic CFF 70DZ",
+    "why": "Dual zone (fridge one side, freezer the other) from a big brand, heavily discounted to under $1,000 with a cover.",
+    "downside": "Draws a fair bit with the freezer side running, and 3-year warranty.",
+    "warranty": 3,
+    "kg": 26.4,
+    "draw": "2.9Ah per hour (Dometic figure, 4°C large side, -15°C small side, 32°C outside, 12V); 4A max",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 928.0,
+      "url": "https://www.snowys.com.au/cff-70dz-fridge-cover",
+      "was": 1299.0
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Kings 75L Stayzcool MKII Dual Zone",
+    "why": "Bigger dual zone with a 5-year warranty for about $1,000.",
+    "downside": "No published power use figure, so it's harder to size your battery.",
+    "warranty": 5,
+    "draw": "Not published by Kings",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 999.0,
+      "url": "https://au.adventurekings.com/75l-stayzcool-mkii-dual-zone-fridge-freezer.html"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "Dometic CFX5 55",
+    "why": "Low power use for its size, phone app and a 5-year warranty.",
+    "downside": "Single zone, so no separate freezer side.",
+    "warranty": 5,
+    "kg": 20.7,
+    "draw": "0.87Ah per hour average (Dometic figure, 4°C inside, 32°C outside, 12V); 9.6A max",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1549.0,
+      "url": "https://www.snowys.com.au/cfx5-55-portable-fridgefreezer-55l",
+      "was": 1649.0
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "Dometic CFX5 75DZ",
+    "why": "Dual zone version with separate fridge and freezer sides that you set from your phone.",
+    "downside": "Heavy at 27.7kg and uses close to three times the power of the single-zone 55.",
+    "warranty": 5,
+    "kg": 27.7,
+    "draw": "2.45Ah per hour average (Dometic figure, 4°C large, -15°C small, 32°C outside, 12V)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1799.0,
+      "url": "https://www.snowys.com.au/cfx5-75dz-dual-zone-fridgefreezer-75l",
+      "was": 1999.0
+     },
+     {
+      "store": "Dometic",
+      "price": 1999.0,
+      "url": "https://www.dometic.com/en-au/product/dometic-cfx5-75dz-9620015962"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "Engel MT-V60",
+    "why": "Engel's famously tough swing-motor compressor for people who want it to last decades.",
+    "downside": "Very heavy at 33kg, and no test conditions given for the power figure.",
+    "kg": 33,
+    "draw": "0.5A to 4.2A max per hour at 12V (no test conditions given)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1799.0,
+      "url": "https://www.snowys.com.au/mt-v60f-60-litre-fridge-freezer",
+      "was": 1999.0
+     }
+    ]
+   }
+  ],
+  "fridge_ff": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Kings 90L Stayzcool MKII Dual Zone",
+    "why": "90L with two zones you can set separately, and a 5-year warranty, for about $1,100.",
+    "downside": "No published power use figure or weight; expect it to be heavy.",
+    "warranty": 5,
+    "draw": "Not published by Kings",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 1099.0,
+      "url": "https://au.adventurekings.com/90l-stayzcool-mkii-dual-zone-fridge-freezer.html"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "EvaKool DU295-DZ Down Under 95L",
+    "why": "Australian brand with a Secop compressor, low published power use for a 95L dual zone and a 5-year full warranty.",
+    "downside": "Heavy at 34kg, and a big footprint for a van.",
+    "warranty": 5,
+    "kg": 34,
+    "draw": "2.2Ah per hour (maker figure, 2°C fridge, -16°C freezer, 32°C outside, over 24h)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1449.0,
+      "url": "https://www.snowys.com.au/du295-dz-down-under-series-ii-dual-zone-fridge-freezer-95l-phantom-grey",
+      "was": 1799.0
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "EvaKool DU280-DZ Down Under 80L",
+    "why": "Same build in a smaller 80L size that fits more vans and uses a bit less power.",
+    "downside": "Still 29kg.",
+    "warranty": 5,
+    "kg": 29,
+    "draw": "2Ah per hour (maker figure, 2°C fridge, -16°C freezer, 32°C outside, over 24h)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1349.0,
+      "url": "https://www.snowys.com.au/du280-dz-down-under-series-ii-dual-zone-fridge-freezer-80l-phantom-grey",
+      "was": 1699.0
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "myCOOLMAN CCP96DZ 96L",
+    "why": "Australian-owned brand, 96L dual zone with a 5-year warranty.",
+    "downside": "Higher published power use than the EvaKool and nearly 35kg.",
+    "warranty": 5,
+    "kg": 34.9,
+    "draw": "3.1Ah per hour (maker figure, 3°C fridge, -15°C freezer, 32°C outside, 12V)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1545.0,
+      "url": "https://www.snowys.com.au/ccp96dz-dual-zone-portable-fridge-freezer-96l",
+      "was": 1899.0
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "Dometic CFX5 95DZ",
+    "why": "Dometic's top dual zone: phone app control, strong build and a 5-year warranty.",
+    "downside": "About $400 to $650 more than the EvaKool, and Snowys showed it out of stock online.",
+    "warranty": 5,
+    "kg": 29.5,
+    "draw": "2.83Ah per hour average (Dometic figure, 4°C large, -15°C small, 32°C outside, 12V); 10.4A max",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 1899.0,
+      "url": "https://www.snowys.com.au/cfx5-95dz-dual-zone-fridgefreezer-94l",
+      "was": 2099.0
+     },
+     {
+      "store": "Dometic",
+      "price": 2099.0,
+      "url": "https://dometic.com/en-au/outdoor/fridgefreezers-and-coolers/portable-fridgefreezers/07-0703-070328-070328007-368998"
+     }
+    ]
+   }
+  ],
+  "lights": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Kings 4m 12V LED Camping Strip",
+    "why": "A 4-metre dimmable strip with a cigarette plug for $30, easy to hang in a van or under an awning.",
+    "downside": "No warranty period stated and no brightness figure published.",
+    "draw": "about 1.5A on full brightness",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 29.95,
+      "url": "https://au.adventurekings.com/illuminator-4m-max-led-strip-light.html"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Kings Illuminator 4 Bar Camp Light Kit",
+    "why": "Four 50cm magnetic bars with extension leads and a dimmer for $50, so you can light several spots.",
+    "downside": "White only (no bug-friendly orange), no power or warranty figure listed.",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 49.95,
+      "url": "https://au.adventurekings.com/illuminator-4-bar-camp-light-kit.html"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Hard Korr Lifestyle 4 Bar Orange/White Kit",
+    "why": "Australian brand with an orange mode that attracts fewer bugs, and a published 2,300 lumens.",
+    "downside": "Two of the bars are white only, and warranty isn't shown on the page.",
+    "draw": "2.4A at 12V (all on)",
+    "stores": [
+     {
+      "store": "Hard Korr",
+      "price": 89.0,
+      "url": "https://hardkorr.com/collections/led-camp-light-kits/products/lifestyle-4-bar-orange-white-led-camping-light-kit",
+      "was": 99.0
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Narva 285mm White/Amber LED Strip Light",
+    "why": "A fixed, sealed light you screw inside the van or under the awning, with a bug-friendly amber mode.",
+    "downside": "Needs wiring in with a separate switch, so get an auto electrician to fit it. 1-year warranty.",
+    "warranty": 1,
+    "draw": "0.41A white, 0.19A amber",
+    "stores": [
+     {
+      "store": "Caravansplus",
+      "price": 76.95,
+      "url": "https://www.caravansplus.com.au/narva-12v-led-strip-light-white-amber-285mm-p-22187.html",
+      "was": 125.0
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "Hard Korr 6 Bar Tri-Colour Camp Light Kit",
+    "why": "Every bar does cool white, warm white or orange, with 6 bars and lots of leads to light a whole camp, plus a 5-year replacement warranty.",
+    "downside": "Overkill for inside a small van, and Hard Korr's own store shows it sold out.",
+    "warranty": 5,
+    "kg": 5,
+    "draw": "3.0A at 12V (all on)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 189.0,
+      "url": "https://www.snowys.com.au/6-bar-orangewhite-led-camping-light-kit-with-diffusers",
+      "was": 239.0
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "Hard Korr 4 Bar Tri-Colour Camp Light Kit",
+    "why": "Same tri-colour bars and 5-year warranty in a smaller kit that suits a van or small camp.",
+    "downside": "Only $30 less than the 6 bar at current Snowys prices.",
+    "warranty": 5,
+    "kg": 3,
+    "draw": "2.4A at 12V (all on)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 159.9,
+      "url": "https://www.snowys.com.au/4-bar-orangewhite-led-camping-light-kit-with-diffusers",
+      "was": 199.0
+     }
+    ]
+   }
+  ],
+  "fans": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Rovin 12V Oscillating Clamp Fan 6\"",
+    "why": "Clamps on anywhere and plugs into a 12V socket, for about $33.",
+    "downside": "No official power figure (staff estimate under 7W), 1-year warranty.",
+    "warranty": 1,
+    "kg": 0.6,
+    "draw": "about 7W or less (staff estimate, not a spec)",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 32.95,
+      "url": "https://www.snowys.com.au/12v-portable-oscillating-fan-with-clamp-6",
+      "was": 36.95
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Kings 2in1 Rechargeable LED Light/Fan",
+    "why": "Cordless with a built-in battery and light, charged by USB-C, so no wiring at all.",
+    "downside": "Runs about 6 hours on full, and no warranty period stated.",
+    "draw": "USB-C rechargeable; up to 25h on low, 6h on high",
+    "stores": [
+     {
+      "store": "Adventure Kings",
+      "price": 49.95,
+      "url": "https://au.adventurekings.com/lithium-rechargeable-led-light-fan.html"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Rovin Dual 100mm 12V Clamp Fans",
+    "why": "Two fan heads on one clamp, so you can point air at two people in bed.",
+    "downside": "1-year warranty and limited stock.",
+    "warranty": 1,
+    "kg": 0.6,
+    "draw": "about 7W (0.5A), staff figure",
+    "stores": [
+     {
+      "store": "Snowys",
+      "price": 49.9,
+      "url": "https://www.snowys.com.au/12v-portable-oscillating-dual-4-fans-with-clamp-mount",
+      "was": 56.95
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Caframo Sirocco II 12/24V Fan",
+    "why": "The quiet, very low-power fan many caravanners fit; it folds flat and swivels in any direction.",
+    "downside": "Needs screwing to a wall or ceiling and wiring to 12V, ideally by an auto electrician.",
+    "draw": "0.12A low, 0.22A medium, 0.35A high",
+    "stores": [
+     {
+      "store": "Campervan Builders",
+      "price": 189.0,
+      "url": "https://campervanbuilders.com.au/products/sirocco-ii-12-24v-marine-rv-360-fan-black"
+     },
+     {
+      "store": "Caravansplus",
+      "price": 195.0,
+      "url": "https://www.caravansplus.com.au/caframo-sirocco-ii-fan-black-12v-24v-p-14748.html",
+      "was": 229.0
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "MaxxAir MaxxFan Deluxe (power lift, remote, 355mm)",
+    "why": "A roof vent fan that pulls hot air out or brings cool air in, with a thermostat, remote and a rain dome so it can run in the rain.",
+    "downside": "Needs a 355mm square hole in the roof, sealing and wiring, so it's a professional install. Only 1-year warranty on Australian stock.",
+    "warranty": 1,
+    "kg": 5.4,
+    "draw": "0.16A on low, 2.5A on high",
+    "stores": [
+     {
+      "store": "Caravansplus",
+      "price": 530.0,
+      "url": "https://www.caravansplus.com.au/maxxfan-deluxe-with-rain-dome-thermostat-power-lift-remote-355x355mm-p-15885.html",
+      "was": 747.6
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "Fiamma Turbo-Vent fan kit (for Vent 28 F)",
+    "why": "If your van already has a Fiamma Vent 28 F hatch, this adds a 12V fan for far less than a MaxxFan.",
+    "downside": "Fan kit only, it needs the Fiamma Vent 28 F hatch, no rain dome, 1-year warranty.",
+    "warranty": 1,
+    "draw": "25W, 1.9A max at 12V",
+    "stores": [
+     {
+      "store": "Caravansplus",
+      "price": 180.0,
+      "url": "https://www.caravansplus.com.au/12v-turbo-vent-fan-garnish-kit-suits-fiamma-vent-28-f-roof-vents-p-18734.html",
+      "was": 201.0
+     }
+    ]
+   }
+  ],
+  "box_100": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Powertech Battery Box with Power Accessories (HB8504)",
+    "why": "A cheap, light plastic box for a battery up to 100Ah, with two 50A Anderson plugs, a 12V socket, USB-A and USB-C, a voltmeter and a 16A circuit breaker.",
+    "downside": "Basic plastic and a webbing strap, so it needs tying down well in a moving vehicle. No warranty period listed.",
+    "kg": 2.0,
+    "stores": [
+     {
+      "store": "Jaycar",
+      "price": 59.95,
+      "url": "https://www.jaycar.com.au/p/HB8504",
+      "was": 69.95
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "KT Solar Battery Box Quad Connect (KT71201)",
+    "why": "Four 50A Anderson-style ports instead of two, plus 12V sockets and USB, for about $50 more. Handy if you plug in solar, a fridge and a charger at once.",
+    "downside": "No warranty or weight listed, and internal size isn't published, so measure your battery first.",
+    "stores": [
+     {
+      "store": "Bunnings",
+      "price": 109,
+      "url": "https://www.bunnings.com.au/kt-solar-battery-box-quad-connect-kt71201_p0510990"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Mean Mother Portable 12V Battery Box + Bluetooth Monitor (MMPB01)",
+    "why": "Comes with an app battery monitor, so you can see charge on your phone, plus two 50A Anderson plugs on 60A fuses.",
+    "downside": "1-year warranty, and it doesn't list which battery sizes fit beyond internal size 338 x 220 x 206mm.",
+    "warranty": 1,
+    "stores": [
+     {
+      "store": "Auto One",
+      "price": 149,
+      "url": "https://autoone.com.au/products/mmpb01-meanmother-powered-battery-box-bundle"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "iTechworld GoFurther Premium Battery Box (with BM500 monitor)",
+    "why": "A tougher box that takes batteries up to 360 x 174 x 234mm (most 100 to 120Ah lithiums), with a 175A Anderson for an inverter, four 50A Andersons, USB-C and a battery monitor with shunt.",
+    "downside": "No built-in charger, and a reviewer says the inner bracket only suits a few battery sizes. Warranty period isn't shown on the page.",
+    "stores": [
+     {
+      "store": "iTechworld",
+      "price": 299,
+      "url": "https://www.itechworld.com.au/products/gofurther-premium-battery-box",
+      "was": 399
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Hardkorr Heavy Duty Battery Box (HKPBATTBOXB)",
+    "why": "A similar job for about $100 less: fire-rated ABS case, 200A isolator switch, four 50A Andersons and a 175A Anderson, with a 2-year replacement warranty.",
+    "downside": "Max battery 330 x 180 x 240mm, so many 120Ah lithiums are a tight fit. No monitor included.",
+    "warranty": 2,
+    "kg": 3.2,
+    "stores": [
+     {
+      "store": "Hardkorr",
+      "price": 199,
+      "url": "https://hardkorr.com/au/product/heavy-duty-battery-box/"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "MSA 4X4 Battery Box Large (40018)",
+    "why": "A proper bolt-down 2mm powder-coated steel box for a permanent install in a drawer system or canopy, with foam padding, bolt-down saddles and a plate to mount your DC-DC charger. Lifetime guarantee.",
+    "downside": "Heavy at 11kg, has no outlets, and fitting it needs drilling (a reviewer also needed rivnuts). Internal size 330 x 244 x 194mm.",
+    "kg": 11,
+    "stores": [
+     {
+      "store": "MSA 4X4",
+      "price": 295,
+      "url": "https://msa4x4.com.au/shop/storage-drawer-systems/drawer-accessories/40018-msa-4x4-battery-box-large/"
+     }
+    ]
+   }
+  ],
+  "box_200": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "ORD Universal Battery Tray for 200Ah Lithium",
+    "why": "A universal tray (not tied to one battery brand) in 2mm zinc-coated, powder-coated steel with two load-rated cam-buckle straps. Takes batteries up to 492 x 175mm at the base.",
+    "downside": "Out of stock when checked, and no warranty listed. Too narrow for wider 200Ah batteries.",
+    "stores": [
+     {
+      "store": "Off Road Downunder",
+      "price": 159.95,
+      "url": "https://offroaddownunder.com.au/product/ord-battery-tray-universal-mounting-suits-lithium-200ah-batteries/",
+      "in_stock": false,
+      "label": "out of stock when checked"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Invicta Battery Tray to suit 200Ah Battery",
+    "why": "The matching tray for Invicta's SNL12V200BT 200Ah battery, if that's the battery you bought.",
+    "downside": "Only for Invicta batteries, and no size or material is listed.",
+    "stores": [
+     {
+      "store": "My Generator",
+      "price": 99,
+      "url": "https://mygenerator.com.au/product/invicta-tray-to-suit-200ah-battery"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Cobra Large Caravan Battery Box for 200Ah Lithium",
+    "why": "For caravans and camper trailers: a steel and aluminium box that mounts underneath and keeps a 200Ah battery out of the weather. In a van, a bolt-down tray does the job.",
+    "downside": "Internal size isn't listed (outer 600 x 260 x 240mm), so check your battery fits. Mounting details and warranty aren't stated. A knob and nut hold it shut, not a lock.",
+    "stores": [
+     {
+      "store": "Cobra Caravan Toolboxes",
+      "price": 281.82,
+      "url": "https://www.cobracaravantoolboxes.com.au/product/Large-Caravan-Battery-Box-Black-for-200AH-Lithium-Battery-600L-X-260W-x-240H"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Roadking Weld-On Battery Box 200Amp",
+    "why": "For trailers and camper chassis: a steel box that welds on, with an aluminium slide-down lid and a long internal space (715 x 190 x 250).",
+    "downside": "Must be welded on by a fabricator, and it was sold out when checked. No warranty listed.",
+    "stores": [
+     {
+      "store": "Roadking",
+      "price": 230,
+      "url": "https://roadkingstore.com.au/products/roadking-weld-on-battery-box",
+      "in_stock": false,
+      "label": "out of stock when checked"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "REDARC 200Ah REDLAB Icon Lithium Battery Tray (LBATN12200-MB)",
+    "why": "The matching galvanised tray and heavy-duty strap for the REDARC Icon 200Ah, our premium battery pick. It bolts down with four fasteners.",
+    "downside": "Only fits the REDARC Icon200. It costs less than the other tiers because it's just a tray, not a box.",
+    "warranty": 2,
+    "stores": [
+     {
+      "store": "REDARC",
+      "price": 79,
+      "url": "https://www.redarcelectronics.com/au/200ah-redlab-lithium-battery-tray"
+     }
+    ]
+   }
+  ],
+  "install_kit": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Jaycar Premium DC-DC Wiring Kit (HB8507)",
+    "why": "6 metres of 8 B&S cable, an 80A fuse and a 3-pin Anderson plug that carries the ignition wire many newer cars need, plus a 3m ignition lead. Good for a 25A charger.",
+    "downside": "Jaycar lists both 50A and 80A ratings, which don't match. No warranty period stated.",
+    "stores": [
+     {
+      "store": "Jaycar",
+      "price": 79.95,
+      "url": "https://www.jaycar.com.au/premium-dc-dc-wiring-kit/p/HB8507"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
+    "name": "Hardkorr Dual Battery Wiring Kit with Midi Fuse (HKPBATTWIR2)",
+    "why": "6 metres of twin 8AWG (10mm2) cable with a 60A midi fuse, an Anderson plug and ring lugs, good for a 25A DC-DC charger with the battery in the back.",
+    "downside": "Rated 50A max and made for a VSR, so it needs adapting for a DC-DC charger. No ignition wire, which many smart-alternator vehicles need. 1-year warranty.",
+    "warranty": 1,
+    "stores": [
+     {
+      "store": "Hardkorr",
+      "price": 79,
+      "url": "https://hardkorr.com/products/dual-battery-wiring-kit-with-midi-fuse"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Drivetech 4x4 DC-DC Wiring Kit 5m (DT-02022W5)",
+    "why": "Thicker 6 B&S (16mm2) tinned copper cable, which resists corrosion and loses less power, with two midi fuse holders (40A and 60A fuses), two Anderson plugs and a negative block. Suits 25A to 40A chargers.",
+    "downside": "5m may be too short for a long wheelbase or a trailer. It is ordered in (3 to 7 business days). No warranty listed.",
+    "stores": [
+     {
+      "store": "Frankie's Auto Electrics",
+      "price": 215,
+      "url": "https://frankiesautoelectrics.com.au/products/drivetech-4x4-dt-02022w5-dc-dc-wiring-kit"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Home of 12V DCDC Quick Connect Wiring Loom (QC-Loom)",
+    "why": "A longer 7m run of 8 B&S cable in split conduit, with both 40A and 60A midi fuses, lugs, heatshrink and fuse taps for the ignition lead.",
+    "downside": "8 B&S is thinner than 6 B&S, so it's better for 25A than 40A over 7m. No warranty listed.",
+    "stores": [
+     {
+      "store": "Home of 12 Volt",
+      "price": 169,
+      "url": "https://www.homeof12voltonline.com.au/products/dcdc-quick-connect-wiring-loom-heavy-duty-8b-s-complete-kit-qc-loom",
+      "was": 205
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Hardkorr 40A DC-DC Charger Wiring Kit (HKPDCDCWIRM40)",
+    "why": "About $45 less: 6.5m of 6AWG cable, a 60A midi fuse, a 3-pin Anderson plug with ignition wire and a 3m wire for smart alternators. 2-year replacement warranty.",
+    "downside": "Sold out when checked.",
+    "warranty": 2,
+    "stores": [
+     {
+      "store": "Hardkorr",
+      "price": 169,
+      "url": "https://hardkorr.com/products/40a-dc-dc-charger-wiring-kit-with-60a-fuse",
+      "in_stock": false,
+      "label": "out of stock when checked"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "REDARC BCDC 50A Rear Install Wiring Kit (BCDCWK-006)",
+    "why": "REDARC's own kit for its 40A and 50A BCDC chargers with the battery at the other end of the vehicle (up to 8.5m). Pre-crimped cables, terminal block, fuses and conduit, so an auto electrician fits it quickly.",
+    "downside": "Pricey, and only matched to REDARC BCDC1240D/1250D. Battery earth cable and solar cable are sold separately.",
+    "warranty": 2,
+    "stores": [
+     {
+      "store": "REDARC",
+      "price": 444.8,
+      "url": "https://www.redarcelectronics.com/au/bcdc-50amp-rear-install-wiring-kit"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "other",
+    "name": "REDARC BCDC Alpha 50A Rear Install Wiring Kit (BCDCWK-108)",
+    "why": "The matching kit for the newer BCDC Alpha 50 charger, about $100 less, with 60A midi fuses and pre-crimped cables for runs up to 6.5m.",
+    "downside": "Only for BCDC Alpha 50A chargers. Cable sizes are only listed in the manual.",
+    "warranty": 2,
+    "stores": [
+     {
+      "store": "REDARC",
+      "price": 344.85,
+      "url": "https://www.redarcelectronics.com/au/bcdc-alpha50-rear-install-wiring-kit"
+     }
+    ]
+   }
+  ],
+  "fuse_block": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Narva 6-Way ATS Blade Fuse Box (54422BL)",
+    "why": "A simple fuse box so each 12V item (fridge, lights, USB) has its own fuse. Takes up to 30A per circuit, with a clear sealed cover.",
+    "downside": "No negative bus, so you need a separate earth point. Pair it with an isolator switch and a main fuse at the battery.",
+    "warranty": 1,
+    "stores": [
+     {
+      "store": "Caravansplus",
+      "price": 10.75,
+      "url": "https://www.caravansplus.com.au/narva-6-way-ats-blade-fuse-box-p-9523.html",
+      "was": 32
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Blue Sea ST Blade Fuse Block 6 Circuit with Negative Bus (5025)",
+    "why": "A marine-grade fuse block that installers trust, rated 100A total, with a built-in negative bus so positives and earths land in one tidy place.",
+    "downside": "Only 6 circuits. Still needs a main fuse and an isolator switch.",
+    "stores": [
+     {
+      "store": "Solar 4 RVs",
+      "price": 78,
+      "url": "https://www.solar4rvs.com.au/products/blue-sea-blade-fuse-block-holder-6-circuits-with-n"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "other",
+    "name": "Enerdrive 12-Way Blade Fuse Block with Negative Busbar (EA-FB-07)",
+    "why": "Double the circuits of the Blue Sea for a similar price (100A total, 30A per circuit), with a negative busbar and a 5-year warranty. Good for a bigger build.",
+    "downside": "Bigger to mount, and low stock at both stores when checked.",
+    "warranty": 5,
+    "stores": [
+     {
+      "store": "Everything Caravans",
+      "price": 81.5,
+      "url": "https://www.everythingcaravans.com.au/products/enerdrive-blade-fuse-block-12-way-with-negative-busbar"
+     },
+     {
+      "store": "Caravansplus",
+      "price": 81.95,
+      "url": "https://www.caravansplus.com.au/enerdrive-12-way-ats-blade-fuse-block-with-negative-busbar-p-24927.html"
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "Blue Sea SafetyHub 150 Fuse Block (7748)",
+    "why": "All the fusing in one sealed (IP66) box: four MIDI fuses up to 200A for big items like the inverter and DC-DC charger, six blade fuses for small circuits, and a negative bus.",
+    "downside": "Costs about three times a basic block, and you still need an isolator switch. Stores list different total ratings (200A vs 280A at 12V).",
+    "stores": [
+     {
+      "store": "Solar 4 RVs",
+      "price": 234,
+      "url": "https://www.solar4rvs.com.au/blue-sea-safety-hub-150-fuse-block-w-neg-bar"
+     },
+     {
+      "store": "Everything Caravans",
+      "price": 238,
+      "url": "https://www.everythingcaravans.com.au/products/safetyhub-150-fuse-block"
+     }
+    ]
+   }
+  ],
+  "isolator": [
+   {
+    "tier": "Budget",
+    "role": "main",
+    "name": "Narva 100A Rotary Battery Master Switch (61036BL)",
+    "why": "A compact on/off isolator with a removable key, so you can cut all power from the house battery when parked or working on it.",
+    "downside": "Only 100A, fine for fridges and lights but too small for a big inverter. No warranty listed.",
+    "stores": [
+     {
+      "store": "Frankie's Auto Electrics",
+      "price": 48,
+      "url": "https://frankiesautoelectrics.com.au/products/narva-61036bl"
+     }
+    ]
+   },
+   {
+    "tier": "Mid-range",
+    "role": "main",
+    "name": "Blue Sea m-Series Mini On-Off Battery Switch (6006)",
+    "why": "The isolator to pair with it: rated 300A continuous, so it copes with an inverter, and small enough to fit in a van or canopy.",
+    "downside": "Single circuit on/off only, with no key lock.",
+    "stores": [
+     {
+      "store": "Outback Marine",
+      "price": 52.69,
+      "url": "https://outbackmarine.com.au/switch-battery-m-on-off-w-knob",
+      "was": 72
+     }
+    ]
+   },
+   {
+    "tier": "Premium",
+    "role": "main",
+    "name": "Narva Heavy Duty Battery Master Switch 300A IP67 (61044BL)",
+    "why": "A sealed, heavy-duty isolator rated 300A continuous (1000A for 5 seconds), so it suits exposed spots like a ute tray or under a trailer.",
+    "downside": "Pricier than the Blue Sea switch for the same continuous rating. No warranty listed.",
+    "stores": [
+     {
+      "store": "Narva",
+      "price": 126.5,
+      "url": "https://narva.com.au/products/narva-automotive-marine-battery-master-switch-1-pack"
+     }
+    ]
    }
   ]
  }

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://offgridsorted.com.au/sitemap.xml

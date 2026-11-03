@@ -47,7 +47,7 @@ def doodle(name, width=80, cls="doodle", label=None):
 
 def horizon():
     """Footer scene: hills, a road, the sun and a little van driving along."""
-    return ('<svg class="horizon" viewBox="0 0 1200 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">'
+    return ('<svg class="horizon" viewBox="0 -30 1200 150" preserveAspectRatio="xMidYMax slice" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">'
             '<path d="M0 100c120-40 180-60 260-30s150 10 230-30 170-30 260 10 160 30 250-10 140-20 200 10"/>'
             f'<circle cx="980" cy="38" r="20" fill="{Y}"/><path d="M980 6v-6M1018 38h6M948 14l-4-4M1012 14l4-4" />'
             '<path d="M0 112h1200" stroke-dasharray="14 12"/>'

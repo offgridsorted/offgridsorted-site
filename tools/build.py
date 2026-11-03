@@ -8,7 +8,7 @@ Run from the repo root:  python3 tools/build.py
 - about/disclosure/privacy     -> from content/<name>.html
 The Power Planner (planner.html) is hand-written; this script only refreshes its header and footer.
 """
-import json, os, re, html, sys
+import json, os, re, html, sys, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from doodles import doodle, horizon, TAG_DOODLE
 
@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "Off-Grid Sorted"
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-         '<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@500;700&family=Permanent+Marker&family=Kalam:wght@700&display=swap" rel="stylesheet">')
+         '<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800&family=Barlow:wght@500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Caveat:wght@500;700&family=Permanent+Marker&family=Kalam:wght@700&display=swap" rel="stylesheet">')
 
 # Guides: (slug, title, tag, blurb, status)  status "live" or "soon"
 GUIDES = [
@@ -28,15 +28,15 @@ GUIDES = [
     ("how-much-solar-australia", "How much solar do I need? By state and season", "Solar",
      "Why a Hobart winter and a Darwin winter need very different setups, with a table for every state.", "live"),
     ("dc-dc-chargers-explained", "DC-DC chargers explained: charging while you drive", "Charging",
-     "What they do, what size you need, and why modern cars with smart alternators need one.", "soon"),
+     "What they do, what size you need, and why modern cars with smart alternators need one.", "live"),
     ("caravan-power-setup", "Caravan power: getting charge through the trailer plug", "Caravans",
-     "Why caravans lose charge over long cables, and how to fix it.", "soon"),
+     "Why caravans lose charge over long cables, and how to fix it.", "live"),
     ("4wd-dual-battery-basics", "4WD dual battery basics", "4WDs",
-     "Under-bonnet or in the tray, smart alternators, and fitting solar on a 4WD.", "soon"),
+     "Under-bonnet or in the tray, smart alternators, and fitting solar on a 4WD.", "live"),
     ("will-my-fridge-last", "Will my fridge last the weekend?", "Fridges",
-     "How much power camping fridges really use, and how to make yours sip less.", "soon"),
+     "How much power camping fridges really use, and how to make yours sip less.", "live"),
     ("portable-power-stations", "Portable power stations vs a proper dual battery setup", "Batteries",
-     "When an all-in-one box is all you need, and when it isn't.", "soon"),
+     "When an all-in-one box is all you need, and when it isn't.", "live"),
 ]
 
 LOGO = '''<svg viewBox="0 0 420 300" width="{w}" height="{h}" role="img" aria-label="Off-Grid Sorted">
@@ -49,6 +49,50 @@ LOGO = '''<svg viewBox="0 0 420 300" width="{w}" height="{h}" role="img" aria-la
 <path d="M36 288c60-10 140-10 236 2" fill="none" stroke="#e0a12e" stroke-width="8" stroke-linecap="round" filter="url(#rLogo{id})"></path>
 </svg>'''
 
+FAQS = {
+    "van-power-basics": [
+        ("What do I need for off-grid power in a van?", "A battery to store power, solar panels and a DC-DC charger to fill it up, and an inverter only if you want normal 240V plugs. Size everything from one number: how much power you use in a day."),
+        ("What does a DC-DC charger do?", "It charges your second battery from the car while you drive. It works properly with modern smart alternators, which a simple isolator doesn't."),
+        ("Do I need an inverter in my van?", "Only if you want to run things with a normal 240V plug. Fridges, lights, fans and USB chargers run straight off 12V, which wastes less power."),
+    ],
+    "lithium-vs-agm": [
+        ("Is lithium better than AGM for a van or caravan?", "For most vans, caravans and 4WDs, yes. You can use almost all of a lithium battery but only about half of an AGM, so AGM needs to be about twice the size and ends up around three to four times heavier. Lithium costs more upfront but lasts many more years."),
+        ("What size AGM battery equals a 100Ah lithium?", "About 200Ah, because you can only use about half of an AGM's rated capacity without shortening its life."),
+        ("Can a lithium battery charge in freezing weather?", "Most lithium batteries shouldn't be charged below 0°C. If you camp somewhere frosty, pick one with a built-in heater."),
+    ],
+    "how-much-solar-australia": [
+        ("How do I work out how much solar I need?", "Work out how much power you use in a day, divide it by the peak sun hours where you'll be, then allow for real-world losses. Our Power Planner does this with Bureau of Meteorology averages for each state and season."),
+        ("How much more solar do I need in winter?", "In southern Australia, winter can need two to four times more solar than summer for the same daily use."),
+        ("What if the solar I need won't fit on my roof?", "Add a portable panel or solar blanket you can put in the sun while you park in the shade, or plan to drive or plug in more often."),
+    ],
+    "dc-dc-chargers-explained": [
+        ("How much does a DC-DC charger charge per hour of driving?", "Roughly up to its amp rating. A 25A charger puts back about 22 to 25Ah for every hour you drive. Towing a caravan with the charger in the van, plan on about a third less."),
+        ("Do I need a DC-DC charger with a smart alternator?", "Yes. Smart alternators lower their voltage to save fuel, so a simple isolator won't charge your second battery properly. A DC-DC charger fixes that."),
+        ("Can a DC-DC charger take solar too?", "Most do. Many DC-DC chargers have a solar input built in, so one box handles both driving and solar."),
+    ],
+    "caravan-power-setup": [
+        ("Can I charge my caravan battery through the trailer plug?", "Not well. The cable from the car to the caravan battery is long and usually thin, so a lot of charge is lost on the way. The trailer plug alone can't charge a caravan battery properly."),
+        ("What's the best way to charge a caravan battery while driving?", "Run a heavy cable to an Anderson plug at the tow bar, and fit a DC-DC charger in the caravan, close to the battery. Have a licensed auto electrician fit it."),
+        ("How much charge will my caravan get from driving?", "Plan on about a third less than the charger's label, because of the long cable between the car and the van."),
+    ],
+    "4wd-dual-battery-basics": [
+        ("Do I need a DC-DC charger or an isolator in my 4WD?", "Many 4WDs built since about 2015 have a smart alternator, so you need a DC-DC charger rather than a simple isolator."),
+        ("What size dual battery do I need for a weekend?", "For a fridge-and-lights weekend, around 100Ah of lithium with a 25A DC-DC charger is a common starting point."),
+        ("Can a lithium battery go under the bonnet?", "It's best kept out of engine heat. If it has to go under the bonnet, choose a battery rated for it and get your auto electrician's advice."),
+    ],
+    "will-my-fridge-last": [
+        ("How much power does a 12V camping fridge use?", "A typical 35 to 50 litre compressor fridge uses about 20 to 30Ah a day, depending mostly on how hot it is."),
+        ("How long will a 100Ah battery run a fridge?", "A 100Ah lithium battery runs a typical 35 to 50 litre fridge on its own for about three days in summer with no charging. A 100Ah AGM gets you closer to two."),
+        ("How can I make my fridge use less power?", "Pre-cool it at home, keep it full, keep it in the shade and set it to 3 to 4°C. Those four habits save more power than anything you can buy."),
+    ],
+    "portable-power-stations": [
+        ("Can I charge a portable power station from my car?", "Yes, but charging from the cigarette socket is very slow, often around 100W, so a day of driving may not fill it."),
+        ("Is a portable power station or a dual battery better?", "A power station is easiest but charges slowly from the car. A 12V power box charges several times faster while you drive and can still move between cars. A fixed dual battery costs the most but suits regular trips and bigger setups."),
+        ("What's the difference between Wh and Ah?", "Watt-hours (Wh) are amp-hours (Ah) multiplied by the voltage. At 12V, a 1,000Wh power station holds roughly 80Ah, so don't compare the two numbers directly."),
+    ],
+}
+
+
 NAV = [("kits/index.html", "Kits"), ("guides/index.html", "Guides"), ("about.html", "About")]
 
 
@@ -56,7 +100,50 @@ def logo(w=120, ident="H"):
     return LOGO.format(w=w, h=round(w * 300 / 420), id=ident)
 
 
-def head(title, desc, pre):
+BASE = "https://offgridsorted.com.au/"
+BUILT = []
+
+
+def git_date(rel):
+    import subprocess
+    try:
+        d = subprocess.run(["git", "log", "-1", "--format=%cs", "--", rel], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+    except Exception:
+        d = ""
+    return d or datetime.date.today().isoformat()
+
+
+LD = {}  # path -> list of JSON-LD objects
+ORG_ID = BASE + "#org"
+PEOPLE = [{"@type": "Person", "@id": BASE + "about.html#kiran", "name": "Kiran", "url": BASE + "about.html", "description": "Co-founder of Off-Grid Sorted. Van life since converting a Mitsubishi Delica in Japan about 15 years ago; the more electrical-minded half."},
+          {"@type": "Person", "@id": BASE + "about.html#mitch", "name": "Mitch", "url": BASE + "about.html", "description": "Co-founder of Off-Grid Sorted. Road-trip co-pilot who handles the building side of van conversions."}]
+ORG = {"@type": "Organization", "@id": ORG_ID, "name": "Off-Grid Sorted", "url": BASE,
+       "logo": BASE + "favicon.svg", "sameAs": ["https://www.instagram.com/offgridsorted"], "email": "hello@offgridsorted.com.au",
+       "founder": [{"@id": p["@id"]} for p in PEOPLE], "areaServed": "AU",
+       "description": "Independent, plain-English help working out off-grid power (battery, solar, DC-DC charger, inverter) for Australian campervans, caravans and 4WDs."}
+
+
+def ld_json(path):
+    items = LD.get(path)
+    if not items:
+        return ""
+    data = {"@context": "https://schema.org", "@graph": items}
+    return '\n<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False).replace("</", "<\\/") + '</script>'
+
+
+def seo_tags(path, full, desc):
+    url = BASE + ("" if path == "index.html" else path)
+    t, d = html.escape(full), html.escape(desc)
+    ogtype = "article" if path.startswith("guides/") and path != "guides/index.html" else "website"
+    return (f'<!--seo--><link rel="canonical" href="{url}">\n'
+            f'<meta property="og:type" content="{ogtype}">\n<meta property="og:site_name" content="Off-Grid Sorted">\n'
+            f'<meta property="og:title" content="{t}">\n<meta property="og:description" content="{d}">\n'
+            f'<meta property="og:url" content="{url}">\n<meta property="og:image" content="{BASE}assets/og.png">\n'
+            f'<meta property="og:locale" content="en_AU">\n<meta name="twitter:card" content="summary_large_image">\n'
+            f'<meta name="theme-color" content="#f3f0e8">{ld_json(path)}<!--/seo-->')
+
+
+def head(title, desc, pre, path="index.html"):
     full = f"{title} · {SITE}" if title != SITE else f"{SITE} · Off-grid power for Australian vans, caravans and 4WDs"
     return f'''<!DOCTYPE html>
 <html lang="en-AU">
@@ -65,6 +152,7 @@ def head(title, desc, pre):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(full)}</title>
 <meta name="description" content="{html.escape(desc)}">
+{seo_tags(path, full, desc)}
 <link rel="icon" href="{pre}favicon.svg" type="image/svg+xml">
 {FONTS}
 <link rel="stylesheet" href="{pre}assets/site.css">
@@ -77,11 +165,12 @@ def header(pre, active=""):
     links = "".join(
         f'<a href="{pre}{href}"{" aria-current=\"page\"" if active == href else ""}>{label}</a>' for href, label in NAV)
     drop = "".join(f'<a href="{pre}{href}">{label}</a>' for href, label in NAV)
-    return f'''<header class="site-header">
+    return f'''<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
   <div class="in">
     <a class="logo" href="{pre}index.html" aria-label="Off-Grid Sorted home">{logo(170)}</a>
     <nav class="nav" aria-label="Main menu">{links}<a class="cta" href="{pre}planner.html"{' aria-current="page"' if active == "planner.html" else ""}>Power Planner</a></nav>
-    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a href="{pre}planner.html"><b>Power Planner →</b></a>{drop}</div></details>
+    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a href="{pre}planner.html"><b>Power Planner →</b></a>{drop}<a href="{pre}contact.html">Contact</a></div></details>
   </div>
 </header>
 '''
@@ -89,28 +178,52 @@ def header(pre, active=""):
 
 def footer(pre):
     live = [g for g in GUIDES if g[4] == "live"]
-    glinks = "".join(f'<a href="{pre}guides/{g[0]}.html">{html.escape(g[1].split(":")[0])}</a>' for g in live)
+    short = {"van-power-basics": "Van power basics", "lithium-vs-agm": "Lithium vs AGM", "how-much-solar-australia": "How much solar?",
+             "dc-dc-chargers-explained": "DC-DC chargers", "will-my-fridge-last": "Will my fridge last?"}
+    glinks = "".join(f'<a href="{pre}guides/{g[0]}.html">{short[g[0]]}</a>' for g in live if g[0] in short)
     return f'''<footer class="site-footer">
   {horizon()}
   <div class="in">
     <div class="about">
       <div style="color:var(--ink)">{logo(130, "F")}</div>
-      <p>Plain-English help to get the power setup in your van, caravan or 4WD sorted. Independent and Australian.</p>
+      <p>Plain-English help to get the power setup in your van, caravan or 4WD sorted. Independent and Australian, made by Kiran and Mitch on the Gold Coast.</p>
       <p class="small">Some links earn us a small commission at no cost to you. <a href="{pre}disclosure.html" style="display:inline;color:var(--sign)">How we make money</a>.</p>
     </div>
-    <div><h4>Tools</h4><a href="{pre}planner.html">Power Planner</a><a href="{pre}planner.html#check">Check what I've got</a><a href="{pre}kits/index.html">Ready-made kits</a></div>
-    <div><h4>Guides</h4>{glinks}<a href="{pre}guides/index.html">All guides</a></div>
-    <div><h4>Off-Grid Sorted</h4><a href="{pre}about.html">About</a><a href="{pre}disclosure.html">Disclosure &amp; disclaimer</a><a href="{pre}privacy.html">Privacy</a><a href="https://www.instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
+    <div><p class="fh">Tools</p><a href="{pre}planner.html">Power Planner</a><a href="{pre}planner.html#check">Check what I've got</a><a href="{pre}kits/index.html">Ready-made kits</a></div>
+    <div><p class="fh">Guides</p>{glinks}<a href="{pre}guides/index.html">All guides</a></div>
+    <div><p class="fh">Off-Grid Sorted</p><a href="{pre}about.html">About</a><a href="{pre}disclosure.html">Disclosure &amp; disclaimer</a><a href="{pre}privacy.html">Privacy</a><a href="{pre}contact.html">Contact</a><a href="https://instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
   </div>
   <p class="small" style="max-width:1080px;margin:0 auto;padding:0 18px 24px">© 2026 Off-Grid Sorted. Estimates only. Always have a licensed auto electrician install or check your system.</p>
 </footer>
 '''
 
 
+MENU_JS = """<script data-menu>
+(function(){var m=document.querySelector('.menu-toggle');if(!m)return;var s=m.querySelector('summary');
+function set(){s.textContent=m.open?'Close':'Menu';}m.addEventListener('toggle',set);
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.open){m.open=false;s.focus();}});
+document.addEventListener('click',function(e){if(m.open&&!m.contains(e.target))m.open=false;});
+m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',function(){m.open=false;});});})();
+</script>
+"""
+
+
 def page(path, title, desc, body, active=""):
     pre = "../" * path.count("/")
     body = re.sub(r"\[\[d:([\w-]+):(\d+)\]\]", lambda m: doodle(m.group(1), int(m.group(2))), body)
-    out = head(title, desc, pre) + header(pre, active) + body.replace("{pre}", pre) + footer(pre) + "</body>\n</html>\n"
+    BUILT.append(path)
+    body = body.replace("<main ", '<main id="main" ', 1)
+    out = head(title, desc, pre, path) + header(pre, active) + body.replace("{pre}", pre) + footer(pre) + MENU_JS + "</body>\n</html>\n"
+    with open(os.path.join(ROOT, path), "w") as f:
+        f.write(out)
+
+
+def page_abs(path, title, desc, body):
+    """Like page() but with root-absolute links, for pages served at any URL (404)."""
+    BUILT.append(path)
+    body = re.sub(r"\[\[d:([\w-]+):(\d+)\]\]", lambda m: doodle(m.group(1), int(m.group(2))), body)
+    body = body.replace("<main ", '<main id="main" ', 1)
+    out = head(title, desc, "/", path) + header("/") + body + footer("/") + MENU_JS + "</body>\n</html>\n"
     with open(os.path.join(ROOT, path), "w") as f:
         f.write(out)
 
@@ -193,7 +306,7 @@ def product_line(p, main=True):
             + f'<span class="tn">{html.escape(p["why"])}</span>'
             + (f'<span class="tn down">Catch: {html.escape(p["downside"])}</span>' if p.get("downside") else "")
             + where_to_buy(p)
-            + f'<label class="got"><input type="checkbox" data-key="{html.escape(p["name"])}"> In my cart</label>'
+            + f'<button type="button" class="add-list" data-item="{html.escape(json.dumps({"n": p["name"], "p": p.get("price"), "s": p.get("store"), "u": p.get("url"), "a": bool(p.get("approx"))}))}">+ Add to my list</button>'
             + '</div>')
 
 
@@ -211,17 +324,53 @@ def tier_cards(cat):
     return out + '</div>'
 
 
-def kit_table(k):
-    """Rows are parts, columns are Budget / Mid-range / Premium. On phones a tab picks one column."""
-    tabs = ''.join(f'<button type="button" data-t="{i}"{" aria-pressed=\"true\"" if i == 1 else ""}>{t}</button>' for i, t in enumerate(TIER_NAMES))
-    head = '<tr><th class="ph">Part</th>' + ''.join(f'<th class="c{i}">{t}</th>' for i, t in enumerate(TIER_NAMES)) + '</tr>'
+def part_tag(part):
+    return part[5] if len(part) > 5 else ""
+
+
+def in_total(part):
+    return bool(part[2]) and (len(part) < 5 or part[4])
+
+
+def combo_totals(k):
+    """Totals per tier for every combination of the kit's choices, keyed 'build=parts|solar=fixed'."""
+    import itertools
+    chs = k.get("choices") or []
+    out = {}
+    for combo in itertools.product(*[[o[0] for o in c[2]] for c in chs]) if chs else [()]:
+        sel = {c[0]: v for c, v in zip(chs, combo)}
+        key = "|".join(f"{g}={v}" for g, v in sel.items())
+        tots, names = [], []
+        for t in TIER_NAMES:
+            tot = 0
+            for p in k["parts"]:
+                tag = part_tag(p)
+                if not in_total(p) or not PRODUCTS["cats"].get(p[2]):
+                    continue
+                if tag and sel.get(tag.split(":")[0]) != tag.split(":")[1]:
+                    continue
+                m = pick_for(p[2], t)
+                tot += (m[0].get("price") or 0) if m else 0
+            tots.append(round(tot, -1))
+        for p in k["parts"]:
+            tag = part_tag(p)
+            if in_total(p) and PRODUCTS["cats"].get(p[2]) and (not tag or sel.get(tag.split(":")[0]) == tag.split(":")[1]) and p[0] not in names:
+                names.append(p[0])
+        out[key] = {"t": tots, "n": " + ".join(names)}
+    return out
+
+
+def table_rows(parts, show_totals=True):
     core, extra = "", ""
-    for part in k["parts"]:
+    for part in parts:
         name, size, key, note = part[:4]
-        opt = len(part) > 4 and not part[4]
-        row = f'<tr><th scope="row" class="ph"><b>{name}</b><span class="kp-size">{size}</span><span class="pn">{note}</span></th>'
+        if key and not PRODUCTS["cats"].get(key):
+            continue
+        tag = part_tag(part)
+        attrs = f' data-g="{tag.split(":")[0]}" data-v="{tag.split(":")[1]}"' if tag else ""
+        row = f'<tr{attrs}><th scope="row" class="ph"><b>{name}</b><span class="kp-size">{size}</span><span class="pn">{note}</span></th>'
         if not key:
-            row += '<td class="none" colspan="3">Not needed for this kit.</td></tr>'
+            row += '<td class="none" colspan="3"></td></tr>'
         else:
             for i, t in enumerate(TIER_NAMES):
                 mains, others = pick_for(key, t), pick_for(key, t, "other")
@@ -230,19 +379,36 @@ def kit_table(k):
                     cell += f'<details class="more"><summary>Other good options ({len(others)})</summary>' + ''.join(product_line(o, False) for o in others) + '</details>'
                 row += f'<td class="c{i}"><span class="mlabel">{t}</span>{cell}</td>'
             row += '</tr>'
-        if opt:
+        if show_totals and not in_total(part) and key:
             extra += row
         else:
             core += row
+    return core, extra
+
+
+def kit_table(k):
+    """Rows are parts, columns are Budget / Mid-range / Premium. On phones a tab picks one column."""
+    tabs = ''.join(f'<button type="button" data-t="{i}"{" aria-pressed=\"true\"" if i == 1 else ""}>{t}</button>' for i, t in enumerate(TIER_NAMES))
+    head = '<tr><th class="ph">Part</th>' + ''.join(f'<th class="c{i}">{t}</th>' for i, t in enumerate(TIER_NAMES)) + '</tr>'
+    core, extra = table_rows(k["parts"])
     if extra:
         extra = '<tr class="sub"><th colspan="4">Extras (not in the totals)</th></tr>' + extra
-    tot = ""
-    for i, t in enumerate(TIER_NAMES):
-        total = sum((pick_for(p[2], t)[0].get("price") or 0) for p in k["parts"] if p[2] and (len(p) < 5 or p[4]) and pick_for(p[2], t))
-        tot += f'<td class="c{i}"><span class="mlabel">{t} total</span><span class="tot">{money(round(total, -1))}</span></td>'
-    return (f'<div class="kit-table" data-tier="1"><div class="tier-tabs" role="group" aria-label="Price level">{tabs}</div>'
-            f'<table><thead>{head}</thead><tbody>{core}<tr class="totrow"><th scope="row" class="ph"><b>Kit total</b><span class="pn">Parts only, main picks</span></th>{tot}</tr>{extra}</tbody></table></div>')
+    totals = combo_totals(k)
+    default = "|".join(f"{c[0]}={c[3]}" for c in (k.get("choices") or []))
+    d = totals[default]
+    tot = ''.join(f'<td class="c{i}"><span class="mlabel">{t} total</span><span class="tot">{money(d["t"][i])}</span></td>' for i, t in enumerate(TIER_NAMES))
+    return (f'<div class="kit-table" data-tier="1" data-totals="{html.escape(json.dumps(totals))}"><div class="tier-tabs" role="group" aria-label="Price level">{tabs}</div>'
+            f'<table><thead>{head}</thead><tbody>{core}<tr class="totrow"><th scope="row" class="ph"><b>Kit total</b><span class="pn">Parts only: <span class="tot-names">{d["n"]}</span></span></th>{tot}</tr>{extra}</tbody></table></div>')
 
+
+def gear_table(k):
+    if not k.get("gear") or not any(PRODUCTS["cats"].get(g[2]) for g in k["gear"]):
+        return ""
+    tabs = ''.join(f'<button type="button" data-t="{i}"{" aria-pressed=\"true\"" if i == 1 else ""}>{t}</button>' for i, t in enumerate(TIER_NAMES))
+    head = '<tr><th class="ph">Gear</th>' + ''.join(f'<th class="c{i}">{t}</th>' for i, t in enumerate(TIER_NAMES)) + '</tr>'
+    core, _ = table_rows([g + (True, "") for g in k["gear"]], show_totals=False)
+    return ('<h2>Complete your setup</h2><p class="small">Gear that suits this kit. Not counted in the totals above.</p>'
+            f'<div class="kit-table" data-tier="1"><div class="tier-tabs" role="group" aria-label="Price level">{tabs}</div><table><thead>{head}</thead><tbody>{core}</tbody></table></div>')
 
 def kit_totals(k):
     cats = [p[2] for p in k["parts"] if p[2] and (len(p) < 5 or p[4])]
@@ -261,36 +427,68 @@ KITS = [
      "who": "Two or three nights away, a medium fridge, lights and phones. You drive somewhere most days.",
      "runs": ["Medium 35 to 50L fridge", "4 LED lights, about 4 hours a night", "2 phones charging", "A 12V fan overnight", "Water pump"],
      "daily": "about 50Ah a day",
-     "parts": [("Battery", "100 to 120Ah lithium", "battery_100", "Holds about two days of your use with no charging. About 10 to 13kg.", True),
-               ("DC-DC charger", "25A, with solar input", "dcdc_25", "Driving 2 to 3 hours puts back more than you use in a day.", True),
-               ("Solar", "160 to 240W portable blanket", "blanket_200", "Handy for days you stay put. Point it at the sun and park the van in the shade. If your DC-DC charger has a solar input, plug the blanket straight into that without a separate regulator.", False),
-               ("Or: an all-in-one power box", "Replaces the battery and charger", "powerbox_100", "The easy option. Battery, DC-DC charger and solar input in one box you can move between cars.", False),
+     "parts": [("Battery", "100 to 120Ah lithium", "battery_100", "Holds about two days of your use with no charging. About 10 to 13kg.", True, "build:parts"),
+               ("DC-DC charger", "25A, with solar input", "dcdc_25", "Driving 2 to 3 hours puts back more than you use in a day.", True, "build:parts"),
+               ("Battery box", "For a 100Ah battery", "box_100", "Holds the battery firmly and gives you plugs to run things from.", True, "build:parts"),
+               ("All-in-one power box", "Battery, charger and plugs in one", "powerbox_100", "The easy option. Battery, DC-DC charger and solar input in one box you can move between cars.", True, "build:box"),
+               ("Wiring kit", "Engine battery to the back", "install_kit", "The heavy cable, fuses and plugs that let your engine charge the house battery. Your auto electrician fits it. The premium REDARC kit is made for their 40A and 50A chargers, so with a 25A the mid-range kit does the same job.", True, ""),
+               ("Fuse block", "One fuse per circuit", "fuse_block", "Fuses stop a fault turning into a fire. Your auto electrician also fits a main fuse right at the battery.", True, "build:parts"),
+               ("Isolator switch", "One off switch", "isolator", "Turns all the house power off when you park up or need to work on it.", True, "build:parts"),
+               ("Solar", "160 to 240W portable blanket", "blanket_200", "Optional if you drive most days, handy when you stay put. Park in the shade and lay it in the sun.", True, "solar:blanket"),
+               ("Solar", "200W fixed roof panel", "roof_200", "Set and forget: it charges whenever the van sits in the sun, and while you drive.", True, "solar:fixed"),
                ("Inverter", "Not needed", None, "Everything here runs on 12V or USB.")],
-     "total_note": ", battery and DC-DC charger only (the blanket and power box are extras)",
-     "easy": "This size is perfect for an <b>all-in-one power box</b>: battery, DC-DC charger and solar input in one box you can move between cars. No installer needed for the box itself, just a proper Anderson plug lead from your engine battery.",
+     "choices": [("build", "How do you want it built?", [("parts", "Separate parts"), ("box", "All-in-one box")], "parts"),
+                 ("solar", "What kind of solar?", [("blanket", "Portable blanket"), ("fixed", "Fixed roof panel")], "blanket")],
+     "gear": [("Fridge", "35 to 50L", "fridge_medium", "The kit is sized for a medium fridge like these."),
+              ("Lights", "12V LED", "lights", "LEDs barely use anything."),
+              ("Fan", "12V", "fans", "Cheap to run, even all night.")],
+     "easy": "This size is perfect for an <b>all-in-one power box</b>: battery, DC-DC charger and solar input in one box you can move between cars. The box itself just straps in. The heavy lead that charges it from your engine battery should be run and fused by an auto electrician.",
+     "fourwd": "Works well in a 4WD too. Use the solar blanket rather than roof panels, and if the battery goes under the bonnet, pick one rated for the heat. See <a href=\"{pre}guides/4wd-dual-battery-basics.html\">4WD dual battery basics</a>.",
+     "install": "With a power box, the main job is the charging lead, so expect the lower end of that range.",
      "south": "Southern winters barely change this kit, because driving does most of the charging. If you often stay put in Victoria or Tasmania in winter, go for the 200W blanket."},
     {"slug": "long-trips", "name": "Long trips", "doodle": "van", "preset": "long",
      "who": "A week or more away, a bigger fridge and a laptop. Some days driving, some days parked up.",
      "runs": ["Large 55 to 75L fridge", "4 LED lights", "2 phones charging", "A laptop on a 12V or USB-C charger, about 3 hours a day", "A 12V fan overnight", "Water pump"],
      "daily": "about 65 to 75Ah a day",
-     "parts": [("Battery", "200Ah lithium", "battery_200", "Two days of buffer for grey days. About 20 to 25kg.", True),
-               ("DC-DC charger", "40A, with solar input", "dcdc_40", "Refills fast on driving days, and doubles as your solar regulator.", True),
-               ("Solar", "200 to 300W fixed roof panels", "roof_200", "One 200W panel keeps up in Queensland. Victorian winters need closer to 250 to 300W, so add a 100W panel.", True),
-               ("Battery monitor", "Shunt type", "monitor", "Your fuel gauge, so you know exactly how many days you've got left.", True),
-               ("Inverter", "300 to 800W", "inverter_600", "Only if you'd rather use a normal laptop charger or charge camera batteries.", False)],
-     "total_note": ", with one 200W panel and no inverter",
+     "parts": [("Battery", "200Ah lithium", "battery_200", "Two days of buffer for grey days. About 20 to 25kg.", True, ""),
+               ("DC-DC charger", "40A, with solar input", "dcdc_40", "Refills fast on driving days, and doubles as your solar regulator.", True, ""),
+               ("Battery box or mount", "For a 200Ah battery", "box_200", "Holds the battery firmly in place.", True, ""),
+               ("Wiring kit", "Engine battery to the back", "install_kit", "The heavy cable, fuses and plugs between your engine battery and the house battery. Your auto electrician fits it.", True, ""),
+               ("Fuse block", "One fuse per circuit", "fuse_block", "Fuses on every circuit, plus a main fuse at the battery that your auto electrician fits.", True, ""),
+               ("Isolator switch", "One off switch", "isolator", "One switch to turn all the house power off.", True, ""),
+               ("Solar", "200 to 300W fixed roof panels", "roof_200", "About 150W keeps up in Queensland and a Victorian winter needs 250 to 300W, so we've picked a 200W panel. Add a 100W panel if you head south.", True, "solar:fixed"),
+               ("Solar", "160 to 240W portable blanket", "blanket_200", "Rather not drill the roof? Park in the shade and lay a blanket in the sun. It packs away when you leave.", True, "solar:blanket"),
+               ("Battery monitor", "Shunt type", "monitor", "Your fuel gauge, so you know exactly how many days you've got left.", True, ""),
+               ("Inverter", "300 to 800W", "inverter_600", "Only if you'd rather use a normal laptop charger or charge camera batteries.", False, "")],
+     "choices": [("solar", "What kind of solar?", [("fixed", "Fixed roof panels"), ("blanket", "Portable blanket")], "fixed")],
+     "gear": [("Fridge", "55 to 75L", "fridge_large", "The kit is sized for a large fridge like these."),
+              ("Lights", "12V LED", "lights", "LEDs barely use anything."),
+              ("Fan", "12V", "fans", "Cheap to run, even all night.")],
      "easy": "Separate parts suit this kit best, fitted by an auto electrician. Fixed roof panels are set-and-forget, and the 200Ah battery gives room to add a small inverter later.",
+     "fourwd": "In a 4WD, roof space usually fits one 200W panel at most. Pair it with a folding blanket for parked days, and a canopy is a good home for the battery. See <a href=\"{pre}guides/4wd-dual-battery-basics.html\">4WD dual battery basics</a>.",
+     "install": "A battery, DC-DC charger, roof panel and monitor is a typical mid-sized job.",
      "south": "In a Victorian or Tasmanian winter, plan on the bigger end of the solar range, or add a 200W blanket for long parked spells."},
     {"slug": "living-in-it", "name": "Living in it", "doodle": "cup", "preset": "living",
      "who": "Full-time or close to it. Fridge-freezer, working from the van, a diesel heater, Starlink and a morning coffee.",
      "runs": ["Big 80 to 100L fridge-freezer", "6 LED lights", "2 phones, a laptop about 5 hours a day", "Starlink Mini about 6 hours a day", "Diesel heater electrics", "12V fan and water pump", "A 1,300W coffee machine, once a day"],
      "daily": "about 120Ah a day",
-     "parts": [("Battery", "400 to 460Ah lithium", "battery_400", "About three days of buffer, 40 to 50kg. One big battery or two linked together. A serious system, priced like one.", True),
-               ("DC-DC charger", "50A, with solar input", "dcdc_50", "Big battery, big charger, so driving days count.", True),
-               ("Solar", "About 600W fixed roof panels", "roof_600", "Keeps up most of the year up north. Fills most van roofs.", True),
-               ("Inverter", "2,000W pure sine", "inverter_2000", "Handles the coffee machine's start-up surge. Needs thick cables and a proper fit.", True),
-               ("Battery monitor", "Shunt type", "monitor", "Essential at this size.", True)],
+     "parts": [("Battery", "400 to 460Ah lithium", "battery_400", "About three days of buffer, 40 to 50kg. One big battery or two linked together. A serious system, priced like one.", True, ""),
+               ("DC-DC charger", "50A, with solar input", "dcdc_50", "Big battery, big charger, so driving days count.", True, ""),
+               ("Battery mount", "Heavy-duty", "box_200", "At this weight the battery must be bolted down properly. Your auto electrician will advise.", True, ""),
+               ("Wiring kit", "Engine battery to the back", "install_kit", "Heavy cable, fuses and plugs. At this size your auto electrician will size the cable for the job.", True, ""),
+               ("Fuse block", "Big fuses and small", "fuse_block", "Essential with a big battery and inverter. The premium SafetyHub takes the big inverter fuse too.", True, ""),
+               ("Isolator switch", "300A, to suit an inverter", "isolator", "With a 2000W inverter you need a 300A switch, so skip the budget 100A one and pick mid-range or premium.", True, ""),
+               ("Solar", "About 600W fixed roof panels", "roof_600", "Keeps up most of the year up north. Fills most van roofs.", True, ""),
+               ("Inverter", "2,000W pure sine", "inverter_2000", "Handles the coffee machine's start-up surge. Needs thick cables and a proper fit.", True, ""),
+               ("Battery monitor", "Shunt type", "monitor", "Essential at this size.", True, ""),
+               ("Add: a portable blanket", "160 to 240W blanket", "blanket_200", "Tops up the roof panels on grey days, or when you park in the shade.", False, "")],
+     "choices": [],
+     "gear": [("Fridge-freezer", "80 to 100L", "fridge_ff", "The kit is sized for a big fridge-freezer like these."),
+              ("Lights", "12V LED", "lights", "LEDs barely use anything."),
+              ("Fan", "12V", "fans", "A roof fan makes full-time living far more comfortable.")],
      "easy": "This is a full install job: separate parts, fitted and fused by an auto electrician. Ask them about a lithium-ready battery charger too, for when you plug in at a campsite.",
+     "fourwd": "Full-time power in a 4WD is a squeeze. The battery alone weighs 40 to 50kg, which eats into your payload, and 600W of panels won't fit on the roof. Check your vehicle's GVM, and plan on blankets and regular driving.",
+     "install": "With a 2,000W inverter, 600W of solar and a big battery bank, expect the top end of that range, or more.",
      "south": "<b>Southern winters are the catch.</b> In a Victorian winter this setup would want about 1,150W of solar, which won't fit on a van roof. Plan on a 200 to 400W portable blanket, plugging in at a powered site every few days, or a small inverter generator for grey spells."},
 ]
 
@@ -318,41 +516,65 @@ KIT_JS = """<script>
 </script>"""
 
 
+VEH = [("van", "Campervan"), ("caravan", "Caravan or camper trailer"), ("4wd", "4WD")]
+CARAVAN_TIP = ("<b>Caravans and camper trailers:</b> fit the DC-DC charger in the van, close to the battery, fed by a heavy cable from the car through an Anderson plug. "
+               "You'll get about a third less charge from driving than in a campervan because of the long cable, so lean on solar, and you'll usually have more roof space for it. "
+               "A 240V battery charger for powered sites is worth adding (fitted by a licensed electrician). See <a href=\"{pre}guides/caravan-power-setup.html\">Caravan power</a>.")
+VAN_TIP = "<b>Campervans:</b> these kits are sized for you. The battery usually lives inside, so it stays cool, and the wiring run from the engine is short."
+
+
+def chips(group, label, opts, default):
+    btns = ''.join(f'<button type="button" data-g="{group}" data-v="{v}" aria-pressed="{"true" if v == default else "false"}">{t}</button>' for v, t in opts)
+    return f'<div class="kc"><span class="flabel">{label}</span><div class="seg" role="group" aria-label="{label}">{btns}</div></div>'
+
+
 def build_kits():
     os.makedirs(os.path.join(ROOT, "kits"), exist_ok=True)
-    cards = ''.join(f'<a class="card" href="{{pre}}kits/{k["slug"]}.html">[[d:{k["doodle"]}:110]]<h3>{k["name"]}</h3><p>{k["who"]}</p><span class="go">See the full kit →</span></a>' for k in KITS)
+
+    def from_price(k):
+        t = combo_totals(k)["|".join(f"{c[0]}={c[3]}" for c in (k.get("choices") or []))]["t"][0]
+        return money(t)
+    cards = ''.join(f'<a class="card kit-card" href="{{pre}}kits/{k["slug"]}.html">[[d:{k["doodle"]}:110]]<h3>{k["name"]}</h3><p class="kit-facts"><b>{k["parts"][0][1]}</b> · parts from {from_price(k)}</p><p>{k["who"]}</p><span class="go">See the full kit →</span></a>' for k in KITS)
     hub = ('<main class="page"><div class="crumbs"><a href="{pre}index.html">Home</a> › Kits</div>'
            '<div class="sec-head"><h1 style="font-size:3rem;margin:4px 0 8px">Ready-made kits</h1>[[d:fridge:100]]</div>'
-           '<p class="hint" style="margin-bottom:26px">Three tried-and-tested sizes. Pick the one that sounds most like you, see everything in it, then fine-tune it in the Power Planner.</p>'
+           '<p class="hint" style="margin-bottom:18px">Three common setups, sized with the Power Planner. Tell us what you\'re powering, then pick the kit that sounds most like you.</p>'
+           '<div class="kit-choices hub-choices">' + chips("veh", "What are you powering?", VEH, "van") + '</div>'
            f'<div class="cards">{cards}</div>'
-           '<div class="aside" style="margin-top:30px">Not quite you? The <a href="{pre}planner.html" style="color:var(--sign)">Power Planner</a> sizes a kit around exactly what you run and where you travel.</div></main>')
+           '<div class="aside" style="margin-top:30px">Not quite you? The <a href="{pre}planner.html" style="color:var(--sign)">Power Planner</a> sizes a kit around exactly what you run and where you travel.</div>'
+           '<script src="{pre}assets/kits.js" defer></script></main>')
     page("kits/index.html", "Ready-made kits", "Three ready-made power kits for Australian vans, caravans and 4WDs: Weekender, Long trips and Living in it.", hub, "kits/index.html")
     for k in KITS:
-        body = (f'<main class="article kitpage"><div class="crumbs"><a href="{{pre}}index.html">Home</a> › <a href="{{pre}}kits/index.html">Kits</a> › {k["name"]}</div>'
+        choice_ui = chips("veh", "What are you powering?", VEH, "van") + ''.join(chips(c[0], c[1], c[2], c[3]) for c in (k.get("choices") or []))
+        tips = (f'<div class="veh-tip" data-for="van">{VAN_TIP}</div>'
+                f'<div class="veh-tip" data-for="caravan" hidden>{CARAVAN_TIP}</div>'
+                f'<div class="veh-tip" data-for="4wd" hidden><b>4WDs:</b> {k["fourwd"]}</div>')
+        body = (f'<main class="article kitpage" data-preset="{k["preset"]}"><div class="crumbs"><a href="{{pre}}index.html">Home</a> › <a href="{{pre}}kits/index.html">Kits</a> › {k["name"]}</div>'
                 f'[[d:{k["doodle"]}:150]]'.replace('<svg class="doodle"', '<svg class="doodle guide-doodle"') +
-                f'<h1>The {k["name"]} kit</h1><div class="meta"><span>Uses {k["daily"]}</span><span>Sized for a campervan</span><a href="{{pre}}disclosure.html">How we make money</a></div>'
+                f'<h1>The {k["name"]} kit</h1><div class="meta"><span>Uses {k["daily"]}</span><a href="{{pre}}disclosure.html">How we make money</a></div>'
                 f'<p class="hint" style="font-size:1.15rem">{k["who"]}</p>'
                 '<div class="tldr"><h2>What it runs</h2><ul>' + ''.join(f'<li>{r}</li>' for r in k["runs"]) + '</ul></div>'
-                f'<h2>What\'s in the kit</h2><p class="small">Links open in a new tab, so this page stays put while you shop. Tick "In my cart" as you go and we\'ll remember it on this device.</p>{kit_table(k)}'
-                f'<div class="kit-total"><h2>What it costs all up</h2><div class="kt-row">{kit_totals(k)}</div>'
-                f'<p class="small">Parts only, using our main pick at each level{k.get("total_note", "")}. Add about $150 to $400 for cables, fuses and mounts, and installation. Auto electricians quote roughly $300 to $2,500 for a dual battery fit-out depending on the job (The Quote Yard 2026 price guide), so get a written quote. Prices checked {PRODUCTS["checked_label"]}; they change often.</p></div>'
-                ''
-                '<div class="kit-part"><div class="kp-head"><h3>The bits that hold it together</h3></div><ul><li>Battery box or mount, to hold it firmly in place</li><li>Correctly sized cables and lugs</li><li>Fuses or circuit breakers on every circuit</li><li>An isolator switch</li><li>Anderson plugs and a fuse block</li></ul><p class="small">Your auto electrician sizes these for your exact install.</p></div>'
+                f'<h2>Make it yours</h2><div class="kit-choices">{choice_ui}</div>{tips}'
+                f'<h2>What\'s in the kit</h2><p class="trust-strip"><span>✓ Picked for fit, not commission</span><span>✓ Aussie shops, AUD prices</span><span>✓ Estimates, not promises</span><span>✓ Auto electrician to wire it in</span><a href="../about.html#how-we-work">How we work</a></p><p class="small">Tap <b>+ Add to my list</b> on anything you want. Your list builds at the bottom of the page with a link to each shop. Links open in a new tab.</p>{kit_table(k)}'
+                f'<div class="kit-total"><h2>What it costs all up</h2>'
+                f'<p class="small">The kit total above is parts only, using our main pick at each level. Prices checked {PRODUCTS["checked_label"]}; they change often.</p><p class="small"><b>Installation:</b> auto electricians quote roughly $300 to $2,500 for a dual battery fit-out depending on the job (The Quote Yard 2026 price guide). {k["install"]} Get a written quote.</p></div>'
+                + gear_table(k) +
+                '<section class="my-list" id="my-list" aria-live="polite"></section>'
                 f'<h2>Easiest way to build it</h2><p>{k["easy"]}</p>'
                 f'<h2>Travelling south in winter?</h2><p>{k["south"]}</p>'
-                f'<div class="cta-box"><p>Change anything you like: your fridge, your state, how much you drive. The Power Planner starts from this kit.</p><a class="btn-link" href="{{pre}}planner.html#{k["preset"]}">Customise this kit</a></div>'
+                f'<div class="cta-box"><p>Change anything you like: your fridge, your state, how much you drive. The Power Planner starts from this kit.</p><a class="btn-link" id="customise" href="{{pre}}planner.html#{k["preset"]}">Customise this kit</a></div>'
                 '<div class="aside" style="margin:24px 0"><b>Get a pro to wire it in.</b> Have a licensed auto electrician install or check your setup, with the right cable sizes and fuses. Sizes here are estimates for typical use.</div>'
                 '<p class="small">We pick products by how well they fit the job, not by what pays us. Some links earn us a small commission at no cost to you. <a href="{pre}disclosure.html">How we make money</a>.</p>'
-                + KIT_JS + '</main>')
-        page(f"kits/{k['slug']}.html", f"The {k['name']} kit", f"Everything in the {k['name']} power kit for an Australian campervan: battery, solar, DC-DC charger and more, with budget to premium options.", body, "kits/index.html")
+                '<script src="{pre}assets/list.js" defer></script><script src="{pre}assets/kits.js" defer></script></main>')
+        page(f"kits/{k['slug']}.html", f"The {k['name']} kit", f"Everything in the {k['name']} power kit for Australian vans, caravans and 4WDs: battery, solar, DC-DC charger, wiring and more, with budget to premium options.", body, "kits/index.html")
 
 
 def build():
     # Home
+    LD["index.html"] = [ORG, {"@type": "WebSite", "@id": BASE + "#site", "name": "Off-Grid Sorted", "url": BASE, "inLanguage": "en-AU", "publisher": {"@id": ORG_ID}}] + PEOPLE
     page("index.html", SITE, "Free plain-English power planner and guides for Australian vans, caravans and 4WDs. Work out the battery, solar and charger you need.", read("content/home.html"))
     # Guides hub
     hub = '<main class="page"><div class="crumbs"><a href="{pre}index.html">Home</a> › Guides</div>'
-    hub += '<div class="sec-head"><h1 style="font-size:3rem;margin:4px 0 8px">Guides</h1>[[d:road:120]]</div><p class="hint" style="margin-bottom:22px">Plain-English guides to off-grid power. New ones land every week. Start at the top if you\'re new to all this.</p>'
+    hub += '<div class="sec-head"><h1 style="font-size:3rem;margin:4px 0 8px">Guides</h1>[[d:road:120]]</div><p class="hint" style="margin-bottom:22px">Plain-English guides to off-grid power. Start at the top if you\'re new to all this.</p>'
     hub += '<div class="guide-list">' + "".join(guide_card(g, "{pre}") for g in GUIDES) + '</div></main>'
     page("guides/index.html", "Guides", "Plain-English guides to batteries, solar, DC-DC chargers and inverters for Australian vans, caravans and 4WDs.", hub, "guides/index.html")
     # Each live guide
@@ -364,22 +586,72 @@ def build():
         others = [x for x in GUIDES if x[0] != slug][:4]
         rel = '<div class="related"><h2 style="font-size:1.4rem;margin:0 0 12px">Keep reading</h2><div class="guide-list">' + "".join(guide_card(x, "{pre}") for x in others) + '</div></div>'
         dd = doodle(TAG_DOODLE.get(tag, "sun"), 130, cls="doodle guide-doodle")
+        cta_href = {"Caravans": "planner.html#caravan", "4WDs": "planner.html#4wd"}.get(tag, "planner.html")
+        body = body.replace('</ul></div>', f'</ul></div><p class="early-cta"><a href="{{pre}}{cta_href}">Want your own numbers? Open the Power Planner →</a> <span>or see the <a href="{{pre}}kits/index.html">ready-made kits</a></span></p>', 1)
+        body = body.replace('<span>By Kiran and Mitch</span>', '<span>By <a href="{pre}about.html">Kiran and Mitch</a></span>', 1)
+        faqs = FAQS.get(slug, [])
+        if faqs:
+            fq = '<section class="faq"><h2>Quick answers</h2>' + "".join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in faqs) + '</section>'
+            body = body.replace("<h2>Sources</h2>", fq + "<h2>Sources</h2>", 1) if "<h2>Sources</h2>" in body else body.replace('<div class="aside" style="margin:24px 0"><b>Get a pro', fq + '<div class="aside" style="margin:24px 0"><b>Get a pro', 1)
+        gurl = f"{BASE}guides/{slug}.html"
+        LD[f"guides/{slug}.html"] = [
+            {"@type": "Article", "@id": gurl + "#article", "headline": title, "description": blurb, "url": gurl,
+             "inLanguage": "en-AU", "author": PEOPLE, "publisher": {"@id": ORG_ID}, "image": BASE + "assets/og.png",
+             "dateModified": git_date(f"content/guides/{slug}.html"), "about": tag},
+            {"@type": "BreadcrumbList", "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE},
+                {"@type": "ListItem", "position": 2, "name": "Guides", "item": BASE + "guides/index.html"},
+                {"@type": "ListItem", "position": 3, "name": title.split(":")[0], "item": gurl}]},
+            ORG] + ([{"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]}] if faqs else [])
         wrapped = f'<main class="article"><div class="crumbs"><a href="{{pre}}index.html">Home</a> › <a href="{{pre}}guides/index.html">Guides</a> › {tag}</div>{dd}{body}{rel}</main>'
         page(f"guides/{slug}.html", title.split(":")[0], blurb, wrapped, "guides/index.html")
+    LD["about.html"] = [{"@type": "AboutPage", "url": BASE + "about.html", "name": "About Off-Grid Sorted", "about": {"@id": ORG_ID}, "mainEntity": PEOPLE}, ORG]
     # Info pages
     for name, title, desc in [("about", "About", "Who is behind Off-Grid Sorted, and why it exists."),
                               ("disclosure", "Affiliate disclosure & disclaimer", "How Off-Grid Sorted earns money, and the limits of our advice."),
-                              ("privacy", "Privacy", "How Off-Grid Sorted handles your information.")]:
+                              ("privacy", "Privacy", "How Off-Grid Sorted handles your information."),
+                              ("contact", "Contact", "How to get in touch with Off-Grid Sorted.")]:
         page(f"{name}.html", title, desc, '<main class="article"><div class="crumbs"><a href="{pre}index.html">Home</a> › ' + title + '</div>' + read(f"content/{name}.html") + '</main>', f"{name}.html" if name == "about" else "")
     build_kits()
     # Refresh planner chrome
     p = read("planner.html")
-    p = re.sub(r'<header class="site-header">.*?</header>\n', lambda m: header("", "planner.html"), p, flags=re.S)
+    p = re.sub(r'(<a class="skip"[^\n]*\n)?<header class="site-header">.*?</header>\n', lambda m: header("", "planner.html"), p, flags=re.S)
     pj = json.dumps(PRODUCTS, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
     p = re.sub(r'<script type="application/json" id="ogs-products">.*?</script>', lambda m: f'<script type="application/json" id="ogs-products">{pj}</script>', p, flags=re.S)
-    p = re.sub(r'<footer class="site-footer">.*?</footer>\n', lambda m: footer(""), p, flags=re.S)
+    p = re.sub(r'<footer class="site-footer">.*?</footer>\n(<script data-menu>.*?</script>\n)?', lambda m: footer("") + MENU_JS, p, flags=re.S)
+    LD["planner.html"] = [{"@type": "WebApplication", "name": "Power Planner", "url": BASE + "planner.html",
+        "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any web browser", "inLanguage": "en-AU",
+        "isAccessibleForFree": True, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "AUD"},
+        "description": "Free calculator for Australian campervans, caravans and 4WDs. Tell it what you run and where you travel, and it works out the battery, solar, DC-DC charger and inverter you need, using Bureau of Meteorology sun averages.",
+        "publisher": {"@id": ORG_ID}, "creator": PEOPLE}, ORG]
+    seo = seo_tags("planner.html", "Power Planner · Off-Grid Sorted", "Free calculator for Australian vans, caravans and 4WDs: work out the battery, solar, DC-DC charger and inverter you need, with real products at three price levels.")
+    if "<!--seo-->" in p:
+        p = re.sub(r"<!--seo-->.*?<!--/seo-->", lambda m: seo, p, flags=re.S)
+    else:
+        p = p.replace('<link rel="icon"', seo + '\n<link rel="icon"', 1)
     with open(os.path.join(ROOT, "planner.html"), "w") as f:
         f.write(p)
+    BUILT.append("planner.html")
+    # 404 page (Netlify serves /404.html automatically)
+    page_abs("404.html", "Page not found", "That page doesn't exist.",
+             '<main class="article notfound"><svg class="flat" viewBox="0 0 130 90" width="120" height="83" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="18" width="100" height="58" rx="10"/><path d="M110 37h9v20h-9"/><path d="M28 62V34" stroke-width="5"/><path d="M78 44v4M96 44v4M76 62c5-5 17-5 22 0"/></svg><h1>Flat battery</h1>'
+             '<p class="hint">We couldn\'t find that page. It may have moved, or the link has a typo.</p>'
+             '<p><a class="btn-link solid" href="/planner.html">Open the Power Planner</a></p>'
+             '<p><a href="/index.html">Home</a> · <a href="/guides/index.html">Guides</a> · <a href="/kits/index.html">Kits</a></p></main>')
+    BUILT.remove("404.html")
+    # llms.txt: a plain map of the site for AI tools
+    lines = ["# Off-Grid Sorted", "", "> " + ORG["description"] + " Run by Kiran and Mitch on the southern Gold Coast. Prices in AUD; sun figures from Bureau of Meteorology averages. All numbers are planning estimates; have a licensed auto electrician install or check any system.", "",
+             "## Tools", f"- [Power Planner]({BASE}planner.html): free calculator for battery, solar, DC-DC charger and inverter size, by state and season", "",
+             "## Ready-made kits"] + [f"- [{k['name']}]({BASE}kits/{k['slug']}.html)" for k in KITS] + ["", "## Guides"] + \
+            [f"- [{g[1]}]({BASE}guides/{g[0]}.html): {g[3]}" for g in GUIDES if g[4] == "live"] + ["", "## About", f"- [About us]({BASE}about.html)", f"- [Affiliate disclosure]({BASE}disclosure.html)", ""]
+    with open(os.path.join(ROOT, "llms.txt"), "w") as f:
+        f.write("\n".join(lines))
+    # robots + sitemap
+    with open(os.path.join(ROOT, "robots.txt"), "w") as f:
+        f.write(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}sitemap.xml\n")
+    urls = "".join(f"  <url><loc>{BASE}{'' if p_ == 'index.html' else p_}</loc></url>\n" for p_ in sorted(set(BUILT)))
+    with open(os.path.join(ROOT, "sitemap.xml"), "w") as f:
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + '</urlset>\n')
 
 
 if __name__ == "__main__":

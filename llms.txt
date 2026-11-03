@@ -1,0 +1,25 @@
+# Off-Grid Sorted
+
+> Independent, plain-English help working out off-grid power (battery, solar, DC-DC charger, inverter) for Australian campervans, caravans and 4WDs. Run by Kiran and Mitch on the southern Gold Coast. Prices in AUD; sun figures from Bureau of Meteorology averages. All numbers are planning estimates; have a licensed auto electrician install or check any system.
+
+## Tools
+- [Power Planner](https://offgridsorted.com.au/planner.html): free calculator for battery, solar, DC-DC charger and inverter size, by state and season
+
+## Ready-made kits
+- [Weekender](https://offgridsorted.com.au/kits/weekender.html)
+- [Long trips](https://offgridsorted.com.au/kits/long-trips.html)
+- [Living in it](https://offgridsorted.com.au/kits/living-in-it.html)
+
+## Guides
+- [Van power in plain English: the four parts and how they fit](https://offgridsorted.com.au/guides/van-power-basics.html): Battery, solar, DC-DC charger and inverter, explained without the jargon.
+- [Lithium vs AGM: which battery should you get?](https://offgridsorted.com.au/guides/lithium-vs-agm.html): The real difference, what it means for size, weight and cost, and when AGM still makes sense.
+- [How much solar do I need? By state and season](https://offgridsorted.com.au/guides/how-much-solar-australia.html): Why a Hobart winter and a Darwin winter need very different setups, with a table for every state.
+- [DC-DC chargers explained: charging while you drive](https://offgridsorted.com.au/guides/dc-dc-chargers-explained.html): What they do, what size you need, and why modern cars with smart alternators need one.
+- [Caravan power: getting charge through the trailer plug](https://offgridsorted.com.au/guides/caravan-power-setup.html): Why caravans lose charge over long cables, and how to fix it.
+- [4WD dual battery basics](https://offgridsorted.com.au/guides/4wd-dual-battery-basics.html): Under-bonnet or in the tray, smart alternators, and fitting solar on a 4WD.
+- [Will my fridge last the weekend?](https://offgridsorted.com.au/guides/will-my-fridge-last.html): How much power camping fridges really use, and how to make yours sip less.
+- [Portable power stations vs a proper dual battery setup](https://offgridsorted.com.au/guides/portable-power-stations.html): When an all-in-one box is all you need, and when it isn't.
+
+## About
+- [About us](https://offgridsorted.com.au/about.html)
+- [Affiliate disclosure](https://offgridsorted.com.au/disclosure.html)
