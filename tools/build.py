@@ -152,6 +152,7 @@ def head(title, desc, pre, path="index.html"):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(full)}</title>
 <meta name="description" content="{html.escape(desc)}">
+<meta name="commission-factory-verification" content="8343a658ff4a419980598ffe7dfdd01d">
 {seo_tags(path, full, desc)}
 <link rel="icon" href="{pre}favicon.svg" type="image/svg+xml">
 {FONTS}
