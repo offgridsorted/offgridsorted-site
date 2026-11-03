@@ -118,7 +118,7 @@ ORG_ID = BASE + "#org"
 PEOPLE = [{"@type": "Person", "@id": BASE + "about.html#kiran", "name": "Kiran", "url": BASE + "about.html", "description": "Co-founder of Off-Grid Sorted. Van life since converting a Mitsubishi Delica in Japan about 15 years ago; the more electrical-minded half."},
           {"@type": "Person", "@id": BASE + "about.html#mitch", "name": "Mitch", "url": BASE + "about.html", "description": "Co-founder of Off-Grid Sorted. Road-trip co-pilot who handles the building side of van conversions."}]
 ORG = {"@type": "Organization", "@id": ORG_ID, "name": "Off-Grid Sorted", "url": BASE,
-       "logo": BASE + "favicon.svg", "sameAs": ["https://www.instagram.com/offgridsorted"],
+       "logo": BASE + "favicon.svg", "sameAs": ["https://www.instagram.com/offgridsorted"], "email": "hello@offgridsorted.com.au",
        "founder": [{"@id": p["@id"]} for p in PEOPLE], "areaServed": "AU",
        "description": "Independent, plain-English help working out off-grid power (battery, solar, DC-DC charger, inverter) for Australian campervans, caravans and 4WDs."}
 
