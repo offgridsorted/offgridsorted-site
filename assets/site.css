@@ -669,3 +669,30 @@ body:has(#res-pill:not([hidden])) .list-pill{bottom:72px}
 .faq details:last-child{border-bottom:1px solid var(--faint)}
 .faq summary{font-family:var(--font-ui);font-weight:700;font-size:1.05rem;cursor:pointer;list-style-position:outside}
 .faq details p{margin:8px 0 2px}
+
+/* ---- Share, print and embed (planner) ---- */
+.save-btns{display:flex;flex-wrap:wrap;gap:10px}
+.share-url{width:100%;margin-top:6px;font:inherit;font-size:.85rem;padding:8px 10px;border:2px solid var(--ink);border-radius:8px;background:var(--field)}
+.print-only,.embed-bar{display:none}
+html.embed .site-header,html.embed .site-footer,html.embed .skip,html.embed .mast figure,html.embed .mast .what-parts,html.embed .mast .kicker,html.embed #next-steps,html.embed .res-pill{display:none!important}
+html.embed .embed-bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0;padding:8px 14px;background:var(--ink);font-family:var(--font-ui);font-size:.9rem}
+html.embed .embed-bar a{color:var(--paper);text-decoration:none}
+html.embed .embed-bar b{color:var(--hi)}
+html.embed .embed-bar .embed-disc{opacity:.8;text-decoration:underline}
+html.embed .mast h1{font-size:2rem;margin-top:6px}
+@media print{
+  .site-header,.site-footer,.skip,.mast,.modes,.step,.save,#next-steps,.my-list,.res-pill,.doodle,.embed-bar,.results details,.tier-tabs,.add-list,.more,.list-pill,#shared-note{display:none!important}
+  .print-only{display:block}
+  .print-head{font-family:var(--font-ui);font-size:.85rem;border:1px solid #999;padding:8px 10px;border-radius:6px;word-break:break-all}
+  body,html{background:#fff!important;color:#000}
+  .results{box-shadow:none!important;border:0!important;padding:0!important}
+  .kit-table td,.kit-table th{break-inside:avoid}
+  .kit-table table{font-size:.8rem}
+  .kit-table .mlabel{display:none}
+  a{color:#000;text-decoration:none}
+  .safety{border:2px solid #000}
+}
+.embed-code{display:flex;flex-direction:column;gap:10px;margin:14px 0}
+.embed-code textarea{width:100%;font:.8rem/1.45 ui-monospace,Menlo,Consolas,monospace;padding:10px 12px;border:2px solid var(--ink);border-radius:10px;background:var(--field);resize:vertical}
+.embed-code .btn{align-self:flex-start}
+.embed-code .msg{font-family:var(--font-ui);font-weight:600;color:var(--sign);min-height:1.3em;margin:0}

@@ -23,6 +23,8 @@
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<script>if(/[?&]embed=1/.test(location.search))document.documentElement.className+=" embed";</script>
+<p class="embed-bar"><a href="https://offgridsorted.com.au/planner.html" target="_blank" rel="noopener">Power Planner by <b>Off-Grid Sorted</b> ↗</a><a class="embed-disc" href="https://offgridsorted.com.au/disclosure.html" target="_blank" rel="noopener">Affiliate disclosure</a></p>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
   <div class="in">
@@ -275,6 +277,8 @@
 <section class="results" aria-labelledby="res-h" aria-live="polite">
   <svg class="doodle step-doodle" viewBox="0 0 130 90" width="100" height="69" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="18" width="100" height="58" rx="10" fill="#f5cb3c"/><path d="M110 37h9v20h-9"/><path d="M28 62V34M42 62V34" stroke-width="5"/><path d="M78 42v5M96 42v5M76 56c5 6 17 6 22 0"/></svg>
   <h2 id="res-h">Your results</h2>
+  <p class="print-only print-head">Made with the free Power Planner at offgridsorted.com.au/planner.html. Numbers are estimates: please check them against the actual install.</p>
+  <p class="preset-note" id="shared-note" hidden>Someone shared this setup with you. Change anything you like and the numbers update.</p>
   <p class="preset-note" id="preset-note" hidden></p>
   <p class="verdict" id="verdict"></p>
   <div class="kit" id="kit"></div>
@@ -302,9 +306,13 @@
   <section class="my-list" id="my-list" aria-live="polite"></section>
 
   <div class="save" id="save">
-    <h3>Keep your list</h3>
-    <p class="small">Copy it to your notes so you've got it when you're talking to your auto electrician or in the shop.</p>
-    <button type="button" class="btn ghost" id="copy-btn">Copy my list</button>
+    <h3>Keep or share your setup</h3>
+    <p class="small">Send the link to your partner or your auto electrician, print a summary, or copy the list to your notes. The link opens this exact setup, so they can change it too.</p>
+    <div class="save-btns">
+      <button type="button" class="btn" id="share-btn">Share my setup</button>
+      <button type="button" class="btn ghost" id="print-btn">Print for my auto electrician</button>
+      <button type="button" class="btn ghost" id="copy-btn">Copy my list</button>
+    </div>
     <p class="msg" id="save-msg" role="status"></p>
   </div>
 
@@ -347,7 +355,7 @@
       <p>Plain-English help to get the power setup in your van, caravan or 4WD sorted. Independent and Australian, made by Kiran and Mitch on the Gold Coast.</p>
       <p class="small">Some links earn us a small commission at no cost to you. <a href="disclosure.html" style="display:inline;color:var(--sign)">How we make money</a>.</p>
     </div>
-    <div><p class="fh">Tools</p><a href="planner.html">Power Planner</a><a href="planner.html#check">Check what I've got</a><a href="kits/index.html">Ready-made kits</a></div>
+    <div><p class="fh">Tools</p><a href="planner.html">Power Planner</a><a href="planner.html#check">Check what I've got</a><a href="kits/index.html">Ready-made kits</a><a href="embed.html">Put the planner on your site</a></div>
     <div><p class="fh">Guides</p><a href="guides/van-power-basics.html">Van power basics</a><a href="guides/lithium-vs-agm.html">Lithium vs AGM</a><a href="guides/how-much-solar-australia.html">How much solar?</a><a href="guides/dc-dc-chargers-explained.html">DC-DC chargers</a><a href="guides/will-my-fridge-last.html">Will my fridge last?</a><a href="guides/index.html">All guides</a></div>
     <div><p class="fh">Off-Grid Sorted</p><a href="about.html">About</a><a href="disclosure.html">Disclosure &amp; disclaimer</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a><a href="https://instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
   </div>
@@ -1107,7 +1115,84 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     new IntersectionObserver(function(es){ resVis = es[0].isIntersecting; upd(); }).observe(res);
     new IntersectionObserver(function(es){ pastTop = !es[0].isIntersecting && es[0].boundingClientRect.top < 0; upd(); }).observe(first);
   })();
+
+  // ---- Share a setup as a link (?s=...) ----
+  var DEFAULTS = {};
+  APPS.forEach(function(a){ DEFAULTS[a.id] = [a.q, a.h]; });
+  function snapshot(){
+    var o = {m:state.mode, r:{}, s:{}, a:{}};
+    document.querySelectorAll("#main input[type=radio]:checked").forEach(function(r){ o.r[r.name] = r.value; });
+    document.querySelectorAll("#main select[id]").forEach(function(x){ o.s[x.id] = x.value; });
+    if(state.mode === "check"){ o.g = {}; ["g-bat","g-sol","g-dc"].forEach(function(id){ o.g[id] = document.getElementById(id).value; }); }
+    APPS.forEach(function(a){ var s = state.apps[a.id], d = DEFAULTS[a.id]; if(s.q !== d[0] || s.h !== d[1]) o.a[a.id] = [s.q, s.h]; });
+    if(state.custom.length) o.c = state.custom;
+    var tb = document.querySelector("#shop .kit-table"); if(tb && tb.getAttribute("data-tier") !== "1") o.t = tb.getAttribute("data-tier");
+    return o;
+  }
+  function b64e(str){ return btoa(unescape(encodeURIComponent(str))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); }
+  function b64d(str){ str = str.replace(/-/g, "+").replace(/_/g, "/"); while(str.length % 4) str += "="; return decodeURIComponent(escape(atob(str))); }
+  function shareURL(){
+    var base = location.protocol === "file:" ? location.href.split(/[?#]/)[0] : "https://offgridsorted.com.au/planner.html";
+    return base + "?s=" + b64e(JSON.stringify(snapshot()));
+  }
+  function restore(code){
+    var o; try{ o = JSON.parse(b64d(code)); }catch(e){ return false; }
+    if(!o || typeof o !== "object") return false;
+    Object.keys(o.r || {}).forEach(function(n){ setRadio(n, String(o.r[n])); });
+    Object.keys(o.s || {}).forEach(function(id){
+      var x = document.getElementById(id);
+      if(x && x.tagName === "SELECT" && [].some.call(x.options, function(op){ return op.value === String(o.s[id]); })) x.value = String(o.s[id]);
+    });
+    Object.keys(o.g || {}).forEach(function(id){ var x = document.getElementById(id); var v = parseFloat(o.g[id]); if(x && /^g-/.test(id) && !isNaN(v) && v >= 0) x.value = v; });
+    if(o.g){ state.gearEdited = true; document.getElementById("gear-example").hidden = true; }
+    APPS.forEach(function(a){
+      var v = (o.a || {})[a.id] || DEFAULTS[a.id];
+      var q = Math.max(0, Math.min(20, parseInt(v[0], 10) || 0)), h = Math.max(0, Math.min(24, parseFloat(v[1]) || 0));
+      state.apps[a.id] = {q:q, h:h};
+      document.getElementById("q-" + a.id).textContent = q;
+      document.getElementById("h-" + a.id).value = h;
+      document.getElementById("m-" + a.id).textContent = minsText(h);
+    });
+    if(Array.isArray(o.c)){
+      state.custom = o.c.slice(0, 20).filter(function(c){ return c && typeof c.n === "string" && c.w > 0 && c.w <= 5000 && c.h >= 0 && c.h <= 24; })
+        .map(function(c){ return {n:c.n.slice(0, 60), w:+c.w, h:+c.h, ac:!!c.ac}; });
+      renderCustom();
+    }
+    setMode(o.m === "check" ? "check" : "plan");
+    if(o.t != null) pendingTier = parseInt(o.t, 10);
+    return true;
+  }
+  var pendingTier = null;
+  var shareCode = (location.search.match(/[?&]s=([A-Za-z0-9_-]+)/) || [])[1];
+  if(shareCode && restore(shareCode)){
+    document.getElementById("shared-note").hidden = false;
+  }
+
+  document.getElementById("share-btn").addEventListener("click", function(){
+    var url = shareURL();
+    var done = function(){ saveMsg.textContent = "Link copied. Paste it into a message or email."; };
+    var fail = function(){ saveMsg.innerHTML = 'Copy this link: <input class="share-url" readonly value="' + esc(url) + '" onclick="this.select()">'; };
+    if(navigator.share && matchMedia("(pointer: coarse)").matches){
+      navigator.share({title:"My power setup", text:"Here's the power setup I worked out on the Off-Grid Sorted Power Planner.", url:url}).catch(function(){});
+      return;
+    }
+    try{ navigator.clipboard.writeText(url).then(done, fail); }catch(e){ fail(); }
+  });
+  document.getElementById("print-btn").addEventListener("click", function(){ window.print(); });
+
+  // ---- Embed mode: links open in a new tab ----
+  if(document.documentElement.classList.contains("embed")){
+    document.addEventListener("click", function(e){
+      var a = e.target.closest && e.target.closest("a[href]");
+      if(a && a.getAttribute("href").charAt(0) !== "#"){ a.target = "_blank"; a.rel = (a.rel ? a.rel + " " : "") + "noopener"; }
+    }, true);
+    if(window.parent !== window && "ResizeObserver" in window){
+      var lastH = 0;
+      new ResizeObserver(function(){ var h = Math.ceil(document.documentElement.scrollHeight); if(Math.abs(h - lastH) > 4){ lastH = h; window.parent.postMessage({ogsHeight:h}, "*"); } }).observe(document.body);
+    }
+  }
   calc();
+  if(pendingTier != null){ var tbt = document.querySelector('#shop .tier-tabs button[data-t="' + pendingTier + '"]'); if(tbt) tbt.click(); }
 })();
 </script>
 

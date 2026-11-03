@@ -1,0 +1,46 @@
+<h1>Put the Power Planner on your site</h1>
+<p class="lede">Run a van build business, an auto electrical shop, a camping blog or a caravan club page? You can put our free Power Planner on your own site, so your readers or customers can work out the battery, solar and charger they need without leaving your page.</p>
+
+<p>It's free. There's no sign-up and no catch. All we ask is that you keep the small "Power Planner by Off-Grid Sorted" link under it.</p>
+
+<h2>How to add it</h2>
+<p>Copy the code below and paste it into your page. In WordPress, Squarespace or Wix that means adding a "Custom HTML" or "Embed" block, then pasting the code into it. If someone else looks after your website, send them this page.</p>
+
+<div class="embed-code">
+<textarea id="embed-code" readonly rows="7" aria-label="Embed code">&lt;iframe id="ogs-planner" src="https://offgridsorted.com.au/planner.html?embed=1" title="Power Planner by Off-Grid Sorted" width="100%" height="1600" style="border:0;max-width:760px;display:block;margin:0 auto" loading="lazy"&gt;&lt;/iframe&gt;
+&lt;p style="text-align:center;font-size:14px"&gt;&lt;a href="https://offgridsorted.com.au/planner.html"&gt;Power Planner&lt;/a&gt; by Off-Grid Sorted&lt;/p&gt;
+&lt;script&gt;window.addEventListener("message",function(e){if(e.origin==="https://offgridsorted.com.au"&amp;&amp;e.data&amp;&amp;e.data.ogsHeight){document.getElementById("ogs-planner").style.height=e.data.ogsHeight+"px";}});&lt;/script&gt;</textarea>
+<button type="button" class="btn" id="embed-copy">Copy the code</button>
+<p class="msg" id="embed-msg" role="status"></p>
+</div>
+
+<p class="small">The last line is optional. It lets the planner grow and shrink to fit, so your readers don't get a box with its own scroll bar. If your site doesn't allow scripts, leave it off and the planner still works.</p>
+
+<h2>What your visitors get</h2>
+<ul>
+<li>The full planner: what they run, where they travel, how much they drive, and the battery, solar, DC-DC charger and inverter that suits.</li>
+<li>Plain-English explanations of every number, and tap-to-explain words for the jargon.</li>
+<li>Real products at budget, mid-range and premium levels, with Australian prices that we check twice a week.</li>
+<li>A reminder to have a licensed auto electrician install or check the system. If that's you, that's a good thing.</li>
+</ul>
+
+<h2>Good to know</h2>
+<ul>
+<li><b>Links open in a new tab,</b> so your page stays open behind them.</li>
+<li><b>Some product links are affiliate links.</b> If someone buys through one, we may earn a small commission at no extra cost to them. That's how we keep the planner free. We pick products by fit, not commission. <a href="{pre}disclosure.html">How we make money</a>.</li>
+<li><b>The numbers are estimates.</b> They're a planning guide, not an install spec.</li>
+<li><b>It updates on its own.</b> When we improve the planner or prices change, your embed gets the update too.</li>
+</ul>
+
+<h2>See it first</h2>
+<p>Here's what it looks like on your page. On your site it grows to fit, so there's no scroll bar inside it.</p>
+<iframe id="ogs-preview" src="{pre}planner.html?embed=1" title="Power Planner by Off-Grid Sorted (preview)" width="100%" height="900" style="border:2px solid var(--ink);border-radius:12px;max-width:760px;display:block;margin:0 auto" loading="lazy"></iframe>
+
+<p style="margin-top:24px">Questions? <a href="{pre}contact.html">Get in touch</a>.</p>
+
+<script>
+document.getElementById("embed-copy").addEventListener("click",function(){
+  var t=document.getElementById("embed-code"),m=document.getElementById("embed-msg");
+  try{navigator.clipboard.writeText(t.value).then(function(){m.textContent="Copied. Now paste it into your page.";},function(){t.select();m.textContent="Press Ctrl+C (or Cmd+C on a Mac) to copy.";});}catch(e){t.select();m.textContent="Press Ctrl+C (or Cmd+C on a Mac) to copy.";}
+});
+</script>
