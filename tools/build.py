@@ -288,6 +288,32 @@ def guide_card(g, pre):
 PRODUCTS = json.load(open(os.path.join(ROOT, "data", "products.json")))
 TIER_NAMES = ["Budget", "Mid-range", "Premium"]
 
+# Affiliate tracking, by shop website. data/products.json keeps the plain shop links
+# (the price check needs them); the tracking wrapper is only added to the built pages.
+# Add a shop here when its program approves us. {u} is the URL-encoded product link.
+AFFILIATES = {
+    "au.renogy.com": "https://renogy.sjv.io/c/8106624/1182656/14864?u={u}",  # Impact, approved 4 Nov 2026
+}
+
+
+def aff(url):
+    from urllib.parse import urlparse, quote
+    tpl = AFFILIATES.get(urlparse(url).netloc.lower())
+    return tpl.format(u=quote(url, safe="")) if tpl else url
+
+
+def apply_affiliates():
+    for ps in PRODUCTS["cats"].values():
+        for p in ps:
+            if p.get("url"):
+                p["url"] = aff(p["url"])
+            for st in p.get("stores", []):
+                if st.get("url"):
+                    st["url"] = aff(st["url"])
+
+
+apply_affiliates()
+
 
 def normalise_products():
     """Give every product a sorted 'stores' list (in stock, then cheapest) and set
