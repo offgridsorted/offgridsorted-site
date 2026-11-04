@@ -49,6 +49,8 @@ GUIDES = [
      "A step-by-step checklist: tow bar power, cable size, Anderson plugs, alternator, DC-DC charger and battery.", "live"),
     ("solar-blanket-vs-fixed-panel", "Solar blanket vs fixed panel: which suits you?", "Solar",
      "Shade, driving, theft, weight, heat and cost per watt compared, plus who each one suits and why many get both.", "live"),
+    ("winter-solar-not-keeping-up", "Winter solar: why your panels aren't keeping up", "Solar",
+     "Short days, a low sun and long shadows, with BOM-based winter numbers for every state and what helps.", "live"),
 ]
 
 LOGO = '''<svg viewBox="0 0 420 300" width="{w}" height="{h}" role="img" aria-label="Off-Grid Sorted">
@@ -131,6 +133,11 @@ FAQS = {
         ("Is a solar blanket better than a fixed panel?", "It depends on how you camp. A blanket lets you park in the shade and put the panel in the sun, but it can't charge while driving and is easy to steal. A fixed panel charges whenever there's sun, including on the road, with no setup."),
         ("Can a solar blanket charge while driving?", "No. REDARC says its solar blankets must be disconnected and securely stored when the vehicle is moving. Only fixed panels charge on the road."),
         ("Do solar panels lose power in the heat?", "Yes. SolarQuotes says a typical panel loses about 0.4% of its output for every degree above 25\u00b0C, so a 300W panel at 45\u00b0C gives about 276W."),
+    ],
+    "winter-solar-not-keeping-up": [
+        ("Why is my solar not keeping up in winter?", "Shorter days, a low sun that hits flat roof panels at a glancing angle, and longer shadows. In southern Australia a winter day can hold only a quarter to a half of a summer day's sun, based on Bureau of Meteorology averages."),
+        ("How much does a 200W solar panel make in winter?", "As a rough estimate after real-world losses, about 47Ah a day in Queensland, 34Ah in New South Wales, 22Ah in Victoria and 19Ah in Tasmania, using capital city averages."),
+        ("How can I get more from my solar in winter?", "Point a portable panel or blanket at the sun and move it during the day, park in the open, keep panels clean, top up by driving through a DC-DC charger, and use a bit less power."),
     ],
 }
 
@@ -232,7 +239,7 @@ def footer(pre):
       <p>Plain-English help to get the power setup in your van, caravan or 4WD sorted. Independent and Australian, made by Kiran and Mitch on the Gold Coast.</p>
       <p class="small">Some links earn us a small commission at no cost to you. <a href="{pre}disclosure.html" style="display:inline;color:var(--sign)">How we make money</a>.</p>
     </div>
-    <div><p class="fh">Tools</p><a href="{pre}planner.html">Power Planner</a><a href="{pre}planner.html#check">Check what I've got</a><a href="{pre}kits/index.html">Ready-made kits</a></div>
+    <div><p class="fh">Tools</p><a href="{pre}planner.html">Power Planner</a><a href="{pre}planner.html#check">Check what I've got</a><a href="{pre}kits/index.html">Ready-made kits</a><a href="{pre}embed.html">Put the planner on your site</a></div>
     <div><p class="fh">Guides</p>{glinks}<a href="{pre}guides/index.html">All guides</a></div>
     <div><p class="fh">Off-Grid Sorted</p><a href="{pre}about.html">About</a><a href="{pre}disclosure.html">Disclosure &amp; disclaimer</a><a href="{pre}privacy.html">Privacy</a><a href="{pre}contact.html">Contact</a><a href="https://instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
   </div>
@@ -287,6 +294,32 @@ def guide_card(g, pre):
 # Real product picks live in data/products.json (main pick + other options per tier).
 PRODUCTS = json.load(open(os.path.join(ROOT, "data", "products.json")))
 TIER_NAMES = ["Budget", "Mid-range", "Premium"]
+
+# Affiliate tracking, by shop website. data/products.json keeps the plain shop links
+# (the price check needs them); the tracking wrapper is only added to the built pages.
+# Add a shop here when its program approves us. {u} is the URL-encoded product link.
+AFFILIATES = {
+    "au.renogy.com": "https://renogy.sjv.io/c/8106624/1182656/14864?u={u}",  # Impact, approved 4 Nov 2026
+}
+
+
+def aff(url):
+    from urllib.parse import urlparse, quote
+    tpl = AFFILIATES.get(urlparse(url).netloc.lower())
+    return tpl.format(u=quote(url, safe="")) if tpl else url
+
+
+def apply_affiliates():
+    for ps in PRODUCTS["cats"].values():
+        for p in ps:
+            if p.get("url"):
+                p["url"] = aff(p["url"])
+            for st in p.get("stores", []):
+                if st.get("url"):
+                    st["url"] = aff(st["url"])
+
+
+apply_affiliates()
 
 
 def normalise_products():
@@ -653,7 +686,8 @@ def build():
     for name, title, desc in [("about", "About", "Who is behind Off-Grid Sorted, and why it exists."),
                               ("disclosure", "Affiliate disclosure & disclaimer", "How Off-Grid Sorted earns money, and the limits of our advice."),
                               ("privacy", "Privacy", "How Off-Grid Sorted handles your information."),
-                              ("contact", "Contact", "How to get in touch with Off-Grid Sorted.")]:
+                              ("contact", "Contact", "How to get in touch with Off-Grid Sorted."),
+                              ("embed", "Put the Power Planner on your site", "Add the free Off-Grid Sorted Power Planner to your own website, van build or auto electrical site. Copy and paste, no sign-up.")]:
         page(f"{name}.html", title, desc, '<main class="article"><div class="crumbs"><a href="{pre}index.html">Home</a> › ' + title + '</div>' + read(f"content/{name}.html") + '</main>', f"{name}.html" if name == "about" else "")
     build_kits()
     # Refresh planner chrome
