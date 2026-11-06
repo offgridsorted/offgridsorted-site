@@ -984,3 +984,4 @@ details.what-parts[open] > summary::before{content:"－"}
 .kit-aside a{text-decoration:none;background:var(--card);border:2px solid var(--go);border-radius:10px;padding:5px 12px;font-size:.92rem}
 .kit-aside a:hover{background:var(--go);color:#fffdf7}
 @media (max-width:560px){.how-strip{row-gap:2px}.how-strip li.hl-arrow:nth-child(4)::after{content:"=";font-size:2rem;font-weight:800;line-height:.9}.how-strip li.hl-arrow:nth-child(4){margin:0}}
+.kit-aside{background:none;padding:0;margin:22px 0 4px;gap:6px;font-size:.92rem;color:var(--muted)}.kit-aside .doodle{height:18px}.kit-aside a{background:none;border:0;padding:0;color:var(--go-dark);text-decoration:underline;text-underline-offset:3px;font-size:.92rem}.kit-aside a:hover{background:none;color:var(--go)}
