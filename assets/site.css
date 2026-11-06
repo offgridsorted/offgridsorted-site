@@ -804,3 +804,4 @@ html:root:not(#x){--biro:var(--ink)}
 .sec-head + .hint{margin-top:10px}
 .sec-head + .hint{margin-top:16px}
 .hero .hand-note{align-items:center;text-align:center}
+.founders h3{margin-bottom:16px}.founders p{margin-bottom:12px}
