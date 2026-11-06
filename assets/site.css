@@ -1122,3 +1122,8 @@ body.mode-check section.step.band-b{background:var(--sage-band);box-shadow:0 0 0
 .kit .item.is-bumped{box-shadow:inset 0 0 0 2px var(--sun-dark)}
 .kit .item.is-bumped .s{font-weight:700}
 .article h1 + .meta{padding-top:30px}
+/* Power-flow diagram in guides */
+.flow-diagram{margin:22px auto 18px;max-width:420px;background:var(--card);border-radius:18px;padding:16px 12px 10px}
+.flow-diagram .flow-svg{display:block;width:100%;height:auto}
+.flow-steps{margin-top:6px}
+.flow-steps li{margin-bottom:8px}

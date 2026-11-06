@@ -75,6 +75,39 @@
 <li>Your <b>inverter</b> handles the biggest 240V thing you'll run.</li></ol>
 <div class="cta-box"><p>The Power Planner does all of this for you. Pick what you run and where you travel, and it sizes each part.</p><a class="btn-link" href="../planner.html">Open the Power Planner</a><span class="kit-or">or grab a <a href="../kits/index.html">ready-made kit</a></span></div>
 
+<h2 class="h-art"><span>How the power flows</span><svg class="doodle" viewBox="0 0 140 60" width="72" height="31" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 44c30-30 80-34 118-20"/><path d="M112 12l16 12-18 10"/></svg></h2>
+<p>Here's how the parts connect. If it helps, picture water: the battery is a tank, the cables are pipes, and power flows along them like water.</p>
+<figure class="flow-diagram"><svg class="flow-svg" viewBox="0 0 360 640" role="img" aria-label="How the power flows: the sun hits the solar panel, which goes through a solar controller to the battery. The engine charges the battery through a DC-DC charger. From the battery, power goes through an isolator switch, then to a fuse block for 12V gear, and to an inverter for 240V plugs.">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="#1c1f1b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<style>.t{font:700 15px Barlow,system-ui,sans-serif;fill:#1c1f1b}.s{font:500 12.5px Barlow,system-ui,sans-serif;fill:#454942}.lab{font:600 12px Barlow,system-ui,sans-serif;fill:#454942}.hand{font:600 17px Caveat,cursive;fill:#1c1f1b}</style></defs>
+<rect x="18" y="14" width="152" height="52" rx="12" fill="#e2ece6" stroke="#1c1f1b" stroke-width="2.2"/><text x="94.0" y="35" text-anchor="middle" class="t">☀ Sun</text><text x="94.0" y="53" text-anchor="middle" class="s">free power</text>
+<rect x="190" y="14" width="152" height="52" rx="12" fill="#e2ece6" stroke="#1c1f1b" stroke-width="2.2"/><text x="266.0" y="35" text-anchor="middle" class="t">Engine</text><text x="266.0" y="53" text-anchor="middle" class="s">while you drive</text>
+<path d="M94 66L94 92" stroke="#1c1f1b" stroke-width="2.4" fill="none" marker-end="url(#ah)" stroke-dasharray="5 5"/>
+<rect x="18" y="94" width="152" height="52" rx="12" fill="#fffdf7" stroke="#1c1f1b" stroke-width="2.2"/><text x="94.0" y="115" text-anchor="middle" class="t">Solar panel</text><text x="94.0" y="133" text-anchor="middle" class="s">catches the sun</text>
+<path d="M94 146L94 172" stroke="#1c1f1b" stroke-width="2.4" fill="none" marker-end="url(#ah)"/>
+<rect x="18" y="174" width="152" height="52" rx="12" fill="#fffdf7" stroke="#1c1f1b" stroke-width="2.2"/><text x="94.0" y="195" text-anchor="middle" class="t">Solar controller</text><text x="94.0" y="213" text-anchor="middle" class="s">the gatekeeper</text>
+<path d="M266 66L266 132" stroke="#1c1f1b" stroke-width="2.4" fill="none" marker-end="url(#ah)"/>
+<rect x="190" y="134" width="152" height="52" rx="12" fill="#fffdf7" stroke="#1c1f1b" stroke-width="2.2"/><text x="266.0" y="155" text-anchor="middle" class="t">DC-DC charger*</text><text x="266.0" y="173" text-anchor="middle" class="s">fills up as you drive</text>
+<path d="M94 226V250Q94 262 106 262H128" stroke="#1c1f1b" stroke-width="2.4" fill="none" marker-end="url(#ah)"/>
+<path d="M266 186V250Q266 262 254 262H232" stroke="#1c1f1b" stroke-width="2.4" fill="none" marker-end="url(#ah)"/>
+<rect x="130" y="236" width="100" height="56" rx="12" fill="#f5cb3c" stroke="#1c1f1b" stroke-width="2.2"/><text x="180.0" y="257" text-anchor="middle" class="t">Battery</text><text x="180.0" y="275" text-anchor="middle" class="s">stores it all</text>
+
+<path d="M180 292L180 318" stroke="#1c1f1b" stroke-width="2.4" fill="none" marker-end="url(#ah)"/>
+<rect x="105" y="320" width="150" height="52" rx="12" fill="#fffdf7" stroke="#1c1f1b" stroke-width="2.2"/><text x="180.0" y="341" text-anchor="middle" class="t">Isolator switch</text><text x="180.0" y="359" text-anchor="middle" class="s">the main off switch</text>
+<path d="M180 372V392Q180 402 168 402H106Q94 402 94 414V428" stroke="#1c1f1b" stroke-width="2.4" fill="none" marker-end="url(#ah)"/>
+<path d="M180 372V392Q180 402 192 402H254Q266 402 266 414V428" stroke="#1c1f1b" stroke-width="2.4" fill="none" marker-end="url(#ah)"/>
+<rect x="18" y="430" width="152" height="52" rx="12" fill="#fffdf7" stroke="#1c1f1b" stroke-width="2.2"/><text x="94.0" y="451" text-anchor="middle" class="t">Fuse block</text><text x="94.0" y="469" text-anchor="middle" class="s">a fuse for each circuit</text>
+<rect x="190" y="430" width="152" height="52" rx="12" fill="#fffdf7" stroke="#1c1f1b" stroke-width="2.2"/><text x="266.0" y="451" text-anchor="middle" class="t">Inverter</text><text x="266.0" y="469" text-anchor="middle" class="s">makes house power</text>
+<path d="M94 482L94 508" stroke="#1c1f1b" stroke-width="2.4" fill="none" marker-end="url(#ah)"/>
+<path d="M266 482L266 508" stroke="#1c1f1b" stroke-width="2.4" fill="none" marker-end="url(#ah)"/>
+<rect x="18" y="510" width="152" height="52" rx="12" fill="#e2ece6" stroke="#1c1f1b" stroke-width="2.2"/><text x="94.0" y="531" text-anchor="middle" class="t">12V gear</text><text x="94.0" y="549" text-anchor="middle" class="s">fridge, lights, USB</text>
+<rect x="190" y="510" width="152" height="52" rx="12" fill="#e2ece6" stroke="#1c1f1b" stroke-width="2.2"/><text x="266.0" y="531" text-anchor="middle" class="t">240V plugs</text><text x="266.0" y="549" text-anchor="middle" class="s">laptop, hair dryer</text>
+<text x="180" y="592" text-anchor="middle" class="lab">Every line is a cable, sized by your auto electrician.</text>
+<text x="180" y="612" text-anchor="middle" class="lab">*Many DC-DC chargers have a solar controller built in.</text>
+</svg></figure>
+<ul class="flow-steps"><li><b>Solar panel:</b> catches sunlight and turns it into power, like rain falling on a roof.</li><li><b>Solar controller</b> (also called a regulator or MPPT): the gatekeeper between the panel and the battery. It lets in the right amount so the tank never overflows, and squeezes the most out of weak sun.</li><li><b>DC-DC charger:</b> a second tap, filling the tank from your engine while you drive. Many have a solar controller built in, so one box does both jobs.</li><li><b>Battery:</b> the tank. Everything flows in here, and everything you run draws from it.</li><li><b>Isolator switch:</b> the main tap. One switch turns the whole system off.</li><li><b>Fuse block:</b> every circuit gets its own fuse. If something goes wrong, the fuse breaks first, before a cable can overheat.</li><li><b>Inverter:</b> a travel adaptor that turns battery power into house power for normal plugs.</li><li><b>Cables:</b> the pipes. Too thin and they get hot and waste power, so your auto electrician sizes each one.</li></ul>
+<p class="aside">This shows how the parts connect, not how to wire them. That's a job for a licensed auto electrician.</p>
+
 <h2 class="h-art"><span>The bits that hold it together</span><svg class="doodle" viewBox="0 0 110 100" width="72" height="65" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M70 14a20 20 0 0 0-16 30L18 80a8 8 0 0 0 12 12l36-36a20 20 0 0 0 30-16l-12 4-10-10 4-12a20 20 0 0 0-8-2z"/></svg></h2>
 <ul><li><b>Cables</b> sized for the job. Too thin and they heat up and waste power.</li>
 <li><b>Fuses or circuit breakers</b> on every circuit, so a fault can't start a fire.</li>
