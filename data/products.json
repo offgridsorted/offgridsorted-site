@@ -494,7 +494,7 @@
     "name": "Renogy 40A DC-DC with MPPT",
     "price": 197.99,
     "store": "Renogy Australia",
-    "url": "https://au.renogy.com/renogy-40a-dc-dc-battery-charger-with-mppt",
+    "url": "https://au.renogy.com/products/renogy-40a-dc-dc-battery-charger-with-mppt",
     "why": "Very cheap for 40A with solar built in.",
     "downside": "Only takes small 12V-style panels (25V max), not big house-style panels.",
     "rrp": 217.99,
@@ -503,7 +503,7 @@
      {
       "store": "Renogy Australia",
       "price": 197.99,
-      "url": "https://au.renogy.com/renogy-40a-dc-dc-battery-charger-with-mppt",
+      "url": "https://au.renogy.com/products/renogy-40a-dc-dc-battery-charger-with-mppt",
       "was": 217.99
      },
      {
@@ -805,20 +805,19 @@
    {
     "tier": "Mid-range",
     "role": "main",
-    "name": "Renogy 200W Mono Panel",
-    "price": 260,
-    "store": "My Generator",
-    "url": "https://mygenerator.com.au/product/renogy-200w-12v-monocrystalline-fixed-solar-panel",
+    "name": "Renogy 200W N-Type Mono Panel",
+    "price": 261.99,
+    "store": "Renogy",
+    "url": "https://au.renogy.com/products/renogy-n-type-16bb-solar-panel-100w-175w-200w?variant=43664205185117",
     "why": "Well-known brand, 5-year warranty, and a long narrow shape that suits van roofs.",
     "downside": "12kg, so check your roof racks.",
     "warranty": 5,
     "kg": 12,
     "stores": [
      {
-      "store": "My Generator",
-      "price": 260.0,
-      "url": "https://mygenerator.com.au/product/renogy-200w-12v-monocrystalline-fixed-solar-panel",
-      "was": 300.0
+      "store": "Renogy",
+      "price": 261.99,
+      "url": "https://au.renogy.com/products/renogy-n-type-16bb-solar-panel-100w-175w-200w?variant=43664205185117"
      }
     ]
    },
@@ -878,20 +877,19 @@
    {
     "tier": "Mid-range",
     "role": "main",
-    "name": "3 × Renogy 200W Mono Panels",
-    "price": 780,
-    "store": "My Generator",
-    "url": "https://mygenerator.com.au/product/renogy-200w-12v-monocrystalline-fixed-solar-panel",
+    "name": "3 × Renogy 200W N-Type Mono Panels",
+    "price": 785.97,
+    "store": "Renogy",
+    "url": "https://au.renogy.com/products/renogy-n-type-16bb-solar-panel-100w-175w-200w?variant=43664205185117",
     "why": "5-year warranty, and the narrow shape lies across a van roof more easily.",
     "downside": "About 36kg.",
     "warranty": 5,
     "kg": 36,
     "stores": [
      {
-      "store": "My Generator",
-      "price": 780.0,
-      "url": "https://mygenerator.com.au/product/renogy-200w-12v-monocrystalline-fixed-solar-panel",
-      "was": 900.0
+      "store": "Renogy",
+      "price": 785.97,
+      "url": "https://au.renogy.com/products/renogy-n-type-16bb-solar-panel-100w-175w-200w?variant=43664205185117"
      }
     ]
    },
@@ -1048,7 +1046,7 @@
      {
       "store": "Renogy Australia",
       "price": 336.99,
-      "url": "https://au.renogy.com/renogy-2000-12v-to-230v-pure-sine-wave-inverter-with-ups-function"
+      "url": "https://au.renogy.com/products/renogy-2000-12v-to-230v-pure-sine-wave-inverter-with-ups-function"
      },
      {
       "store": "Campervan Builders",
