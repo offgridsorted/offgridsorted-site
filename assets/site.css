@@ -816,3 +816,48 @@ html:root:not(#x){--biro:var(--ink)}
 .marker{background:linear-gradient(transparent 52%, color-mix(in srgb,var(--sun) 10%,transparent) 52%, color-mix(in srgb,var(--sun) 10%,transparent) 90%, transparent 90%)}
 .cards .go{margin-top:auto}.cards > * p{margin-bottom:18px}
 .cards h3{margin-bottom:10px}
+
+/* ===== Guides, kits and other pages in the refresh style ===== */
+.article{line-height:1.7}
+.article h2{margin:48px 0 14px}
+.article h3{margin:28px 0 10px}
+.article p{margin:0 0 18px}
+.article li{margin-bottom:8px}
+.article .meta{margin-bottom:26px}
+.tldr{background:var(--sage-band);border:0;border-radius:18px;padding:22px 24px;margin:0 0 22px}
+.tldr h2{margin:0 0 12px !important}
+.tldr li{margin-bottom:10px}
+.early-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin:0 0 18px}
+.early-cta span{font-family:var(--font-ui);font-size:.98rem}
+.early-cta span a{color:var(--go);font-weight:700}
+.trust-strip{background:var(--go);color:#fffdf7;border-radius:14px;padding:12px 18px;gap:8px 20px;margin:0 0 30px}
+.trust-strip span{color:#fffdf7}
+.trust-strip span::before{content:"✓ ";font-family:var(--font-hand);font-weight:700;font-size:1.3em;color:var(--sun)}
+.trust-strip a{color:#fffdf7;text-decoration:underline;text-underline-offset:2px}
+.cta-box{background:color-mix(in srgb,var(--go) 16%,var(--sage-band));color:var(--ink);border:0;border-radius:18px;padding:24px;margin:40px 0}
+.cta-box p{font-weight:600;color:var(--ink)}
+.cta-box .btn-link{background:var(--sun);color:#1c1f1b;border:0;border-radius:14px;box-shadow:0 5px 0 var(--sun-dark)}
+.cta-box .btn-link::after{content:"\00a0\00a0→";font-weight:800}
+.cta-box .btn-link:hover{transform:translateY(2px);box-shadow:0 3px 0 var(--sun-dark)}
+.aside{background:var(--sun-band);border-left:5px solid var(--go);border-radius:14px;padding:16px 18px}
+.our-note{border-radius:18px}
+.tbl table{border-radius:14px}
+.tbl th{background:var(--sage-band)}
+.faq details{border-bottom:1px solid var(--faint);padding:12px 0}
+.faq summary{cursor:pointer;font-weight:700;font-family:var(--font-ui)}
+.related .guide-list a{background:var(--card);border-radius:16px;box-shadow:0 4px 0 color-mix(in srgb,var(--go) 25%,transparent)}
+.related .guide-list .tag{color:var(--go)}
+.crumbs a{color:var(--go)}
+.early-cta{background:none;padding:0;border:0}.trust-strip span{white-space:normal}
+/* selected choices in eucalyptus, not black */
+.modes button[aria-pressed="true"],.chips input:checked + label,.seg button[aria-pressed="true"]{background:var(--go);border-color:var(--go);color:#fffdf7}
+.chips label{border-radius:12px}
+.presets button{border-radius:14px}
+.presets button[aria-pressed="true"]{background:var(--sun-band);border-color:var(--sun) !important}
+/* planner steps alternate soft bands, like the homepage */
+section.step{border-bottom:0;padding:34px 0}
+section.step:nth-of-type(even){background:var(--sun-band);box-shadow:0 0 0 100vmax var(--sun-band);clip-path:inset(0 -100vmax)}
+section.step:nth-of-type(odd){background:var(--sage-band);box-shadow:0 0 0 100vmax var(--sage-band);clip-path:inset(0 -100vmax)}
+section.step .step-label{display:block;margin-bottom:6px}
+section.step h2{margin-bottom:6px}
+.btn:not(.ghost){background:var(--go);color:#fffdf7;border-color:var(--go);border-radius:12px}.btn.ghost{border-radius:12px}
