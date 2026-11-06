@@ -794,3 +794,4 @@ html:root:not(#x){--biro:var(--ink)}
 .signup .btn.ghost::after{content:""}
 @media (max-width:760px){:root{--hdr:96px}.site-header .logo svg{width:120px}.site-header .in{padding:8px 16px}}
 .hero .hand-note{line-height:1.15}
+.trust{margin-top:30px}
