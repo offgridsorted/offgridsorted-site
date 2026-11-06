@@ -644,14 +644,76 @@ def build_kits():
         page(f"kits/{k['slug']}.html", f"The {k['name']} kit", f"Everything in the {k['name']} power kit for Australian vans, caravans and 4WDs: battery, solar, DC-DC charger, wiring and more, with budget to premium options.", body, "kits/index.html")
 
 
+# ---------- Guides hub: start here, picture tiles, quick answers, then topics ----------
+START_HERE = ["van-power-basics", "lithium-vs-agm", "how-much-solar-australia"]
+TOPICS = [  # (anchor, heading, doodle, tags, one-liner)
+    ("batteries", "Batteries", "battery", ["Batteries"], "Which battery, what size, where it can go."),
+    ("solar", "Solar", "panel", ["Solar"], "How much solar, which type, and winter."),
+    ("charging", "Charging while you drive", "plug", ["Charging"], "DC-DC chargers and smart alternators."),
+    ("fridges", "Fridges", "fridge", ["Fridges"], "How long it runs and why it flattens things."),
+    ("rigs", "Caravans & 4WDs", "caravan", ["Caravans", "4WDs"], "Trailer plugs, dual batteries, fixes."),
+    ("trips", "Trips & planning", "road", ["Start here", "Trips"], "When to go and what to pack power-wise."),
+]
+QUICK = [  # short keyword-style questions that jump straight to the answer
+    ("100Ah fridge runtime", "will-my-fridge-last"), ("Fridge flattening battery", "fridge-flattening-battery"),
+    ("Smart alternator?", "smart-alternator-check"), ("Lithium under the bonnet", "lithium-under-the-bonnet"),
+    ("Solar blanket vs fixed", "solar-blanket-vs-fixed-panel"), ("Winter solar", "winter-solar-not-keeping-up"),
+    ("Caravan not charging", "caravan-not-charging-while-driving"), ("Power station vs dual battery", "portable-power-stations"),
+]
+
+
+def guides_hub():
+    by = {g[0]: g for g in GUIDES}
+    def row(g, num=None):
+        slug, title, tag, blurb, status = g
+        lead = f'<span class="n">{num}</span>' if num else doodle(TAG_DOODLE.get(tag, "sun"), 44)
+        words = html.escape((title + " " + blurb + " " + tag).lower())
+        if status != "live":
+            return f'<li class="soon" data-words="{words}"><div>{lead}<span><b>{html.escape(title)}</b><span class="small">Coming soon</span></span></div></li>'
+        return (f'<li data-words="{words}"><a href="{{pre}}guides/{slug}.html">{lead}<span><b>{html.escape(title)}</b>'
+                f'<span class="small">{html.escape(blurb)}</span></span><span class="go-arrow" aria-hidden="true">→</span></a></li>')
+    h = '<main class="page guides-hub"><div class="crumbs"><a href="{pre}index.html">Home</a> › Guides</div>'
+    h += ('<div class="sec-head"><h1 style="font-size:3rem;margin:4px 0 8px">Guides</h1>[[d:road:120]]</div>'
+          '<p class="hint">Plain-English answers about van, caravan and 4WD power. Read the first three if you\'re new, '
+          'tap a picture to browse a topic, or search for your question.</p>')
+    # 1. Start here
+    h += ('<section class="band start-here" aria-labelledby="sh"><h2 id="sh">Start here</h2>'
+          '<p class="hand-pick">new to all this? read these three in order</p><ol class="hub-list">'
+          + "".join(row(by[s], f"{i}") for i, s in enumerate(START_HERE, 1) if s in by) + '</ol></section>')
+    # 2. Picture tiles
+    tiles = ""
+    for a, name, d, tags, line in TOPICS:
+        n = sum(1 for g in GUIDES if g[2] in tags and g[0] not in START_HERE)
+        if n:
+            tiles += f'<a class="tile" href="#{a}">{doodle(d, 70)}<b>{name}</b><span class="small">{n} guide{"s" if n != 1 else ""}</span></a>'
+    h += f'<section class="band alt" aria-labelledby="bt"><h2 id="bt">Browse by topic</h2><div class="tiles">{tiles}</div></section>'
+    # 3. Quick answers + search
+    chips = "".join(f'<a class="chip" href="{{pre}}guides/{s}.html">{html.escape(t)}</a>' for t, s in QUICK if s in by and by[s][4] == "live")
+    h += ('<section class="band find" aria-labelledby="qa"><h2 id="qa">Know what you\'re after?</h2>'
+          '<label class="hub-search"><span class="visually-hidden">Search the guides</span>'
+          '<input type="search" id="guide-search" placeholder="Try fridge, solar, alternator, caravan..." autocomplete="off"></label>'
+          f'<p class="small" style="margin:14px 0 8px">Quick answers people look for most:</p><div class="chips">{chips}</div></section>')
+    # 4. Topics
+    for a, name, d, tags, line in TOPICS:
+        gs = [g for g in GUIDES if g[2] in tags and g[0] not in START_HERE]
+        if gs:
+            h += (f'<section class="topic" id="{a}"><div class="topic-head">{doodle(d, 56)}<div><h2>{name}</h2>'
+                  f'<p class="small">{line}</p></div></div><ul class="hub-list">' + "".join(row(g) for g in gs) + '</ul></section>')
+    h += '<p class="small no-match" hidden>No guides match that yet. Try a simpler word, like <b>fridge</b> or <b>solar</b>.</p>'
+    h += ('<script>(function(){var i=document.getElementById("guide-search");if(!i)return;var nm=document.querySelector(".no-match");'
+          'i.addEventListener("input",function(){var q=i.value.trim().toLowerCase(),any=false;'
+          'document.querySelectorAll(".topic,.start-here").forEach(function(sec){var shown=0;'
+          'sec.querySelectorAll("li").forEach(function(li){var ok=!q||q.split(/\\s+/).every(function(w){return li.dataset.words.indexOf(w)>-1});li.hidden=!ok;if(ok)shown++});'
+          'sec.hidden=!shown;if(shown)any=true});nm.hidden=any||!q;});})();</script>')
+    return h + '</main>'
+
+
 def build():
     # Home
     LD["index.html"] = [ORG, {"@type": "WebSite", "@id": BASE + "#site", "name": "Off-Grid Sorted", "url": BASE, "inLanguage": "en-AU", "publisher": {"@id": ORG_ID}}] + PEOPLE
     page("index.html", SITE, "Free plain-English power planner and guides for Australian vans, caravans and 4WDs. Work out the battery, solar and charger you need.", read("content/home.html"))
     # Guides hub
-    hub = '<main class="page"><div class="crumbs"><a href="{pre}index.html">Home</a> › Guides</div>'
-    hub += '<div class="sec-head"><h1 style="font-size:3rem;margin:4px 0 8px">Guides</h1>[[d:road:120]]</div><p class="hint" style="margin-bottom:22px">Plain-English guides to off-grid power. Start at the top if you\'re new to all this.</p>'
-    hub += '<div class="guide-list">' + "".join(guide_card(g, "{pre}") for g in GUIDES) + '</div></main>'
+    hub = guides_hub()
     page("guides/index.html", "Guides", "Plain-English guides to batteries, solar, DC-DC chargers and inverters for Australian vans, caravans and 4WDs.", hub, "guides/index.html")
     # Each live guide
     for i, g in enumerate(GUIDES):
