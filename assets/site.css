@@ -880,3 +880,57 @@ details.fine-tune > summary::-webkit-details-marker{display:none}
 .gear-other{margin-top:8px}
 .res-pill{background:var(--go);color:#fffdf7}
 @media (max-width:560px){#gear-card .grid2{grid-template-columns:1fr}}
+/* planner intro: three visual steps */
+.how-steps{list-style:none;margin:18px auto 10px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;max-width:820px;counter-reset:hs}
+.how-steps li{background:var(--card);border-radius:18px;padding:18px 16px 16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;position:relative;box-shadow:0 4px 0 color-mix(in srgb,var(--go) 22%,transparent)}
+.how-steps li::before{counter-increment:hs;content:counter(hs);position:absolute;top:10px;left:14px;font-family:var(--font-hand);font-weight:700;font-size:1.8rem;color:var(--go);line-height:1}
+.how-steps b{font-family:var(--font-display);font-size:1.15rem}
+.how-steps span{font-family:var(--font-ui);font-size:.92rem;color:var(--muted);line-height:1.4}
+.how-steps .doodle{color:var(--ink);height:52px;width:auto}
+@media (max-width:640px){.how-steps{grid-template-columns:1fr}.how-steps li{flex-direction:row;text-align:left;gap:14px;padding:14px 14px 14px 40px}.how-steps li > b{min-width:0}.how-steps li{display:grid;grid-template-columns:56px 1fr;align-items:center}.how-steps li b,.how-steps li span{grid-column:2}.how-steps li .doodle{grid-row:1 / span 2}}
+.kit-aside{font-family:var(--font-ui);font-size:.98rem;color:var(--muted);margin:12px 0 0}
+.kit-aside a{color:var(--go);font-weight:700}
+.field-note{font-family:var(--font-body);font-style:italic;color:var(--muted);font-size:.95rem;margin:8px 0 0}
+/* results: friendly headline, products first, workings tucked away */
+.results .verdict{display:flex;flex-direction:column;gap:6px;margin:6px 0 18px}
+.results .v-main{font-family:var(--font-display);font-weight:700;font-size:1.5rem;line-height:1.2}
+.results .v-use{font-family:var(--font-ui);font-size:1rem;color:var(--muted)}
+.results .v-use b{color:var(--ink);background:var(--sun-band);padding:2px 8px;border-radius:8px}
+details.how-worked{margin:26px 0 10px;background:var(--sage-band);border-radius:18px;padding:6px 18px}
+details.how-worked > summary{cursor:pointer;list-style:none;font-family:var(--font-display);font-weight:700;font-size:1.2rem;padding:12px 0}
+details.how-worked > summary::-webkit-details-marker{display:none}
+details.how-worked > summary::before{content:"＋ ";color:var(--go)}
+details.how-worked[open] > summary::before{content:"－ "}
+details.how-worked > summary span{font-family:var(--font-ui);font-weight:500;font-size:.9rem;color:var(--muted)}
+details.how-worked[open]{padding-bottom:18px}
+/* product lists: one price level at a time, each part its own calm card */
+.tier-tabs{display:flex;gap:8px;position:sticky;top:var(--hdr,112px);z-index:2;background:var(--paper);padding:10px 0;margin-bottom:6px}
+.tier-tabs button{flex:1;max-width:220px;font-family:var(--font-ui);font-weight:700;font-size:.95rem;padding:10px 8px;border-radius:12px;border:1.5px solid color-mix(in srgb,var(--ink) 30%,transparent);background:var(--card);color:var(--ink);cursor:pointer}
+.tier-tabs button[aria-pressed="true"]{background:var(--go);border-color:var(--go);color:#fffdf7}
+.kit-table table,.kit-table tbody,.kit-table tr,.kit-table th,.kit-table td{display:block;width:auto}
+.kit-table thead{display:none}
+.kit-table tbody tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:6px 24px;background:var(--card);border-radius:16px;padding:16px 18px;margin-bottom:12px;box-shadow:0 3px 0 color-mix(in srgb,var(--go) 18%,transparent)}
+.kit-table tbody tr:nth-child(even){background:color-mix(in srgb,var(--sun-band) 55%,var(--card))}
+.kit-table th,.kit-table td{border-bottom:0;padding:0}
+.kit-table th.ph{width:auto}
+.kit-table th.ph b{display:block;font-size:1.25rem;margin-bottom:4px}
+.kit-table td.c1{background:none}
+.kit-table[data-tier="0"] td.c1,.kit-table[data-tier="0"] td.c2,
+.kit-table[data-tier="1"] td.c0,.kit-table[data-tier="1"] td.c2,
+.kit-table[data-tier="2"] td.c0,.kit-table[data-tier="2"] td.c1{display:none}
+.kit-table .totrow{display:flex !important;justify-content:space-between;align-items:center;background:var(--sage-band) !important}
+.kit-table .totrow th,.kit-table .totrow td{background:none !important}
+.kit-table .prod .pname{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--ink)}
+.kit-table .prod .price{display:block;font-family:var(--font-ui);font-weight:700;font-size:1.05rem;margin:4px 0}
+.kit-table .prod .tn{display:block;margin:4px 0}
+details.prod-more{margin:6px 0}
+details.prod-more > summary{cursor:pointer;font-family:var(--font-ui);font-weight:600;font-size:.88rem;color:var(--go)}
+@media (max-width:640px){.kit-table tbody tr{grid-template-columns:1fr}}
+.kit-table tbody td{background:none !important}
+/* menu: Power Planner stands out as the main thing */
+.menu-toggle .drop a.drop-cta{display:flex;flex-direction:column;gap:2px;background:var(--go);color:#fffdf7;border:0;border-radius:14px;padding:14px 18px;margin:6px 0 10px;box-shadow:0 4px 0 var(--go-dark);font-family:var(--font-ui);font-weight:700;font-size:1.15rem}
+.menu-toggle .drop a.drop-cta::after{content:"→";position:absolute;right:36px;margin-top:6px;font-size:1.2rem}
+.menu-toggle .drop a.drop-cta span{font-weight:500;font-size:.88rem;color:#e6efe9}
+.menu-toggle .drop a{font-size:1.05rem}
+.nav a{white-space:nowrap}
+@media (min-width:761px) and (max-width:1100px){.nav a:not(.cta){font-size:.95rem;padding-left:8px;padding-right:8px}}

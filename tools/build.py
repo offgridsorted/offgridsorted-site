@@ -142,7 +142,7 @@ FAQS = {
 }
 
 
-NAV = [("kits/index.html", "Kits"), ("guides/index.html", "Guides"), ("about.html", "About")]
+NAV = [("kits/index.html", "Ready-made kits"), ("guides/index.html", "Easy guides"), ("about.html", "Who we are"), ("contact.html", "Contact")]
 
 
 def logo(w=120, ident="H"):
@@ -220,7 +220,7 @@ def header(pre, active=""):
   <div class="in">
     <a class="logo" href="{pre}index.html" aria-label="Off-Grid Sorted home">{logo(170)}</a>
     <nav class="nav" aria-label="Main menu">{links}<a class="cta" href="{pre}planner.html"{' aria-current="page"' if active == "planner.html" else ""}>Power Planner</a></nav>
-    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a href="{pre}planner.html"><b>Power Planner →</b></a>{drop}<a href="{pre}contact.html">Contact</a></div></details>
+    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a class="drop-cta" href="{pre}planner.html">Power Planner<span>Work out your setup in about two minutes</span></a>{drop}</div></details>
   </div>
 </header>
 '''

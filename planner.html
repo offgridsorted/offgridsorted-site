@@ -37,8 +37,8 @@
 <text x="30" y="272" font-family="'Permanent Marker', cursive" font-size="66" fill="currentColor">SORTED</text>
 <path d="M36 288c60-10 140-10 236 2" fill="none" stroke="#e0a12e" stroke-width="8" stroke-linecap="round" filter="url(#rLogoH)"></path>
 </svg></a>
-    <nav class="nav" aria-label="Main menu"><a href="kits/index.html">Kits</a><a href="guides/index.html">Guides</a><a href="about.html">About</a><a class="cta" href="planner.html" aria-current="page">Power Planner</a></nav>
-    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a href="planner.html"><b>Power Planner →</b></a><a href="kits/index.html">Kits</a><a href="guides/index.html">Guides</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></details>
+    <nav class="nav" aria-label="Main menu"><a href="kits/index.html">Ready-made kits</a><a href="guides/index.html">Easy guides</a><a href="about.html">Who we are</a><a href="contact.html">Contact</a><a class="cta" href="planner.html" aria-current="page">Power Planner</a></nav>
+    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a class="drop-cta" href="planner.html">Power Planner<span>Work out your setup in about two minutes</span></a><a href="kits/index.html">Ready-made kits</a><a href="guides/index.html">Easy guides</a><a href="about.html">Who we are</a><a href="contact.html">Contact</a></div></details>
   </div>
 </header>
 <main id="main" class="wrap">
@@ -46,8 +46,12 @@
 <header class="mast">
 <span class="kicker">For Aussie vans, caravans &amp; 4WDs</span>
   <h1>Power Planner</h1>
-  <p class="lede">Work out the battery, solar and charger your van, caravan or 4WD actually needs, in plain English. Tell it what you run and where you travel. It shows you the numbers and explains why.</p>
+  <p class="lede">Work out the battery, solar and charger your van, caravan or 4WD actually needs, in plain English. Three quick steps:</p>
+  <ol class="how-steps"><li><svg class="doodle" viewBox="0 0 90 100" width="54" height="60" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M45 90S16 58 16 38a29 29 0 0 1 58 0c0 20-29 52-29 52z"/><circle cx="45" cy="38" r="10" fill="#f5cb3c"/></svg><b>Where you travel</b><span>Your state and season, using Bureau of Meteorology sun data</span></li><li><svg class="doodle" viewBox="0 0 110 100" width="54" height="49" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M30 40h46l8 44H22z"/><path d="M76 50c14 0 18 8 18 18M30 50L14 38"/><path d="M38 40c0-12 30-12 30 0"/><path d="M50 16c-4 6 4 8 0 14M62 12c-4 6 4 8 0 14" stroke-dasharray="3 5"/></svg><b>What you run</b><span>Tap your fridge and gear. No maths needed</span></li><li><svg class="doodle" viewBox="0 0 130 90" width="64" height="44" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="18" width="100" height="58" rx="10" fill="#f5cb3c"/><path d="M110 37h9v20h-9"/><path d="M28 62V34M42 62V34" stroke-width="5"/><path d="M78 42v5M96 42v5M76 56c5 6 17 6 22 0"/></svg><b>Your setup</b><span>Battery, solar and charger sizes, with real products and prices</span></li></ol>
+  <p class="kit-aside">Prefer a ready-made kit? <a href="kits/index.html">Browse the kits →</a></p>
 
+
+  <details class="what-parts"><summary>What are these four parts?</summary>
   <figure class="diagram" style="margin:6px 0 0">
     <svg viewBox="0 0 360 190" role="img" aria-label="Sketch of a van: the sun charges a solar panel on the roof, the engine charges through a DC-DC charger, both fill the battery, and an inverter feeds a house plug.">
       <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ink)">
@@ -89,8 +93,7 @@
       <text class="lbl" x="352" y="178" text-anchor="end">engine → DC-DC</text>
       <text class="lbl" x="8" y="178">inverter → plug</text>
     </svg>
-  </figure>
-  <details class="what-parts"><summary>What are these four parts?</summary><div class="legend-dl">
+  </figure><div class="legend-dl">
     <div><b>Battery</b>Stores your power. Bigger battery, more days off-grid.</div>
     <div><b>Solar</b>Tops the battery up for free. Weaker in winter.</div>
     <div><b>DC-DC charger</b>Charges the battery from your engine while you drive.</div>
@@ -103,7 +106,7 @@
   <button type="button" id="mode-check" aria-pressed="false">Check what I've got</button>
 </nav>
 
-<section class="step" id="preset-card" aria-labelledby="s0">
+<section class="step" id="preset-card" aria-labelledby="s0" hidden>
   <svg class="doodle step-doodle" viewBox="0 0 120 100" width="84" height="70" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="30" width="88" height="58" rx="8"/><path d="M16 46h88M46 22h28v8H46"/><path d="M60 56v22M50 61l20 12M70 61L50 73" stroke-width="3"/></svg>
   <span class="step-label">Quickest way</span>
   <h2 id="s0">Pick the trip that sounds like you</h2>
@@ -127,7 +130,6 @@
       <input type="radio" name="vehicle" id="vh-4wd" value="4wd"><label for="vh-4wd">4WD</label>
     </div>
   </div>
-  <p class="hint">The sun is much weaker in a Hobart winter than a Darwin one. Same panel, very different result.</p>
   <div class="field">
     <label for="loc">Where will you mostly be?</label>
     <select id="loc">
@@ -141,6 +143,7 @@
       <option value="act">ACT</option>
       <option value="all">Touring all over (plan for the worst spot)</option>
     </select>
+    <p class="field-note">The sun is much weaker in a Hobart winter than a Darwin one. Same panel, very different result.</p>
   </div>
   <div class="field">
     <span id="season-l" class="flabel">When do you travel?</span>
@@ -295,13 +298,6 @@
   <div class="kit" id="kit"></div>
   <p class="more-detail" id="more-detail-p"><button type="button" class="btn ghost" id="more-detail">Want more detail? Fine-tune everything</button></p>
 
-  <div class="field">
-    <h3>What uses your power each day</h3>
-    <div class="bar" id="bar" role="img"></div>
-    <div class="legend" id="legend"></div>
-  </div>
-
-  <div class="why" id="why"></div>
 
   <div id="gaps-wrap" hidden>
     <h3>What's missing</h3>
@@ -310,10 +306,20 @@
 
   <div class="shop" id="shop-wrap">
     <h3 id="shop-h" style="font-size:1.5rem">Build your kit</h3>
-    <p class="small">Real products at three price levels, with what the extra money gets you.</p>
-    <p class="trust-strip"><span>✓ Picked for fit, not commission</span><span>✓ Aussie shops, AUD prices</span><span>✓ Estimates, not promises</span><span>✓ Auto electrician to wire it in</span><a href="about.html#how-we-work">How we work</a></p>
+    <p class="small">Real products at three price levels. Tap a level to switch.</p>
+    <p class="trust-strip"><span>Picked for fit, not commission</span><span>Aussie shops, AUD prices</span><span>Estimates, not promises</span><span>Auto electrician to wire it in</span><a href="about.html#how-we-work">How we work</a></p>
     <div class="shop" id="shop"></div>
   </div>
+
+  <details class="how-worked" id="how-worked"><summary>How we worked it out <span>(tap to see the numbers)</span></summary>
+  <div class="field">
+    <h3>What uses your power each day</h3>
+    <div class="bar" id="bar" role="img"></div>
+    <div class="legend" id="legend"></div>
+  </div>
+
+  <div class="why" id="why"></div>
+  </details>
 
   <section class="my-list" id="my-list" aria-live="polite"></section>
 
@@ -550,9 +556,10 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     btnPlan.setAttribute("aria-pressed", m === "plan");
     btnCheck.setAttribute("aria-pressed", m === "check");
     gearCard.hidden = (m !== "check");
-    presetCard.hidden = (m === "check");
+    presetCard.hidden = true;
     document.getElementById("build-card").hidden = (m === "check");
     // In check mode, "what have you got" comes first
+    var hw = document.getElementById("how-worked"); if(hw) hw.open = (m === "check");
     if(m === "check"){ presetCard.parentNode.insertBefore(gearCard, presetCard); gearCard.querySelector(".step-label").textContent = "Start here"; }
     else { resultsEl.parentNode.insertBefore(gearCard, resultsEl); gearCard.querySelector(".step-label").textContent = "Step 4"; }
     calc();
@@ -695,7 +702,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     if(nk){ var kslug = dailyAh <= 55 ? "weekender" : dailyAh <= 90 ? "long-trips" : "living-in-it"; nk.href = "kits/" + kslug + ".html"; nk.textContent = "See the closest ready-made kit: " + ({"weekender":"Weekender","long-trips":"Road trips","living-in-it":"Living in it"})[kslug]; }
     var pt = document.getElementById("res-pill-t"); if(pt) pt.textContent = p.daily > 0 ? "About " + fmt(dailyAh) + "Ah a day · See results" : "See results";
     var pn = document.getElementById("preset-note");
-    if(state.preset && state.mode === "plan"){ pn.hidden = false; pn.innerHTML = "Filled in from the <b>" + state.preset + "</b> kit. " + (state.preset === "Weekender" ? "Set up for a weekend away: you drive there, stay put for two or three days, then drive home. The drive fills the battery, the battery gets you through two parked days, and a little solar stretches it. That works out to about an hour of driving a day on average. " : "") + "Change anything above and these results update. <a href=\"#s2\">Edit what you run ↑</a>"; } else { pn.hidden = true; }
+    if(state.preset && state.mode === "plan"){ pn.hidden = false; pn.innerHTML = "Filled in from the <b>" + state.preset + "</b> kit. " + "Change anything above and these results update. <a href=\"#s2\">Edit what you run ↑</a>"; } else { pn.hidden = true; }
     var placeName = SUN[loc].name;
 
     // Usage bar (hardest season)
@@ -722,7 +729,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
       gapsWrap.hidden = true;
       
       var tooMuchSolar = p.solarW > p.roofMax;
-      verdict.textContent = "You'll use about " + fmt(dailyAh) + "Ah a day. " + (tooMuchSolar ? "That's more than your roof can make in " + seasonWord(p.se) + ", so here's the closest setup and your options." : "Here's a setup that keeps up.");
+      verdict.innerHTML = '<span class="v-main">' + (tooMuchSolar ? "Here's the closest setup, and your options" : "Here's a setup that keeps up") + '</span><span class="v-use">You\'ll use about <b>' + fmt(dailyAh) + 'Ah</b> a day' + (tooMuchSolar ? ". That's more than your roof can make in " + seasonWord(p.se) + "." : "") + '</span>';
 
       var typeName = p.batType === "lith" ? "Lithium (LiFePO4)" : "AGM";
       addKit(kit, "Battery", p.batAh + "Ah", typeName + " · about " + fmt(p.batAh * KG_PER_AH[p.batType]) + "kg");
@@ -735,6 +742,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
       var otherDod = otherType === "lith" ? 0.9 : 0.5;
       var otherAh = roundUp(p.maxDaily * buffer / (V * otherDod), BAT_SIZES) || ceilTo(p.maxDaily * buffer / (V * otherDod), 100);
       whyCard(("<b>Battery:</b> " + p.batAh + "Ah of " + (p.batType === "lith" ? "lithium" : "AGM") + " gives you about " + fmt1(p.batAh * V * p.dod / 1000) + "kWh you can actually use" + (p.batType === "agm" ? " (you only use the top half of an AGM)" : "") + ". That's enough to get through " + buffer + " grey day" + (buffer > 1 ? "s" : "") + " with no sun and no driving."));
+      if(state.preset === "Weekender") whyCard("<b>Sized for a weekend away:</b> you drive there, stay put for two or three days, then drive home. The drive fills the battery, the battery gets you through two parked days, and a little solar stretches it. That works out to about an hour of driving a day on average.");
       if(p.batUnsure) whyCard("<b>Not sure on the battery type?</b> We've gone with lithium. It's lighter, lasts years longer, and you can use almost all of it. Tap <b>AGM</b> in Step 4 if you'd like to compare.");
       if(p.buildUnsure) whyCard("<b>Not sure how to build it?</b> We've shown separate parts. For smaller setups, an <b>all-in-one box</b> is the easy option: tap it in Step 4 to see it.");
       var kgDiff = Math.abs(otherAh * KG_PER_AH[otherType] - p.batAh * KG_PER_AH[p.batType]);
@@ -943,7 +951,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     return '<div class="prod' + (main ? "" : " alt") + '"><a class="pname" href="' + esc(p.url) + '" target="_blank" rel="sponsored nofollow noopener">' + esc(p.name) + '</a>' +
       '<span class="price">' + (p.approx ? "About " : ((p.stores || []).length > 1 ? "From " : "")) + money(p.price) + (p.rrp && p.rrp > p.price && (p.stores || []).length < 2 ? " <s>" + money(p.rrp) + "</s>" : "") + ' <span class="store">at ' + esc(p.store) + '</span></span>' +
       (f.length ? '<span class="facts">' + f.join(" · ") + '</span>' : "") +
-      '<span class="tn">' + esc(p.why) + '</span>' + (p.downside ? '<span class="tn down">Catch: ' + esc(p.downside) + '</span>' : "") + wtbHTML(p) + '<button type="button" class="add-list" data-item="' + esc(JSON.stringify({n:p.name, p:p.price, s:p.store, u:p.url, a:!!p.approx})) + '">+ Add to my list</button></div>';
+      '<span class="tn">' + esc(p.why) + '</span>' + ((p.downside || wtbHTML(p)) ? '<details class="prod-more"><summary>' + (p.downside ? "The catch" : "") + (p.downside && wtbHTML(p) ? " and " : "") + (wtbHTML(p) ? "other shops" : "") + '</summary>' + (p.downside ? '<span class="tn down">' + esc(p.downside) + '</span>' : "") + wtbHTML(p) + '</details>' : "") + '<button type="button" class="add-list" data-item="' + esc(JSON.stringify({n:p.name, p:p.price, s:p.store, u:p.url, a:!!p.approx})) + '">+ Add to my list</button></div>';
   }
   function renderShopTable(parent){
     if(!shopRows.length) return;
@@ -951,7 +959,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     var head = '<tr><th class="ph">Part</th>' + TIERS.map(function(t, i){ return '<th class="c' + i + '">' + t + '</th>'; }).join("") + '</tr>';
     var body = "", totals = [0,0,0], anyCat = false;
     shopRows.forEach(function(r){
-      var showing = r.cat && CAT_LABEL[r.cat] && r.cat !== "monitor" && (r.size || "").indexOf(CAT_LABEL[r.cat]) !== 0 ? '<span class="pn pick-size">Closest size we pick: <b>' + CAT_LABEL[r.cat] + '</b>' + (r.cat.indexOf("roof") === 0 || r.cat.indexOf("blanket") === 0 ? ", which gives you a bit spare" : "") + '.</span>' : "";
+      var showing = r.cat && CAT_LABEL[r.cat] && r.cat !== "monitor" && (r.size || "").indexOf(CAT_LABEL[r.cat]) !== 0 ? '<span class="pn pick-size">Closest size we pick: <b>' + CAT_LABEL[r.cat] + '</b>' + (r.cat.indexOf("roof") === 0 || r.cat.indexOf("blanket") === 0 ? ", which gives you a bit spare" : "") + '</span>' : "";
       body += '<tr><th scope="row" class="ph"><b>' + r.name + '</b>' + (r.size ? '<span class="kp-size">' + r.size + '</span>' : "") + (r.note ? '<span class="pn">' + r.note + '</span>' : "") + showing + '</th>';
       TIERS.forEach(function(t, i){
         var cell = "";
