@@ -815,3 +815,4 @@ html:root:not(#x){--biro:var(--ink)}
 .marker{background:linear-gradient(transparent 52%, color-mix(in srgb,var(--sun) 18%,transparent) 52%, color-mix(in srgb,var(--sun) 18%,transparent) 90%, transparent 90%)}
 .marker{background:linear-gradient(transparent 52%, color-mix(in srgb,var(--sun) 10%,transparent) 52%, color-mix(in srgb,var(--sun) 10%,transparent) 90%, transparent 90%)}
 .cards .go{margin-top:auto}.cards > * p{margin-bottom:18px}
+.cards h3{margin-bottom:10px}
