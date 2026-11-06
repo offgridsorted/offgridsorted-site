@@ -22,6 +22,9 @@ Off-Grid Sorted is an independent Australian website that helps people work out 
 - Numbers are estimates; say so. Cite sources (BOM for sun, manufacturer specs for products).
 - Recommend products by fit, not commission. Show budget / mid-range / premium options and what the extra money gets you.
 - Every page with affiliate links links to disclosure.html.
+- Only recommend products we can link to at a real online shop. If there is no linkable pick for a size or type, say so plainly and point to an option that has one (never show a brand name with no link).
+- Product notes are read one price level at a time: never say "below", "above" or "the X" for a product in another level without naming the level (e.g. "the mid-range Victron").
+- No "wait for a sale" timing advice. "Good to know" notes are for real product limits (warranty, weight, missing features).
 
 ## Brand
 - Logo: the smiling sunny battery with "off-grid SORTED" (Permanent Marker for the word SORTED only).

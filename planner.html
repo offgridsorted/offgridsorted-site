@@ -334,15 +334,6 @@
     <div class="shop" id="shop"></div>
   </div>
 
-  <details class="how-worked" id="how-worked"><summary>How we worked it out <span>(tap to see the numbers)</span></summary>
-  <div class="field">
-    <h3>What uses your power each day</h3>
-    <div class="bar" id="bar" role="img"></div>
-    <div class="legend" id="legend"></div>
-  </div>
-
-  <div class="why" id="why"></div>
-  </details>
 
   <section class="my-list" id="my-list" aria-live="polite"></section>
 
@@ -356,6 +347,18 @@
     </div>
     <p class="msg" id="save-msg" role="status"></p>
   </div>
+
+  <div id="after-shop"></div>
+
+  <details class="how-worked" id="how-worked"><summary>How we worked it out <span>(tap to see the numbers)</span></summary>
+  <div class="field">
+    <h3>What uses your power each day</h3>
+    <div class="bar" id="bar" role="img"></div>
+    <div class="legend" id="legend"></div>
+  </div>
+
+  <div class="why" id="why"></div>
+  </details>
 
   <div class="next-steps" id="next-steps">
     <h3>Where to next?</h3>
@@ -730,7 +733,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     var gaps = document.getElementById("gaps");
     var shop = document.getElementById("shop");
     var shopH = document.getElementById("shop-h");
-    kit.innerHTML = ""; why.innerHTML = ""; gaps.innerHTML = ""; shop.innerHTML = ""; shopRows = [];
+    kit.innerHTML = ""; why.innerHTML = ""; gaps.innerHTML = ""; shop.innerHTML = ""; shopRows = []; var aftS = document.getElementById("after-shop"); if(aftS) aftS.innerHTML = "";
 
     var dailyAh = p.daily / V;
     state.onlyFridge = APPS.every(function(a){ return !state.apps[a.id].q; }) && !state.custom.length && (parseFloat(document.getElementById("fridge").value) || 0) > 0;
@@ -838,10 +841,10 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
       var batLabel = p.batAh + "Ah " + (p.batType === "lith" ? "lithium" : "AGM");
       if(p.build === "box"){
         addShop(shop, "All-in-one power box · " + batLabel, "allinone", "Battery, DC-DC charger and solar charger in one box. " + "Check it can charge from your car and from solar before you buy." + (p.batAh > 120 ? " Most all-in-one boxes top out around 100 to 120Ah, so at this size separate parts are usually the better buy." : "") + (p.batType === "agm" ? " Most all-in-one boxes are lithium; AGM versions get very heavy at this size." : "") + (p.batAh > 120 && p.batType === "lith" ? " Ready-made boxes this big are rare, so separate parts are usually better value." : ""), catFor("allinone", p.batAh, p.batType));
-        if(p.solarW) addShop(shop, "Solar · " + p.solarW + "W", "solar", "Plugs straight into the box. A folding blanket is easiest to start with.", catFor("solar", p.solarW, "box"));
+        if(p.solarW) addShop(shop, "Solar · " + p.solarW + "W", "solar", radio("soltype") === "fixed" ? "Plugs into the box's solar input. Roof panels need mounting and wiring, so ask your auto electrician." : radio("soltype") === "blanket" ? "Plugs straight into the box. Lay it in the sun when you park." : "Plugs straight into the box. A folding blanket is easiest to start with.", catFor("solar", p.solarW, "box"));
         if(inv) addShop(shop, "Inverter · " + fmt(inv) + "W pure sine", "inverter", "Some boxes have a small inverter built in, but rarely big enough for this.", catFor("inverter", inv));
         renderShopTable(shop);
-        addChecklist(shop, "The small bits", [
+        addChecklist(document.getElementById("after-shop"), "The small bits", [
           ["Anderson plug lead from your engine battery", "Connects the box to your engine battery so it charges while you drive."],
           ["Tie-down straps or a mounting bracket", "A loose box becomes a missile in a sudden stop. Strap it down."],
           ["Solar extension lead (if using a blanket)", "So the panel can sit in the sun while the van sits in the shade."]
@@ -855,7 +858,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
         addShop(shop, "Battery box or mount", "box", "Holds the battery firmly in place and protects it from knocks" + (p.batType === "agm" ? ", and AGM inside the living space should be sealed and vented." : "."), p.batType === "lith" ? (p.batAh <= 120 ? "box_100" : p.batAh <= 230 ? "box_200" : null) : null);
         addShop(shop, "Battery monitor", "monitor", "Your fuel gauge. Shows exactly how full the battery is, instead of guessing from the voltage.", "monitor");
         renderShopTable(shop);
-        addChecklist(shop, "Wiring bits your installer will size", [
+        addChecklist(document.getElementById("after-shop"), "Wiring bits your installer will size", [
           ["Cables and lugs", "Too thin and they heat up and waste power. Your installer sizes these to the job."],
           ["Fuses or circuit breakers", "If something shorts, they cut the power before anything overheats."],
           ["Isolator switch", "One switch to turn everything off when you're working on it or parking up for months."],
@@ -996,7 +999,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     var head = '<tr><th class="ph">Part</th>' + TIERS.map(function(t, i){ return '<th class="c' + i + '">' + t + '</th>'; }).join("") + '</tr>';
     var body = "", totals = [0,0,0], anyCat = false;
     shopRows.forEach(function(r){
-      var showing = r.cat && CAT_LABEL[r.cat] && r.cat !== "monitor" && (r.size || "").indexOf(CAT_LABEL[r.cat]) !== 0 ? '<span class="pn pick-size">Closest size we pick: <b>' + CAT_LABEL[r.cat] + '</b>' + (r.cat.indexOf("roof") === 0 || r.cat.indexOf("blanket") === 0 ? ", which gives you a bit spare" : "") + '</span>' : "";
+      var showing = r.cat && CAT_LABEL[r.cat] && r.cat !== "monitor" && (r.size || "").indexOf(CAT_LABEL[r.cat]) !== 0 ? '<span class="pn pick-size">We\'ve picked <b>' + CAT_LABEL[r.cat] + '</b>' + (r.cat.indexOf("roof") === 0 || r.cat.indexOf("blanket") === 0 ? ", so you have a bit spare." : ", the closest size we have picks for.") + '</span>' : "";
       body += '<tr><th scope="row" class="ph"><b>' + r.name + '</b>' + (r.size ? '<span class="kp-size">' + r.size + '</span>' : "") + (r.note ? '<span class="pn">' + r.note + '</span>' : "") + showing + '</th>';
       TIERS.forEach(function(t, i){
         var cell = "";
@@ -1007,7 +1010,8 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
           if(o.length) cell += '<details class="more"><summary>Other good options (' + o.length + ')</summary>' + o.map(function(x){ return prodHTML(x, false); }).join("") + '</details>';
         } else {
           var pk = PICKS[r.key] || {}, tn = TIER_NOTES[r.key] || {};
-          cell = '<div class="prod"><span class="look-for">Look for</span><span class="pname plain">' + (pk[TKEY[i]] || "") + '</span>' + (tn[TKEY[i]] ? '<span class="tn">' + tn[TKEY[i]] + '</span>' : "") + '<span class="tn no-pick">We haven\'t picked an exact model at this size yet, so there\'s no link. Any of these brands is a good place to start.</span></div>';
+          var NOPICK = {allinone:"We don't have an all-in-one box we can link to at this size yet. Tap <b>Separate parts</b> in Step 6 to see parts you can buy now.", agm:"We only link to lithium batteries for now. Tap <b>Lithium</b> in Step 6 to see batteries you can buy, or ask your auto electrician about AGM.", box:"Pick a box or mount made for your battery's size. Your auto electrician can suggest one when they fit it."};
+          cell = '<div class="prod"><span class="tn no-pick">' + (NOPICK[r.key] || "We don't have a pick we can link to for this yet. Your auto electrician can suggest one.") + '</span></div>';
         }
         body += '<td class="c' + i + '"><span class="mlabel">' + t + '</span>' + cell + '</td>';
       });
