@@ -1121,3 +1121,4 @@ body.mode-check section.step.band-b{background:var(--sage-band);box-shadow:0 0 0
 .kit .item .kit-change{white-space:nowrap}
 .kit .item.is-bumped{box-shadow:inset 0 0 0 2px var(--sun-dark)}
 .kit .item.is-bumped .s{font-weight:700}
+.article h1 + .meta{padding-top:30px}
