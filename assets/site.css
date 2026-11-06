@@ -726,12 +726,15 @@ html.embed .mast h1{font-size:2rem;margin-top:6px}
 .scribble{position:relative;white-space:nowrap}
 .scribble::after{content:"";position:absolute;left:-2%;right:-4%;bottom:-.12em;height:.28em;z-index:-1;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'><path d='M4 13 C45 5 95 15 140 8 S190 9 196 6' stroke='%23f2c230' stroke-width='7' fill='none' stroke-linecap='round'/></svg>") center/100% 100% no-repeat}
 .hero h1{position:relative;z-index:0}
-.hand-aside{margin:4px 0 0 96px;font-family:var(--font-hand);font-size:1.3rem;transform:rotate(-1deg)}
-.hand-aside a{color:var(--muted);text-decoration:none;border-bottom:1.5px dashed currentColor}
-.hand-aside a:hover{color:var(--go)}
+.hero .hand-note{font-weight:700;color:#24419a;font-size:1.55rem}
+.hand-aside{margin:14px 0 0}
+.hand-aside a{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-ui);font-size:1rem;color:var(--ink);text-decoration:none;background:var(--sage-band);padding:8px 16px 8px 12px;border-radius:999px}
+.hand-aside a b{color:var(--go)}
+.hand-aside .doodle{color:var(--go);flex:none}
+.hand-aside a:hover{background:color-mix(in srgb,var(--go) 18%,var(--sage-band))}
 .hand-pick{display:inline-block;font-family:var(--font-hand);font-size:1.35rem;color:var(--biro);transform:rotate(-2deg);margin-left:6px}
 .hand-pick::before{content:"↓ "}
-@media (max-width:760px){.hand-aside{margin-left:0}.hand-pick{display:block;margin:6px 0 0}}
+@media (max-width:760px){.hand-pick{display:block;margin:6px 0 0}}
 
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* guides hub */
