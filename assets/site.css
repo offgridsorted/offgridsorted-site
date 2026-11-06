@@ -811,3 +811,4 @@ html:root:not(#x){--biro:var(--ink)}
 .signup h2{margin-bottom:0}.signup h2 + .hint, .signup h2 + p{margin-top:14px!important}
 .hero .hand-note{margin-top:26px}
 .marker{background:linear-gradient(transparent 52%, color-mix(in srgb,var(--sun) 75%,transparent) 52%, color-mix(in srgb,var(--sun) 75%,transparent) 90%, transparent 90%);-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 4px}
+.hand-aside{margin-top:28px}
