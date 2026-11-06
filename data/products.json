@@ -1995,15 +1995,14 @@
    {
     "tier": "Mid-range",
     "role": "other",
-    "name": "Home of 12V DCDC Quick Connect Wiring Loom (QC-Loom)",
-    "why": "A longer 7m run of 8 B&S cable in split conduit, with both 40A and 60A midi fuses, lugs, heatshrink and fuse taps for the ignition lead.",
-    "downside": "8 B&S is thinner than 6 B&S, so it's better for 25A than 40A over 7m. No warranty listed.",
+    "name": "Home of 12V Wiring Kit for DC-DC Chargers (DBK-DC)",
+    "why": "Made for 25A DC-DC chargers like the Redarc BCDC Core 25 and Projecta 25A: 6m of 8 B&S twin cable plus two 3m single runs, two 60A midi fuses with holders, lugs, heatshrink and an Anderson plug.",
+    "downside": "8 B&S suits a 25A charger. For a 40A charger or a long run, ask your auto electrician about thicker cable. No warranty listed.",
     "stores": [
      {
       "store": "Home of 12 Volt",
-      "price": 169,
-      "url": "https://www.homeof12voltonline.com.au/products/dcdc-quick-connect-wiring-loom-heavy-duty-8b-s-complete-kit-qc-loom",
-      "was": 205
+      "price": 149,
+      "url": "https://www.homeof12voltonline.com.au/products/dual-battery-wiring-kits-to-suit-dc-chargers-sbi-isolators-slimline-batteries-dbk?variant=46718243930371"
      }
     ]
    },
