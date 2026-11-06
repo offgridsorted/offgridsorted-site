@@ -1127,3 +1127,7 @@ body.mode-check section.step.band-b{background:var(--sage-band);box-shadow:0 0 0
 .flow-diagram .flow-svg{display:block;width:100%;height:auto}
 .flow-steps{margin-top:6px}
 .flow-steps li{margin-bottom:8px}
+/* Homepage: planner button after the five Start here guides */
+.path-cta{margin:26px 0 0;font-family:var(--font-ui);font-weight:600;text-align:center}
+.path-ctas{display:flex;justify-content:center;margin:12px 0 0}
+.path-ctas .btn-link.solid{background:var(--sun);color:#1c1f1b;border-color:var(--sun);box-shadow:0 4px 0 var(--sun-dark)}
