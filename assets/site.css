@@ -979,3 +979,7 @@ details.what-parts[open] > summary::before{content:"－"}
 @media (max-width:560px){.how-strip li:not(.hl-arrow){font-size:.95rem;padding:8px 13px}.how-strip li.answer{font-size:1rem;padding:9px 18px}.how-strip li.hl-arrow:nth-child(4)::after{font-size:1.3rem}.how-strip .hl-arrow{font-size:1.2rem}}
 .mast h1{margin-bottom:0}.mast .lede{margin-top:22px}
 .how-strip li.answer{background:var(--sun);border-color:var(--sun-dark);color:#1c1f1b;box-shadow:0 3px 0 var(--sun-dark)}
+.kit-aside{display:inline-flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:8px 12px;background:var(--sun-band);border-radius:14px;padding:10px 14px;margin:18px 0 6px;color:var(--ink)}
+.kit-aside .doodle{color:var(--ink);height:24px;width:auto}
+.kit-aside a{text-decoration:none;background:var(--card);border:2px solid var(--go);border-radius:10px;padding:5px 12px;font-size:.92rem}
+.kit-aside a:hover{background:var(--go);color:#fffdf7}
