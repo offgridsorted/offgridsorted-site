@@ -782,3 +782,13 @@ html:root:not(#x){--biro:var(--ink)}
 .trust-banner li{text-wrap:pretty}.trust-banner li span,.trust-banner li{hyphens:none}
 @media (max-width:560px){.trust-banner ul{grid-template-columns:1fr;gap:14px}}
 .trust{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 40px;max-width:900px}@media (max-width:760px){.trust{grid-template-columns:1fr}}
+/* final call to action: calm card, one clear button */
+.signup{background:var(--card);color:var(--ink);box-shadow:0 0 0 2px color-mix(in srgb,var(--go) 25%,transparent),0 14px 34px rgba(40,60,45,.10)}
+.signup h2,.signup p,.signup .small,.signup .hint{color:var(--ink)}
+.signup .hint{color:var(--muted)}
+.signup .doodle{color:var(--ink)}
+.signup .btn{background:var(--go);color:#fffdf7;box-shadow:0 5px 0 var(--go-dark)}
+.signup .btn::after{content:"\00a0\00a0→";font-weight:800}
+.signup .btn:hover{transform:translateY(2px);box-shadow:0 3px 0 var(--go-dark)}
+.signup .btn.ghost{background:transparent;color:var(--go);box-shadow:none;padding:16px 8px;text-decoration:underline;text-underline-offset:4px;font-weight:700}
+.signup .btn.ghost::after{content:""}
