@@ -576,6 +576,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
   var gearCard = document.getElementById("gear-card"), presetCard = document.getElementById("preset-card"), resultsEl = document.querySelector(".results");
   function setMode(m){
     state.mode = m;
+    document.body.classList.toggle("mode-check", m === "check");
     btnPlan.setAttribute("aria-pressed", m === "plan");
     btnCheck.setAttribute("aria-pressed", m === "check");
     gearCard.hidden = (m !== "check");
@@ -584,8 +585,9 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     document.getElementById("build-card").hidden = (m === "check");
     // In check mode, "what have you got" comes first
     var hw = document.getElementById("how-worked"); if(hw) hw.open = (m === "check");
-    if(m === "check"){ presetCard.parentNode.insertBefore(gearCard, presetCard); gearCard.querySelector(".step-label").textContent = "Start here"; }
+    if(m === "check"){ var firstStep = document.querySelector("section.step[aria-labelledby=\"s-veh\"]") || presetCard; firstStep.parentNode.insertBefore(gearCard, firstStep); gearCard.querySelector(".step-label").textContent = "Start here"; }
     else { resultsEl.parentNode.insertBefore(gearCard, resultsEl); gearCard.querySelector(".step-label").textContent = "Step 4"; }
+    var n = 0; document.querySelectorAll("section.step").forEach(function(sec){ if(sec.hidden || sec === gearCard && m === "check") return; var lb = sec.querySelector(".step-label"); if(lb && /^Step \d/.test(lb.textContent)){ n++; lb.textContent = "Step " + n; } });
     calc();
   }
   state.gearEdited = false;

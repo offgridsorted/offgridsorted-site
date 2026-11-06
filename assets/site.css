@@ -1047,3 +1047,9 @@ details.explain,details.what-parts{border-top:0;padding-top:0}details.explain > 
 .modes{gap:6px;padding:6px}.modes button{font-family:var(--font-display);font-size:1.25rem;padding:16px 12px;min-height:60px;border-radius:14px}@media (max-width:560px){.modes button{font-size:1.1rem;padding:14px 8px}}
 .modes{border-radius:20px}.modes button{white-space:nowrap}@media (max-width:560px){.modes button{font-size:1rem;padding:14px 6px}}
 .what-parts .diagram{margin-top:14px;max-width:520px}
+/* Check what I've got: its own sea-blue look so you can see you've switched */
+body.mode-check .modes button[aria-pressed="true"]{background:var(--sea);border-color:var(--sea)}
+body.mode-check section.step:nth-of-type(odd),body.mode-check section.step:nth-of-type(even){background:#e3eef2;box-shadow:0 0 0 100vmax #e3eef2}
+body.mode-check section.step:nth-of-type(even){background:#eef4f2;box-shadow:0 0 0 100vmax #eef4f2}
+body.mode-check .chips input:checked + label{background:var(--sea);border-color:var(--sea)}
+body.mode-check .step-label{color:var(--sea)}
