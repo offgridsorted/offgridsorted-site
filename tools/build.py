@@ -220,7 +220,7 @@ def header(pre, active=""):
   <div class="in">
     <a class="logo" href="{pre}index.html" aria-label="Off-Grid Sorted home">{logo(170)}</a>
     <nav class="nav" aria-label="Main menu">{links}<a class="cta" href="{pre}planner.html"{' aria-current="page"' if active == "planner.html" else ""}>Power Planner</a></nav>
-    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a class="drop-cta" href="{pre}planner.html">Power Planner</a><a href="{pre}index.html">Home</a>{drop}</div></details>
+    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a href="{pre}index.html">Home</a>{drop}<a class="drop-cta" href="{pre}planner.html">Power Planner</a></div></details>
   </div>
 </header>
 '''
