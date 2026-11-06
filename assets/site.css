@@ -976,3 +976,4 @@ details.what-parts[open] > summary::before{content:"－"}
   .how-strip li.hl-arrow:nth-child(4)::after{content:"↓";font-size:1.6rem}
   .how-strip li.answer{font-size:1.15rem;padding:11px 22px}
 }
+@media (max-width:560px){.how-strip li:not(.hl-arrow){font-size:.95rem;padding:8px 13px}.how-strip li.answer{font-size:1rem;padding:9px 18px}.how-strip li.hl-arrow:nth-child(4)::after{font-size:1.3rem}.how-strip .hl-arrow{font-size:1.2rem}}
