@@ -837,7 +837,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
       shopH.textContent = "Build your kit";
       var batLabel = p.batAh + "Ah " + (p.batType === "lith" ? "lithium" : "AGM");
       if(p.build === "box"){
-        addShop(shop, "All-in-one power box · " + batLabel, "allinone", "Battery, DC-DC charger and solar charger in one box. " + "Check it includes a DC-DC charger and solar input (MPPT) before you buy." + (p.batType === "agm" ? " Most all-in-one boxes are lithium; AGM versions get very heavy at this size." : "") + (p.batAh > 120 && p.batType === "lith" ? " Ready-made boxes this big are rare, so separate parts are usually better value." : ""), catFor("allinone", p.batAh, p.batType));
+        addShop(shop, "All-in-one power box · " + batLabel, "allinone", "Battery, DC-DC charger and solar charger in one box. " + "Check it can charge from your car and from solar before you buy." + (p.batType === "agm" ? " Most all-in-one boxes are lithium; AGM versions get very heavy at this size." : "") + (p.batAh > 120 && p.batType === "lith" ? " Ready-made boxes this big are rare, so separate parts are usually better value." : ""), catFor("allinone", p.batAh, p.batType));
         if(p.solarW) addShop(shop, "Solar · " + p.solarW + "W", "solar", "Plugs straight into the box. A folding blanket is easiest to start with.", catFor("solar", p.solarW, "box"));
         if(inv) addShop(shop, "Inverter · " + fmt(inv) + "W pure sine", "inverter", "Some boxes have a small inverter built in, but rarely big enough for this.", catFor("inverter", inv));
         renderShopTable(shop);
@@ -848,7 +848,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
         ]);
       } else {
         addShop(shop, "Battery · " + batLabel, p.batType === "lith" ? "battery" : "agm", "Stores your power." + (p.batType === "lith" && p.batAh > 460 ? " Our picks top out around 400Ah, so you'd link two or more." : ""), catFor("battery", p.batAh, p.batType));
-        addShop(shop, "DC-DC charger" + (driveH > 0 ? "" : " (optional)") + " · " + p.dc + "A, with solar input", "dcdc", (driveH > 0 ? "" : "Only if you drive or tow between stays. Not counted in the total. ") + "Charges from your engine while you drive. One with a solar input (MPPT) doubles as your solar regulator.", catFor("dcdc", p.dc), driveH === 0);
+        addShop(shop, "DC-DC charger" + (driveH > 0 ? "" : " (optional)") + " · " + p.dc + "A, takes solar too", "dcdc", (driveH > 0 ? "" : "Only if you drive or tow between stays. Not counted in the total. ") + "Fills your battery from the engine while you drive. Most can plug into solar panels too, so one box does both jobs.", catFor("dcdc", p.dc), driveH === 0);
         var solNote = {fixed:"Fixed roof panels: set and forget, and they charge while you drive.", blanket:"A portable blanket: park in the shade and lay it in the sun." + (p.solarW > 250 ? " That's more than one blanket can make, so use two, or mix in a roof panel." : "")}[radio("soltype")] || (p.veh === "4wd" ? "Roof space is tight on most 4WDs, so a folding blanket is the easy option." : "Free charging from the sun. Fixed roof panels for set-and-forget, or a blanket you can point at the sun.");
         if(p.solarW) addShop(shop, "Solar · " + p.solarW + "W", "solar", solNote, catFor("solar", p.solarW, p.veh === "4wd" ? "box" : null));
         if(inv) addShop(shop, "Inverter · " + fmt(inv) + "W pure sine", "inverter", "The travel adaptor for house plugs.", catFor("inverter", inv));

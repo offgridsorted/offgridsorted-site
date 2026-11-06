@@ -1078,3 +1078,5 @@ body.mode-check section.step.band-b{background:var(--sage-band);box-shadow:0 0 0
 .word-list dd{margin:0;line-height:1.6}
 @media (min-width:900px){.word-list{grid-template-columns:1fr 1fr}}
 @media (min-width:761px) and (max-width:1180px){.nav a:not(.cta){font-size:.9rem;padding-left:6px;padding-right:6px}}
+.kit-table th.ph .pn{margin-top:8px}.kit-table th.ph .pick-size{margin-top:12px}.kit-table th.ph .kp-size{margin-bottom:10px}
+@media (max-width:640px){.kit-table tbody td:not(.none){margin-top:14px;padding-top:14px !important;border-top:1px dashed var(--faint) !important}}#shop-wrap .small a{color:var(--go)}
