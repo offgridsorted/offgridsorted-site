@@ -1053,3 +1053,10 @@ body.mode-check section.step:nth-of-type(odd),body.mode-check section.step:nth-o
 body.mode-check section.step:nth-of-type(even){background:#eef4f2;box-shadow:0 0 0 100vmax #eef4f2}
 body.mode-check .chips input:checked + label{background:var(--sea);border-color:var(--sea)}
 body.mode-check .step-label{color:var(--sea)}
+/* planner bands alternate by visible step, whichever mode */
+section.step.band-a{background:var(--sage-band);box-shadow:0 0 0 100vmax var(--sage-band)}
+section.step.band-b{background:var(--sun-band);box-shadow:0 0 0 100vmax var(--sun-band)}
+body.mode-check section.step.band-a{background:#e3eef2;box-shadow:0 0 0 100vmax #e3eef2}
+body.mode-check section.step.band-b{background:#f1f6f4;box-shadow:0 0 0 100vmax #f1f6f4}
+.mast + .trust-banner,.trust-banner + .modes{margin-top:0}
+main.wrap > .trust-banner{margin:26px 0 22px}

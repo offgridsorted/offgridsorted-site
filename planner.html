@@ -47,7 +47,7 @@
 <span class="mast-art art-l" aria-hidden="true"><svg class="doodle" viewBox="0 0 100 100" width="86" height="86" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="50" r="18" fill="#f5cb3c"/><path d="M50 14v-9M50 95v-9M14 50H5M95 50h-9M24 24l-6-6M82 82l-6-6M24 76l-6 6M82 18l-6 6"/></svg></span><span class="mast-art art-r" aria-hidden="true"><svg class="doodle" viewBox="0 0 160 90" width="130" height="73" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 66V30c0-6 4-10 10-10h82c10 0 17 4 22 11l16 21c3 4 4 7 4 12v2z"/><path d="M108 22l0 26h32"/><path d="M48 14l5-8h40l-5 8z" fill="#f5cb3c"/><circle cx="44" cy="68" r="11" fill="var(--paper, #f3f0e8)"/><circle cx="118" cy="68" r="11" fill="var(--paper, #f3f0e8)"/><circle cx="44" cy="68" r="3"/><circle cx="118" cy="68" r="3"/></svg></span>
 <span class="kicker">For Aussie vans, caravans &amp; 4WDs</span>
   <h1>Power <span class="scribble">Planner</span></h1>
-  <p class="lede">Work out the battery, solar and charger you actually need, in plain English.</p>
+  <p class="lede">Work out the battery, solar and charger you actually need for your adventures, in plain English.</p>
   <div class="how-strip" role="img" aria-label="Where you go plus what you run equals your ideal setup"><div class="eq-row"><span class="pill"><svg class="doodle" viewBox="0 0 90 100" width="34" height="38" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M45 90S16 58 16 38a29 29 0 0 1 58 0c0 20-29 52-29 52z"/><circle cx="45" cy="38" r="10" fill="#f5cb3c"/></svg><span>Where you go</span></span><span class="op">+</span><span class="pill"><svg class="doodle" viewBox="0 0 110 100" width="34" height="31" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M30 40h46l8 44H22z"/><path d="M76 50c14 0 18 8 18 18M30 50L14 38"/><path d="M38 40c0-12 30-12 30 0"/><path d="M50 16c-4 6 4 8 0 14M62 12c-4 6 4 8 0 14" stroke-dasharray="3 5"/></svg><span>What you run</span></span></div><div class="eq-row"><span class="op">=</span><span class="pill answer"><svg class="doodle" viewBox="0 0 130 90" width="42" height="29" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="18" width="100" height="58" rx="10" fill="#f5cb3c"/><path d="M110 37h9v20h-9"/><path d="M28 62V34M42 62V34" stroke-width="5"/><path d="M78 42v5M96 42v5M76 56c5 6 17 6 22 0"/></svg><span>Your ideal setup</span></span></div></div>
   <p class="planner-facts">Free · About two minutes · No sign-up</p>
   <p class="kit-aside"><svg class="doodle" viewBox="0 0 140 90" width="30" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 78h120M22 78L64 14l42 64"/><path d="M64 14l0 64M52 78l12-26 12 26"/><path d="M106 78l18-30 6 30"/></svg><span>Prefer a ready-made kit?</span><a href="kits/index.html">Browse the kits →</a></p>
@@ -56,6 +56,14 @@
 
 </header>
 
+<section class="trust-banner" aria-label="Why you can trust us">
+  <ul>
+    <li><b>Independent</b> Some links earn us a small commission, but it never decides what we recommend. <a href="disclosure.html">How we make money</a></li>
+    <li><b>Made for Australia</b> Aussie shops, AUD prices, and sun and weather data from the Bureau of Meteorology</li>
+    <li><b>Plain English</b> Easy to understand, no sales pitch</li>
+    <li><b>Safety first</b> We always say: get a licensed auto electrician to wire it in</li>
+  </ul>
+</section>
 <nav class="modes" aria-label="Choose what you want to do">
   <button type="button" id="mode-plan" aria-pressed="true">Plan a new setup</button>
   <button type="button" id="mode-check" aria-pressed="false">Check what I've got</button>
@@ -588,12 +596,14 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     if(m === "check"){ var firstStep = document.querySelector("section.step[aria-labelledby=\"s-veh\"]") || presetCard; firstStep.parentNode.insertBefore(gearCard, firstStep); gearCard.querySelector(".step-label").textContent = "Start here"; }
     else { resultsEl.parentNode.insertBefore(gearCard, resultsEl); gearCard.querySelector(".step-label").textContent = "Step 4"; }
     var n = 0; document.querySelectorAll("section.step").forEach(function(sec){ if(sec.hidden || sec === gearCard && m === "check") return; var lb = sec.querySelector(".step-label"); if(lb && /^Step \d/.test(lb.textContent)){ n++; lb.textContent = "Step " + n; } });
+    var k = 0; document.querySelectorAll("section.step").forEach(function(sec){ if(sec.hidden) return; sec.classList.remove("band-a","band-b"); sec.classList.add(k++ % 2 ? "band-b" : "band-a"); });
     calc();
   }
   state.gearEdited = false;
   document.querySelectorAll("#gear-card input, #gear-card select").forEach(function(x){ x.addEventListener("input", function(){ state.gearEdited = true; document.getElementById("gear-example").hidden = true; }); });
   btnPlan.addEventListener("click", function(){ setMode("plan"); });
   btnCheck.addEventListener("click", function(){ setMode("check"); });
+  setTimeout(function(){ if(state.mode === "plan") setMode("plan"); }, 0);
   var hashParts = location.hash.slice(1).split("+");
   if(location.hash === "#check"){ setTimeout(function(){ setMode("check"); document.querySelector(".modes").scrollIntoView({block:"start"}); }, 0); }
   ["van","caravan","4wd"].forEach(function(v){ if(hashParts.indexOf(v) !== -1){ setTimeout(function(){ var r = document.querySelector('input[name="vehicle"][value="' + v + '"]'); if(r){ r.checked = true; calc(); } document.querySelector(".modes").scrollIntoView({block:"start"}); }, 0); } });
