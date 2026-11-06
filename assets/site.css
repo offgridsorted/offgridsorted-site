@@ -983,3 +983,4 @@ details.what-parts[open] > summary::before{content:"－"}
 .kit-aside .doodle{color:var(--ink);height:24px;width:auto}
 .kit-aside a{text-decoration:none;background:var(--card);border:2px solid var(--go);border-radius:10px;padding:5px 12px;font-size:.92rem}
 .kit-aside a:hover{background:var(--go);color:#fffdf7}
+@media (max-width:560px){.how-strip{row-gap:2px}.how-strip li.hl-arrow:nth-child(4)::after{content:"=";font-size:2rem;font-weight:800;line-height:.9}.how-strip li.hl-arrow:nth-child(4){margin:0}}
