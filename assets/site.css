@@ -945,3 +945,6 @@ details.what-parts[open] > summary::before{content:"－"}
 /* the "For Aussie vans" label as a soft badge */
 .hero .step-label,.mast .kicker{display:inline-block;background:var(--sage-band);color:var(--go);border-radius:999px;padding:7px 14px;font-size:.82rem;letter-spacing:.12em}
 .hero .step-label::before,.mast .kicker::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--sun);margin-right:8px;vertical-align:1px}
+.how-lines{list-style:none;margin:14px auto 6px;padding:0;display:inline-flex;flex-direction:column;gap:8px;text-align:left;font-family:var(--font-ui);font-weight:600;font-size:1.05rem}
+.how-lines li::before{content:"✓";font-family:var(--font-hand);font-weight:700;font-size:1.5rem;color:var(--go);margin-right:10px;vertical-align:-2px}
+.mast{text-align:center}
