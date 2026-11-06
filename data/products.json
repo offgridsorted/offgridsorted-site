@@ -1,6 +1,6 @@
 {
- "checked": "2026-11-04",
- "checked_label": "4 November 2026",
+ "checked": "2026-11-06",
+ "checked_label": "6 November 2026",
  "cats": {
   "battery_100": [
    {
@@ -98,14 +98,12 @@
    {
     "tier": "Premium",
     "role": "other",
-    "name": "Enerdrive eLITE 100Ah",
-    "price": 919,
-    "store": "Vic Offroad",
-    "url": "https://vicoffroad.com.au/collections/enerdrive/products/enerdrive-12v-100ah-elite-lifepo4-battery",
-    "why": "A respected caravan-industry brand for well under REDARC money.",
-    "downside": "No heater and no app.",
-    "warranty": 5,
-    "kg": 12
+    "name": "Enerdrive B-TEC Ultra 100Ah",
+    "price": 886,
+    "store": "Solar 4 RVs",
+    "url": "https://www.solar4rvs.com.au/products/enerdrive-b-tec-ultra-12v-100ah-lithium-battery-ip67-waterproof",
+    "why": "A respected caravan-industry brand with a built-in heater for cold mornings, Bluetooth monitoring and a waterproof case.",
+    "downside": "The shop page does not list the warranty, so check it with Enerdrive before you buy."
    }
   ],
   "battery_200": [
@@ -134,7 +132,7 @@
     "name": "Renogy Reserve Mini 200Ah",
     "price": 849.99,
     "store": "Renogy Australia",
-    "url": "https://au.renogy.com/products/reserve-mini-smart-12v-200ah-300ah-lifepo4-battery",
+    "url": "https://au.renogy.com/products/reserve-mini-smart-12v-200ah-300ah-lifepo4-battery?variant=45045457125469",
     "why": "Ticks every box: built-in heater, phone app, strong 205A output and a 5-year warranty. Compact and light for 200Ah.",
     "downside": "Online only, and on pre-order until November. The iTechworld 200Ah slim is a good in-stock alternative.",
     "rrp": 999.99,
@@ -144,7 +142,7 @@
      {
       "store": "Renogy Australia",
       "price": 849.99,
-      "url": "https://au.renogy.com/products/reserve-mini-smart-12v-200ah-300ah-lifepo4-battery",
+      "url": "https://au.renogy.com/products/reserve-mini-smart-12v-200ah-300ah-lifepo4-battery?variant=45045457125469",
       "was": 999.99,
       "label": "pre-order, due Nov"
      }
@@ -189,14 +187,12 @@
    {
     "tier": "Premium",
     "role": "other",
-    "name": "Enerdrive B-TEC 200Ah Gen2",
-    "price": 2299,
-    "store": "Vic Offroad",
-    "url": "https://www.vicoffroad.com.au/products/200ah-12v-dc-enerdrive-gen2-b-tec-lifepo4-lithium-battery",
-    "why": "A long-time favourite of caravan builders, with app monitoring.",
-    "downside": "No heater, and it can take 2 to 3 weeks to arrive.",
-    "warranty": 5,
-    "kg": 25
+    "name": "Enerdrive B-TEC Ultra 200Ah",
+    "price": 1652,
+    "store": "Solar 4 RVs",
+    "url": "https://www.solar4rvs.com.au/products/enerdrive-b-tec-ultra-12v-200ah-lithium-battery-ip67-waterproof",
+    "why": "A long-time favourite of caravan builders, now with a built-in heater, Bluetooth monitoring and a waterproof case.",
+    "downside": "The shop page does not list the warranty, so check it with Enerdrive before you buy."
    }
   ],
   "battery_400": [
@@ -251,7 +247,7 @@
     "name": "2 × Renogy Reserve Mini 200Ah",
     "price": 1699.98,
     "store": "Renogy Australia",
-    "url": "https://au.renogy.com/products/reserve-mini-smart-12v-200ah-300ah-lifepo4-battery",
+    "url": "https://au.renogy.com/products/reserve-mini-smart-12v-200ah-300ah-lifepo4-battery?variant=45045457125469",
     "why": "Heated, and split into two 20kg pieces that are easier to carry and fit.",
     "downside": "Needs link cables and an auto electrician to join them.",
     "rrp": 1999.98,
@@ -261,28 +257,17 @@
    {
     "tier": "Premium",
     "role": "main",
-    "name": "Enerdrive B-TEC 400Ah bundle (2 × 200Ah)",
-    "price": 3899.24,
-    "store": "Outback Marine",
-    "url": "https://www.outbackmarine.com.au/enerdrive-epower-b-tec-400ah-g2-lithium-battery-bundle",
-    "why": "A proven caravan-grade brand, sold as a matched pair with the link cables.",
-    "downside": "Special order and can't be returned. No heater.",
-    "rrp": 4810,
-    "warranty": 5,
-    "kg": 50,
+    "name": "2 × Enerdrive B-TEC Ultra 200Ah",
+    "price": 3304,
+    "store": "Solar 4 RVs",
+    "url": "https://www.solar4rvs.com.au/products/enerdrive-b-tec-ultra-12v-200ah-lithium-battery-ip67-waterproof",
+    "why": "A proven caravan-grade brand. Two 200Ah batteries linked together, each with a built-in heater for cold mornings and Bluetooth monitoring.",
+    "downside": "Your installer links the two batteries, so allow for the cables. The shop page does not list the warranty, so check it with Enerdrive.",
     "stores": [
      {
-      "store": "Outback Marine",
-      "price": 3899.24,
-      "url": "https://www.outbackmarine.com.au/enerdrive-epower-b-tec-400ah-g2-lithium-battery-bundle",
-      "was": 4810,
-      "label": "special order"
-     },
-     {
-      "store": "My Generator",
-      "price": 4349,
-      "url": "https://www.mygenerator.com.au/product/enerdrive-b-tec-2x200ah-lithium-bundle",
-      "was": 5750
+      "store": "Solar 4 RVs",
+      "price": 3304,
+      "url": "https://www.solar4rvs.com.au/products/enerdrive-b-tec-ultra-12v-200ah-lithium-battery-ip67-waterproof"
      }
     ]
    },
@@ -341,7 +326,7 @@
     "tier": "Mid-range",
     "role": "other",
     "name": "iTechworld GoFurther box with 100Ah",
-    "price": 1017.5,
+    "price": 968.06,
     "store": "iTechworld",
     "url": "https://itechworld.com.au/products/itechworld-premium-gofurther-dual-battery-system-100ah-lithium-lifepo4-with-40a-dcdc-charger",
     "why": "The same box, if the 120Ah version is sold out.",
@@ -353,11 +338,11 @@
     "tier": "Premium",
     "role": "main",
     "name": "REDARC GoBlock 100Ah",
-    "price": 3639.02,
+    "price": 1999,
     "store": "REDARC",
     "url": "https://www.redarcelectronics.com/au/100ah-goblock-portable-power-system",
     "why": "Top Australian build with a 50A charger, 50A solar regulator and full app control. Charges much faster.",
-    "downside": "About three and a half times the mid-range iTechworld price, with a 2-year warranty.",
+    "downside": "About twice the mid-range iTechworld price, with a 2-year warranty.",
     "warranty": 2,
     "kg": 19,
     "stores": [
@@ -368,7 +353,7 @@
      },
      {
       "store": "REDARC",
-      "price": 3639.02,
+      "price": 1999,
       "url": "https://www.redarcelectronics.com/au/100ah-goblock-portable-dual-battery-system"
      }
     ]
@@ -422,7 +407,7 @@
      {
       "store": "Autopro",
       "price": 399.0,
-      "url": "https://autopro.com.au/ol/Autopro-Category/Brands/Redarc/Redarc-BCDC-Core-In-Cabin-25A-DC-Battery-Charger---BCDCN1225/p/149558"
+      "url": "https://autopro.com.au/ap/Autopro-Category/Brands/Redarc/Redarc-BCDC-Core-In-Cabin-25A-DC-Battery-Charger---BCDCN1225/p/149558"
      },
      {
       "store": "Willy's Workshop",
@@ -480,7 +465,7 @@
     "tier": "Premium",
     "role": "other",
     "name": "REDARC BCDC Classic 25A",
-    "price": 598.95,
+    "price": 615.01,
     "store": "REDARC",
     "url": "https://www.redarcelectronics.com/au/dual-input-25a-under-bonnet-dc-battery-charger",
     "why": "The long-proven REDARC that can live under the bonnet.",
@@ -505,13 +490,6 @@
       "price": 197.99,
       "url": "https://au.renogy.com/products/renogy-40a-dc-dc-battery-charger-with-mppt",
       "was": 217.99
-     },
-     {
-      "store": "Campervan Builders",
-      "price": 219.0,
-      "url": "https://campervanbuilders.com.au/products/renogy-40a-dc-dc-battery-charger-with-mppt",
-      "in_stock": false,
-      "label": "out of stock when checked"
      }
     ]
    },
@@ -533,7 +511,7 @@
     "name": "Kings 40A DC-DC Charger",
     "price": 339,
     "store": "Adventure Kings",
-    "url": "https://au.adventurekings.com/solar-batteries/battery-charger/dc-dc-chargers/kings-40a-dcdc-charger.html",
+    "url": "https://au.adventurekings.com/solar-batteries/dc-dc-chargers/40a-dcdc-charger.html",
     "why": "Easy to order online, and it plugs straight into Kings batteries and leads.",
     "downside": "Costs more than the Renogy and iTechworld, and specs aren't published."
    },
@@ -541,7 +519,7 @@
     "tier": "Mid-range",
     "role": "main",
     "name": "REDARC BCDC Core 40A",
-    "price": 469,
+    "price": 479,
     "store": "REDARC",
     "url": "https://www.redarcelectronics.com/au/battery-chargers/dc-to-dc-chargers",
     "why": "Brand-name reliability that every installer knows, at a fair price for 40A.",
@@ -556,7 +534,7 @@
      },
      {
       "store": "REDARC",
-      "price": 469.0,
+      "price": 479,
       "url": "https://www.redarcelectronics.com/au/dual-input-in-cabin-40a-dc-battery-charger"
      },
      {
@@ -587,7 +565,7 @@
     "tier": "Premium",
     "role": "main",
     "name": "Enerdrive DC2DC 40A + MPPT",
-    "price": 495,
+    "price": 449,
     "store": "Solar 4 RVs",
     "url": "https://www.solar4rvs.com.au/products/enerdrive-dc2dc-mppt-12v-40a-battery-charger-mppt",
     "why": "Takes up to 800W of solar and has a 5-year warranty, so you can grow your panels later. A screen shows what it's doing.",
@@ -596,14 +574,8 @@
     "stores": [
      {
       "store": "Solar 4 RVs",
-      "price": 495.0,
+      "price": 449,
       "url": "https://www.solar4rvs.com.au/products/enerdrive-dc2dc-mppt-12v-40a-battery-charger-mppt"
-     },
-     {
-      "store": "Vic Offroad",
-      "price": 495.0,
-      "url": "https://www.vicoffroad.com.au/products/enerdrive-dc-to-dc-battery-charger-12v-40a",
-      "label": "ships in 2 to 3 weeks"
      },
      {
       "store": "Campervan Builders",
@@ -614,7 +586,7 @@
      {
       "store": "Caravans Plus",
       "price": 540.0,
-      "url": "https://www.caravansplus.com.au/enerdrive-dc-to-dc-battery-charger-with-solar-input-12v-40a-p-21919.html",
+      "url": "https://www.caravansplus.com.au/enerdrive-epower-dc-to-dc-solar-charger-12v-40a-p-21919.html",
       "was": 629.0
      }
     ]
@@ -636,23 +608,17 @@
     "tier": "Budget",
     "role": "main",
     "name": "Renogy 50A DC-DC with MPPT",
-    "price": 387.99,
+    "price": 299.99,
     "store": "Renogy Australia",
-    "url": "https://au.renogy.com/renogy-50a-dc-dc-on-board-battery-charger-with-mppt",
+    "url": "https://au.renogy.com/products/12v-30-50a-dc-dc-on-board-battery-charger-with-mppt?variant=43535508045917",
     "why": "The cheapest 50A with solar and a phone app, and it takes bigger panels (up to 50V).",
-    "downside": "Shops price it quite differently, so compare before you buy.",
+    "downside": "We link to Renogy's own Australian store, which was the cheapest when we checked.",
     "warranty": 2,
     "stores": [
      {
-      "store": "Everything Caravans",
-      "price": 347.17,
-      "url": "https://www.everythingcaravans.com.au/products/renogy-core-500-11040-dcc50s-12v-50a-dual-input-dc2dc-mppt-charger-rbc50d1s-g6-au",
-      "was": 373.0
-     },
-     {
-      "store": "Zero Grid",
-      "price": 369.99,
-      "url": "https://www.zerogrid.com.au/products/dcc50s-12v-50a-dual-input-dc-to-dc-battery-charger-with-mppt"
+      "store": "Renogy Australia",
+      "price": 299.99,
+      "url": "https://au.renogy.com/products/12v-30-50a-dc-dc-on-board-battery-charger-with-mppt?variant=43535508045917"
      }
     ]
    },
@@ -730,7 +696,7 @@
     "store": "LiFePO4.com.au",
     "url": "https://lifepo4.com.au/shop/victron-2/victron-orion-xs-12-12-50a-dc-dc-battery-charger/",
     "why": "An excellent, efficient charger with a built-in app, if you're going all Victron.",
-    "downside": "No solar input. You'd need a separate solar controller as well.",
+    "downside": "No solar input. You'd need a separate solar controller as well. Pre-order only when we checked.",
     "rrp": 474.19,
     "warranty": 5
    }
@@ -847,7 +813,7 @@
     "store": "ARB",
     "url": "https://www.arb.com.au/product/sprp1200b-redarc-fixed-solar-panel-200w-monocrystalline-with-black-frame",
     "why": "Australian brand that ARB stores sell and fit. Pairs neatly with a REDARC charger.",
-    "downside": "About $2 a watt, with a shorter warranty than Renogy.",
+    "downside": "About $2 a watt, with a shorter warranty than the mid-range Renogy.",
     "warranty": 2,
     "stores": [
      {
@@ -949,23 +915,37 @@
    {
     "tier": "Budget",
     "role": "main",
+    "name": "Renogy 1000W Pure Sine (with UPS)",
+    "price": 218.99,
+    "store": "Renogy Australia",
+    "url": "https://au.renogy.com/products/renogy-1000w-12v-to-230v-pure-sine-wave-inverter-with-ups-function?variant=43535508406365",
+    "why": "A clean pure sine inverter with room to spare, for less than most 500W ones. It switches to battery power by itself if shore power drops out.",
+    "downside": "Only a 1-year warranty, and 1000W is more than you need for small things, so it uses a little more power just sitting switched on.",
+    "warranty": 1,
+    "kg": 2.6,
+    "stores": [
+     {
+      "store": "Renogy Australia",
+      "price": 218.99,
+      "url": "https://au.renogy.com/products/renogy-1000w-12v-to-230v-pure-sine-wave-inverter-with-ups-function?variant=43535508406365"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
     "name": "Jaycar 500W Pure Sine Inverter",
     "price": 149,
     "store": "Jaycar",
-    "url": "https://jaycar.com.au/500w-12vdc-to-230vac-pure-sine-wave-inverter-electrically-isolated/p/MI5734",
+    "url": "https://www.jaycar.com.au/500w-12vdc-to-230vac-pure-sine-wave-inverter-electrically-isolated/p/MI5734",
     "why": "Small, light and cheap, from a store with branches everywhere. Plenty for laptops and camera chargers.",
-    "downside": "Being replaced by a newer model, so stock may run out.",
+    "downside": "Out of stock online when we checked (it is being replaced by a newer model), so you may need to ask your local Jaycar.",
     "kg": 0.96,
     "stores": [
      {
       "store": "Jaycar",
       "price": 149.0,
-      "url": "https://jaycar.com.au/500w-12vdc-to-230vac-pure-sine-wave-inverter-electrically-isolated/p/MI5734"
-     },
-     {
-      "store": "House Trade Supplies",
-      "price": 249.0,
-      "url": "https://housetradesupplies.com.au/tech/powertech-pure-sine-wave-inverter-500w-12vdc-to-240vac-mi5734.html"
+      "url": "https://www.jaycar.com.au/500w-12vdc-to-230vac-pure-sine-wave-inverter-electrically-isolated/p/MI5734"
      }
     ]
    },
@@ -985,7 +965,7 @@
      {
       "store": "Bunnings",
       "price": 350.08,
-      "url": "https://www.bunnings.com.au/victron-12v-800va-phoenix-inverter-12-800-ve-direct-au-nz-off-grid-n-a-dc_p0609887"
+      "url": "https://www.bunnings.com.au/victron-12v-800va-phoenix-ve-direct-12-800-au-nz-inverter_p0609887"
      },
      {
       "store": "My Generator",
@@ -1019,7 +999,7 @@
     "stores": [
      {
       "store": "Solar 4 RVs",
-      "price": 447.0,
+      "price": 505.65,
       "url": "https://www.solar4rvs.com.au/products/enerdrive-epower-600w-true-sine-wave-inverter"
      },
      {
@@ -1046,13 +1026,7 @@
      {
       "store": "Renogy Australia",
       "price": 336.99,
-      "url": "https://au.renogy.com/products/renogy-2000-12v-to-230v-pure-sine-wave-inverter-with-ups-function"
-     },
-     {
-      "store": "Campervan Builders",
-      "price": 419,
-      "url": "https://campervanbuilders.com.au/products/renogy-2000w-12v-to-230v-pure-sine-wave-inverter-with-ups-function",
-      "in_stock": false
+      "url": "https://au.renogy.com/products/renogy-2000-12v-to-230v-pure-sine-wave-inverter-with-ups-function?variant=43535507980381"
      }
     ],
     "approx": true
@@ -1120,11 +1094,11 @@
     "tier": "Premium",
     "role": "other",
     "name": "Victron Phoenix 12/2000 Smart",
-    "price": 1089,
-    "store": "Campervan Builders",
-    "url": "https://campervanbuilders.com.au/products/victron-phoenix-inverter-12-2000-230v-smart-supplier-code-pin122200000",
+    "price": 922.44,
+    "store": "Solar 4 RVs",
+    "url": "https://www.solar4rvs.com.au/products/victron-12v-2000va-phoenix-smart-inverter",
     "why": "Top build quality with a built-in app, ideal in a full Victron system.",
-    "downside": "Rated 2000VA, about 1,600W real output. Was sold out when we checked."
+    "downside": "Rated 2000VA, which is about 1,600W of real output."
    }
   ],
   "monitor": [
@@ -1163,7 +1137,7 @@
     "name": "Renogy 500A Battery Monitor",
     "price": 99.99,
     "store": "Renogy Australia",
-    "url": "https://au.renogy.com/500a-battery-monitor",
+    "url": "https://au.renogy.com/products/500a-battery-monitor",
     "why": "Well reviewed, with low-battery alarms. Also at Supercheap.",
     "downside": "Fewer details published."
    },
@@ -1214,7 +1188,7 @@
     "stores": [
      {
       "store": "Solar 4 RVs",
-      "price": 216.27,
+      "price": 189.95,
       "url": "https://www.solar4rvs.com.au/products/victron-battery-monitor-bmv-712-smart-black",
       "was": 269.5
      },
@@ -1278,7 +1252,7 @@
      {
       "store": "Jaycar",
       "price": 249.0,
-      "url": "https://jaycar.com.au/p/GH2030"
+      "url": "https://www.jaycar.com.au/42l-brass-monkey-ultra-portable-fridge-freezer-with-wheels-and-battery-compartment/p/GH2030"
      }
     ]
    },
@@ -1300,7 +1274,7 @@
      },
      {
       "store": "Dometic",
-      "price": 949.0,
+      "price": 699,
       "url": "https://www.dometic.com/en-au/product/dometic-cff-45-pack-9600028653"
      }
     ]
@@ -1323,7 +1297,7 @@
      },
      {
       "store": "Dometic",
-      "price": 1449.0,
+      "price": 1359,
       "url": "https://www.dometic.com/en-au/product/dometic-cfx5-45-9620015959"
      }
     ]
@@ -1450,7 +1424,7 @@
      },
      {
       "store": "Dometic",
-      "price": 1999.0,
+      "price": 1809,
       "url": "https://www.dometic.com/en-au/product/dometic-cfx5-75dz-9620015962"
      }
     ]
@@ -1549,7 +1523,7 @@
     "role": "main",
     "name": "Dometic CFX5 95DZ",
     "why": "Dometic's top dual zone: phone app control, strong build and a 5-year warranty.",
-    "downside": "About $400 to $650 more than the mid-range EvaKool, and Snowys showed it out of stock online.",
+    "downside": "About $450 more than the mid-range EvaKool.",
     "warranty": 5,
     "kg": 29.5,
     "draw": "2.83Ah per hour average (Dometic figure, 4°C large, -15°C small, 32°C outside, 12V); 10.4A max",
@@ -1562,8 +1536,8 @@
      },
      {
       "store": "Dometic",
-      "price": 2099.0,
-      "url": "https://dometic.com/en-au/outdoor/fridgefreezers-and-coolers/portable-fridgefreezers/07-0703-070328-070328007-368998"
+      "price": 1909.0,
+      "url": "https://www.dometic.com/en-au/product/dometic-cfx5-95dz-9620015963"
      }
     ]
    }
@@ -1626,7 +1600,7 @@
      {
       "store": "Caravansplus",
       "price": 76.95,
-      "url": "https://www.caravansplus.com.au/narva-12v-led-strip-light-white-amber-285mm-p-22187.html",
+      "url": "https://www.caravansplus.com.au/narva-led-strip-light-12v-285mm-amber-white-p-22187.html",
       "was": 125.0
      }
     ]
@@ -1736,7 +1710,7 @@
      {
       "store": "Caravansplus",
       "price": 195.0,
-      "url": "https://www.caravansplus.com.au/caframo-sirocco-ii-fan-black-12v-24v-p-14748.html",
+      "url": "https://www.caravansplus.com.au/caframo-sirocco-ii-cabin-fan-black-12v-24v-p-14748.html",
       "was": 229.0
      }
     ]
@@ -1754,7 +1728,7 @@
      {
       "store": "Caravansplus",
       "price": 530.0,
-      "url": "https://www.caravansplus.com.au/maxxfan-deluxe-with-rain-dome-thermostat-power-lift-remote-355x355mm-p-15885.html",
+      "url": "https://www.caravansplus.com.au/maxxfan-deluxe-thermostatic-roof-vent-with-rain-dome-power-lift-remote-355-x-355mm-cut-out-p-15885.html",
       "was": 747.6
      }
     ]
@@ -1789,7 +1763,7 @@
      {
       "store": "Jaycar",
       "price": 69.95,
-      "url": "https://www.jaycar.com.au/p/HB8504"
+      "url": "https://www.jaycar.com.au/powertech-battery-box-with-power-accessories/p/HB8504"
      }
     ]
    },
@@ -1849,7 +1823,7 @@
      {
       "store": "Hardkorr",
       "price": 199,
-      "url": "https://hardkorr.com/au/product/heavy-duty-battery-box/"
+      "url": "https://hardkorr.com/products/heavy-duty-battery-box"
      }
     ]
    },
@@ -1873,14 +1847,14 @@
    {
     "tier": "Budget",
     "role": "main",
-    "name": "ORD Universal Battery Tray for 200Ah Lithium",
-    "why": "A universal tray (not tied to one battery brand) in 2mm zinc-coated, powder-coated steel with two load-rated cam-buckle straps. Takes batteries up to 492 x 175mm at the base.",
-    "downside": "Out of stock when checked, and no warranty listed. Too narrow for wider 200Ah batteries.",
+    "name": "Roadking Weld-On Battery Box 200Amp",
+    "why": "For trailers and camper chassis: a steel box that welds on, with an aluminium slide-down lid and a long internal space (715 x 190 x 250).",
+    "downside": "Must be welded on by a fabricator. No warranty listed.",
     "stores": [
      {
-      "store": "Off Road Downunder",
-      "price": 159.95,
-      "url": "https://offroaddownunder.com.au/product/ord-battery-tray-universal-mounting-suits-lithium-200ah-batteries/",
+      "store": "Roadking",
+      "price": 230,
+      "url": "https://roadkingstore.com.au/products/roadking-weld-on-battery-box",
       "in_stock": false,
       "label": "out of stock when checked"
      }
@@ -1889,14 +1863,16 @@
    {
     "tier": "Budget",
     "role": "other",
-    "name": "Invicta Battery Tray to suit 200Ah Battery",
-    "why": "The matching tray for Invicta's SNL12V200BT 200Ah battery, if that's the battery you bought.",
-    "downside": "Only for Invicta batteries, and no size or material is listed.",
+    "name": "ORD Universal Battery Tray for 200Ah Lithium",
+    "why": "A universal tray (not tied to one battery brand) in 2mm zinc-coated, powder-coated steel with two load-rated cam-buckle straps. Takes batteries up to 492 x 175mm at the base.",
+    "downside": "Out of stock when we checked. Out of stock when checked, and no warranty listed. Too narrow for wider 200Ah batteries.",
     "stores": [
      {
-      "store": "My Generator",
-      "price": 99,
-      "url": "https://mygenerator.com.au/product/invicta-tray-to-suit-200ah-battery"
+      "store": "Off Road Downunder",
+      "price": 159.95,
+      "url": "https://offroaddownunder.com.au/product/ord-battery-tray-universal-mounting-suits-lithium-200ah-batteries/",
+      "in_stock": false,
+      "label": "out of stock when checked"
      }
     ]
    },
@@ -1909,24 +1885,8 @@
     "stores": [
      {
       "store": "Cobra Caravan Toolboxes",
-      "price": 281.82,
+      "price": 310,
       "url": "https://www.cobracaravantoolboxes.com.au/product/Large-Caravan-Battery-Box-Black-for-200AH-Lithium-Battery-600L-X-260W-x-240H"
-     }
-    ]
-   },
-   {
-    "tier": "Mid-range",
-    "role": "other",
-    "name": "Roadking Weld-On Battery Box 200Amp",
-    "why": "For trailers and camper chassis: a steel box that welds on, with an aluminium slide-down lid and a long internal space (715 x 190 x 250).",
-    "downside": "Must be welded on by a fabricator, and it was sold out when checked. No warranty listed.",
-    "stores": [
-     {
-      "store": "Roadking",
-      "price": 230,
-      "url": "https://roadkingstore.com.au/products/roadking-weld-on-battery-box",
-      "in_stock": false,
-      "label": "out of stock when checked"
      }
     ]
    },
@@ -1950,9 +1910,23 @@
    {
     "tier": "Budget",
     "role": "main",
+    "name": "Home of 12V Wiring Kit for DC-DC Chargers (DBK-DC)",
+    "why": "Made for 25A DC-DC chargers like the Redarc BCDC Core 25 and Projecta 25A: 6m of 8 B&S twin cable plus two 3m single runs, two 60A midi fuses with holders, lugs, heatshrink and an Anderson plug.",
+    "downside": "8 B&S suits a 25A charger. For a 40A charger or a long run, ask your auto electrician about thicker cable. No warranty listed.",
+    "stores": [
+     {
+      "store": "Home of 12 Volt",
+      "price": 149,
+      "url": "https://www.homeof12voltonline.com.au/products/dual-battery-wiring-kits-to-suit-dc-chargers-sbi-isolators-slimline-batteries-dbk?variant=46718243930371"
+     }
+    ]
+   },
+   {
+    "tier": "Budget",
+    "role": "other",
     "name": "Jaycar Premium DC-DC Wiring Kit (HB8507)",
     "why": "6 metres of 8 B&S cable, an 80A fuse and a 3-pin Anderson plug that carries the ignition wire many newer cars need, plus a 3m ignition lead. Good for a 25A charger.",
-    "downside": "Jaycar lists both 50A and 80A ratings, which don't match. No warranty period stated.",
+    "downside": "Out of stock online when we checked. Jaycar lists both 50A and 80A ratings, which don't match. No warranty period stated.",
     "stores": [
      {
       "store": "Jaycar",
@@ -1989,20 +1963,6 @@
       "store": "Frankie's Auto Electrics",
       "price": 215,
       "url": "https://frankiesautoelectrics.com.au/products/drivetech-4x4-dt-02022w5-dc-dc-wiring-kit"
-     }
-    ]
-   },
-   {
-    "tier": "Mid-range",
-    "role": "other",
-    "name": "Home of 12V Wiring Kit for DC-DC Chargers (DBK-DC)",
-    "why": "Made for 25A DC-DC chargers like the Redarc BCDC Core 25 and Projecta 25A: 6m of 8 B&S twin cable plus two 3m single runs, two 60A midi fuses with holders, lugs, heatshrink and an Anderson plug.",
-    "downside": "8 B&S suits a 25A charger. For a 40A charger or a long run, ask your auto electrician about thicker cable. No warranty listed.",
-    "stores": [
-     {
-      "store": "Home of 12 Volt",
-      "price": 149,
-      "url": "https://www.homeof12voltonline.com.au/products/dual-battery-wiring-kits-to-suit-dc-chargers-sbi-isolators-slimline-batteries-dbk?variant=46718243930371"
      }
     ]
    },
@@ -2080,7 +2040,7 @@
     "stores": [
      {
       "store": "Solar 4 RVs",
-      "price": 78,
+      "price": 75,
       "url": "https://www.solar4rvs.com.au/products/blue-sea-blade-fuse-block-holder-6-circuits-with-n"
      }
     ]
@@ -2100,7 +2060,7 @@
      },
      {
       "store": "Caravansplus",
-      "price": 81.95,
+      "price": 84.95,
       "url": "https://www.caravansplus.com.au/enerdrive-12-way-ats-blade-fuse-block-with-negative-busbar-p-24927.html"
      }
     ]
@@ -2115,7 +2075,7 @@
      {
       "store": "Solar 4 RVs",
       "price": 234,
-      "url": "https://www.solar4rvs.com.au/blue-sea-safety-hub-150-fuse-block-w-neg-bar"
+      "url": "https://www.solar4rvs.com.au/products/blue-sea-safety-hub-150-fuse-block-w-neg-bar"
      },
      {
       "store": "Everything Caravans",
