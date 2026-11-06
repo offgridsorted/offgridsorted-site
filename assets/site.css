@@ -779,3 +779,6 @@ html.embed .mast h1{font-size:2rem;margin-top:6px}
 /* handwriting in ink, not blue biro */
 html:root:not(#x){--biro:var(--ink)}
 .hand-pick{display:block;font-weight:700;font-size:1.55rem;color:var(--ink);margin:10px 0 4px;transform:rotate(-1.5deg)}
+.trust-banner li{text-wrap:pretty}.trust-banner li span,.trust-banner li{hyphens:none}
+@media (max-width:560px){.trust-banner ul{grid-template-columns:1fr;gap:14px}}
+.trust{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 40px;max-width:900px}@media (max-width:760px){.trust{grid-template-columns:1fr}}

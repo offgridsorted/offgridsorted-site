@@ -109,7 +109,7 @@
   <h2 id="s0">Start with a ready-made kit</h2>
   <p class="hint">Pick the one that sounds most like you. It fills everything in below, and you can tweak from there.</p>
   <div class="presets" role="group" aria-label="Ready-made kits">
-    <button type="button" data-preset="weekender" aria-pressed="false"><b>Weekender</b><span>Two or three nights, medium fridge, lights and phones. Drive there, set up camp and stay put.</span></button>
+    <button type="button" data-preset="weekender" aria-pressed="false"><b>Weekender</b><span>Two or three nights, medium fridge, lights and phones. Drive there, set up camp, come home.</span></button>
     <button type="button" data-preset="long" aria-pressed="false"><b>Long trips</b><span>A week or more, bigger fridge, laptop. Some days parked up.</span></button>
     <button type="button" data-preset="living" aria-pressed="false"><b>Living in it</b><span>Full-time: fridge-freezer, work-from-van, heater, Starlink, coffee.</span></button>
   </div>
@@ -637,7 +637,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     if(nk){ var kslug = dailyAh <= 55 ? "weekender" : dailyAh <= 90 ? "long-trips" : "living-in-it"; nk.href = "kits/" + kslug + ".html"; nk.textContent = "See the closest ready-made kit: " + ({"weekender":"Weekender","long-trips":"Long trips","living-in-it":"Living in it"})[kslug]; }
     var pt = document.getElementById("res-pill-t"); if(pt) pt.textContent = p.daily > 0 ? "About " + fmt(dailyAh) + "Ah a day · See results" : "See results";
     var pn = document.getElementById("preset-note");
-    if(state.preset && state.mode === "plan"){ pn.hidden = false; pn.innerHTML = "Filled in from the <b>" + state.preset + "</b> kit. Change anything above and these results update. <a href=\"#s2\">Edit what you run ↑</a>"; } else { pn.hidden = true; }
+    if(state.preset && state.mode === "plan"){ pn.hidden = false; pn.innerHTML = "Filled in from the <b>" + state.preset + "</b> kit. " + (state.preset === "Weekender" ? "Set up for a weekend away: you drive there, stay put for two or three days, then drive home. The drive fills the battery, the battery gets you through two parked days, and a little solar stretches it. That works out to about an hour of driving a day on average. " : "") + "Change anything above and these results update. <a href=\"#s2\">Edit what you run ↑</a>"; } else { pn.hidden = true; }
     var placeName = SUN[loc].name;
 
     // Usage bar (hardest season)
@@ -1054,7 +1054,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
   });
 
   var PRESETS = {
-    weekender:{fridge:"28", drive:"2.5", buffer:"1", apps:{led:[4,4], phone:[2,2], fan:[1,8], pump:[1,0.25]}},
+    weekender:{fridge:"28", drive:"1", buffer:"2", apps:{led:[4,4], phone:[2,2], fan:[1,8], pump:[1,0.25]}},
     long:{fridge:"38", drive:"1", buffer:"2", apps:{led:[4,4], phone:[2,2], laptop:[1,3], fan:[1,8], pump:[1,0.25]}},
     living:{fridge:"50", drive:"0", buffer:"3", apps:{led:[6,5], phone:[2,2], laptop:[1,5], fan:[1,8], heater:[1,6], pump:[1,0.3], starlink:[1,6], coffee:[1,0.1]}}
   };
