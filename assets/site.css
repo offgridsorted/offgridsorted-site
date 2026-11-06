@@ -1060,3 +1060,4 @@ body.mode-check section.step.band-a{background:#e3eef2;box-shadow:0 0 0 100vmax 
 body.mode-check section.step.band-b{background:#f1f6f4;box-shadow:0 0 0 100vmax #f1f6f4}
 .mast + .trust-banner,.trust-banner + .modes{margin-top:0}
 main.wrap > .trust-banner{margin:26px 0 22px}
+main.wrap > .trust-banner:last-of-type{margin:40px 0 0}
