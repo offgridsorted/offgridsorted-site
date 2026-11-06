@@ -21,7 +21,7 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
 
 # Guides: (slug, title, tag, blurb, status)  status "live" or "soon"
 GUIDES = [
-    ("van-power-basics", "Van power in plain English: the four parts and how they fit", "Start here",
+    ("van-power-basics", "Off-grid power in plain English: the four main parts and how they fit", "Start here",
      "Battery, solar, DC-DC charger and inverter, explained without the jargon.", "live"),
     ("lithium-vs-agm", "Lithium vs AGM: which battery should you get?", "Batteries",
      "The real difference, what it means for size, weight and cost, and when AGM still makes sense.", "live"),

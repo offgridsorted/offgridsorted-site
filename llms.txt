@@ -11,7 +11,7 @@
 - [Living in it](https://offgridsorted.com.au/kits/living-in-it.html)
 
 ## Guides
-- [Van power in plain English: the four parts and how they fit](https://offgridsorted.com.au/guides/van-power-basics.html): Battery, solar, DC-DC charger and inverter, explained without the jargon.
+- [Off-grid power in plain English: the four main parts and how they fit](https://offgridsorted.com.au/guides/van-power-basics.html): Battery, solar, DC-DC charger and inverter, explained without the jargon.
 - [Lithium vs AGM: which battery should you get?](https://offgridsorted.com.au/guides/lithium-vs-agm.html): The real difference, what it means for size, weight and cost, and when AGM still makes sense.
 - [How much solar do I need? By state and season](https://offgridsorted.com.au/guides/how-much-solar-australia.html): Why a Hobart winter and a Darwin winter need very different setups, with a table for every state.
 - [DC-DC chargers explained: charging while you drive](https://offgridsorted.com.au/guides/dc-dc-chargers-explained.html): What they do, what size you need, and why modern cars with smart alternators need one.
