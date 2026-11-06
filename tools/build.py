@@ -333,8 +333,9 @@ def normalise_products():
             p["stores"] = st
             best = next((x for x in st if x.get("price") and x.get("in_stock") is not False), st[0] if st else None)
             if best:
+                own_rrp = p.get("rrp") if best["store"] == p.get("store") else None
                 p["price"], p["store"], p["url"] = best.get("price") or p.get("price"), best["store"], best["url"]
-                p["rrp"] = best.get("was")
+                p["rrp"] = best.get("was") or own_rrp
 
 
 normalise_products()
@@ -364,20 +365,20 @@ def where_to_buy(p):
     out = '<ul class="wtb">'
     for x in st:
         pr = money(x["price"]) if x.get("price") else "Check price"
-        was = f' <s>{money(x["was"])}</s>' if x.get("was") and x.get("price") and x["was"] > x["price"] else ""
+        was = f'<s class="was">{money(x["was"])}</s> ' if x.get("was") and x.get("price") and x["was"] > x["price"] else ""
         sold = f' <em>{html.escape(x["label"])}</em>' if x.get("label") else (' <em>sold out</em>' if x.get("in_stock") is False else "")
-        out += f'<li><a href="{html.escape(x["url"])}" target="_blank" rel="sponsored nofollow noopener">{html.escape(x["store"])}</a><span>{pr}{was}{sold}</span></li>'
+        out += f'<li><a href="{html.escape(x["url"])}" target="_blank" rel="sponsored nofollow noopener">{html.escape(x["store"])}</a><span>{was}{pr}{sold}</span></li>'
     return out + '</ul>'
 
 
 def product_line(p, main=True):
     multi = len(p.get("stores") or []) > 1
     price = ("About " if p.get("approx") else ("From " if multi else "")) + money(p["price"]) if p.get("price") else "Check price"
-    was = f' <s>{money(p["rrp"])}</s>' if p.get("rrp") and p.get("price") and p["rrp"] > p["price"] and not multi else ""
+    was = f'<s class="was">{money(p["rrp"])}</s> ' if p.get("rrp") and p.get("price") and p["rrp"] > p["price"] else ""
     url = html.escape(p["url"]) if p.get("url") else "#"
     cls = "prod" if main else "prod alt"
     return (f'<div class="{cls}"><a class="pname" href="{url}" rel="sponsored nofollow noopener" target="_blank">{html.escape(p["name"])}</a>'
-            f'<span class="price">{price}{was} <span class="store">at {html.escape(p["store"])}</span></span>'
+            f'<span class="price">{was}{price} <span class="store">at {html.escape(p["store"])}</span></span>'
             + (f'<span class="facts">{facts(p)}</span>' if facts(p) else "")
             + f'<span class="tn">{html.escape(p["why"])}</span>'
             + (f'<span class="tn down">Good to know: {html.escape(p["downside"])}</span>' if p.get("downside") else "")

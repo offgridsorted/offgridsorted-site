@@ -54,8 +54,7 @@
      {
       "store": "Everything 4WD",
       "price": 579,
-      "url": "https://www.everything4wd.com.au/itech120x-pro-deep-cycle-lithium-battery-with-blue",
-      "was": 999
+      "url": "https://www.everything4wd.com.au/itech120x-pro-deep-cycle-lithium-battery-with-blue"
      },
      {
       "store": "Moorabbin Batteries",
@@ -236,8 +235,7 @@
      {
       "store": "Everything 4WD",
       "price": 1996,
-      "url": "https://www.everything4wd.com.au/itech400x-pro-lithium-deep-cycle-battery-with-blue",
-      "was": 3499
+      "url": "https://www.everything4wd.com.au/itech400x-pro-lithium-deep-cycle-battery-with-blue"
      }
     ]
    },
@@ -530,7 +528,7 @@
       "store": "Home of 12 Volt",
       "price": 429.0,
       "url": "https://www.homeof12voltonline.com.au/products/redarc-core-40a-dcbatterycharger",
-      "was": 499.0
+      "was": 499
      },
      {
       "store": "REDARC",
@@ -585,9 +583,8 @@
      },
      {
       "store": "Caravans Plus",
-      "price": 540.0,
-      "url": "https://www.caravansplus.com.au/enerdrive-epower-dc-to-dc-solar-charger-12v-40a-p-21919.html",
-      "was": 629.0
+      "price": 425,
+      "url": "https://www.caravansplus.com.au/enerdrive-epower-dc-to-dc-solar-charger-12v-40a-p-21919.html"
      }
     ]
    },
@@ -638,7 +635,7 @@
       "store": "Home of 12 Volt",
       "price": 729.0,
       "url": "https://www.homeof12voltonline.com.au/products/projecta-intelli-charge-50-amp-dual-battery-charger-idc50x",
-      "was": 799.0
+      "was": 799
      }
     ]
    },
@@ -667,7 +664,7 @@
       "store": "Home of 12 Volt",
       "price": 760.0,
       "url": "https://www.homeof12voltonline.com.au/products/redarc-alpha-50amp-dc-dc-battery-charger",
-      "was": 899.0
+      "was": 899
      },
      {
       "store": "REDARC",
@@ -718,14 +715,14 @@
       "store": "Snowys",
       "price": 294.0,
       "url": "https://snowys.com.au/200w-portable-solar-blanket-15a-regulator",
-      "was": 369.0,
+      "was": 369,
       "label": "store pickup only"
      },
      {
       "store": "Hard Korr",
       "price": 369.0,
       "url": "https://hardkorr.com/products/200w-solar-blanket-with-perc-cell-technology",
-      "was": 469.0
+      "was": 469
      }
     ]
    },
@@ -958,7 +955,6 @@
     "url": "https://www.mygenerator.com.au/product/victron-phoenix-inverter-12-800",
     "why": "Top-quality brand and a 5-year warranty, for less than most mid-range brands.",
     "downside": "It's rated 800VA, which is about 650W of real output.",
-    "rrp": 430,
     "warranty": 5,
     "kg": 4.4,
     "stores": [
@@ -970,8 +966,7 @@
      {
       "store": "My Generator",
       "price": 358,
-      "url": "https://www.mygenerator.com.au/product/victron-phoenix-inverter-12-800",
-      "was": 430
+      "url": "https://www.mygenerator.com.au/product/victron-phoenix-inverter-12-800"
      }
     ]
    },
@@ -1072,21 +1067,18 @@
     "url": "https://www.caravansplus.com.au/enerdrive-epower-true-sine-wave-inverter-12v-2000w-p-21920.html",
     "why": "Built for RVs to run coffee machines and hairdryers day after day, with a 5-year warranty. RCD versions available.",
     "downside": "About two and a half times the mid-range Hard Korr.",
-    "rrp": 1306,
     "warranty": 5,
     "kg": 5.5,
     "stores": [
      {
       "store": "Everything Caravans",
       "price": 1099.0,
-      "url": "https://www.everythingcaravans.com.au/collections/invertors/products/epower-2000w-true-sine-wave-inverter",
-      "was": 1306.0
+      "url": "https://www.everythingcaravans.com.au/collections/invertors/products/epower-2000w-true-sine-wave-inverter"
      },
      {
       "store": "Caravans Plus",
       "price": 1120.0,
-      "url": "https://www.caravansplus.com.au/enerdrive-epower-true-sine-wave-inverter-12v-2000w-p-21920.html",
-      "was": 1306.0
+      "url": "https://www.caravansplus.com.au/enerdrive-epower-true-sine-wave-inverter-12v-2000w-p-21920.html"
      }
     ]
    },
@@ -1161,7 +1153,7 @@
       "store": "Campervan Builders",
       "price": 143.1,
       "url": "https://campervanbuilders.com.au/products/victron-smartshunt-500a-50mv-supplier-code-shu050150050",
-      "was": 159.0
+      "was": 159
      }
     ]
    },
@@ -1270,7 +1262,7 @@
       "store": "Snowys",
       "price": 699.0,
       "url": "https://snowys.com.au/cff-45-fridge-and-cover",
-      "was": 949.0
+      "was": 949
      },
      {
       "store": "Dometic",
@@ -1293,7 +1285,7 @@
       "store": "Snowys",
       "price": 1349.0,
       "url": "https://www.snowys.com.au/cfx5-45-portable-fridgefreezer-46l",
-      "was": 1449.0
+      "was": 1449
      },
      {
       "store": "Dometic",
@@ -1315,7 +1307,7 @@
       "store": "Snowys",
       "price": 1339.0,
       "url": "https://www.snowys.com.au/mt-v45f-40-litre-fridge-freezer",
-      "was": 1499.0
+      "was": 1499
      }
     ]
    },
@@ -1332,7 +1324,7 @@
       "store": "Snowys",
       "price": 1475.0,
       "url": "https://www.snowys.com.au/35-52l-portable-fridge-freezer",
-      "was": 1599.0
+      "was": 1599
      }
     ]
    }
@@ -1368,7 +1360,7 @@
       "store": "Snowys",
       "price": 928.0,
       "url": "https://www.snowys.com.au/cff-70dz-fridge-cover",
-      "was": 1299.0
+      "was": 1299
      }
     ]
    },
@@ -1402,7 +1394,7 @@
       "store": "Snowys",
       "price": 1549.0,
       "url": "https://www.snowys.com.au/cfx5-55-portable-fridgefreezer-55l",
-      "was": 1649.0
+      "was": 1649
      }
     ]
    },
@@ -1420,7 +1412,7 @@
       "store": "Snowys",
       "price": 1799.0,
       "url": "https://www.snowys.com.au/cfx5-75dz-dual-zone-fridgefreezer-75l",
-      "was": 1999.0
+      "was": 1999
      },
      {
       "store": "Dometic",
@@ -1442,7 +1434,7 @@
       "store": "Snowys",
       "price": 1799.0,
       "url": "https://www.snowys.com.au/mt-v60f-60-litre-fridge-freezer",
-      "was": 1999.0
+      "was": 1999
      }
     ]
    }
@@ -1478,7 +1470,7 @@
       "store": "Snowys",
       "price": 1449.0,
       "url": "https://www.snowys.com.au/du295-dz-down-under-series-ii-dual-zone-fridge-freezer-95l-phantom-grey",
-      "was": 1799.0
+      "was": 1499
      }
     ]
    },
@@ -1496,7 +1488,7 @@
       "store": "Snowys",
       "price": 1349.0,
       "url": "https://www.snowys.com.au/du280-dz-down-under-series-ii-dual-zone-fridge-freezer-80l-phantom-grey",
-      "was": 1699.0
+      "was": 1399
      }
     ]
    },
@@ -1514,7 +1506,7 @@
       "store": "Snowys",
       "price": 1545.0,
       "url": "https://www.snowys.com.au/ccp96dz-dual-zone-portable-fridge-freezer-96l",
-      "was": 1899.0
+      "was": 1899
      }
     ]
    },
@@ -1532,7 +1524,7 @@
       "store": "Snowys",
       "price": 1899.0,
       "url": "https://www.snowys.com.au/cfx5-95dz-dual-zone-fridgefreezer-94l",
-      "was": 2099.0
+      "was": 2099
      },
      {
       "store": "Dometic",
@@ -1584,7 +1576,7 @@
       "store": "Hard Korr",
       "price": 89.0,
       "url": "https://hardkorr.com/collections/led-camp-light-kits/products/lifestyle-4-bar-orange-white-led-camping-light-kit",
-      "was": 99.0
+      "was": 99
      }
     ]
    },
@@ -1600,8 +1592,7 @@
      {
       "store": "Caravansplus",
       "price": 76.95,
-      "url": "https://www.caravansplus.com.au/narva-led-strip-light-12v-285mm-amber-white-p-22187.html",
-      "was": 125.0
+      "url": "https://www.caravansplus.com.au/narva-led-strip-light-12v-285mm-amber-white-p-22187.html"
      }
     ]
    },
@@ -1619,7 +1610,7 @@
       "store": "Snowys",
       "price": 189.0,
       "url": "https://www.snowys.com.au/6-bar-orangewhite-led-camping-light-kit-with-diffusers",
-      "was": 239.0
+      "was": 239
      }
     ]
    },
@@ -1637,7 +1628,7 @@
       "store": "Snowys",
       "price": 159.9,
       "url": "https://www.snowys.com.au/4-bar-orangewhite-led-camping-light-kit-with-diffusers",
-      "was": 199.0
+      "was": 199
      }
     ]
    }
@@ -1709,9 +1700,8 @@
      },
      {
       "store": "Caravansplus",
-      "price": 195.0,
-      "url": "https://www.caravansplus.com.au/caframo-sirocco-ii-cabin-fan-black-12v-24v-p-14748.html",
-      "was": 229.0
+      "price": 205,
+      "url": "https://www.caravansplus.com.au/caframo-sirocco-ii-cabin-fan-black-12v-24v-p-14748.html"
      }
     ]
    },
@@ -1727,9 +1717,8 @@
     "stores": [
      {
       "store": "Caravansplus",
-      "price": 530.0,
-      "url": "https://www.caravansplus.com.au/maxxfan-deluxe-thermostatic-roof-vent-with-rain-dome-power-lift-remote-355-x-355mm-cut-out-p-15885.html",
-      "was": 747.6
+      "price": 650,
+      "url": "https://www.caravansplus.com.au/maxxfan-deluxe-thermostatic-roof-vent-with-rain-dome-power-lift-remote-355-x-355mm-cut-out-p-15885.html"
      }
     ]
    },
@@ -1744,9 +1733,8 @@
     "stores": [
      {
       "store": "Caravansplus",
-      "price": 180.0,
-      "url": "https://www.caravansplus.com.au/12v-turbo-vent-fan-garnish-kit-suits-fiamma-vent-28-f-roof-vents-p-18734.html",
-      "was": 201.0
+      "price": 185,
+      "url": "https://www.caravansplus.com.au/12v-turbo-vent-fan-garnish-kit-suits-fiamma-vent-28-f-roof-vents-p-18734.html"
      }
     ]
    }
@@ -1806,8 +1794,7 @@
      {
       "store": "iTechworld",
       "price": 299,
-      "url": "https://www.itechworld.com.au/products/gofurther-premium-battery-box",
-      "was": 399
+      "url": "https://www.itechworld.com.au/products/gofurther-premium-battery-box"
      }
     ]
    },
@@ -2025,9 +2012,8 @@
     "stores": [
      {
       "store": "Caravansplus",
-      "price": 10.75,
-      "url": "https://www.caravansplus.com.au/narva-6-way-ats-blade-fuse-box-p-9523.html",
-      "was": 32
+      "price": 24.95,
+      "url": "https://www.caravansplus.com.au/narva-6-way-ats-blade-fuse-box-p-9523.html"
      }
     ]
    },
@@ -2110,8 +2096,7 @@
      {
       "store": "Outback Marine",
       "price": 52.69,
-      "url": "https://outbackmarine.com.au/switch-battery-m-on-off-w-knob",
-      "was": 72
+      "url": "https://outbackmarine.com.au/switch-battery-m-on-off-w-knob"
      }
     ]
    },

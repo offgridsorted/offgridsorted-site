@@ -1131,3 +1131,6 @@ body.mode-check section.step.band-b{background:var(--sage-band);box-shadow:0 0 0
 .path-cta{margin:26px 0 0;font-family:var(--font-ui);font-weight:600;text-align:center}
 .path-ctas{display:flex;justify-content:center;margin:12px 0 0}
 .path-ctas .btn-link.solid{background:var(--sun);color:#1c1f1b;border-color:var(--sun);box-shadow:0 4px 0 var(--sun-dark)}
+/* Sale prices: old price crossed out, new price next to it */
+s.was{color:var(--muted);font-weight:500;text-decoration-thickness:2px;text-decoration-color:#b5523b;margin-right:2px}
+.prod .price s.was,.wtb s.was{display:inline;font-size:.9em}
