@@ -157,7 +157,7 @@
   <svg class="doodle step-doodle" viewBox="0 0 110 100" width="80" height="73" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M30 40h46l8 44H22z"/><path d="M76 50c14 0 18 8 18 18M30 50L14 38"/><path d="M38 40c0-12 30-12 30 0"/><path d="M50 16c-4 6 4 8 0 14M62 12c-4 6 4 8 0 14" stroke-dasharray="3 5"/></svg>
   <span class="step-label">Step 2</span>
   <h2 id="s2">What do you run?</h2>
-  <p class="hint">Tap <b>+</b> for each thing you have. We've filled in typical hours a day, so only change those if they don't sound like you.</p>
+  <p class="hint">Pick your fridge, then tap everything else you run. We use typical hours a day, so you don't need to work anything out.</p>
   <div class="field">
     <label for="fridge">Your fridge</label>
     <select id="fridge">
@@ -171,6 +171,8 @@
     <span class="note">Start with the fridge. It's nearly always the biggest user.</span>
     <p class="small">It runs day and night, so it usually uses more than everything else combined. Hot weather and opening the lid a lot make it work harder.</p>
   </div>
+  <div class="field quick-wrap"><span class="flabel" id="qp-l">What else do you run? Tap all that apply.</span><div class="qp" id="quick-picks" role="group" aria-labelledby="qp-l"></div></div>
+  <details class="fine-tune" id="fine-tune"><summary>Fine-tune how many and hours a day, or add your own</summary>
   <div class="apps" id="apps"></div>
   <div class="custom-add" id="custom-add">
     <div class="sec-row"><h3>Add your own</h3><button type="button" class="link-btn open-sheet" id="find-power">How do I find how much power something uses?</button></div>
@@ -185,6 +187,7 @@
     </form>
     <p class="small" id="custom-msg" role="status"></p>
   </div>
+  </details>
 </section>
 
 <section class="step" aria-labelledby="s3">
@@ -201,6 +204,7 @@
       <input type="radio" name="drive" id="dr-4" value="4"><label for="dr-4">4+ hours</label>
     </div>
   </div>
+  <details class="fine-tune"><summary>More options: cloudy days</summary>
   <div class="field">
     <span id="buf-l" class="flabel">How many grey, cloudy days should you get through without driving?</span>
     <div class="chips" role="radiogroup" aria-labelledby="buf-l">
@@ -210,8 +214,9 @@
       <input type="radio" name="buffer" id="bf-4" value="4"><label for="bf-4">4 days</label>
       <input type="radio" name="buffer" id="bf-5" value="5"><label for="bf-5">5 days</label>
     </div>
-    <p class="small">Two days suits most people.</p>
+    <p class="small">Two days suits most people, so that's what we use unless you change it.</p>
   </div>
+  </details>
 </section>
 
 <section class="step" aria-labelledby="s4p" id="build-card">
@@ -221,8 +226,9 @@
   <div class="field">
     <span id="bt-l" class="flabel">Battery type</span>
     <div class="chips" role="radiogroup" aria-labelledby="bt-l">
-      <input type="radio" name="battype" id="bt-l1" value="lith" checked><label for="bt-l1">Lithium</label>
+      <input type="radio" name="battype" id="bt-l1" value="lith"><label for="bt-l1">Lithium</label>
       <input type="radio" name="battype" id="bt-a1" value="agm"><label for="bt-a1">AGM</label>
+      <input type="radio" name="battype" id="bt-un" value="unsure" checked><label for="bt-un">Not sure</label>
     </div>
     <p class="aside"><b>The short version:</b> you can use almost all of a lithium battery, but only about half of an AGM before it starts wearing out. So AGM needs to be about twice the size for the same job, and it's around three to four times heavier. AGM is cheaper to buy; lithium lasts years longer.</p>
   </div>
@@ -239,7 +245,8 @@
     <span id="bs-l" class="flabel">One box or separate parts?</span>
     <div class="chips" role="radiogroup" aria-labelledby="bs-l">
       <input type="radio" name="build" id="bs-box" value="box"><label for="bs-box">All-in-one box</label>
-      <input type="radio" name="build" id="bs-parts" value="parts" checked><label for="bs-parts">Separate parts</label>
+      <input type="radio" name="build" id="bs-parts" value="parts"><label for="bs-parts">Separate parts</label>
+      <input type="radio" name="build" id="bs-un" value="unsure" checked><label for="bs-un">Not sure</label>
     </div>
     <p class="small"><b>All-in-one box:</b> battery, chargers and plugs built in. Simplest, and it can move between vehicles. <b>Separate parts:</b> more work and an installer, but you choose every piece and it can grow with you.</p>
   </div>
@@ -282,6 +289,7 @@
   <p class="preset-note" id="preset-note" hidden></p>
   <p class="verdict" id="verdict"></p>
   <div class="kit" id="kit"></div>
+  <p class="more-detail" id="more-detail-p"><button type="button" class="btn ghost" id="more-detail">Want more detail? Fine-tune everything</button></p>
 
   <div class="field">
     <h3>What uses your power each day</h3>
@@ -571,14 +579,38 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
   function driveEff(){ return vehicle() === "caravan" ? 0.65 : 0.9; }
   function dcdcFor(batAh){ return batAh <= 120 ? 25 : (batAh <= 200 ? 40 : 50); }
 
+
+  // ---- Quick picks (simple mode): tap to add with typical numbers ----
+  var QUICK_Q = {led:4, phone:2};
+  var qpEl = document.getElementById("quick-picks");
+  APPS.forEach(function(a){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "qp-chip"; b.id = "qp-" + a.id; b.textContent = a.n.replace(/ \(.*\)$/, "");
+    b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", function(){
+      var s = state.apps[a.id];
+      if(s.q > 0){ s.q = 0; } else { s.q = QUICK_Q[a.id] || 1; if(!s.h) s.h = a.id === "aircon" ? 2 : 1; }
+      document.getElementById("q-" + a.id).textContent = s.q;
+      document.getElementById("h-" + a.id).value = s.h;
+      clearPreset(); calc();
+    });
+    qpEl.appendChild(b);
+  });
+  function syncQuick(){ APPS.forEach(function(a){ var b = document.getElementById("qp-" + a.id); if(b) b.setAttribute("aria-pressed", state.apps[a.id].q > 0 ? "true" : "false"); }); }
+  document.getElementById("more-detail").addEventListener("click", function(){
+    document.querySelectorAll("details.fine-tune").forEach(function(d){ d.open = true; });
+    document.getElementById("s2").scrollIntoView({behavior:"smooth", block:"start"});
+  });
+
   // ---- Main calc ----
   function calc(){
+    if(typeof syncQuick === "function") syncQuick();
     var loc = document.getElementById("loc").value;
     var season = radio("season") || "all";
     var driveH = parseFloat(radio("drive") || "0");
     var buffer = parseFloat(radio("buffer") || "2");
     var seasons = season === "all" ? ["summer","winter"] : [season];
-    var batType = radio("battype") || "lith";
+    var batChoice = radio("battype") || "unsure"; var batType = batChoice === "agm" ? "agm" : "lith";
     var dodPlan = batType === "lith" ? 0.9 : 0.5;
     var maxDaily = 0;
 
@@ -613,7 +645,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     var bigMin = batType === "lith" ? 200 : 400;
     if(inv && inv >= 2000 && plan.batAh < bigMin){ plan.batAh = bigMin; plan.dc = dcdcFor(bigMin); }
     plan.roofMax = ROOF_MAX[vehicle()]; plan.veh = vehicle();
-    plan.batType = batType; plan.dod = dodPlan; plan.maxDaily = maxDaily; plan.build = radio("build") || "parts";
+    plan.batType = batType; plan.dod = dodPlan; plan.maxDaily = maxDaily; plan.build = radio("build") === "box" ? "box" : "parts"; plan.batUnsure = batChoice === "unsure"; plan.buildUnsure = (radio("build") || "unsure") === "unsure";
 
     plan.all = all;
     render(plan, inv, ac, loc, season, driveH, buffer);
@@ -677,6 +709,8 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
       var otherDod = otherType === "lith" ? 0.9 : 0.5;
       var otherAh = roundUp(p.maxDaily * buffer / (V * otherDod), BAT_SIZES) || ceilTo(p.maxDaily * buffer / (V * otherDod), 100);
       whyCard(("<b>Battery:</b> " + p.batAh + "Ah of " + (p.batType === "lith" ? "lithium" : "AGM") + " gives you about " + fmt1(p.batAh * V * p.dod / 1000) + "kWh you can actually use" + (p.batType === "agm" ? " (you only use the top half of an AGM)" : "") + ". That's enough to get through " + buffer + " grey day" + (buffer > 1 ? "s" : "") + " with no sun and no driving."));
+      if(p.batUnsure) whyCard("<b>Not sure on the battery type?</b> We've gone with lithium. It's lighter, lasts years longer, and you can use almost all of it. Tap <b>AGM</b> in Step 4 if you'd like to compare.");
+      if(p.buildUnsure) whyCard("<b>Not sure how to build it?</b> We've shown separate parts. For smaller setups, an <b>all-in-one box</b> is the easy option: tap it in Step 4 to see it.");
       var kgDiff = Math.abs(otherAh * KG_PER_AH[otherType] - p.batAh * KG_PER_AH[p.batType]);
       var kgLike = kgDiff < 25 ? "about a full 20L jerry can" : kgDiff < 60 ? "like leaving a fully loaded esky at home" : "about the weight of an adult passenger";
       if(otherAh !== p.batAh){
@@ -1157,6 +1191,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
       state.custom = o.c.slice(0, 20).filter(function(c){ return c && typeof c.n === "string" && c.w > 0 && c.w <= 5000 && c.h >= 0 && c.h <= 24; })
         .map(function(c){ return {n:c.n.slice(0, 60), w:+c.w, h:+c.h, ac:!!c.ac}; });
       renderCustom();
+      if(state.custom.length) document.getElementById("fine-tune").open = true;
     }
     setMode(o.m === "check" ? "check" : "plan");
     if(o.t != null) pendingTier = parseInt(o.t, 10);
