@@ -107,6 +107,20 @@
   <button type="button" id="mode-check" aria-pressed="false">Check what I've got</button>
 </nav>
 
+<section class="step" id="trip-card" aria-labelledby="s-trip">
+  <svg class="doodle step-doodle" viewBox="0 0 140 90" width="90" height="58" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 78h120M22 78L64 14l42 64"/><path d="M64 14l0 64M52 78l12-26 12 26"/><path d="M106 78l18-30 6 30"/></svg>
+  <span class="step-label">Step 1</span>
+  <h2 id="s-trip">What kind of trip?</h2>
+  <p class="hint">Pick the closest one and we'll fill in typical gear. You can change anything after.</p>
+  <div class="field">
+    <div class="chips trip-chips" role="radiogroup" aria-label="What kind of trip">
+      <input type="radio" name="trip" id="tr-w" value="weekender"><label for="tr-w"><b>Weekender</b><span>Drive there, set up camp, come home</span></label>
+      <input type="radio" name="trip" id="tr-r" value="long"><label for="tr-r"><b>Road trips</b><span>A week or more, some days parked up</span></label>
+      <input type="radio" name="trip" id="tr-l" value="living"><label for="tr-l"><b>Living in it</b><span>Full-time, working from the van</span></label>
+    </div>
+  </div>
+</section>
+
 <section class="step" id="preset-card" aria-labelledby="s0" hidden>
   <svg class="doodle step-doodle" viewBox="0 0 120 100" width="84" height="70" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="30" width="88" height="58" rx="8"/><path d="M16 46h88M46 22h28v8H46"/><path d="M60 56v22M50 61l20 12M70 61L50 73" stroke-width="3"/></svg>
   <span class="step-label">Quickest way</span>
@@ -121,7 +135,7 @@
 
 <section class="step" aria-labelledby="s1">
   <svg class="doodle step-doodle" viewBox="0 0 90 100" width="60" height="67" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M45 90S16 58 16 38a29 29 0 0 1 58 0c0 20-29 52-29 52z"/><circle cx="45" cy="38" r="10" fill="#f5cb3c"/></svg>
-  <span class="step-label">Step 1</span>
+  <span class="step-label">Step 2</span>
   <h2 id="s1">Your setup, and where you travel</h2>
   <div class="field">
     <span id="veh-l" class="flabel">What are you powering?</span>
@@ -159,7 +173,7 @@
 
 <section class="step" aria-labelledby="s2">
   <svg class="doodle step-doodle" viewBox="0 0 110 100" width="80" height="73" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M30 40h46l8 44H22z"/><path d="M76 50c14 0 18 8 18 18M30 50L14 38"/><path d="M38 40c0-12 30-12 30 0"/><path d="M50 16c-4 6 4 8 0 14M62 12c-4 6 4 8 0 14" stroke-dasharray="3 5"/></svg>
-  <span class="step-label">Step 2</span>
+  <span class="step-label">Step 3</span>
   <h2 id="s2">What do you run?</h2>
   <p class="hint">Pick your fridge, then tap what else you run.</p>
   <div class="field">
@@ -195,7 +209,7 @@
 
 <section class="step" aria-labelledby="s3">
   <svg class="doodle step-doodle" viewBox="0 0 160 90" width="110" height="62" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 54l30-34 22 22 26-30 34 42"/><circle cx="130" cy="20" r="9" fill="#f5cb3c"/><path d="M60 88l14-34M100 88L86 54M80 86v-6M80 72v-6M80 60v-4"/></svg>
-  <span class="step-label">Step 3</span>
+  <span class="step-label">Step 4</span>
   <h2 id="s3">How do you travel?</h2>
   <p class="hint">Driving charges your battery too, through the DC-DC charger.</p>
   <div class="field">
@@ -225,7 +239,7 @@
 
 <section class="step" aria-labelledby="s4p" id="build-card">
   <svg class="doodle step-doodle" viewBox="0 0 110 100" width="74" height="67" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M70 14a20 20 0 0 0-16 30L18 80a8 8 0 0 0 12 12l36-36a20 20 0 0 0 30-16l-12 4-10-10 4-12a20 20 0 0 0-8-2z"/></svg>
-  <span class="step-label">Step 4</span>
+  <span class="step-label">Step 5</span>
   <h2 id="s4p">How do you want it built?</h2>
   <div class="field">
     <span id="bt-l" class="flabel">Battery type</span>
@@ -557,6 +571,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     btnCheck.setAttribute("aria-pressed", m === "check");
     gearCard.hidden = (m !== "check");
     presetCard.hidden = true;
+    var tc = document.getElementById("trip-card"); if(tc) tc.hidden = (m === "check");
     document.getElementById("build-card").hidden = (m === "check");
     // In check mode, "what have you got" comes first
     var hw = document.getElementById("how-worked"); if(hw) hw.open = (m === "check");
@@ -1128,9 +1143,28 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
   };
   function clearPreset(){ if(state.preset){ state.preset = null; document.querySelectorAll(".presets button").forEach(function(x){ x.setAttribute("aria-pressed", "false"); }); } }
   function setRadio(name, val){ var r = document.querySelector('input[name="' + name + '"][value="' + val + '"]'); if(r) r.checked = true; }
+
+  // ---- Step 1: trip type fills in typical gear (no jump to results) ----
+  function applyTrip(key){
+    var p = PRESETS[key]; if(!p) return;
+    document.getElementById("fridge").value = p.fridge;
+    setRadio("drive", p.drive); setRadio("buffer", p.buffer);
+    APPS.forEach(function(a){
+      var v = p.apps[a.id] || [0, a.h];
+      state.apps[a.id] = {q:v[0], h:v[1]};
+      document.getElementById("q-" + a.id).textContent = v[0];
+      document.getElementById("h-" + a.id).value = v[1];
+    });
+    state.preset = ({weekender:"Weekender", long:"Road trips", living:"Living in it"})[key];
+    calc();
+  }
+  document.querySelectorAll('input[name="trip"]').forEach(function(r){
+    r.addEventListener("change", function(){ if(r.checked) applyTrip(r.value); });
+  });
   document.querySelectorAll(".presets button").forEach(function(b){
     b.addEventListener("click", function(){
       var p = PRESETS[b.getAttribute("data-preset")];
+      setRadio("trip", b.getAttribute("data-preset"));
       document.querySelectorAll(".presets button").forEach(function(x){ x.setAttribute("aria-pressed", x === b); });
       document.getElementById("fridge").value = p.fridge;
       setRadio("drive", p.drive); setRadio("buffer", p.buffer);

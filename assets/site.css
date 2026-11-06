@@ -1016,3 +1016,10 @@ details.what-parts > summary{background:none;padding:6px 0;text-decoration:under
 details.what-parts > summary{display:inline-block;gap:0}details.what-parts > summary::before{content:"＋\00a0"}details.what-parts[open] > summary::before{content:"－\00a0"}
 .quick-wrap .flabel + .small{margin:4px 0 2px}
 .quick-wrap{margin-top:26px}
+/* Step 1 trip chips: a bold name and a short line */
+.trip-chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.trip-chips label{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;padding:14px 16px;border-radius:14px;height:100%;box-sizing:border-box}
+.trip-chips label b{font-family:var(--font-display);font-size:1.15rem}
+.trip-chips label span{font-family:var(--font-ui);font-weight:500;font-size:.9rem;color:var(--muted)}
+.trip-chips input:checked + label span{color:#e6efe9}
+@media (max-width:640px){.trip-chips{grid-template-columns:1fr}}
