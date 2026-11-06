@@ -380,7 +380,7 @@ def product_line(p, main=True):
             f'<span class="price">{price}{was} <span class="store">at {html.escape(p["store"])}</span></span>'
             + (f'<span class="facts">{facts(p)}</span>' if facts(p) else "")
             + f'<span class="tn">{html.escape(p["why"])}</span>'
-            + (f'<span class="tn down">Catch: {html.escape(p["downside"])}</span>' if p.get("downside") else "")
+            + (f'<span class="tn down">Good to know: {html.escape(p["downside"])}</span>' if p.get("downside") else "")
             + where_to_buy(p)
             + f'<button type="button" class="add-list" data-item="{html.escape(json.dumps({"n": p["name"], "p": p.get("price"), "s": p.get("store"), "u": p.get("url"), "a": bool(p.get("approx"))}))}">+ Add to my list</button>'
             + '</div>')

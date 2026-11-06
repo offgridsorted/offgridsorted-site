@@ -11,7 +11,7 @@
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/kings-lithium-batteries/100ah-lithium-battery.html",
     "why": "The cheapest well-known 100Ah, and you can pick one up in store almost anywhere.",
-    "downside": "Only a 1-year warranty and no app. It's often on sale for much less, so wait for a deal.",
+    "downside": "Only a 1-year warranty and no app.",
     "warranty": 1,
     "kg": 10,
     "stores": [
@@ -117,7 +117,7 @@
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/kings-lithium-batteries/200ah-lithium-battery.html",
     "why": "Easy to buy in store, and people who've opened one up say it's decent inside for the money.",
-    "downside": "Kings prices swing a lot (it has been around $400 on sale), so watch for a deal before you buy.",
+    "downside": "No app or cold-weather heater, so check the charge on a separate monitor.",
     "warranty": 3,
     "kg": 23,
     "stores": [
@@ -208,7 +208,7 @@
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/kings-lithium-batteries/200ah-lithium-battery.html",
     "why": "The cheapest way to about 400Ah from a store you can walk into.",
-    "downside": "No app or heater, and you'll need link cables. Much cheaper on sale.",
+    "downside": "No app or heater, and you'll need link cables to join the two.",
     "warranty": 3,
     "kg": 46,
     "stores": [
@@ -308,7 +308,7 @@
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/kings-lithium-batteries/kings-batblock25-12v-plug-and-play-battery-box-100ah-deep-cycle-lithium-lifepo4-battery-rechargeable-lithium-led-worklight.html",
     "why": "Battery, 25A DC-DC, solar input, plugs and USB-C in one box, with a 7m lead to your car battery included.",
-    "downside": "Right now it costs more than our mid-range pick, so only buy it on sale.",
+    "downside": "Heavier and bulkier than separate parts, and if one part fails the whole box goes in for repair.",
     "stores": [
      {
       "store": "Adventure Kings",
