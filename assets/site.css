@@ -1099,3 +1099,7 @@ body.mode-check section.step.band-b{background:var(--sage-band);box-shadow:0 0 0
 .cta-box .kit-or{flex-basis:100%;font-family:var(--font-ui);font-size:.92rem;color:var(--muted);margin-top:-4px}
 .cta-box .kit-or a{color:var(--sign);font-weight:600}
 .article .guide-trust{margin:44px 0 8px}
+/* Guide headings with a little line drawing on the right */
+.article h2.h-art{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.article h2.h-art .doodle{flex:none;width:84px;height:auto;color:var(--ink)}
+@media (max-width:480px){.article h2.h-art .doodle{width:72px}}
