@@ -775,3 +775,4 @@ html.embed .mast h1{font-size:2rem;margin-top:6px}
 .trust-banner b{display:block;color:#fffdf7;font-size:1.05rem}
 @media (max-width:760px){.trust-banner ul{grid-template-columns:1fr 1fr}}
 .trust-banner{margin-bottom:0}.trust-banner + .band{margin-top:0}
+.trust-banner a{color:#fffdf7;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
