@@ -51,6 +51,8 @@ GUIDES = [
      "Shade, driving, theft, weight, heat and cost per watt compared, plus who each one suits and why many get both.", "live"),
     ("winter-solar-not-keeping-up", "Winter solar: why your panels aren't keeping up", "Solar",
      "Short days, a low sun and long shadows, with BOM-based winter numbers for every state and what helps.", "live"),
+    ("long-weekends-2027", "2027 long weekends: how to turn annual leave into van trips", "Start here",
+     "11 days of leave, 28 days off: the best 2027 breaks for every state, plus a power note for each season.", "live"),
 ]
 
 LOGO = '''<svg viewBox="0 0 420 300" width="{w}" height="{h}" role="img" aria-label="Off-Grid Sorted">
@@ -138,6 +140,11 @@ FAQS = {
         ("Why is my solar not keeping up in winter?", "Shorter days, a low sun that hits flat roof panels at a glancing angle, and longer shadows. In southern Australia a winter day can hold only a quarter to a half of a summer day's sun, based on Bureau of Meteorology averages."),
         ("How much does a 200W solar panel make in winter?", "As a rough estimate after real-world losses, about 47Ah a day in Queensland, 34Ah in New South Wales, 22Ah in Victoria and 19Ah in Tasmania, using capital city averages."),
         ("How can I get more from my solar in winter?", "Point a portable panel or blanket at the sun and move it during the day, park in the open, keep panels clean, top up by driving through a DC-DC charger, and use a bit less power."),
+    ],
+    "long-weekends-2027": [
+        ("How can I get the most days off in 2027?", "In every state, 11 days of annual leave can get you 28 days off: take Mon 25 and Wed 27 to Fri 29 January (9 days off), Tue 30 March to Fri 2 April (10 days off) and Wed 29 to Fri 31 December (9 days off)."),
+        ("What is the best long weekend in 2027 for Queensland?", "Late April. Anzac Day is Monday 26 April and Labour Day is Monday 3 May, so taking Tuesday 27 to Friday 30 April gets you 10 days off for 4 days of leave."),
+        ("Are Christmas and Boxing Day holidays moved in 2027?", "Yes. Christmas Day is a Saturday and Boxing Day a Sunday, so Monday 27 and Tuesday 28 December are public holidays across Australia."),
     ],
 }
 
