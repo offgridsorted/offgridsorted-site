@@ -105,13 +105,13 @@
 
 <section class="step" id="preset-card" aria-labelledby="s0">
   <svg class="doodle step-doodle" viewBox="0 0 120 100" width="84" height="70" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="30" width="88" height="58" rx="8"/><path d="M16 46h88M46 22h28v8H46"/><path d="M60 56v22M50 61l20 12M70 61L50 73" stroke-width="3"/></svg>
-  <span class="step-label">Short on time?</span>
-  <h2 id="s0">Start with a ready-made kit</h2>
-  <p class="hint">Pick the one that sounds most like you. It fills everything in below, and you can tweak from there.</p>
+  <span class="step-label">Quickest way</span>
+  <h2 id="s0">Pick the trip that sounds like you</h2>
+  <p class="hint">Tap one and your results show straight away. You can tweak anything after.</p>
   <div class="presets" role="group" aria-label="Ready-made kits">
-    <button type="button" data-preset="weekender" aria-pressed="false"><b>Weekender</b><span>Two or three nights, medium fridge, lights and phones. Drive there, set up camp, come home.</span></button>
-    <button type="button" data-preset="long" aria-pressed="false"><b>Road trips</b><span>A week or more, bigger fridge, laptop. Some days parked up.</span></button>
-    <button type="button" data-preset="living" aria-pressed="false"><b>Living in it</b><span>Full-time: fridge-freezer, work-from-van, heater, Starlink, coffee.</span></button>
+    <button type="button" data-preset="weekender" aria-pressed="false"><b>Weekender</b><span>Two or three nights, medium fridge, lights and phones. Drive there, set up camp, come home.</span><em class="use">Show my results →</em></button>
+    <button type="button" data-preset="long" aria-pressed="false"><b>Road trips</b><span>A week or more, bigger fridge, laptop. Some days parked up.</span><em class="use">Show my results →</em></button>
+    <button type="button" data-preset="living" aria-pressed="false"><b>Living in it</b><span>Full-time: fridge-freezer, work-from-van, heater, Starlink, coffee.</span><em class="use">Show my results →</em></button>
   </div>
 </section>
 
@@ -217,6 +217,7 @@
     <p class="small">Two days suits most people, so that's what we use unless you change it.</p>
   </div>
   </details>
+  <p class="to-results"><a class="btn-link solid" href="#res-h">See my results</a><span class="small">or keep going to choose how it's built</span></p>
 </section>
 
 <section class="step" aria-labelledby="s4p" id="build-card">
@@ -256,11 +257,12 @@
   <svg class="doodle step-doodle" viewBox="0 0 120 90" width="90" height="68" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 74a46 46 0 0 1 92 0"/><path d="M26 74h10M84 74h10M60 30v8M34 42l6 6M86 42l-6 6"/><path d="M60 74l22-26" stroke-width="5"/><circle cx="60" cy="74" r="6" fill="#f5cb3c"/><path d="M22 86h14M84 86h14" stroke-dasharray="2 4"/></svg>
   <span class="step-label">Step 4</span>
   <h2 id="s4">What have you already got?</h2>
-  <p class="hint">Check the label or the box. Not sure? Leave it at 0.</p>
+  <p class="hint">Pick what you've got. Only have a battery, or just a solar blanket? That's fine: choose <b>I don't have one</b> for the rest. Sizes are on the label or the box.</p>
   <div class="grid2">
     <div class="field">
-      <label for="g-bat">Battery size (Ah)</label>
-      <input type="number" id="g-bat" min="0" step="10" value="100" inputmode="numeric">
+      <label for="g-bat-s">Battery</label>
+      <select id="g-bat-s" class="gear-pick" data-for="g-bat"><option value="0">I don't have one</option><option value="50">50Ah</option><option value="100">100Ah</option><option value="120">120Ah</option><option value="150">150Ah</option><option value="200">200Ah</option><option value="300">300Ah</option><option value="400">400Ah</option><option value="other">Other size…</option></select>
+      <input type="number" id="g-bat" min="0" step="10" value="100" inputmode="numeric" class="gear-other" aria-label="Battery, exact size in Ah" placeholder="Exact size in Ah" hidden>
     </div>
     <div class="field">
       <label for="g-type">Battery type</label>
@@ -270,12 +272,14 @@
       </select>
     </div>
     <div class="field">
-      <label for="g-sol">Solar panels (total watts)</label>
-      <input type="number" id="g-sol" min="0" step="10" value="200" inputmode="numeric">
+      <label for="g-sol-s">Solar (all panels added up)</label>
+      <select id="g-sol-s" class="gear-pick" data-for="g-sol"><option value="0">I don't have any</option><option value="100">100W</option><option value="120">120W</option><option value="160">160W</option><option value="200">200W</option><option value="250">250W</option><option value="300">300W</option><option value="400">400W</option><option value="600">600W</option><option value="other">Other size…</option></select>
+      <input type="number" id="g-sol" min="0" step="10" value="200" inputmode="numeric" class="gear-other" aria-label="Solar (all panels added up), exact size in watts" placeholder="Exact size in watts" hidden>
     </div>
     <div class="field">
-      <label for="g-dc">DC-DC charger (amps)</label>
-      <input type="number" id="g-dc" min="0" step="5" value="0" inputmode="numeric">
+      <label for="g-dc-s">DC-DC charger (fills the battery while you drive)</label>
+      <select id="g-dc-s" class="gear-pick" data-for="g-dc"><option value="0">I don't have one</option><option value="12">12A</option><option value="20">20A</option><option value="25">25A</option><option value="40">40A</option><option value="50">50A</option><option value="other">Other size…</option></select>
+      <input type="number" id="g-dc" min="0" step="5" value="0" inputmode="numeric" class="gear-other" aria-label="DC-DC charger (fills the battery while you drive), exact size in amps" placeholder="Exact size in amps" hidden>
     </div>
   </div>
   <p class="small" id="gear-example">These are example numbers (a 100Ah lithium battery and a 200W solar blanket). Replace them with yours.</p>
@@ -516,6 +520,28 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     el.addEventListener("change", calc);
     el.addEventListener("input", calc);
   });
+
+
+  // ---- Gear dropdowns: pick a common size, "I don't have one", or type an exact size ----
+  function syncGearSelects(){
+    document.querySelectorAll(".gear-pick").forEach(function(sel){
+      var inp = document.getElementById(sel.getAttribute("data-for")), v = String(parseFloat(inp.value) || 0);
+      var has = [].some.call(sel.options, function(o){ return o.value === v; });
+      sel.value = has ? v : "other"; inp.hidden = has;
+      var tw = document.getElementById("g-type"); if(sel.id === "g-bat-s" && tw) tw.closest(".field").hidden = v === "0";
+    });
+  }
+  document.querySelectorAll(".gear-pick").forEach(function(sel){
+    sel.addEventListener("change", function(){
+      var inp = document.getElementById(sel.getAttribute("data-for"));
+      if(sel.value === "other"){ inp.hidden = false; inp.focus(); }
+      else { inp.hidden = true; inp.value = sel.value; }
+      if(sel.id === "g-bat-s") document.getElementById("g-type").closest(".field").hidden = sel.value === "0";
+      state.gearEdited = true; document.getElementById("gear-example").hidden = true;
+      calc();
+    });
+  });
+  syncGearSelects();
 
   var btnPlan = document.getElementById("mode-plan"), btnCheck = document.getElementById("mode-check");
   var gearCard = document.getElementById("gear-card"), presetCard = document.getElementById("preset-card"), resultsEl = document.querySelector(".results");
@@ -1179,6 +1205,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     });
     Object.keys(o.g || {}).forEach(function(id){ var x = document.getElementById(id); var v = parseFloat(o.g[id]); if(x && /^g-/.test(id) && !isNaN(v) && v >= 0) x.value = v; });
     if(o.g){ state.gearEdited = true; document.getElementById("gear-example").hidden = true; }
+    if(typeof syncGearSelects === "function") syncGearSelects();
     APPS.forEach(function(a){
       var v = (o.a || {})[a.id] || DEFAULTS[a.id];
       var q = Math.max(0, Math.min(20, parseInt(v[0], 10) || 0)), h = Math.max(0, Math.min(24, parseFloat(v[1]) || 0));

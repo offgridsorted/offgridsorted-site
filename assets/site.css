@@ -872,3 +872,11 @@ details.fine-tune > summary::before{content:"＋ ";font-weight:800}
 details.fine-tune[open] > summary::before{content:"－ "}
 details.fine-tune > summary::-webkit-details-marker{display:none}
 .more-detail{margin:16px 0 4px}
+/* planner: kit cards read as buttons; results shortcut */
+.presets button{display:flex;flex-direction:column;gap:6px;text-align:left}
+.presets .use{font-style:normal;font-family:var(--font-ui);font-weight:700;color:var(--go);margin-top:auto;padding-top:6px}
+.presets button:hover{border-color:var(--go) !important}
+.to-results{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:22px}
+.gear-other{margin-top:8px}
+.res-pill{background:var(--go);color:#fffdf7}
+@media (max-width:560px){#gear-card .grid2{grid-template-columns:1fr}}
