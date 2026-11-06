@@ -996,3 +996,18 @@ details.what-parts[open] > summary::before{content:"－"}
 .how-strip li.brk{border:0 !important;background:none !important;padding:0 !important;box-shadow:none !important}
 .how-strip .hl-arrow,.how-strip li.eq{font-size:1.5rem;font-weight:800;line-height:1}
 @media (max-width:560px){.how-strip .hl-arrow,.how-strip li.eq,.how-strip li.hl-arrow:nth-child(4){font-size:1.8rem;font-weight:800;line-height:1}}
+/* equation rebuilt: two groups, side by side on wide screens, stacked on narrow */
+div.how-strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin:18px auto 4px}
+div.how-strip .eq-row{display:flex;align-items:center;gap:10px}
+div.how-strip .pill{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;background:var(--card);border:2.5px solid color-mix(in srgb,var(--go) 45%,transparent);border-radius:999px;padding:7px 14px 7px 10px;font-family:var(--font-ui);font-weight:700;font-size:.98rem;color:var(--ink)}
+div.how-strip .pill .doodle{height:22px;width:auto;color:var(--ink)}
+div.how-strip .pill.answer{background:var(--sun);border-color:var(--sun-dark);box-shadow:0 3px 0 var(--sun-dark);color:#1c1f1b}
+div.how-strip .op{font-family:var(--font-ui);font-weight:800;font-size:1.5rem;line-height:1;color:var(--go)}
+@media (max-width:700px){
+  div.how-strip{flex-direction:column;gap:10px}
+  div.how-strip .pill{font-size:.95rem;padding:8px 13px}
+  div.how-strip .op{font-size:1.8rem}
+}
+@media (max-width:420px){div.how-strip .pill .doodle{display:none}}
+div.how-strip .pill,div.how-strip .op{text-transform:none;letter-spacing:normal}
+.kit-aside{background:var(--go-dark);color:#e9f1ec;border-radius:999px;padding:9px 18px;margin:20px 0 4px}.kit-aside .doodle{color:#fffdf7}.kit-aside a{color:#fffdf7;font-weight:700}.kit-aside a:hover{color:var(--sun)}
