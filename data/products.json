@@ -10,8 +10,8 @@
     "price": 399,
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/kings-lithium-batteries/100ah-lithium-battery.html",
-    "why": "The cheapest well-known 100Ah, and you can pick one up in store almost anywhere.",
-    "downside": "Only a 1-year warranty and no app. It's often on sale for much less, so wait for a deal.",
+    "why": "The cheapest well-known 100Ah, sold online by Adventure Kings with delivery Australia-wide.",
+    "downside": "Only a 1-year warranty and no app.",
     "warranty": 1,
     "kg": 10,
     "stores": [
@@ -84,7 +84,7 @@
     "store": "REDARC",
     "url": "https://www.redarcelectronics.com/au/100ah-lithium-icon-battery",
     "why": "Australian brand with a built-in heater, a 5-year warranty and a charge display on the battery. Made to pair with REDARC chargers.",
-    "downside": "About three to four times the price of budget packs for the same usable power.",
+    "downside": "About three to four times the price of the budget picks for the same usable power.",
     "warranty": 5,
     "kg": 12,
     "stores": [
@@ -116,8 +116,8 @@
     "price": 849,
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/kings-lithium-batteries/200ah-lithium-battery.html",
-    "why": "Easy to buy in store, and people who've opened one up say it's decent inside for the money.",
-    "downside": "Kings prices swing a lot (it has been around $400 on sale), so watch for a deal before you buy.",
+    "why": "Easy to order online, and people who've opened one up say it's decent inside for the money.",
+    "downside": "No app or cold-weather heater, so check the charge on a separate monitor.",
     "warranty": 3,
     "kg": 23,
     "stores": [
@@ -158,7 +158,7 @@
     "store": "iTechworld",
     "url": "https://itechworld.com.au/products/12v-200ah-super-slim-lithium-battery-with-bluetooth-itech200ss",
     "why": "Phone app, a strong 200A output and a 5-year Aussie warranty, in a slim 12.6cm shape that fits a van wall or under a seat. In stock.",
-    "downside": "No heater, so it won't charge in freezing weather. The Renogy below has one.",
+    "downside": "No heater, so it won't charge in freezing weather. The Renogy under Other good options has one.",
     "warranty": 5,
     "kg": 25.5
    },
@@ -207,8 +207,8 @@
     "price": 1698,
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/kings-lithium-batteries/200ah-lithium-battery.html",
-    "why": "The cheapest way to about 400Ah from a store you can walk into.",
-    "downside": "No app or heater, and you'll need link cables. Much cheaper on sale.",
+    "why": "The cheapest way to about 400Ah from one well-known brand.",
+    "downside": "No app or heater, and you'll need link cables to join the two.",
     "warranty": 3,
     "kg": 46,
     "stores": [
@@ -308,7 +308,7 @@
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/kings-lithium-batteries/kings-batblock25-12v-plug-and-play-battery-box-100ah-deep-cycle-lithium-lifepo4-battery-rechargeable-lithium-led-worklight.html",
     "why": "Battery, 25A DC-DC, solar input, plugs and USB-C in one box, with a 7m lead to your car battery included.",
-    "downside": "Right now it costs more than our mid-range pick, so only buy it on sale.",
+    "downside": "Heavier and bulkier than separate parts, and if one part fails the whole box goes in for repair.",
     "stores": [
      {
       "store": "Adventure Kings",
@@ -357,7 +357,7 @@
     "store": "REDARC",
     "url": "https://www.redarcelectronics.com/au/100ah-goblock-portable-power-system",
     "why": "Top Australian build with a 50A charger, 50A solar regulator and full app control. Charges much faster.",
-    "downside": "About three and a half times the iTechworld price, with a 2-year warranty.",
+    "downside": "About three and a half times the mid-range iTechworld price, with a 2-year warranty.",
     "warranty": 2,
     "kg": 19,
     "stores": [
@@ -383,7 +383,7 @@
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/kings-25a-dcdc-charger.html",
     "why": "The cheapest way to charge a lithium battery from both your engine and solar, with plug-in leads.",
-    "downside": "Kings don't publish the warranty or solar limits, so ask in store.",
+    "downside": "Kings don't publish the warranty or solar limits, so check with Adventure Kings before you buy.",
     "stores": [
      {
       "store": "Adventure Kings",
@@ -484,7 +484,7 @@
     "store": "REDARC",
     "url": "https://www.redarcelectronics.com/au/dual-input-25a-under-bonnet-dc-battery-charger",
     "why": "The long-proven REDARC that can live under the bonnet.",
-    "downside": "No app, and it costs more than the Projecta."
+    "downside": "No app, and it costs more than the mid-range Projecta."
    }
   ],
   "dcdc_40": [
@@ -494,7 +494,7 @@
     "name": "Renogy 40A DC-DC with MPPT",
     "price": 197.99,
     "store": "Renogy Australia",
-    "url": "https://au.renogy.com/renogy-40a-dc-dc-battery-charger-with-mppt",
+    "url": "https://au.renogy.com/products/renogy-40a-dc-dc-battery-charger-with-mppt",
     "why": "Very cheap for 40A with solar built in.",
     "downside": "Only takes small 12V-style panels (25V max), not big house-style panels.",
     "rrp": 217.99,
@@ -503,7 +503,7 @@
      {
       "store": "Renogy Australia",
       "price": 197.99,
-      "url": "https://au.renogy.com/renogy-40a-dc-dc-battery-charger-with-mppt",
+      "url": "https://au.renogy.com/products/renogy-40a-dc-dc-battery-charger-with-mppt",
       "was": 217.99
      },
      {
@@ -534,7 +534,7 @@
     "price": 339,
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/dc-dc-chargers/kings-40a-dcdc-charger.html",
-    "why": "Easy to buy in store, and it plugs straight into Kings batteries and leads.",
+    "why": "Easy to order online, and it plugs straight into Kings batteries and leads.",
     "downside": "Costs more than the Renogy and iTechworld, and specs aren't published."
    },
    {
@@ -684,7 +684,7 @@
     "store": "REDARC",
     "url": "https://www.redarcelectronics.com/au/dual-input-50a-under-bonnet-dc-battery-charger",
     "why": "REDARC's under-bonnet option at 50A.",
-    "downside": "No app, and only about $130 less than the Alpha."
+    "downside": "No app, and only about $130 less than the premium Alpha."
    },
    {
     "tier": "Premium",
@@ -739,25 +739,6 @@
    {
     "tier": "Budget",
     "role": "main",
-    "name": "Kings 240W Solar Blanket + 6m lead",
-    "price": 199.95,
-    "store": "Adventure Kings",
-    "url": "https://www.4wdsupacentre.com.au/240w-solar-blanket-6m-extension-lead.html",
-    "why": "Cheapest way into a decent-sized blanket. No regulator inside, which suits a DC-DC charger that does the regulating.",
-    "downside": "Kings quality is mixed, and the price changes almost daily.",
-    "rrp": 213.95,
-    "stores": [
-     {
-      "store": "Adventure Kings",
-      "price": 199.95,
-      "url": "https://www.4wdsupacentre.com.au/240w-solar-blanket-6m-extension-lead.html",
-      "was": 213.95
-     }
-    ]
-   },
-   {
-    "tier": "Mid-range",
-    "role": "main",
     "name": "Hard Korr 200W Solar Blanket",
     "price": 294,
     "store": "Snowys",
@@ -784,15 +765,22 @@
    },
    {
     "tier": "Mid-range",
-    "role": "other",
+    "role": "main",
     "name": "iTechworld 200W Solar Blanket",
     "price": 369,
     "store": "iTechworld",
     "url": "https://itechworld.com.au/collections/solar-panel-folding-kits/products/200w-solar-blanket-kit-panel-for-caravan-camping-boats-4wd-motorhome",
     "why": "Tough outer cover and good local support.",
-    "downside": "Heavier than the Hard Korr, with a 1-year warranty.",
+    "downside": "Heavier than the budget Hard Korr, with a 1-year warranty.",
     "warranty": 1,
-    "kg": 7.8
+    "kg": 7.8,
+    "stores": [
+     {
+      "store": "iTechworld",
+      "price": 369,
+      "url": "https://itechworld.com.au/collections/solar-panel-folding-kits/products/200w-solar-blanket-kit-panel-for-caravan-camping-boats-4wd-motorhome"
+     }
+    ]
    },
    {
     "tier": "Premium",
@@ -802,7 +790,7 @@
     "store": "ARB",
     "url": "https://www.arb.com.au/product/smfb1160-redarc-solar-blanket-160w",
     "why": "Australian-made quality with a genuine Anderson plug, built to plug into a REDARC charger, and backed by ARB stores everywhere.",
-    "downside": "About four times the Kings per watt, for fewer watts.",
+    "downside": "About four times the budget Hard Korr per watt, for fewer watts.",
     "warranty": 2,
     "stores": [
      {
@@ -815,54 +803,41 @@
   ],
   "roof_200": [
    {
-    "tier": "Budget",
-    "role": "main",
-    "name": "Kings 200W Fixed Glass Panel",
-    "price": 149,
-    "store": "Adventure Kings",
-    "url": "https://www.4wdsupacentre.com.au/200w-fixed-glass-solar-panel.html",
-    "why": "About 75c a watt. Add a Kings 100W ($134) for 300W.",
-    "downside": "Heavy for the watts, and quality control is mixed.",
-    "warranty": 2,
-    "kg": 11.6,
-    "stores": [
-     {
-      "store": "Adventure Kings",
-      "price": 149.0,
-      "url": "https://www.4wdsupacentre.com.au/200w-fixed-glass-solar-panel.html"
-     }
-    ]
-   },
-   {
     "tier": "Mid-range",
     "role": "main",
-    "name": "Renogy 200W Mono Panel",
-    "price": 260,
-    "store": "My Generator",
-    "url": "https://mygenerator.com.au/product/renogy-200w-12v-monocrystalline-fixed-solar-panel",
+    "name": "Renogy 200W N-Type Mono Panel",
+    "price": 261.99,
+    "store": "Renogy",
+    "url": "https://au.renogy.com/products/renogy-n-type-16bb-solar-panel-100w-175w-200w?variant=43664205185117",
     "why": "Well-known brand, 5-year warranty, and a long narrow shape that suits van roofs.",
     "downside": "12kg, so check your roof racks.",
     "warranty": 5,
     "kg": 12,
     "stores": [
      {
-      "store": "My Generator",
-      "price": 260.0,
-      "url": "https://mygenerator.com.au/product/renogy-200w-12v-monocrystalline-fixed-solar-panel",
-      "was": 300.0
+      "store": "Renogy",
+      "price": 261.99,
+      "url": "https://au.renogy.com/products/renogy-n-type-16bb-solar-panel-100w-175w-200w?variant=43664205185117"
      }
     ]
    },
    {
-    "tier": "Mid-range",
-    "role": "other",
+    "tier": "Budget",
+    "role": "main",
     "name": "Victron 190W Mono Panel",
-    "price": 194.86,
+    "price": 196.71,
     "store": "Solar 4 RVs",
-    "url": "https://www.solar4rvs.com.au/products/victron-solar-panel-185w-12v-mono",
-    "why": "A premium brand for about $1 a watt.",
+    "url": "https://www.solar4rvs.com.au/products/victron-solar-panel-190w-12v-mono",
+    "why": "A top-quality brand for about $1 a watt, the cheapest decent fixed panel we can link to right now.",
     "downside": "Slightly fewer watts.",
-    "warranty": 5
+    "warranty": 5,
+    "stores": [
+     {
+      "store": "Solar 4 RVs",
+      "price": 196.71,
+      "url": "https://www.solar4rvs.com.au/products/victron-solar-panel-190w-12v-mono"
+     }
+    ]
    },
    {
     "tier": "Premium",
@@ -900,54 +875,41 @@
   ],
   "roof_600": [
    {
-    "tier": "Budget",
-    "role": "main",
-    "name": "3 × Kings 200W Fixed Glass Panels",
-    "price": 447,
-    "store": "Adventure Kings",
-    "url": "https://www.4wdsupacentre.com.au/200w-fixed-glass-solar-panel.html",
-    "why": "The cheapest real 600W, leaving more money for the battery.",
-    "downside": "About 35kg on the roof before brackets, and three may not fit a mid-size van.",
-    "warranty": 2,
-    "kg": 34.8,
-    "stores": [
-     {
-      "store": "Adventure Kings",
-      "price": 447.0,
-      "url": "https://www.4wdsupacentre.com.au/200w-fixed-glass-solar-panel.html"
-     }
-    ]
-   },
-   {
     "tier": "Mid-range",
     "role": "main",
-    "name": "3 × Renogy 200W Mono Panels",
-    "price": 780,
-    "store": "My Generator",
-    "url": "https://mygenerator.com.au/product/renogy-200w-12v-monocrystalline-fixed-solar-panel",
+    "name": "3 × Renogy 200W N-Type Mono Panels",
+    "price": 785.97,
+    "store": "Renogy",
+    "url": "https://au.renogy.com/products/renogy-n-type-16bb-solar-panel-100w-175w-200w?variant=43664205185117",
     "why": "5-year warranty, and the narrow shape lies across a van roof more easily.",
     "downside": "About 36kg.",
     "warranty": 5,
     "kg": 36,
     "stores": [
      {
-      "store": "My Generator",
-      "price": 780.0,
-      "url": "https://mygenerator.com.au/product/renogy-200w-12v-monocrystalline-fixed-solar-panel",
-      "was": 900.0
+      "store": "Renogy",
+      "price": 785.97,
+      "url": "https://au.renogy.com/products/renogy-n-type-16bb-solar-panel-100w-175w-200w?variant=43664205185117"
      }
     ]
    },
    {
-    "tier": "Mid-range",
-    "role": "other",
+    "tier": "Budget",
+    "role": "main",
     "name": "3 × Victron 190W Mono Panels",
-    "price": 584.58,
+    "price": 590.13,
     "store": "Solar 4 RVs",
-    "url": "https://www.solar4rvs.com.au/products/victron-solar-panel-185w-12v-mono",
-    "why": "A premium brand for less than the Renogy setup.",
+    "url": "https://www.solar4rvs.com.au/products/victron-solar-panel-190w-12v-mono",
+    "why": "A top-quality brand for less than the mid-range Renogy setup.",
     "downside": "570W rather than 600W.",
-    "warranty": 5
+    "warranty": 5,
+    "stores": [
+     {
+      "store": "Solar 4 RVs",
+      "price": 590.13,
+      "url": "https://www.solar4rvs.com.au/products/victron-solar-panel-190w-12v-mono"
+     }
+    ]
    },
    {
     "tier": "Premium",
@@ -1051,7 +1013,7 @@
     "store": "Caravans Plus",
     "url": "https://www.caravansplus.com.au/enerdrive-epower-true-sine-wave-inverter-12v-600w-p-21960.html",
     "why": "Australian RV specialist, 5-year warranty, compact at 2kg. A safety-switch (RCD) version is available.",
-    "downside": "Handles smaller start-up surges than the Victron.",
+    "downside": "Handles smaller start-up surges than the mid-range Victron.",
     "warranty": 5,
     "kg": 2,
     "stores": [
@@ -1084,7 +1046,7 @@
      {
       "store": "Renogy Australia",
       "price": 336.99,
-      "url": "https://au.renogy.com/renogy-2000-12v-to-230v-pure-sine-wave-inverter-with-ups-function"
+      "url": "https://au.renogy.com/products/renogy-2000-12v-to-230v-pure-sine-wave-inverter-with-ups-function"
      },
      {
       "store": "Campervan Builders",
@@ -1135,7 +1097,7 @@
     "store": "Caravans Plus",
     "url": "https://www.caravansplus.com.au/enerdrive-epower-true-sine-wave-inverter-12v-2000w-p-21920.html",
     "why": "Built for RVs to run coffee machines and hairdryers day after day, with a 5-year warranty. RCD versions available.",
-    "downside": "About two and a half times the Hard Korr.",
+    "downside": "About two and a half times the mid-range Hard Korr.",
     "rrp": 1306,
     "warranty": 5,
     "kg": 5.5,
@@ -1287,7 +1249,7 @@
     "role": "main",
     "name": "Kings 45L Stayzcool MKII",
     "why": "A proper compressor fridge-freezer with a 5-year warranty for about $750, holds about 72 cans.",
-    "downside": "Kings doesn't publish a lot of detail, and it's heavier than the Dometic.",
+    "downside": "Kings doesn't publish a lot of detail, and it's heavier than the mid-range Dometic.",
     "warranty": 5,
     "kg": 20.8,
     "draw": "0.65 to 1.25Ah per hour (Kings figure, fridge at 3°C, 32°C outside, 13.2V)",
@@ -1324,7 +1286,7 @@
     "tier": "Mid-range",
     "role": "main",
     "name": "Dometic CFF45",
-    "why": "The fridge we run in our Hiace: light on power for a 45L and currently cheaper than the Kings while it's being cleared out.",
+    "why": "The fridge we run in our Hiace: light on power for a 45L and currently cheaper than the budget Kings while it's being cleared out.",
     "downside": "Being run out, so stock is patchy and BCF/Snowys may sell out. 3-year warranty, not 5.",
     "warranty": 3,
     "kg": 18.6,
@@ -1347,8 +1309,8 @@
     "tier": "Premium",
     "role": "main",
     "name": "Dometic CFX5 45",
-    "why": "Dometic's top portable: lower power use than the CFF, a phone app, a 5-year warranty and tougher build.",
-    "downside": "About double the price of the CFF45 for the same size.",
+    "why": "Dometic's top portable: lower power use than the mid-range CFF45, a phone app, a 5-year warranty and tougher build.",
+    "downside": "About double the price of the mid-range CFF45 for the same size.",
     "warranty": 5,
     "kg": 18.9,
     "draw": "0.76Ah per hour (Dometic figure, 4°C inside, 32°C outside, 12V)",
@@ -1587,7 +1549,7 @@
     "role": "main",
     "name": "Dometic CFX5 95DZ",
     "why": "Dometic's top dual zone: phone app control, strong build and a 5-year warranty.",
-    "downside": "About $400 to $650 more than the EvaKool, and Snowys showed it out of stock online.",
+    "downside": "About $400 to $650 more than the mid-range EvaKool, and Snowys showed it out of stock online.",
     "warranty": 5,
     "kg": 29.5,
     "draw": "2.83Ah per hour average (Dometic figure, 4°C large, -15°C small, 32°C outside, 12V); 10.4A max",
@@ -2199,7 +2161,7 @@
     "role": "main",
     "name": "Narva Heavy Duty Battery Master Switch 300A IP67 (61044BL)",
     "why": "A sealed, heavy-duty isolator rated 300A continuous (1000A for 5 seconds), so it suits exposed spots like a ute tray or under a trailer.",
-    "downside": "Pricier than the Blue Sea switch for the same continuous rating. No warranty listed.",
+    "downside": "Pricier than the mid-range Blue Sea switch for the same continuous rating. No warranty listed.",
     "stores": [
      {
       "store": "Narva",

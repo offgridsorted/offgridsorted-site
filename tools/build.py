@@ -142,7 +142,7 @@ FAQS = {
 }
 
 
-NAV = [("kits/index.html", "Kits"), ("guides/index.html", "Guides"), ("about.html", "About")]
+NAV = [("guides/index.html", "Easy guides"), ("kits/index.html", "Ready-made kits"), ("big-words.html", "Big words, made simple"), ("about.html", "Who we are"), ("contact.html", "Contact")]
 
 
 def logo(w=120, ident="H"):
@@ -220,7 +220,7 @@ def header(pre, active=""):
   <div class="in">
     <a class="logo" href="{pre}index.html" aria-label="Off-Grid Sorted home">{logo(170)}</a>
     <nav class="nav" aria-label="Main menu">{links}<a class="cta" href="{pre}planner.html"{' aria-current="page"' if active == "planner.html" else ""}>Power Planner</a></nav>
-    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a href="{pre}planner.html"><b>Power Planner →</b></a>{drop}<a href="{pre}contact.html">Contact</a></div></details>
+    <details class="menu-toggle"><summary>Menu</summary><div class="drop"><a class="drop-cta" href="{pre}planner.html">Power Planner</a><a href="{pre}index.html">Home</a>{drop}</div></details>
   </div>
 </header>
 '''
@@ -380,7 +380,7 @@ def product_line(p, main=True):
             f'<span class="price">{price}{was} <span class="store">at {html.escape(p["store"])}</span></span>'
             + (f'<span class="facts">{facts(p)}</span>' if facts(p) else "")
             + f'<span class="tn">{html.escape(p["why"])}</span>'
-            + (f'<span class="tn down">Catch: {html.escape(p["downside"])}</span>' if p.get("downside") else "")
+            + (f'<span class="tn down">Good to know: {html.escape(p["downside"])}</span>' if p.get("downside") else "")
             + where_to_buy(p)
             + f'<button type="button" class="add-list" data-item="{html.escape(json.dumps({"n": p["name"], "p": p.get("price"), "s": p.get("store"), "u": p.get("url"), "a": bool(p.get("approx"))}))}">+ Add to my list</button>'
             + '</div>')
@@ -500,18 +500,18 @@ def kit_totals(k):
 
 KITS = [
     {"slug": "weekender", "name": "Weekender", "doodle": "tent", "preset": "weekender",
-     "who": "Two or three nights away, a medium fridge, lights and phones. You drive somewhere most days.",
+     "who": "Two or three nights away, a medium fridge, lights and phones. Drive there, set up camp, come home.",
      "runs": ["Medium 35 to 50L fridge", "4 LED lights, about 4 hours a night", "2 phones charging", "A 12V fan overnight", "Water pump"],
      "daily": "about 50Ah a day",
-     "parts": [("Battery", "100 to 120Ah lithium", "battery_100", "Holds about two days of your use with no charging. About 10 to 13kg.", True, "build:parts"),
-               ("DC-DC charger", "25A, with solar input", "dcdc_25", "Driving 2 to 3 hours puts back more than you use in a day.", True, "build:parts"),
+     "parts": [("Battery", "100 to 120Ah lithium", "battery_100", "Gets you through two parked days with no charging, so you arrive full and still have power on Sunday. About 10 to 13kg.", True, "build:parts"),
+               ("DC-DC charger", "25A, with solar input", "dcdc_25", "Fills the battery on the drive there, and again on the way home. A couple of hours behind the wheel puts back more than a day's use.", True, "build:parts"),
                ("Battery box", "For a 100Ah battery", "box_100", "Holds the battery firmly and gives you plugs to run things from.", True, "build:parts"),
                ("All-in-one power box", "Battery, charger and plugs in one", "powerbox_100", "The easy option. Battery, DC-DC charger and solar input in one box you can move between cars.", True, "build:box"),
                ("Wiring kit", "Engine battery to the back", "install_kit", "The heavy cable, fuses and plugs that let your engine charge the house battery. Your auto electrician fits it. The premium REDARC kit is made for their 40A and 50A chargers, so with a 25A the mid-range kit does the same job.", True, ""),
                ("Fuse block", "One fuse per circuit", "fuse_block", "Fuses stop a fault turning into a fire. Your auto electrician also fits a main fuse right at the battery.", True, "build:parts"),
                ("Isolator switch", "One off switch", "isolator", "Turns all the house power off when you park up or need to work on it.", True, "build:parts"),
-               ("Solar", "160 to 240W portable blanket", "blanket_200", "Optional if you drive most days, handy when you stay put. Park in the shade and lay it in the sun.", True, "solar:blanket"),
-               ("Solar", "200W fixed roof panel", "roof_200", "Set and forget: it charges whenever the van sits in the sun, and while you drive.", True, "solar:fixed"),
+               ("Solar", "100 to 200W portable blanket", "blanket_200", "Recommended. Tops the battery up while you're parked all weekend. Park in the shade and lay the blanket in the sun.", True, "solar:blanket"),
+               ("Solar", "200W fixed roof panel", "roof_200", "Recommended. Set and forget: it tops up while you're parked at camp, and charges on the drive too.", True, "solar:fixed"),
                ("Inverter", "Not needed", None, "Everything here runs on 12V or USB.")],
      "choices": [("build", "How do you want it built?", [("parts", "Separate parts"), ("box", "All-in-one box")], "parts"),
                  ("solar", "What kind of solar?", [("blanket", "Portable blanket"), ("fixed", "Fixed roof panel")], "blanket")],
@@ -521,8 +521,8 @@ KITS = [
      "easy": "This size is perfect for an <b>all-in-one power box</b>: battery, DC-DC charger and solar input in one box you can move between cars. The box itself just straps in. The heavy lead that charges it from your engine battery should be run and fused by an auto electrician.",
      "fourwd": "Works well in a 4WD too. Use the solar blanket rather than roof panels, and if the battery goes under the bonnet, pick one rated for the heat. See <a href=\"{pre}guides/4wd-dual-battery-basics.html\">4WD dual battery basics</a>.",
      "install": "With a power box, the main job is the charging lead, so expect the lower end of that range.",
-     "south": "Southern winters barely change this kit, because driving does most of the charging. If you often stay put in Victoria or Tasmania in winter, go for the 200W blanket."},
-    {"slug": "long-trips", "name": "Long trips", "doodle": "van", "preset": "long",
+     "south": "In southern winters the sun is weak, so the battery does most of the work over the weekend. In Victoria or Tasmania in winter, go for the 120Ah battery and the bigger 200W blanket."},
+    {"slug": "long-trips", "name": "Road trips", "doodle": "van", "preset": "long",
      "who": "A week or more away, a bigger fridge and a laptop. Some days driving, some days parked up.",
      "runs": ["Large 55 to 75L fridge", "4 LED lights", "2 phones charging", "A laptop on a 12V or USB-C charger, about 3 hours a day", "A 12V fan overnight", "Water pump"],
      "daily": "about 65 to 75Ah a day",
@@ -533,7 +533,7 @@ KITS = [
                ("Fuse block", "One fuse per circuit", "fuse_block", "Fuses on every circuit, plus a main fuse at the battery that your auto electrician fits.", True, ""),
                ("Isolator switch", "One off switch", "isolator", "One switch to turn all the house power off.", True, ""),
                ("Solar", "200 to 300W fixed roof panels", "roof_200", "About 150W keeps up in Queensland and a Victorian winter needs 250 to 300W, so we've picked a 200W panel. Add a 100W panel if you head south.", True, "solar:fixed"),
-               ("Solar", "160 to 240W portable blanket", "blanket_200", "Rather not drill the roof? Park in the shade and lay a blanket in the sun. It packs away when you leave.", True, "solar:blanket"),
+               ("Solar", "100 to 200W portable blanket", "blanket_200", "Rather not drill the roof? Park in the shade and lay a blanket in the sun. It packs away when you leave.", True, "solar:blanket"),
                ("Battery monitor", "Shunt type", "monitor", "Your fuel gauge, so you know exactly how many days you've got left.", True, ""),
                ("Inverter", "300 to 800W", "inverter_600", "Only if you'd rather use a normal laptop charger or charge camera batteries.", False, "")],
      "choices": [("solar", "What kind of solar?", [("fixed", "Fixed roof panels"), ("blanket", "Portable blanket")], "fixed")],
@@ -618,7 +618,7 @@ def build_kits():
            f'<div class="cards">{cards}</div>'
            '<div class="aside" style="margin-top:30px">Not quite you? The <a href="{pre}planner.html" style="color:var(--sign)">Power Planner</a> sizes a kit around exactly what you run and where you travel.</div>'
            '<script src="{pre}assets/kits.js" defer></script></main>')
-    page("kits/index.html", "Ready-made kits", "Three ready-made power kits for Australian vans, caravans and 4WDs: Weekender, Long trips and Living in it.", hub, "kits/index.html")
+    page("kits/index.html", "Ready-made kits", "Three ready-made power kits for Australian vans, caravans and 4WDs: Weekender, Road trips and Living in it.", hub, "kits/index.html")
     for k in KITS:
         choice_ui = chips("veh", "What are you powering?", VEH, "van") + ''.join(chips(c[0], c[1], c[2], c[3]) for c in (k.get("choices") or []))
         tips = (f'<div class="veh-tip" data-for="van">{VAN_TIP}</div>'
@@ -644,14 +644,81 @@ def build_kits():
         page(f"kits/{k['slug']}.html", f"The {k['name']} kit", f"Everything in the {k['name']} power kit for Australian vans, caravans and 4WDs: battery, solar, DC-DC charger, wiring and more, with budget to premium options.", body, "kits/index.html")
 
 
+# ---------- Guides hub: start here, picture tiles, quick answers, then topics ----------
+START_HERE = ["van-power-basics", "lithium-vs-agm", "how-much-solar-australia"]
+TOPICS = [  # (anchor, heading, doodle, tags, one-liner)
+    ("batteries", "Batteries", "battery", ["Batteries"], "Which battery, what size, where it can go."),
+    ("solar", "Solar", "panel", ["Solar"], "How much solar, which type, and winter."),
+    ("charging", "Charging while you drive", "plug", ["Charging"], "DC-DC chargers and smart alternators."),
+    ("fridges", "Fridges", "fridge", ["Fridges"], "How long it runs and why it flattens things."),
+    ("rigs", "Caravans & 4WDs", "caravan", ["Caravans", "4WDs"], "Trailer plugs, dual batteries, fixes."),
+    ("trips", "Trips & planning", "road", ["Start here", "Trips"], "When to go and what to pack power-wise."),
+]
+QUICK = [  # short keyword-style questions that jump straight to the answer
+    ("100Ah fridge runtime", "will-my-fridge-last"), ("Fridge flattening battery", "fridge-flattening-battery"),
+    ("Smart alternator?", "smart-alternator-check"), ("Lithium under the bonnet", "lithium-under-the-bonnet"),
+    ("Solar blanket vs fixed", "solar-blanket-vs-fixed-panel"), ("Winter solar", "winter-solar-not-keeping-up"),
+    ("Caravan not charging", "caravan-not-charging-while-driving"), ("Power station vs dual battery", "portable-power-stations"),
+]
+
+
+GUIDE_TRUST = ('<p class="trust-strip"><span>Independent</span><span>Bureau of Meteorology sun data</span>'
+               '<span>Plain English</span><span>Wired in by a licensed auto electrician</span>'
+               '<a href="{pre}disclosure.html">How we make money</a></p>')
+
+
+def guides_hub():
+    by = {g[0]: g for g in GUIDES}
+    def row(g, num=None):
+        slug, title, tag, blurb, status = g
+        lead = f'<span class="n">{num}</span>' if num else doodle(TAG_DOODLE.get(tag, "sun"), 44)
+        words = html.escape((title + " " + blurb + " " + tag).lower())
+        if status != "live":
+            return f'<li class="soon" data-words="{words}"><div>{lead}<span><b>{html.escape(title)}</b><span class="small">Coming soon</span></span></div></li>'
+        return (f'<li data-words="{words}"><a href="{{pre}}guides/{slug}.html">{lead}<span><b>{html.escape(title)}</b>'
+                f'<span class="small">{html.escape(blurb)}</span></span><span class="go-arrow" aria-hidden="true">→</span></a></li>')
+    h = '<main class="page guides-hub"><div class="crumbs"><a href="{pre}index.html">Home</a> › Guides</div>'
+    h += ('<div class="sec-head"><h1 style="font-size:3rem;margin:4px 0 8px">Guides</h1>[[d:road:120]]</div>'
+          '<p class="hint">Plain-English answers about van, caravan and 4WD power. Read the first three if you\'re new, '
+          'tap a picture to browse a topic, or search for your question.</p>')
+    # 1. Start here
+    h += ('<section class="band start-here" aria-labelledby="sh"><h2 id="sh">Start here</h2>'
+          '<p class="hand-pick">new to all this? read these three in order</p><ol class="hub-list">'
+          + "".join(row(by[s], f"{i}") for i, s in enumerate(START_HERE, 1) if s in by) + '</ol></section>')
+    # 2. Picture tiles
+    tiles = ""
+    for a, name, d, tags, line in TOPICS:
+        n = sum(1 for g in GUIDES if g[2] in tags and g[0] not in START_HERE)
+        if n:
+            tiles += f'<a class="tile" href="#{a}">{doodle(d, 70)}<b>{name}</b><span class="small">{n} guide{"s" if n != 1 else ""}</span></a>'
+    h += f'<section class="band alt" aria-labelledby="bt"><h2 id="bt">Browse by topic</h2><div class="tiles">{tiles}</div></section>'
+    # 3. Quick answers + search
+    chips = "".join(f'<a class="chip" href="{{pre}}guides/{s}.html">{html.escape(t)}</a>' for t, s in QUICK if s in by and by[s][4] == "live")
+    h += ('<section class="band find" aria-labelledby="qa"><h2 id="qa">Know what you\'re after?</h2>'
+          '<label class="hub-search"><span class="visually-hidden">Search the guides</span>'
+          '<input type="search" id="guide-search" placeholder="Try fridge, solar, alternator, caravan..." autocomplete="off"></label>'
+          f'<p class="small" style="margin:14px 0 8px">Quick answers people look for most:</p><div class="chips">{chips}</div></section>')
+    # 4. Topics
+    for a, name, d, tags, line in TOPICS:
+        gs = [g for g in GUIDES if g[2] in tags and g[0] not in START_HERE]
+        if gs:
+            h += (f'<section class="topic" id="{a}"><div class="topic-head">{doodle(d, 56)}<div><h2>{name}</h2>'
+                  f'<p class="small">{line}</p></div></div><ul class="hub-list">' + "".join(row(g) for g in gs) + '</ul></section>')
+    h += '<p class="small no-match" hidden>No guides match that yet. Try a simpler word, like <b>fridge</b> or <b>solar</b>.</p>'
+    h += ('<script>(function(){var i=document.getElementById("guide-search");if(!i)return;var nm=document.querySelector(".no-match");'
+          'i.addEventListener("input",function(){var q=i.value.trim().toLowerCase(),any=false;'
+          'document.querySelectorAll(".topic,.start-here").forEach(function(sec){var shown=0;'
+          'sec.querySelectorAll("li").forEach(function(li){var ok=!q||q.split(/\\s+/).every(function(w){return li.dataset.words.indexOf(w)>-1});li.hidden=!ok;if(ok)shown++});'
+          'sec.hidden=!shown;if(shown)any=true});nm.hidden=any||!q;});})();</script>')
+    return h + '</main>'
+
+
 def build():
     # Home
     LD["index.html"] = [ORG, {"@type": "WebSite", "@id": BASE + "#site", "name": "Off-Grid Sorted", "url": BASE, "inLanguage": "en-AU", "publisher": {"@id": ORG_ID}}] + PEOPLE
     page("index.html", SITE, "Free plain-English power planner and guides for Australian vans, caravans and 4WDs. Work out the battery, solar and charger you need.", read("content/home.html"))
     # Guides hub
-    hub = '<main class="page"><div class="crumbs"><a href="{pre}index.html">Home</a> › Guides</div>'
-    hub += '<div class="sec-head"><h1 style="font-size:3rem;margin:4px 0 8px">Guides</h1>[[d:road:120]]</div><p class="hint" style="margin-bottom:22px">Plain-English guides to off-grid power. Start at the top if you\'re new to all this.</p>'
-    hub += '<div class="guide-list">' + "".join(guide_card(g, "{pre}") for g in GUIDES) + '</div></main>'
+    hub = guides_hub()
     page("guides/index.html", "Guides", "Plain-English guides to batteries, solar, DC-DC chargers and inverters for Australian vans, caravans and 4WDs.", hub, "guides/index.html")
     # Each live guide
     for i, g in enumerate(GUIDES):
@@ -663,7 +730,7 @@ def build():
         rel = '<div class="related"><h2 style="font-size:1.4rem;margin:0 0 12px">Keep reading</h2><div class="guide-list">' + "".join(guide_card(x, "{pre}") for x in others) + '</div></div>'
         dd = doodle(TAG_DOODLE.get(tag, "sun"), 130, cls="doodle guide-doodle")
         cta_href = {"Caravans": "planner.html#caravan", "4WDs": "planner.html#4wd"}.get(tag, "planner.html")
-        body = body.replace('</ul></div>', f'</ul></div><p class="early-cta"><a href="{{pre}}{cta_href}">Want your own numbers? Open the Power Planner →</a> <span>or see the <a href="{{pre}}kits/index.html">ready-made kits</a></span></p>', 1)
+        body = body.replace('</ul></div>', f'</ul></div><div class="early-cta"><a class="btn-link solid" href="{{pre}}{cta_href}">Work out my numbers</a><span>or see the <a href="{{pre}}kits/index.html">ready-made kits</a></span></div>' + GUIDE_TRUST, 1)
         body = body.replace('<span>By Kiran and Mitch</span>', '<span>By <a href="{pre}about.html">Kiran and Mitch</a></span>', 1)
         faqs = FAQS.get(slug, [])
         if faqs:
@@ -687,6 +754,7 @@ def build():
                               ("disclosure", "Affiliate disclosure & disclaimer", "How Off-Grid Sorted earns money, and the limits of our advice."),
                               ("privacy", "Privacy", "How Off-Grid Sorted handles your information."),
                               ("contact", "Contact", "How to get in touch with Off-Grid Sorted."),
+                              ("big-words", "Big words, made simple", "Van, caravan and 4WD power jargon explained in everyday English: amps, amp-hours, DC-DC chargers, inverters, MPPT, lithium vs AGM and more."),
                               ("embed", "Put the Power Planner on your site", "Add the free Off-Grid Sorted Power Planner to your own website, van build or auto electrical site. Copy and paste, no sign-up.")]:
         page(f"{name}.html", title, desc, '<main class="article"><div class="crumbs"><a href="{pre}index.html">Home</a> › ' + title + '</div>' + read(f"content/{name}.html") + '</main>', f"{name}.html" if name == "about" else "")
     build_kits()
