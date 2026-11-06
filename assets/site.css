@@ -1013,3 +1013,4 @@ div.how-strip .pill,div.how-strip .op{text-transform:none;letter-spacing:normal}
 .kit-aside{background:var(--go-dark);color:#e9f1ec;border-radius:999px;padding:9px 18px;margin:20px 0 4px}.kit-aside .doodle{color:#fffdf7}.kit-aside a{color:#fffdf7;font-weight:700}.kit-aside a:hover{color:var(--sun)}
 .kit-aside{background:color-mix(in srgb,var(--go) 22%,var(--sage-band));color:var(--ink)}.kit-aside .doodle{color:var(--ink)}.kit-aside a{color:var(--go-dark)}.kit-aside a:hover{color:var(--go)}
 details.what-parts > summary{background:none;padding:6px 0;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px}
+details.what-parts > summary{display:inline-block;gap:0}details.what-parts > summary::before{content:"＋\00a0"}details.what-parts[open] > summary::before{content:"－\00a0"}
