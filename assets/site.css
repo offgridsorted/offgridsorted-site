@@ -778,3 +778,4 @@ html.embed .mast h1{font-size:2rem;margin-top:6px}
 .trust-banner a{color:#fffdf7;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
 /* handwriting in ink, not blue biro */
 html:root:not(#x){--biro:var(--ink)}
+.hand-pick{display:block;font-weight:700;font-size:1.55rem;color:var(--ink);margin:10px 0 4px;transform:rotate(-1.5deg)}
