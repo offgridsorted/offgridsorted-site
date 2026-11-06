@@ -808,3 +808,4 @@ html:root:not(#x){--biro:var(--ink)}
 .signup{background:color-mix(in srgb,var(--go) 16%,var(--sage-band));box-shadow:none}
 .signup .btn:not(.ghost){background:var(--sun);color:#1c1f1b;box-shadow:0 5px 0 var(--sun-dark)}.signup .btn:not(.ghost):hover{box-shadow:0 3px 0 var(--sun-dark)}
 .hero h1{margin-bottom:0}.hero .lede{margin:24px 0 32px}
+.signup h2{margin-bottom:0}.signup h2 + .hint, .signup h2 + p{margin-top:14px!important}
