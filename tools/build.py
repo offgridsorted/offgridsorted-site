@@ -522,7 +522,7 @@ KITS = [
      "fourwd": "Works well in a 4WD too. Use the solar blanket rather than roof panels, and if the battery goes under the bonnet, pick one rated for the heat. See <a href=\"{pre}guides/4wd-dual-battery-basics.html\">4WD dual battery basics</a>.",
      "install": "With a power box, the main job is the charging lead, so expect the lower end of that range.",
      "south": "In southern winters the sun is weak, so the battery does most of the work over the weekend. In Victoria or Tasmania in winter, go for the 120Ah battery and the bigger 200W blanket."},
-    {"slug": "long-trips", "name": "Longer trips", "doodle": "van", "preset": "long",
+    {"slug": "long-trips", "name": "Road trips", "doodle": "van", "preset": "long",
      "who": "A week or more away, a bigger fridge and a laptop. Some days driving, some days parked up.",
      "runs": ["Large 55 to 75L fridge", "4 LED lights", "2 phones charging", "A laptop on a 12V or USB-C charger, about 3 hours a day", "A 12V fan overnight", "Water pump"],
      "daily": "about 65 to 75Ah a day",
@@ -618,7 +618,7 @@ def build_kits():
            f'<div class="cards">{cards}</div>'
            '<div class="aside" style="margin-top:30px">Not quite you? The <a href="{pre}planner.html" style="color:var(--sign)">Power Planner</a> sizes a kit around exactly what you run and where you travel.</div>'
            '<script src="{pre}assets/kits.js" defer></script></main>')
-    page("kits/index.html", "Ready-made kits", "Three ready-made power kits for Australian vans, caravans and 4WDs: Weekender, Longer trips and Living in it.", hub, "kits/index.html")
+    page("kits/index.html", "Ready-made kits", "Three ready-made power kits for Australian vans, caravans and 4WDs: Weekender, Road trips and Living in it.", hub, "kits/index.html")
     for k in KITS:
         choice_ui = chips("veh", "What are you powering?", VEH, "van") + ''.join(chips(c[0], c[1], c[2], c[3]) for c in (k.get("choices") or []))
         tips = (f'<div class="veh-tip" data-for="van">{VAN_TIP}</div>'
