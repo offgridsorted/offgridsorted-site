@@ -1067,3 +1067,5 @@ body.mode-check .chips input:checked + label{background:var(--go);border-color:v
 body.mode-check .step-label{color:var(--go)}
 body.mode-check section.step.band-a{background:var(--sun-band);box-shadow:0 0 0 100vmax var(--sun-band)}
 body.mode-check section.step.band-b{background:var(--sage-band);box-shadow:0 0 0 100vmax var(--sage-band)}
+.explain-box p{margin:0 0 10px;font-family:var(--font-ui);font-size:.98rem;line-height:1.5}.explain-box p:last-child{margin-bottom:0}.explain-box b{display:block;font-family:var(--font-display);font-size:1.02rem;margin-bottom:2px}
+.explain-box{background:var(--card)}
