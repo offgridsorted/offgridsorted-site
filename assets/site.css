@@ -796,3 +796,10 @@ html:root:not(#x){--biro:var(--ink)}
 .hero .hand-note{line-height:1.15}
 .trust{margin-top:30px}
 .hero .step-label{display:block;margin-bottom:14px}
+/* headings sit at the top of each section, with a little air before the intro line */
+.sec-head{align-items:flex-start}
+.sec-head h2{margin-top:4px}
+.sec-head + .hint{margin-top:12px}
+.sec-head{position:relative;padding-right:90px}.sec-head .doodle{position:absolute;right:0;top:-6px}
+.sec-head + .hint{margin-top:10px}
+.sec-head + .hint{margin-top:16px}
