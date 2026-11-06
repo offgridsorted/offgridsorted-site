@@ -1061,3 +1061,9 @@ body.mode-check section.step.band-b{background:#f1f6f4;box-shadow:0 0 0 100vmax 
 .mast + .trust-banner,.trust-banner + .modes{margin-top:0}
 main.wrap > .trust-banner{margin:26px 0 22px}
 main.wrap > .trust-banner:last-of-type{margin:40px 0 0}
+/* Check what I've got: no blue. Same colours, bands start on sand instead of sage */
+body.mode-check .modes button[aria-pressed="true"]{background:var(--go);border-color:var(--go)}
+body.mode-check .chips input:checked + label{background:var(--go);border-color:var(--go)}
+body.mode-check .step-label{color:var(--go)}
+body.mode-check section.step.band-a{background:var(--sun-band);box-shadow:0 0 0 100vmax var(--sun-band)}
+body.mode-check section.step.band-b{background:var(--sage-band);box-shadow:0 0 0 100vmax var(--sage-band)}
