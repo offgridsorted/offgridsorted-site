@@ -955,3 +955,4 @@ details.what-parts[open] > summary::before{content:"－"}
 .how-strip .hl-arrow{margin-bottom:22px}
 @media (max-width:420px){.how-strip li{font-size:1.05rem}.how-strip{gap:6px}.how-strip .hl-arrow .doodle{width:30px}}
 @media (max-width:560px){.planner-note{font-size:1.2rem;gap:4px}.planner-note .doodle{width:48px;height:auto}.planner-note .marker{white-space:nowrap}}
+.menu-toggle .drop a.drop-cta{background:var(--sun);color:#1c1f1b;box-shadow:0 4px 0 var(--sun-dark);flex-direction:row;justify-content:space-between;align-items:center}.menu-toggle .drop a.drop-cta::after{position:static;margin:0}
