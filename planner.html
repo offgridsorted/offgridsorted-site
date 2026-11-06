@@ -44,6 +44,7 @@
 <main id="main" class="wrap">
 
 <header class="mast">
+<span class="mast-art art-l" aria-hidden="true"><svg class="doodle" viewBox="0 0 100 100" width="86" height="86" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="50" r="18" fill="#f5cb3c"/><path d="M50 14v-9M50 95v-9M14 50H5M95 50h-9M24 24l-6-6M82 82l-6-6M24 76l-6 6M82 18l-6 6"/></svg></span><span class="mast-art art-r" aria-hidden="true"><svg class="doodle" viewBox="0 0 160 90" width="130" height="73" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 66V30c0-6 4-10 10-10h82c10 0 17 4 22 11l16 21c3 4 4 7 4 12v2z"/><path d="M108 22l0 26h32"/><path d="M48 14l5-8h40l-5 8z" fill="#f5cb3c"/><circle cx="44" cy="68" r="11" fill="var(--paper, #f3f0e8)"/><circle cx="118" cy="68" r="11" fill="var(--paper, #f3f0e8)"/><circle cx="44" cy="68" r="3"/><circle cx="118" cy="68" r="3"/></svg></span>
 <span class="kicker">For Aussie vans, caravans &amp; 4WDs</span>
   <h1>Power <span class="scribble">Planner</span></h1>
   <p class="lede">Work out the battery, solar and charger you actually need, in plain English.</p>
@@ -52,54 +53,7 @@
   <p class="kit-aside"><svg class="doodle" viewBox="0 0 140 90" width="30" height="19" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 78h120M22 78L64 14l42 64"/><path d="M64 14l0 64M52 78l12-26 12 26"/><path d="M106 78l18-30 6 30"/></svg><span>Prefer a ready-made kit?</span><a href="kits/index.html">Browse the kits →</a></p>
 
 
-  <details class="what-parts"><summary>What are the four main bits?</summary>
-  <figure class="diagram" style="margin:6px 0 0">
-    <svg viewBox="0 0 360 190" role="img" aria-label="Sketch of a van: the sun charges a solar panel on the roof, the engine charges through a DC-DC charger, both fill the battery, and an inverter feeds a house plug.">
-      <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ink)">
-        <!-- sun -->
-        <circle cx="38" cy="34" r="13"/>
-        <path d="M38 12v-6M38 62v-6M16 34h-6M66 34h-6M23 19l-4-4M57 53l-4-4M23 49l-4 4M57 15l-4 4"/>
-        <!-- arrow sun to panel -->
-        <path d="M62 44c22 6 40 10 62 14" stroke-dasharray="4 5"/>
-        <path d="M118 52l7 6-9 2"/>
-        <!-- van body -->
-        <path d="M70 140V92c0-6 4-10 10-10h170c14 0 24 6 32 18l20 26c4 5 6 9 6 14v0z"/>
-        <path d="M250 84l14 0c8 0 14 4 18 10l14 20h-46z"/>
-        <path d="M70 140h238"/>
-        <!-- panel on roof -->
-        <path d="M120 74l5-10h90l-5 10z"/>
-        <path d="M150 64l-3 10M180 64l-3 10"/>
-        <!-- wheels -->
-        <circle cx="112" cy="146" r="16" fill="var(--field)"/>
-        <circle cx="262" cy="146" r="16" fill="var(--field)"/>
-        <circle cx="112" cy="146" r="5"/><circle cx="262" cy="146" r="5"/>
-        <!-- battery inside -->
-        <rect x="150" y="104" width="44" height="26" rx="2"/>
-        <path d="M158 104v-4M186 104v-4"/>
-        <path d="M162 117h8M182 113v8M178 117h8"/>
-        <!-- engine to battery -->
-        <path d="M282 122c-26 8-54 6-84 0" stroke-dasharray="4 5"/>
-        <path d="M204 116l-7 6 9 3"/>
-        <!-- panel to battery -->
-        <path d="M170 76v24" stroke-dasharray="4 5"/>
-        <path d="M165 94l5 7 5-7"/>
-        <!-- battery to plug -->
-        <path d="M150 117c-20 0-34 2-46 6" stroke-dasharray="4 5"/>
-        <rect x="86" y="112" width="16" height="20" rx="2"/>
-        <path d="M91 119v4M97 119v4"/>
-      </g>
-      <text class="lbl" x="6" y="80">sun</text>
-      <text class="lbl" x="226" y="58">solar panel</text>
-      <text class="lbl" x="200" y="100">battery</text>
-      <text class="lbl" x="352" y="178" text-anchor="end">engine → DC-DC</text>
-      <text class="lbl" x="8" y="178">inverter → plug</text>
-    </svg>
-  </figure><div class="legend-dl">
-    <div><b>Battery</b>Stores your power. Bigger battery, more days off-grid.</div>
-    <div><b>Solar</b>Tops the battery up for free. Weaker in winter.</div>
-    <div><b>DC-DC charger</b>Charges the battery from your engine while you drive.</div>
-    <div><b>Inverter</b>Turns van power into house power for normal plugs.</div>
-  </div></details>
+
 </header>
 
 <nav class="modes" aria-label="Choose what you want to do">
@@ -107,9 +61,22 @@
   <button type="button" id="mode-check" aria-pressed="false">Check what I've got</button>
 </nav>
 
+<section class="step" aria-labelledby="s-veh">
+  <svg class="doodle step-doodle" viewBox="0 0 160 90" width="100" height="56" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 66V30c0-6 4-10 10-10h82c10 0 17 4 22 11l16 21c3 4 4 7 4 12v2z"/><path d="M108 22l0 26h32"/><path d="M48 14l5-8h40l-5 8z" fill="#f5cb3c"/><circle cx="44" cy="68" r="11" fill="var(--paper, #f3f0e8)"/><circle cx="118" cy="68" r="11" fill="var(--paper, #f3f0e8)"/><circle cx="44" cy="68" r="3"/><circle cx="118" cy="68" r="3"/></svg>
+  <span class="step-label">Step 1</span>
+  <h2 id="s-veh">What are you powering?</h2>
+  <div class="field">
+    <div class="chips" role="radiogroup" aria-labelledby="s-veh">
+      <input type="radio" name="vehicle" id="vh-van" value="van" checked><label for="vh-van">Campervan</label>
+      <input type="radio" name="vehicle" id="vh-car" value="caravan"><label for="vh-car">Caravan or camper trailer</label>
+      <input type="radio" name="vehicle" id="vh-4wd" value="4wd"><label for="vh-4wd">4WD</label>
+    </div>
+  </div>
+</section>
+
 <section class="step" id="trip-card" aria-labelledby="s-trip">
   <svg class="doodle step-doodle" viewBox="0 0 140 90" width="90" height="58" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 78h120M22 78L64 14l42 64"/><path d="M64 14l0 64M52 78l12-26 12 26"/><path d="M106 78l18-30 6 30"/></svg>
-  <span class="step-label">Step 1</span>
+  <span class="step-label">Step 2</span>
   <h2 id="s-trip">What kind of trip?</h2>
   <p class="hint">Pick the closest one and we'll fill in typical gear. You can change anything after.</p>
   <div class="field">
@@ -135,18 +102,10 @@
 
 <section class="step" aria-labelledby="s1">
   <svg class="doodle step-doodle" viewBox="0 0 90 100" width="60" height="67" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M45 90S16 58 16 38a29 29 0 0 1 58 0c0 20-29 52-29 52z"/><circle cx="45" cy="38" r="10" fill="#f5cb3c"/></svg>
-  <span class="step-label">Step 2</span>
-  <h2 id="s1">Your setup, and where you travel</h2>
+  <span class="step-label">Step 3</span>
+  <h2 id="s1">Where will you be?</h2>
   <div class="field">
-    <span id="veh-l" class="flabel">What are you powering?</span>
-    <div class="chips" role="radiogroup" aria-labelledby="veh-l">
-      <input type="radio" name="vehicle" id="vh-van" value="van" checked><label for="vh-van">Campervan</label>
-      <input type="radio" name="vehicle" id="vh-car" value="caravan"><label for="vh-car">Caravan or camper trailer</label>
-      <input type="radio" name="vehicle" id="vh-4wd" value="4wd"><label for="vh-4wd">4WD</label>
-    </div>
-  </div>
-  <div class="field">
-    <label for="loc">Where will you mostly be?</label>
+    <label for="loc">Which state?</label>
     <select id="loc">
       <option value="qld" selected>Queensland</option>
       <option value="nsw">New South Wales</option>
@@ -171,9 +130,37 @@
   </div>
 </section>
 
+<section class="step" aria-labelledby="s3">
+  <svg class="doodle step-doodle" viewBox="0 0 160 90" width="110" height="62" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 54l30-34 22 22 26-30 34 42"/><circle cx="130" cy="20" r="9" fill="#f5cb3c"/><path d="M60 88l14-34M100 88L86 54M80 86v-6M80 72v-6M80 60v-4"/></svg>
+  <span class="step-label">Step 4</span>
+  <h2 id="s3">How long do you drive on a typical day?</h2>
+  <div class="field">
+    <div class="chips" role="radiogroup" aria-labelledby="s3">
+      <input type="radio" name="drive" id="dr-0" value="0"><label for="dr-0">I stay put</label>
+      <input type="radio" name="drive" id="dr-1" value="1" checked><label for="dr-1">About an hour</label>
+      <input type="radio" name="drive" id="dr-3" value="2.5"><label for="dr-3">2–3 hours</label>
+      <input type="radio" name="drive" id="dr-4" value="4"><label for="dr-4">4+ hours</label>
+    </div>
+    <p class="small">Driving charges your battery too, through the DC-DC charger.</p>
+  </div>
+  <details class="fine-tune"><summary>More options: cloudy days</summary>
+  <div class="field">
+    <span id="buf-l" class="flabel">How many grey, cloudy days should you get through without driving?</span>
+    <div class="chips" role="radiogroup" aria-labelledby="buf-l">
+      <input type="radio" name="buffer" id="bf-1" value="1"><label for="bf-1">1 day</label>
+      <input type="radio" name="buffer" id="bf-2" value="2" checked><label for="bf-2">2 days</label>
+      <input type="radio" name="buffer" id="bf-3" value="3"><label for="bf-3">3 days</label>
+      <input type="radio" name="buffer" id="bf-4" value="4"><label for="bf-4">4 days</label>
+      <input type="radio" name="buffer" id="bf-5" value="5"><label for="bf-5">5 days</label>
+    </div>
+    <p class="small">Two days suits most people, so that's what we use unless you change it.</p>
+  </div>
+  </details>
+</section>
+
 <section class="step" aria-labelledby="s2">
   <svg class="doodle step-doodle" viewBox="0 0 110 100" width="80" height="73" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M30 40h46l8 44H22z"/><path d="M76 50c14 0 18 8 18 18M30 50L14 38"/><path d="M38 40c0-12 30-12 30 0"/><path d="M50 16c-4 6 4 8 0 14M62 12c-4 6 4 8 0 14" stroke-dasharray="3 5"/></svg>
-  <span class="step-label">Step 3</span>
+  <span class="step-label">Step 5</span>
   <h2 id="s2">What do you run?</h2>
   <p class="hint">Pick your fridge, then tap what else you run.</p>
   <div class="field">
@@ -207,38 +194,9 @@
   </details>
 </section>
 
-<section class="step" aria-labelledby="s3">
-  <svg class="doodle step-doodle" viewBox="0 0 160 90" width="110" height="62" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 54l30-34 22 22 26-30 34 42"/><circle cx="130" cy="20" r="9" fill="#f5cb3c"/><path d="M60 88l14-34M100 88L86 54M80 86v-6M80 72v-6M80 60v-4"/></svg>
-  <span class="step-label">Step 4</span>
-  <h2 id="s3">How do you travel?</h2>
-  <p class="hint">Driving charges your battery too, through the DC-DC charger.</p>
-  <div class="field">
-    <span id="drive-l" class="flabel">On a typical day, how long do you drive?</span>
-    <div class="chips" role="radiogroup" aria-labelledby="drive-l">
-      <input type="radio" name="drive" id="dr-0" value="0"><label for="dr-0">I stay put</label>
-      <input type="radio" name="drive" id="dr-1" value="1" checked><label for="dr-1">About an hour</label>
-      <input type="radio" name="drive" id="dr-3" value="2.5"><label for="dr-3">2–3 hours</label>
-      <input type="radio" name="drive" id="dr-4" value="4"><label for="dr-4">4+ hours</label>
-    </div>
-  </div>
-  <details class="fine-tune"><summary>More options: cloudy days</summary>
-  <div class="field">
-    <span id="buf-l" class="flabel">How many grey, cloudy days should you get through without driving?</span>
-    <div class="chips" role="radiogroup" aria-labelledby="buf-l">
-      <input type="radio" name="buffer" id="bf-1" value="1"><label for="bf-1">1 day</label>
-      <input type="radio" name="buffer" id="bf-2" value="2" checked><label for="bf-2">2 days</label>
-      <input type="radio" name="buffer" id="bf-3" value="3"><label for="bf-3">3 days</label>
-      <input type="radio" name="buffer" id="bf-4" value="4"><label for="bf-4">4 days</label>
-      <input type="radio" name="buffer" id="bf-5" value="5"><label for="bf-5">5 days</label>
-    </div>
-    <p class="small">Two days suits most people, so that's what we use unless you change it.</p>
-  </div>
-  </details>
-</section>
-
 <section class="step" aria-labelledby="s4p" id="build-card">
   <svg class="doodle step-doodle" viewBox="0 0 110 100" width="74" height="67" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M70 14a20 20 0 0 0-16 30L18 80a8 8 0 0 0 12 12l36-36a20 20 0 0 0 30-16l-12 4-10-10 4-12a20 20 0 0 0-8-2z"/></svg>
-  <span class="step-label">Step 5</span>
+  <span class="step-label">Step 6</span>
   <h2 id="s4p">Any preferences?</h2>
   <p class="hint">Not fussed? Leave these on Not sure and we'll pick for you.</p>
   <div class="field">
@@ -311,6 +269,54 @@
   <p class="preset-note" id="preset-note" hidden></p>
   <p class="verdict" id="verdict"></p>
   <div class="kit" id="kit"></div>
+  <details class="what-parts"><summary>What do these four bits mean?</summary>
+  <figure class="diagram" style="margin:6px 0 0">
+    <svg viewBox="0 0 360 190" role="img" aria-label="Sketch of a van: the sun charges a solar panel on the roof, the engine charges through a DC-DC charger, both fill the battery, and an inverter feeds a house plug.">
+      <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ink)">
+        <!-- sun -->
+        <circle cx="38" cy="34" r="13"/>
+        <path d="M38 12v-6M38 62v-6M16 34h-6M66 34h-6M23 19l-4-4M57 53l-4-4M23 49l-4 4M57 15l-4 4"/>
+        <!-- arrow sun to panel -->
+        <path d="M62 44c22 6 40 10 62 14" stroke-dasharray="4 5"/>
+        <path d="M118 52l7 6-9 2"/>
+        <!-- van body -->
+        <path d="M70 140V92c0-6 4-10 10-10h170c14 0 24 6 32 18l20 26c4 5 6 9 6 14v0z"/>
+        <path d="M250 84l14 0c8 0 14 4 18 10l14 20h-46z"/>
+        <path d="M70 140h238"/>
+        <!-- panel on roof -->
+        <path d="M120 74l5-10h90l-5 10z"/>
+        <path d="M150 64l-3 10M180 64l-3 10"/>
+        <!-- wheels -->
+        <circle cx="112" cy="146" r="16" fill="var(--field)"/>
+        <circle cx="262" cy="146" r="16" fill="var(--field)"/>
+        <circle cx="112" cy="146" r="5"/><circle cx="262" cy="146" r="5"/>
+        <!-- battery inside -->
+        <rect x="150" y="104" width="44" height="26" rx="2"/>
+        <path d="M158 104v-4M186 104v-4"/>
+        <path d="M162 117h8M182 113v8M178 117h8"/>
+        <!-- engine to battery -->
+        <path d="M282 122c-26 8-54 6-84 0" stroke-dasharray="4 5"/>
+        <path d="M204 116l-7 6 9 3"/>
+        <!-- panel to battery -->
+        <path d="M170 76v24" stroke-dasharray="4 5"/>
+        <path d="M165 94l5 7 5-7"/>
+        <!-- battery to plug -->
+        <path d="M150 117c-20 0-34 2-46 6" stroke-dasharray="4 5"/>
+        <rect x="86" y="112" width="16" height="20" rx="2"/>
+        <path d="M91 119v4M97 119v4"/>
+      </g>
+      <text class="lbl" x="6" y="80">sun</text>
+      <text class="lbl" x="226" y="58">solar panel</text>
+      <text class="lbl" x="200" y="100">battery</text>
+      <text class="lbl" x="352" y="178" text-anchor="end">engine → DC-DC</text>
+      <text class="lbl" x="8" y="178">inverter → plug</text>
+    </svg>
+  </figure><div class="legend-dl">
+    <div><b>Battery</b>Stores your power. Bigger battery, more days off-grid.</div>
+    <div><b>Solar</b>Tops the battery up for free. Weaker in winter.</div>
+    <div><b>DC-DC charger</b>Charges the battery from your engine while you drive.</div>
+    <div><b>Inverter</b>Turns van power into house power for normal plugs.</div>
+  </div></details>
   <p class="more-detail" id="more-detail-p"><button type="button" class="btn ghost" id="more-detail">Want more detail? Fine-tune everything</button></p>
 
 

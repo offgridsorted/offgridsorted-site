@@ -1030,3 +1030,17 @@ details.explain > summary::before{content:"?\00a0";font-weight:800}
 details.explain .aside{margin-top:8px}
 .kit .item{position:relative}.kit .item .kit-ic{position:absolute;top:12px;right:12px;width:34px;height:auto;color:var(--ink);opacity:.85}
 .kit .item .k{display:block;padding-right:40px}@media (max-width:560px){.kit .item .kit-ic{width:28px;top:10px;right:10px}}
+/* playful line drawings around the planner heading */
+.mast{position:relative}
+.mast-art{position:absolute;pointer-events:none;color:var(--ink)}
+.mast-art .doodle{display:block;height:auto}
+.mast-art.art-l{top:34px;left:4%;transform:rotate(-8deg)}
+.mast-art.art-l .doodle{width:86px}
+.mast-art.art-r{top:70px;right:3%;transform:rotate(4deg)}
+.mast-art.art-r .doodle{width:130px}
+@media (max-width:900px){.mast-art.art-l{left:0;top:20px}.mast-art.art-l .doodle{width:56px}.mast-art.art-r{right:0;top:96px}.mast-art.art-r .doodle{width:78px}}
+@media (max-width:480px){.mast-art.art-l{top:4px;left:-6px}.mast-art.art-l .doodle{width:46px}.mast-art.art-r{top:auto;bottom:auto;right:-8px;top:118px}.mast-art.art-r .doodle{width:64px;opacity:.9}}
+@media (max-width:600px){.mast-art.art-r{display:none}.mast-art.art-l{left:auto;right:4px;top:92px}.mast-art.art-l .doodle{width:42px}}
+details.explain,details.what-parts{border-top:0;padding-top:0}details.explain > summary::before{content:none}details.explain{margin-top:2px}
+.results details.what-parts{margin:4px 0 14px;text-align:left}
+.results details.what-parts > summary{font-size:1rem}
