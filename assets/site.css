@@ -766,3 +766,12 @@ html.embed .mast h1{font-size:2rem;margin-top:6px}
 .topic-head .small{margin:2px 0 0}
 
 @media (max-width:480px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.hub-list li a,.hub-list li > div{grid-template-columns:40px 1fr auto}}
+
+/* trust banner under "Three ways in" */
+.trust-banner{background:var(--go);color:#fffdf7;box-shadow:0 0 0 100vmax var(--go);clip-path:inset(0 -100vmax);padding:22px 0}
+.trust-banner ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.trust-banner li{font-family:var(--font-ui);font-size:.95rem;line-height:1.35;padding-left:34px;position:relative;color:#e9f1ec}
+.trust-banner li::before{content:"✓";position:absolute;left:0;top:-6px;font-family:var(--font-hand);font-weight:700;font-size:2rem;color:var(--sun)}
+.trust-banner b{display:block;color:#fffdf7;font-size:1.05rem}
+@media (max-width:760px){.trust-banner ul{grid-template-columns:1fr 1fr}}
+.trust-banner{margin-bottom:0}.trust-banner + .band{margin-top:0}
