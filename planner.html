@@ -837,7 +837,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
       shopH.textContent = "Build your kit";
       var batLabel = p.batAh + "Ah " + (p.batType === "lith" ? "lithium" : "AGM");
       if(p.build === "box"){
-        addShop(shop, "All-in-one power box · " + batLabel, "allinone", "Battery, DC-DC charger and solar charger in one box. " + "Check it can charge from your car and from solar before you buy." + (p.batType === "agm" ? " Most all-in-one boxes are lithium; AGM versions get very heavy at this size." : "") + (p.batAh > 120 && p.batType === "lith" ? " Ready-made boxes this big are rare, so separate parts are usually better value." : ""), catFor("allinone", p.batAh, p.batType));
+        addShop(shop, "All-in-one power box · " + batLabel, "allinone", "Battery, DC-DC charger and solar charger in one box. " + "Check it can charge from your car and from solar before you buy." + (p.batAh > 120 ? " Most all-in-one boxes top out around 100 to 120Ah, so at this size separate parts are usually the better buy." : "") + (p.batType === "agm" ? " Most all-in-one boxes are lithium; AGM versions get very heavy at this size." : "") + (p.batAh > 120 && p.batType === "lith" ? " Ready-made boxes this big are rare, so separate parts are usually better value." : ""), catFor("allinone", p.batAh, p.batType));
         if(p.solarW) addShop(shop, "Solar · " + p.solarW + "W", "solar", "Plugs straight into the box. A folding blanket is easiest to start with.", catFor("solar", p.solarW, "box"));
         if(inv) addShop(shop, "Inverter · " + fmt(inv) + "W pure sine", "inverter", "Some boxes have a small inverter built in, but rarely big enough for this.", catFor("inverter", inv));
         renderShopTable(shop);
@@ -852,7 +852,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
         var solNote = {fixed:"Fixed roof panels: set and forget, and they charge while you drive.", blanket:"A portable blanket: park in the shade and lay it in the sun." + (p.solarW > 250 ? " That's more than one blanket can make, so use two, or mix in a roof panel." : "")}[radio("soltype")] || (p.veh === "4wd" ? "Roof space is tight on most 4WDs, so a folding blanket is the easy option." : "Free charging from the sun. Fixed roof panels for set-and-forget, or a blanket you can point at the sun.");
         if(p.solarW) addShop(shop, "Solar · " + p.solarW + "W", "solar", solNote, catFor("solar", p.solarW, p.veh === "4wd" ? "box" : null));
         if(inv) addShop(shop, "Inverter · " + fmt(inv) + "W pure sine", "inverter", "The travel adaptor for house plugs.", catFor("inverter", inv));
-        addShop(shop, "Battery box or mount", "box", "Holds the battery firmly in place and protects it from knocks" + (p.batType === "agm" ? ", and AGM inside the living space should be sealed and vented." : ".") );
+        addShop(shop, "Battery box or mount", "box", "Holds the battery firmly in place and protects it from knocks" + (p.batType === "agm" ? ", and AGM inside the living space should be sealed and vented." : "."), p.batType === "lith" ? (p.batAh <= 120 ? "box_100" : p.batAh <= 230 ? "box_200" : null) : null);
         addShop(shop, "Battery monitor", "monitor", "Your fuel gauge. Shows exactly how full the battery is, instead of guessing from the voltage.", "monitor");
         renderShopTable(shop);
         addChecklist(shop, "Wiring bits your installer will size", [
@@ -1007,7 +1007,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
           if(o.length) cell += '<details class="more"><summary>Other good options (' + o.length + ')</summary>' + o.map(function(x){ return prodHTML(x, false); }).join("") + '</details>';
         } else {
           var pk = PICKS[r.key] || {}, tn = TIER_NOTES[r.key] || {};
-          cell = '<div class="prod"><span class="pname plain">' + (pk[TKEY[i]] || "") + '</span>' + (tn[TKEY[i]] ? '<span class="tn">' + tn[TKEY[i]] + '</span>' : "") + '</div>';
+          cell = '<div class="prod"><span class="look-for">Look for</span><span class="pname plain">' + (pk[TKEY[i]] || "") + '</span>' + (tn[TKEY[i]] ? '<span class="tn">' + tn[TKEY[i]] + '</span>' : "") + '<span class="tn no-pick">We haven\'t picked an exact model at this size yet, so there\'s no link. Any of these brands is a good place to start.</span></div>';
         }
         body += '<td class="c' + i + '"><span class="mlabel">' + t + '</span>' + cell + '</td>';
       });
