@@ -478,6 +478,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
   var ROOF_MAX = {van:600, caravan:800, "4wd":300};
   var VEH_NAME = {van:"van", caravan:"caravan", "4wd":"4WD"};
   var INV_SIZES = [300,600,1000,1500,2000,3000];
+  var DC_SIZES = [20,25,40,50];
 
   var PICKS = {
     battery:{budget:"Adventure Kings or VoltX lithium", mid:"Renogy or iTechworld lithium", premium:"REDARC, Enerdrive or Victron lithium"},
@@ -720,6 +721,26 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     plan.batType = batType; plan.dod = dodPlan; plan.maxDaily = maxDaily; plan.build = radio("build") === "box" ? "box" : "parts"; plan.batUnsure = batChoice === "unsure"; plan.buildUnsure = (radio("build") || "unsure") === "unsure";
 
     plan.all = all;
+    // ---- Try a different size: the reader changed one part in the results ----
+    var LK = state.mode === "plan" ? (state.lock || {}) : {};
+    plan.locked = {}; plan.bumped = {}; plan.need = {bat:plan.batAh, sol:plan.solarW, dc:plan.dc, inv:inv};
+    if(LK.bat != null){ plan.batAh = LK.bat; plan.locked.bat = 1; if(LK.dc == null){ var nd = dcdcFor(LK.bat); if(nd !== plan.dc){ plan.dc = nd; plan.bumped.dc = 1; } } }
+    if(LK.dc != null){ plan.dc = LK.dc; plan.locked.dc = 1; }
+    if(LK.sol != null){
+      plan.solarW = LK.sol; plan.locked.sol = 1;
+      if(LK.dc == null && driveH > 0){
+        var gapWh = plan.daily - LK.sol * plan.sun * SOLAR_REAL;
+        var dcNeed = gapWh > 0 ? roundUp(gapWh / (V * driveH * driveEff()), DC_SIZES) || 50 : 0;
+        if(dcNeed > plan.dc){ plan.dc = dcNeed; plan.bumped.dc = 1; }
+      }
+    }
+    plan.driveWh = plan.dc * V * driveH * driveEff();
+    if(LK.sol == null && (LK.bat != null || LK.dc != null)){
+      var sr = Math.max(0, plan.daily - plan.driveWh) / (plan.sun * SOLAR_REAL);
+      var ns = sr > 0 ? Math.max(100, ceilTo(sr, 50)) : 0;
+      if(ns !== plan.solarW){ plan.solarW = ns; plan.bumped.sol = 1; }
+    }
+    if(LK.inv != null){ inv = LK.inv; plan.locked.inv = 1; }
     render(plan, inv, ac, loc, season, driveH, buffer);
   }
 
@@ -768,13 +789,25 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
       gapsWrap.hidden = true;
       
       var tooMuchSolar = p.solarW > p.roofMax;
-      verdict.innerHTML = '<span class="v-main">' + (tooMuchSolar ? "Here's the closest setup, and your options" : "Here's a setup that keeps up") + '</span><span class="v-use">You\'ll use about <b>' + fmt(dailyAh) + 'Ah</b> a day' + (tooMuchSolar ? ". That's more than your roof can make in " + seasonWord(p.se) + "." : "") + '</span>';
+      var changed = Object.keys(p.locked).length > 0;
+      if(changed){
+        var inWhT = p.solarW * p.sun * SOLAR_REAL + p.driveWh, netT = inWhT - p.daily, greyT = p.batAh * V * p.dod / p.daily;
+        var stT, clsT, txtT;
+        if(netT >= 0 && greyT >= buffer){ stT = "Keeps up"; clsT = "good"; txtT = "Puts back what you use on a " + seasonWord(p.se) + " day, and gets you through " + buffer + " grey day" + (buffer > 1 ? "s" : "") + "."; }
+        else if(netT >= 0){ stT = "Only just"; clsT = "warn"; txtT = "Keeps up on a sunny " + seasonWord(p.se) + " day, but only gets you through about " + fmt1(greyT) + " grey day" + (fmt1(greyT) === "1" ? "" : "s") + " (you asked for " + buffer + ")."; }
+        else { stT = "Falls short"; clsT = "bad"; txtT = "Puts back about " + Math.round(inWhT / p.daily * 100) + "% of what you use on a " + seasonWord(p.se) + " day, so the battery runs flat after about " + fmt1(p.batAh * V * p.dod / -netT) + " days without a top-up."; }
+        if(p.locked.inv && ac.w > inv) { stT = "Inverter too small"; clsT = "bad"; txtT = "Your " + ac.n.toLowerCase() + " pulls about " + fmt(ac.w) + "W, more than a " + (inv ? fmt(inv) + "W inverter" : "setup with no inverter") + " can run."; }
+        verdict.innerHTML = '<span class="v-main">Your changed setup</span><span class="v-use"><span class="pill ' + clsT + '">' + stT + '</span> ' + txtT + '</span><button type="button" class="kit-reset" id="kit-reset">Back to our picks</button>';
+      } else {
+        verdict.innerHTML = '<span class="v-main">' + (tooMuchSolar ? "Here's the closest setup, and your options" : "Here's a setup that keeps up") + '</span><span class="v-use">You\'ll use about <b>' + fmt(dailyAh) + 'Ah</b> a day' + (tooMuchSolar ? ". That's more than your roof can make in " + seasonWord(p.se) + "." : "") + '</span>';
+      }
 
       var typeName = p.batType === "lith" ? "Lithium (LiFePO4)" : "AGM";
-      addKit(kit, "Battery", p.batAh + "Ah", typeName + " · about " + fmt(p.batAh * KG_PER_AH[p.batType]) + "kg");
-      addKit(kit, "Solar", p.solarW ? p.solarW + "W" : "Optional", p.solarW ? (tooMuchSolar ? "More than fits on most " + VEH_NAME[p.veh] + " roofs (about " + p.roofMax + "W)" : ({fixed:"Fixed roof panels", blanket:"Portable blanket" + (p.solarW > 250 ? " (about " + Math.ceil(p.solarW / 200) + " of them)" : "")}[radio("soltype")] || "Roof panels or a blanket")) : "Driving covers your daily use");
-      addKit(kit, "DC-DC charger", driveH > 0 ? p.dc + "A" : "Optional", driveH > 0 ? "Fills up while you drive" : "Only if you drive or tow between stays (" + p.dc + "A)");
-      addKit(kit, "Inverter", inv ? fmt(inv) + "W" : "Not needed", inv ? "Pure sine wave" : "Everything you run is 12V");
+      function chg(part, unit, defTxt){ return p.locked[part] ? "You picked this · we'd suggest " + (p.need[part] ? fmt(p.need[part]) + unit : "none") : p.bumped[part] ? "Changed to match your pick" : defTxt; }
+      addKit(kit, "Battery", p.batAh + "Ah", chg("bat", "Ah", typeName + " · about " + fmt(p.batAh * KG_PER_AH[p.batType]) + "kg"), {part:"bat", unit:"Ah", sizes:[100,120,150,200,230,300,400,460,600], cur:p.batAh});
+      addKit(kit, "Solar", p.solarW ? p.solarW + "W" : (p.locked.sol ? "None" : "Optional"), chg("sol", "W", p.solarW ? (tooMuchSolar ? "More than fits on most " + VEH_NAME[p.veh] + " roofs (about " + p.roofMax + "W)" : ({fixed:"Fixed roof panels", blanket:"Portable blanket" + (p.solarW > 250 ? " (about " + Math.ceil(p.solarW / 200) + " of them)" : "")}[radio("soltype")] || "Roof panels or a blanket")) : "Driving covers your daily use"), {part:"sol", unit:"W", sizes:[0,100,150,200,250,300,400,500,600,800], cur:p.solarW, none:"No solar"});
+      addKit(kit, "DC-DC charger", (driveH > 0 || p.locked.dc) ? (p.dc ? p.dc + "A" : "None") : "Optional", chg("dc", "A", driveH > 0 ? "Fills up while you drive" : "Only if you drive or tow between stays (" + p.dc + "A)"), {part:"dc", unit:"A", sizes:[0,20,25,40,50], cur:p.dc, none:"No DC-DC charger"});
+      addKit(kit, "Inverter", inv ? fmt(inv) + "W" : "Not needed", chg("inv", "W", inv ? "Pure sine wave" : "Everything you run is 12V"), {part:"inv", unit:"W", sizes:[0,300,600,1000,1500,2000,3000], cur:inv, none:"No inverter"});
 
       var top = sorted[0];
       var otherType = p.batType === "lith" ? "agm" : "lith";
@@ -851,7 +884,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
         ]);
       } else {
         addShop(shop, "Battery · " + batLabel, p.batType === "lith" ? "battery" : "agm", "Stores your power." + (p.batType === "lith" && p.batAh > 460 ? " Our picks top out around 400Ah, so you'd link two or more." : ""), catFor("battery", p.batAh, p.batType));
-        addShop(shop, "DC-DC charger" + (driveH > 0 ? "" : " (optional)") + " · " + p.dc + "A, takes solar too", "dcdc", (driveH > 0 ? "" : "Only if you drive or tow between stays. Not counted in the total. ") + "Fills your battery from the engine while you drive. Most can plug into solar panels too, so one box does both jobs.", catFor("dcdc", p.dc), driveH === 0);
+        if(p.dc) addShop(shop, "DC-DC charger" + (driveH > 0 ? "" : " (optional)") + " · " + p.dc + "A, takes solar too", "dcdc", (driveH > 0 ? "" : "Only if you drive or tow between stays. Not counted in the total. ") + "Fills your battery from the engine while you drive. Most can plug into solar panels too, so one box does both jobs.", catFor("dcdc", p.dc), driveH === 0);
         var solNote = {fixed:"Fixed roof panels: set and forget, and they charge while you drive.", blanket:"A portable blanket: park in the shade and lay it in the sun." + (p.solarW > 250 ? " That's more than one blanket can make, so use two, or mix in a roof panel." : "")}[radio("soltype")] || (p.veh === "4wd" ? "Roof space is tight on most 4WDs, so a folding blanket is the easy option." : "Free charging from the sun. Fixed roof panels for set-and-forget, or a blanket you can point at the sun.");
         if(p.solarW) addShop(shop, "Solar · " + p.solarW + "W", "solar", solNote, catFor("solar", p.solarW, p.veh === "4wd" ? "box" : null));
         if(inv) addShop(shop, "Inverter · " + fmt(inv) + "W pure sine", "inverter", "The travel adaptor for house plugs.", catFor("inverter", inv));
@@ -943,10 +976,25 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
   }
 
   var KIT_IC = {"Battery": "<svg class=\"kit-ic\" viewBox=\"0 0 130 90\" width=\"40\" height=\"28\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"100\" height=\"58\" rx=\"10\" fill=\"#f5cb3c\"/><path d=\"M110 37h9v20h-9\"/><path d=\"M28 62V34M42 62V34\" stroke-width=\"5\"/><path d=\"M78 42v5M96 42v5M76 56c5 6 17 6 22 0\"/></svg>", "Solar": "<svg class=\"kit-ic\" viewBox=\"0 0 130 80\" width=\"40\" height=\"25\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 22h96l-12 36H10z\"/><path d=\"M54 22l-10 36M86 22l-10 36M16 40h96\"/><path d=\"M60 58v14M46 72h28\"/></svg>", "DC-DC charger": "<svg class=\"kit-ic\" viewBox=\"0 0 160 90\" width=\"40\" height=\"22\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 66V30c0-6 4-10 10-10h82c10 0 17 4 22 11l16 21c3 4 4 7 4 12v2z\"/><path d=\"M108 22l0 26h32\"/><path d=\"M48 14l5-8h40l-5 8z\" fill=\"#f5cb3c\"/><circle cx=\"44\" cy=\"68\" r=\"11\" fill=\"var(--paper, #f3f0e8)\"/><circle cx=\"118\" cy=\"68\" r=\"11\" fill=\"var(--paper, #f3f0e8)\"/><circle cx=\"44\" cy=\"68\" r=\"3\"/><circle cx=\"118\" cy=\"68\" r=\"3\"/></svg>", "Inverter": "<svg class=\"kit-ic\" viewBox=\"0 0 140 90\" width=\"40\" height=\"26\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"12\" y=\"24\" width=\"38\" height=\"40\" rx=\"8\" fill=\"#f5cb3c\"/><path d=\"M22 24V10M40 24V10M31 64v6c0 16 30 18 48 6s40-12 52 2\"/></svg>", "You use": "<svg class=\"kit-ic\" viewBox=\"0 0 110 100\" width=\"40\" height=\"36\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M30 40h46l8 44H22z\"/><path d=\"M76 50c14 0 18 8 18 18M30 50L14 38\"/><path d=\"M38 40c0-12 30-12 30 0\"/><path d=\"M50 16c-4 6 4 8 0 14M62 12c-4 6 4 8 0 14\" stroke-dasharray=\"3 5\"/></svg>", "You top up": "<svg class=\"kit-ic\" viewBox=\"0 0 100 100\" width=\"40\" height=\"40\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"50\" cy=\"50\" r=\"18\" fill=\"#f5cb3c\"/><path d=\"M50 14v-9M50 95v-9M14 50H5M95 50h-9M24 24l-6-6M82 82l-6-6M24 76l-6 6M82 18l-6 6\"/></svg>", "Usable battery": "<svg class=\"kit-ic\" viewBox=\"0 0 130 90\" width=\"40\" height=\"28\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"10\" y=\"18\" width=\"100\" height=\"58\" rx=\"10\" fill=\"#f5cb3c\"/><path d=\"M110 37h9v20h-9\"/><path d=\"M28 62V34M42 62V34\" stroke-width=\"5\"/><path d=\"M78 42v5M96 42v5M76 56c5 6 17 6 22 0\"/></svg>", "With no sun": "<svg class=\"kit-ic\" viewBox=\"0 0 120 90\" width=\"40\" height=\"30\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 74a46 46 0 0 1 92 0\"/><path d=\"M26 74h10M84 74h10M60 30v8M34 42l6 6M86 42l-6 6\"/><path d=\"M60 74l22-26\" stroke-width=\"5\"/><circle cx=\"60\" cy=\"74\" r=\"6\" fill=\"#f5cb3c\"/><path d=\"M22 86h14M84 86h14\" stroke-dasharray=\"2 4\"/></svg>"};
-  function addKit(parent, k, v, s){
+  function addKit(parent, k, v, s, pick){
     var tones = ["t-sun","t-mari","t-green","t-sand"];
-    parent.appendChild(el("div", "item " + tones[parent.children.length % 4], (KIT_IC[k] || "") + '<span class="k">' + k + '</span><span class="v"><span>' + v + '</span></span><span class="s">' + s + '</span>'));
+    var box = el("div", "item " + tones[parent.children.length % 4], (KIT_IC[k] || "") + '<span class="k">' + k + '</span><span class="v"><span>' + v + '</span></span><span class="s">' + s + '</span>');
+    if(pick){
+      var lk = (state.lock || {})[pick.part] != null;
+      if(lk) box.classList.add("is-locked"); else if(/^Changed to match/.test(s)) box.classList.add("is-bumped");
+      var sel = document.createElement("select");
+      sel.setAttribute("aria-label", "Try a different " + k.toLowerCase() + " size");
+      var sizes = pick.sizes.slice(); if(sizes.indexOf(pick.cur) === -1){ sizes.push(pick.cur); sizes.sort(function(a,b){ return a - b; }); }
+      sizes.forEach(function(n){ var o = document.createElement("option"); o.value = n; o.textContent = n ? fmt(n) + pick.unit : (pick.none || "None"); if(n === pick.cur) o.selected = true; sel.appendChild(o); });
+      sel.addEventListener("change", function(){ state.lock = state.lock || {}; state.lock[pick.part] = parseFloat(sel.value); calc(); var kb = document.getElementById("kit"); if(kb) kb.scrollIntoView({block:"nearest"}); });
+      var lab = el("label", "kit-change", '<span>Change size <b aria-hidden="true">▾</b></span>');
+      lab.appendChild(sel); box.appendChild(lab);
+    }
+    parent.appendChild(box);
   }
+  document.addEventListener("click", function(e){ if(e.target && e.target.id === "kit-reset"){ state.lock = {}; calc(); } });
+  // Changing anything in the steps starts the results fresh
+  ["click","input","change"].forEach(function(ev){ document.getElementById("main").addEventListener(ev, function(e){ if(state.lock && Object.keys(state.lock).length && !(e.target.closest && e.target.closest(".results"))) state.lock = {}; }, true); });
   function addChecklist(parent, title, items){
     var row = el("div", "row checkbox-card");
     row.appendChild(el("h3", null, title));
@@ -1254,6 +1302,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     if(state.mode === "check"){ o.g = {}; ["g-bat","g-sol","g-dc"].forEach(function(id){ o.g[id] = document.getElementById(id).value; }); }
     APPS.forEach(function(a){ var s = state.apps[a.id], d = DEFAULTS[a.id]; if(s.q !== d[0] || s.h !== d[1]) o.a[a.id] = [s.q, s.h]; });
     if(state.custom.length) o.c = state.custom;
+    if(state.mode === "plan" && state.lock && Object.keys(state.lock).length) o.k = state.lock;
     var tb = document.querySelector("#shop .kit-table"); if(tb && tb.getAttribute("data-tier") !== "1") o.t = tb.getAttribute("data-tier");
     return o;
   }
@@ -1288,6 +1337,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
       renderCustom();
       if(state.custom.length) document.getElementById("fine-tune").open = true;
     }
+    if(o.k && typeof o.k === "object"){ state.lock = {}; ["bat","sol","dc","inv"].forEach(function(k){ var v = parseFloat(o.k[k]); if(!isNaN(v) && v >= 0 && v <= 5000) state.lock[k] = v; }); }
     setMode(o.m === "check" ? "check" : "plan");
     if(o.t != null) pendingTier = parseInt(o.t, 10);
     return true;

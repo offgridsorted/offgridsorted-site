@@ -1108,3 +1108,16 @@ body.mode-check section.step.band-b{background:var(--sage-band);box-shadow:0 0 0
 /* Big words: one card per row on phones, two equal columns on wide screens */
 .article dl.word-list{display:grid;grid-template-columns:minmax(0,1fr);grid-auto-flow:row}
 @media (min-width:900px){.article dl.word-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Results: tap a box to try another size */
+.kit .item .kit-change{position:relative;display:inline-flex;align-self:flex-start;margin-top:10px;font-family:var(--font-ui);font-size:.85rem;font-weight:700;color:var(--ink);background:#fffdf7;border:2px solid var(--go);border-radius:999px;padding:5px 12px;cursor:pointer}
+.kit .item .kit-change b{font-weight:700;margin-left:2px}
+.kit .item .kit-change select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:16px}
+.kit .item .kit-change:focus-within{outline:3px solid var(--sun);outline-offset:2px}
+.kit .item.is-locked{box-shadow:inset 0 0 0 3px var(--go)}
+.kit .item.is-locked .kit-change{background:var(--go);color:#fffdf7}
+.verdict .kit-reset,#verdict .kit-reset{display:inline-block;margin-top:12px;font-family:var(--font-ui);font-weight:700;font-size:.92rem;background:none;border:2px solid var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer;color:var(--ink)}
+#verdict .v-use .pill{margin-right:6px}
+.kit .item .kit-change{white-space:nowrap}
+.kit .item.is-bumped{box-shadow:inset 0 0 0 2px var(--sun-dark)}
+.kit .item.is-bumped .s{font-weight:700}
