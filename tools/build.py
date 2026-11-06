@@ -662,9 +662,11 @@ QUICK = [  # short keyword-style questions that jump straight to the answer
 ]
 
 
-GUIDE_TRUST = ('<p class="trust-strip"><span>Independent</span><span>Bureau of Meteorology sun data</span>'
-               '<span>Plain English</span><span>Wired in by a licensed auto electrician</span>'
-               '<a href="{pre}disclosure.html">How we make money</a></p>')
+GUIDE_TRUST = ('<section class="trust-banner guide-trust" aria-label="Why you can trust us"><ul>'
+               '<li><b>Independent</b> Some links earn us a small commission, but it never decides what we recommend. <a href="{pre}disclosure.html">How we make money</a></li>'
+               '<li><b>Made for Australia</b> Aussie shops, AUD prices, and sun and weather data from the Bureau of Meteorology</li>'
+               '<li><b>Plain English</b> Easy to understand, no sales pitch</li>'
+               '<li><b>Safety first</b> We always say: get a licensed auto electrician to wire it in</li></ul></section>')
 
 
 def guides_hub():
@@ -730,7 +732,9 @@ def build():
         rel = '<div class="related"><h2 style="font-size:1.4rem;margin:0 0 12px">Keep reading</h2><div class="guide-list">' + "".join(guide_card(x, "{pre}") for x in others) + '</div></div>'
         dd = doodle(TAG_DOODLE.get(tag, "sun"), 130, cls="doodle guide-doodle")
         cta_href = {"Caravans": "planner.html#caravan", "4WDs": "planner.html#4wd"}.get(tag, "planner.html")
-        body = body.replace('</ul></div>', f'</ul></div><div class="early-cta"><a class="btn-link solid" href="{{pre}}{cta_href}">Work out my numbers</a><span>or see the <a href="{{pre}}kits/index.html">ready-made kits</a></span></div>' + GUIDE_TRUST, 1)
+        # One calm call to action inside the article (the cta-box), with the kits as the easy option
+        body = re.sub(r'(<div class="cta-box">.*?<a class="btn-link" href="\{pre\})planner\.html(">[^<]*</a>)</div>',
+                      lambda m: m.group(1) + cta_href + m.group(2) + '<span class="kit-or">or grab a <a href="{pre}kits/index.html">ready-made kit</a></span></div>', body, count=1, flags=re.S)
         body = body.replace('<span>By Kiran and Mitch</span>', '<span>By <a href="{pre}about.html">Kiran and Mitch</a></span>', 1)
         faqs = FAQS.get(slug, [])
         if faqs:
@@ -746,7 +750,7 @@ def build():
                 {"@type": "ListItem", "position": 2, "name": "Guides", "item": BASE + "guides/index.html"},
                 {"@type": "ListItem", "position": 3, "name": title.split(":")[0], "item": gurl}]},
             ORG] + ([{"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faqs]}] if faqs else [])
-        wrapped = f'<main class="article"><div class="crumbs"><a href="{{pre}}index.html">Home</a> › <a href="{{pre}}guides/index.html">Guides</a> › {tag}</div>{dd}{body}{rel}</main>'
+        wrapped = f'<main class="article"><div class="crumbs"><a href="{{pre}}index.html">Home</a> › <a href="{{pre}}guides/index.html">Guides</a> › {tag}</div>{dd}{body}{rel}{GUIDE_TRUST}</main>'
         page(f"guides/{slug}.html", title.split(":")[0], blurb, wrapped, "guides/index.html")
     LD["about.html"] = [{"@type": "AboutPage", "url": BASE + "about.html", "name": "About Off-Grid Sorted", "about": {"@id": ORG_ID}, "mainEntity": PEOPLE}, ORG]
     # Info pages

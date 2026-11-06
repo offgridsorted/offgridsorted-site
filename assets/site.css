@@ -1094,3 +1094,8 @@ body.mode-check section.step.band-b{background:var(--sage-band);box-shadow:0 0 0
   .hero .hand-note{order:6}
   .hero .hand-aside{order:7}
 }
+
+/* Guides: one CTA mid-article with the kits option; trust banner at the very end */
+.cta-box .kit-or{flex-basis:100%;font-family:var(--font-ui);font-size:.92rem;color:var(--muted);margin-top:-4px}
+.cta-box .kit-or a{color:var(--sign);font-weight:600}
+.article .guide-trust{margin:44px 0 8px}
