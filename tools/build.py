@@ -142,7 +142,7 @@ FAQS = {
 }
 
 
-NAV = [("kits/index.html", "Ready-made kits"), ("guides/index.html", "Easy guides"), ("about.html", "Who we are"), ("contact.html", "Contact")]
+NAV = [("guides/index.html", "Easy guides"), ("kits/index.html", "Ready-made kits"), ("about.html", "Who we are"), ("contact.html", "Contact")]
 
 
 def logo(w=120, ident="H"):

@@ -1023,3 +1023,8 @@ details.what-parts > summary{display:inline-block;gap:0}details.what-parts > sum
 .trip-chips label span{font-family:var(--font-ui);font-weight:500;font-size:.9rem;color:var(--muted)}
 .trip-chips input:checked + label span{color:#e6efe9}
 @media (max-width:640px){.trip-chips{grid-template-columns:1fr}}
+details.explain{margin-top:8px}
+details.explain > summary{cursor:pointer;list-style:none;font-family:var(--font-ui);font-weight:600;font-size:.92rem;color:var(--go);display:inline-block;text-decoration:underline;text-underline-offset:3px}
+details.explain > summary::-webkit-details-marker{display:none}
+details.explain > summary::before{content:"?\00a0";font-weight:800}
+details.explain .aside{margin-top:8px}
