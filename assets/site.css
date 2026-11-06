@@ -1028,3 +1028,5 @@ details.explain > summary{cursor:pointer;list-style:none;font-family:var(--font-
 details.explain > summary::-webkit-details-marker{display:none}
 details.explain > summary::before{content:"?\00a0";font-weight:800}
 details.explain .aside{margin-top:8px}
+.kit .item{position:relative}.kit .item .kit-ic{position:absolute;top:12px;right:12px;width:34px;height:auto;color:var(--ink);opacity:.85}
+.kit .item .k{display:block;padding-right:40px}@media (max-width:560px){.kit .item .kit-ic{width:28px;top:10px;right:10px}}
