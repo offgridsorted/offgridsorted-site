@@ -1015,3 +1015,4 @@ div.how-strip .pill,div.how-strip .op{text-transform:none;letter-spacing:normal}
 details.what-parts > summary{background:none;padding:6px 0;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1.5px}
 details.what-parts > summary{display:inline-block;gap:0}details.what-parts > summary::before{content:"＋\00a0"}details.what-parts[open] > summary::before{content:"－\00a0"}
 .quick-wrap .flabel + .small{margin:4px 0 2px}
+.quick-wrap{margin-top:26px}
