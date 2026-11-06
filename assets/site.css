@@ -698,7 +698,7 @@ html.embed .mast h1{font-size:2rem;margin-top:6px}
 .embed-code .msg{font-family:var(--font-ui);font-weight:600;color:var(--sign);min-height:1.3em;margin:0}
 
 /* ===== Colour refresh (Nov 2026): soft colour bands, chunky buttons, hand touches ===== */
-:root{--sun-band:#f5edd6;--sage-band:#e2ece6;--go:#3a7560;--go-dark:#285443;--sun:#ecc55c;--sun-dark:#c49d3c;--sea:#4a8aa0;--card:#fffdf7;--sign:#2f6a52}
+:root{--sun-band:#f5edd6;--sage-band:#e2ece6;--go:#3a7560;--go-dark:#285443;--sun:#ecc55c;--sun-dark:#c49d3c;--sea:#4a8aa0;--card:#fffdf7;--sign:#2f6a52;--muted:#454942}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--sun-band:#24261d;--sage-band:#1d2621;--card:#20241f;--sign:#74c493}}
 :root[data-theme="dark"]{--sun-band:#24261d;--sage-band:#1d2621;--card:#20241f;--sign:#74c493}
 /* soft colour bands so each section reads as its own chunk */
