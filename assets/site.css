@@ -803,3 +803,4 @@ html:root:not(#x){--biro:var(--ink)}
 .sec-head{position:relative;padding-right:90px}.sec-head .doodle{position:absolute;right:0;top:-6px}
 .sec-head + .hint{margin-top:10px}
 .sec-head + .hint{margin-top:16px}
+.hero .hand-note{align-items:center;text-align:center}
