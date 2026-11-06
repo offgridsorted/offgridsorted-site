@@ -726,7 +726,7 @@ html.embed .mast h1{font-size:2rem;margin-top:6px}
 .scribble{position:relative;white-space:nowrap}
 .scribble::after{content:"";position:absolute;left:-2%;right:-4%;bottom:-.12em;height:.28em;z-index:-1;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'><path d='M4 13 C45 5 95 15 140 8 S190 9 196 6' stroke='%23f2c230' stroke-width='7' fill='none' stroke-linecap='round'/></svg>") center/100% 100% no-repeat}
 .hero h1{position:relative;z-index:0}
-.hero .hand-note{font-weight:700;color:#24419a;font-size:1.55rem}
+.hero .hand-note{font-weight:700;color:var(--ink);font-size:1.55rem}
 .hand-aside{margin:14px 0 0}
 .hand-aside a{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-ui);font-size:1rem;color:var(--ink);text-decoration:none;background:var(--sage-band);padding:8px 16px 8px 12px;border-radius:999px}
 .hand-aside a b{color:var(--go)}
@@ -776,3 +776,5 @@ html.embed .mast h1{font-size:2rem;margin-top:6px}
 @media (max-width:760px){.trust-banner ul{grid-template-columns:1fr 1fr}}
 .trust-banner{margin-bottom:0}.trust-banner + .band{margin-top:0}
 .trust-banner a{color:#fffdf7;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+/* handwriting in ink, not blue biro */
+html:root:not(#x){--biro:var(--ink)}
