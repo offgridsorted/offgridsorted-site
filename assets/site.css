@@ -792,3 +792,5 @@ html:root:not(#x){--biro:var(--ink)}
 .signup .btn:hover{transform:translateY(2px);box-shadow:0 3px 0 var(--go-dark)}
 .signup .btn.ghost{background:transparent;color:var(--go);box-shadow:none;padding:16px 8px;text-decoration:underline;text-underline-offset:4px;font-weight:700}
 .signup .btn.ghost::after{content:""}
+@media (max-width:760px){:root{--hdr:96px}.site-header .logo svg{width:120px}.site-header .in{padding:8px 16px}}
+.hero .hand-note{line-height:1.15}
