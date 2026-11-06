@@ -84,7 +84,7 @@
     "store": "REDARC",
     "url": "https://www.redarcelectronics.com/au/100ah-lithium-icon-battery",
     "why": "Australian brand with a built-in heater, a 5-year warranty and a charge display on the battery. Made to pair with REDARC chargers.",
-    "downside": "About three to four times the price of budget packs for the same usable power.",
+    "downside": "About three to four times the price of the budget picks for the same usable power.",
     "warranty": 5,
     "kg": 12,
     "stores": [
@@ -158,7 +158,7 @@
     "store": "iTechworld",
     "url": "https://itechworld.com.au/products/12v-200ah-super-slim-lithium-battery-with-bluetooth-itech200ss",
     "why": "Phone app, a strong 200A output and a 5-year Aussie warranty, in a slim 12.6cm shape that fits a van wall or under a seat. In stock.",
-    "downside": "No heater, so it won't charge in freezing weather. The Renogy below has one.",
+    "downside": "No heater, so it won't charge in freezing weather. The Renogy under Other good options has one.",
     "warranty": 5,
     "kg": 25.5
    },
@@ -357,7 +357,7 @@
     "store": "REDARC",
     "url": "https://www.redarcelectronics.com/au/100ah-goblock-portable-power-system",
     "why": "Top Australian build with a 50A charger, 50A solar regulator and full app control. Charges much faster.",
-    "downside": "About three and a half times the iTechworld price, with a 2-year warranty.",
+    "downside": "About three and a half times the mid-range iTechworld price, with a 2-year warranty.",
     "warranty": 2,
     "kg": 19,
     "stores": [
@@ -484,7 +484,7 @@
     "store": "REDARC",
     "url": "https://www.redarcelectronics.com/au/dual-input-25a-under-bonnet-dc-battery-charger",
     "why": "The long-proven REDARC that can live under the bonnet.",
-    "downside": "No app, and it costs more than the Projecta."
+    "downside": "No app, and it costs more than the mid-range Projecta."
    }
   ],
   "dcdc_40": [
@@ -684,7 +684,7 @@
     "store": "REDARC",
     "url": "https://www.redarcelectronics.com/au/dual-input-50a-under-bonnet-dc-battery-charger",
     "why": "REDARC's under-bonnet option at 50A.",
-    "downside": "No app, and only about $130 less than the Alpha."
+    "downside": "No app, and only about $130 less than the premium Alpha."
    },
    {
     "tier": "Premium",
@@ -802,7 +802,7 @@
     "store": "ARB",
     "url": "https://www.arb.com.au/product/smfb1160-redarc-solar-blanket-160w",
     "why": "Australian-made quality with a genuine Anderson plug, built to plug into a REDARC charger, and backed by ARB stores everywhere.",
-    "downside": "About four times the Kings per watt, for fewer watts.",
+    "downside": "About four times the budget Kings per watt, for fewer watts.",
     "warranty": 2,
     "stores": [
      {
@@ -1051,7 +1051,7 @@
     "store": "Caravans Plus",
     "url": "https://www.caravansplus.com.au/enerdrive-epower-true-sine-wave-inverter-12v-600w-p-21960.html",
     "why": "Australian RV specialist, 5-year warranty, compact at 2kg. A safety-switch (RCD) version is available.",
-    "downside": "Handles smaller start-up surges than the Victron.",
+    "downside": "Handles smaller start-up surges than the mid-range Victron.",
     "warranty": 5,
     "kg": 2,
     "stores": [
@@ -1135,7 +1135,7 @@
     "store": "Caravans Plus",
     "url": "https://www.caravansplus.com.au/enerdrive-epower-true-sine-wave-inverter-12v-2000w-p-21920.html",
     "why": "Built for RVs to run coffee machines and hairdryers day after day, with a 5-year warranty. RCD versions available.",
-    "downside": "About two and a half times the Hard Korr.",
+    "downside": "About two and a half times the mid-range Hard Korr.",
     "rrp": 1306,
     "warranty": 5,
     "kg": 5.5,
@@ -1287,7 +1287,7 @@
     "role": "main",
     "name": "Kings 45L Stayzcool MKII",
     "why": "A proper compressor fridge-freezer with a 5-year warranty for about $750, holds about 72 cans.",
-    "downside": "Kings doesn't publish a lot of detail, and it's heavier than the Dometic.",
+    "downside": "Kings doesn't publish a lot of detail, and it's heavier than the mid-range Dometic.",
     "warranty": 5,
     "kg": 20.8,
     "draw": "0.65 to 1.25Ah per hour (Kings figure, fridge at 3°C, 32°C outside, 13.2V)",
@@ -1324,7 +1324,7 @@
     "tier": "Mid-range",
     "role": "main",
     "name": "Dometic CFF45",
-    "why": "The fridge we run in our Hiace: light on power for a 45L and currently cheaper than the Kings while it's being cleared out.",
+    "why": "The fridge we run in our Hiace: light on power for a 45L and currently cheaper than the budget Kings while it's being cleared out.",
     "downside": "Being run out, so stock is patchy and BCF/Snowys may sell out. 3-year warranty, not 5.",
     "warranty": 3,
     "kg": 18.6,
@@ -1347,8 +1347,8 @@
     "tier": "Premium",
     "role": "main",
     "name": "Dometic CFX5 45",
-    "why": "Dometic's top portable: lower power use than the CFF, a phone app, a 5-year warranty and tougher build.",
-    "downside": "About double the price of the CFF45 for the same size.",
+    "why": "Dometic's top portable: lower power use than the mid-range CFF45, a phone app, a 5-year warranty and tougher build.",
+    "downside": "About double the price of the mid-range CFF45 for the same size.",
     "warranty": 5,
     "kg": 18.9,
     "draw": "0.76Ah per hour (Dometic figure, 4°C inside, 32°C outside, 12V)",
@@ -1587,7 +1587,7 @@
     "role": "main",
     "name": "Dometic CFX5 95DZ",
     "why": "Dometic's top dual zone: phone app control, strong build and a 5-year warranty.",
-    "downside": "About $400 to $650 more than the EvaKool, and Snowys showed it out of stock online.",
+    "downside": "About $400 to $650 more than the mid-range EvaKool, and Snowys showed it out of stock online.",
     "warranty": 5,
     "kg": 29.5,
     "draw": "2.83Ah per hour average (Dometic figure, 4°C large, -15°C small, 32°C outside, 12V); 10.4A max",
@@ -2199,7 +2199,7 @@
     "role": "main",
     "name": "Narva Heavy Duty Battery Master Switch 300A IP67 (61044BL)",
     "why": "A sealed, heavy-duty isolator rated 300A continuous (1000A for 5 seconds), so it suits exposed spots like a ute tray or under a trailer.",
-    "downside": "Pricier than the Blue Sea switch for the same continuous rating. No warranty listed.",
+    "downside": "Pricier than the mid-range Blue Sea switch for the same continuous rating. No warranty listed.",
     "stores": [
      {
       "store": "Narva",
