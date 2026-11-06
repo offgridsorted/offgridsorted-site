@@ -1069,3 +1069,12 @@ body.mode-check section.step.band-a{background:var(--sun-band);box-shadow:0 0 0 
 body.mode-check section.step.band-b{background:var(--sage-band);box-shadow:0 0 0 100vmax var(--sage-band)}
 .explain-box p{margin:0 0 10px;font-family:var(--font-ui);font-size:.98rem;line-height:1.5}.explain-box p:last-child{margin-bottom:0}.explain-box b{display:block;font-family:var(--font-display);font-size:1.02rem;margin-bottom:2px}
 .explain-box{background:var(--card)}
+#build-card .field + .field{margin-top:28px}
+/* big words page */
+.word-group{margin-top:40px}
+.word-list{margin:0;display:grid;gap:12px}
+.word-list > div{background:var(--card);border-radius:14px;padding:14px 18px;box-shadow:0 3px 0 color-mix(in srgb,var(--go) 16%,transparent)}
+.word-list dt{font-family:var(--font-display);font-weight:700;font-size:1.15rem;margin-bottom:4px}
+.word-list dd{margin:0;line-height:1.6}
+@media (min-width:900px){.word-list{grid-template-columns:1fr 1fr}}
+@media (min-width:761px) and (max-width:1180px){.nav a:not(.cta){font-size:.9rem;padding-left:6px;padding-right:6px}}

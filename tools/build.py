@@ -142,7 +142,7 @@ FAQS = {
 }
 
 
-NAV = [("guides/index.html", "Easy guides"), ("kits/index.html", "Ready-made kits"), ("about.html", "Who we are"), ("contact.html", "Contact")]
+NAV = [("guides/index.html", "Easy guides"), ("kits/index.html", "Ready-made kits"), ("big-words.html", "Big words, made simple"), ("about.html", "Who we are"), ("contact.html", "Contact")]
 
 
 def logo(w=120, ident="H"):
@@ -754,6 +754,7 @@ def build():
                               ("disclosure", "Affiliate disclosure & disclaimer", "How Off-Grid Sorted earns money, and the limits of our advice."),
                               ("privacy", "Privacy", "How Off-Grid Sorted handles your information."),
                               ("contact", "Contact", "How to get in touch with Off-Grid Sorted."),
+                              ("big-words", "Big words, made simple", "Van, caravan and 4WD power jargon explained in everyday English: amps, amp-hours, DC-DC chargers, inverters, MPPT, lithium vs AGM and more."),
                               ("embed", "Put the Power Planner on your site", "Add the free Off-Grid Sorted Power Planner to your own website, van build or auto electrical site. Copy and paste, no sign-up.")]:
         page(f"{name}.html", title, desc, '<main class="article"><div class="crumbs"><a href="{pre}index.html">Home</a> › ' + title + '</div>' + read(f"content/{name}.html") + '</main>', f"{name}.html" if name == "about" else "")
     build_kits()
