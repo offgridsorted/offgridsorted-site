@@ -500,11 +500,11 @@ def kit_totals(k):
 
 KITS = [
     {"slug": "weekender", "name": "Weekender", "doodle": "tent", "preset": "weekender",
-     "who": "Two or three nights away, a medium fridge, lights and phones. You drive somewhere most days.",
+     "who": "Two or three nights away, a medium fridge, lights and phones. You drive there, set up camp and stay put until it's time to head home.",
      "runs": ["Medium 35 to 50L fridge", "4 LED lights, about 4 hours a night", "2 phones charging", "A 12V fan overnight", "Water pump"],
      "daily": "about 50Ah a day",
      "parts": [("Battery", "100 to 120Ah lithium", "battery_100", "Holds about two days of your use with no charging. About 10 to 13kg.", True, "build:parts"),
-               ("DC-DC charger", "25A, with solar input", "dcdc_25", "Driving 2 to 3 hours puts back more than you use in a day.", True, "build:parts"),
+               ("DC-DC charger", "25A, with solar input", "dcdc_25", "Fills the battery on the drive there, and again on the way home. A couple of hours behind the wheel puts back more than a day's use.", True, "build:parts"),
                ("Battery box", "For a 100Ah battery", "box_100", "Holds the battery firmly and gives you plugs to run things from.", True, "build:parts"),
                ("All-in-one power box", "Battery, charger and plugs in one", "powerbox_100", "The easy option. Battery, DC-DC charger and solar input in one box you can move between cars.", True, "build:box"),
                ("Wiring kit", "Engine battery to the back", "install_kit", "The heavy cable, fuses and plugs that let your engine charge the house battery. Your auto electrician fits it. The premium REDARC kit is made for their 40A and 50A chargers, so with a 25A the mid-range kit does the same job.", True, ""),
