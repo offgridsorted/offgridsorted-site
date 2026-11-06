@@ -956,3 +956,12 @@ details.what-parts[open] > summary::before{content:"－"}
 @media (max-width:420px){.how-strip li{font-size:1.05rem}.how-strip{gap:6px}.how-strip .hl-arrow .doodle{width:30px}}
 @media (max-width:560px){.planner-note{font-size:1.2rem;gap:4px}.planner-note .doodle{width:48px;height:auto}.planner-note .marker{white-space:nowrap}}
 .menu-toggle .drop a.drop-cta{background:var(--sun);color:#1c1f1b;box-shadow:0 4px 0 var(--sun-dark);flex-direction:row;justify-content:space-between;align-items:center}.menu-toggle .drop a.drop-cta::after{position:static;margin:0}
+/* how-strip as small pill chips with straight arrows */
+.how-strip{gap:8px;flex-wrap:wrap}
+.how-strip li:not(.hl-arrow){flex-direction:row;gap:8px;background:var(--card);border:1.5px solid color-mix(in srgb,var(--go) 30%,transparent);border-radius:999px;padding:7px 14px 7px 10px;font-family:var(--font-ui);font-weight:700;font-size:.98rem}
+.how-strip li .doodle{height:22px}
+.how-strip .hl-arrow{margin:0;font-family:var(--font-ui);font-weight:800;font-size:1.1rem;color:var(--go)}
+@media (max-width:420px){.how-strip li:not(.hl-arrow){font-size:.88rem;padding:6px 10px 6px 8px}.how-strip li .doodle{height:18px}}
+.planner-facts{font-family:var(--font-ui);font-weight:600;font-size:.95rem;color:var(--go);margin:14px 0 4px}
+@media (max-width:560px){.how-strip{gap:4px;flex-wrap:nowrap}.how-strip li:not(.hl-arrow){font-size:.8rem;padding:6px 9px 6px 7px;gap:5px}.how-strip li .doodle{height:16px}.how-strip .hl-arrow{font-size:.9rem}}
+.how-strip li{white-space:nowrap}@media (max-width:420px){.how-strip li .doodle{display:none}.how-strip li:not(.hl-arrow){padding:7px 11px}}
