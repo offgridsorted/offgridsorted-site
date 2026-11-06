@@ -10,7 +10,7 @@
     "price": 399,
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/kings-lithium-batteries/100ah-lithium-battery.html",
-    "why": "The cheapest well-known 100Ah, and you can pick one up in store almost anywhere.",
+    "why": "The cheapest well-known 100Ah, sold online by Adventure Kings with delivery Australia-wide.",
     "downside": "Only a 1-year warranty and no app.",
     "warranty": 1,
     "kg": 10,
@@ -116,7 +116,7 @@
     "price": 849,
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/kings-lithium-batteries/200ah-lithium-battery.html",
-    "why": "Easy to buy in store, and people who've opened one up say it's decent inside for the money.",
+    "why": "Easy to order online, and people who've opened one up say it's decent inside for the money.",
     "downside": "No app or cold-weather heater, so check the charge on a separate monitor.",
     "warranty": 3,
     "kg": 23,
@@ -207,7 +207,7 @@
     "price": 1698,
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/kings-lithium-batteries/200ah-lithium-battery.html",
-    "why": "The cheapest way to about 400Ah from a store you can walk into.",
+    "why": "The cheapest way to about 400Ah from one well-known brand.",
     "downside": "No app or heater, and you'll need link cables to join the two.",
     "warranty": 3,
     "kg": 46,
@@ -383,7 +383,7 @@
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/kings-25a-dcdc-charger.html",
     "why": "The cheapest way to charge a lithium battery from both your engine and solar, with plug-in leads.",
-    "downside": "Kings don't publish the warranty or solar limits, so ask in store.",
+    "downside": "Kings don't publish the warranty or solar limits, so check with Adventure Kings before you buy.",
     "stores": [
      {
       "store": "Adventure Kings",
@@ -534,7 +534,7 @@
     "price": 339,
     "store": "Adventure Kings",
     "url": "https://au.adventurekings.com/solar-batteries/battery-charger/dc-dc-chargers/kings-40a-dcdc-charger.html",
-    "why": "Easy to buy in store, and it plugs straight into Kings batteries and leads.",
+    "why": "Easy to order online, and it plugs straight into Kings batteries and leads.",
     "downside": "Costs more than the Renogy and iTechworld, and specs aren't published."
    },
    {
@@ -739,25 +739,6 @@
    {
     "tier": "Budget",
     "role": "main",
-    "name": "Kings 240W Solar Blanket + 6m lead",
-    "price": 199.95,
-    "store": "Adventure Kings",
-    "url": "https://www.4wdsupacentre.com.au/240w-solar-blanket-6m-extension-lead.html",
-    "why": "Cheapest way into a decent-sized blanket. No regulator inside, which suits a DC-DC charger that does the regulating.",
-    "downside": "Kings quality is mixed, and the price changes almost daily.",
-    "rrp": 213.95,
-    "stores": [
-     {
-      "store": "Adventure Kings",
-      "price": 199.95,
-      "url": "https://www.4wdsupacentre.com.au/240w-solar-blanket-6m-extension-lead.html",
-      "was": 213.95
-     }
-    ]
-   },
-   {
-    "tier": "Mid-range",
-    "role": "main",
     "name": "Hard Korr 200W Solar Blanket",
     "price": 294,
     "store": "Snowys",
@@ -784,15 +765,22 @@
    },
    {
     "tier": "Mid-range",
-    "role": "other",
+    "role": "main",
     "name": "iTechworld 200W Solar Blanket",
     "price": 369,
     "store": "iTechworld",
     "url": "https://itechworld.com.au/collections/solar-panel-folding-kits/products/200w-solar-blanket-kit-panel-for-caravan-camping-boats-4wd-motorhome",
     "why": "Tough outer cover and good local support.",
-    "downside": "Heavier than the Hard Korr, with a 1-year warranty.",
+    "downside": "Heavier than the budget Hard Korr, with a 1-year warranty.",
     "warranty": 1,
-    "kg": 7.8
+    "kg": 7.8,
+    "stores": [
+     {
+      "store": "iTechworld",
+      "price": 369,
+      "url": "https://itechworld.com.au/collections/solar-panel-folding-kits/products/200w-solar-blanket-kit-panel-for-caravan-camping-boats-4wd-motorhome"
+     }
+    ]
    },
    {
     "tier": "Premium",
@@ -802,7 +790,7 @@
     "store": "ARB",
     "url": "https://www.arb.com.au/product/smfb1160-redarc-solar-blanket-160w",
     "why": "Australian-made quality with a genuine Anderson plug, built to plug into a REDARC charger, and backed by ARB stores everywhere.",
-    "downside": "About four times the budget Kings per watt, for fewer watts.",
+    "downside": "About four times the budget Hard Korr per watt, for fewer watts.",
     "warranty": 2,
     "stores": [
      {
@@ -814,25 +802,6 @@
    }
   ],
   "roof_200": [
-   {
-    "tier": "Budget",
-    "role": "main",
-    "name": "Kings 200W Fixed Glass Panel",
-    "price": 149,
-    "store": "Adventure Kings",
-    "url": "https://www.4wdsupacentre.com.au/200w-fixed-glass-solar-panel.html",
-    "why": "About 75c a watt. Add a Kings 100W ($134) for 300W.",
-    "downside": "Heavy for the watts, and quality control is mixed.",
-    "warranty": 2,
-    "kg": 11.6,
-    "stores": [
-     {
-      "store": "Adventure Kings",
-      "price": 149.0,
-      "url": "https://www.4wdsupacentre.com.au/200w-fixed-glass-solar-panel.html"
-     }
-    ]
-   },
    {
     "tier": "Mid-range",
     "role": "main",
@@ -854,15 +823,22 @@
     ]
    },
    {
-    "tier": "Mid-range",
-    "role": "other",
+    "tier": "Budget",
+    "role": "main",
     "name": "Victron 190W Mono Panel",
-    "price": 194.86,
+    "price": 196.71,
     "store": "Solar 4 RVs",
-    "url": "https://www.solar4rvs.com.au/products/victron-solar-panel-185w-12v-mono",
-    "why": "A premium brand for about $1 a watt.",
+    "url": "https://www.solar4rvs.com.au/products/victron-solar-panel-190w-12v-mono",
+    "why": "A top-quality brand for about $1 a watt, the cheapest decent fixed panel we can link to right now.",
     "downside": "Slightly fewer watts.",
-    "warranty": 5
+    "warranty": 5,
+    "stores": [
+     {
+      "store": "Solar 4 RVs",
+      "price": 196.71,
+      "url": "https://www.solar4rvs.com.au/products/victron-solar-panel-190w-12v-mono"
+     }
+    ]
    },
    {
     "tier": "Premium",
@@ -900,25 +876,6 @@
   ],
   "roof_600": [
    {
-    "tier": "Budget",
-    "role": "main",
-    "name": "3 × Kings 200W Fixed Glass Panels",
-    "price": 447,
-    "store": "Adventure Kings",
-    "url": "https://www.4wdsupacentre.com.au/200w-fixed-glass-solar-panel.html",
-    "why": "The cheapest real 600W, leaving more money for the battery.",
-    "downside": "About 35kg on the roof before brackets, and three may not fit a mid-size van.",
-    "warranty": 2,
-    "kg": 34.8,
-    "stores": [
-     {
-      "store": "Adventure Kings",
-      "price": 447.0,
-      "url": "https://www.4wdsupacentre.com.au/200w-fixed-glass-solar-panel.html"
-     }
-    ]
-   },
-   {
     "tier": "Mid-range",
     "role": "main",
     "name": "3 × Renogy 200W Mono Panels",
@@ -939,15 +896,22 @@
     ]
    },
    {
-    "tier": "Mid-range",
-    "role": "other",
+    "tier": "Budget",
+    "role": "main",
     "name": "3 × Victron 190W Mono Panels",
-    "price": 584.58,
+    "price": 590.13,
     "store": "Solar 4 RVs",
-    "url": "https://www.solar4rvs.com.au/products/victron-solar-panel-185w-12v-mono",
-    "why": "A premium brand for less than the Renogy setup.",
+    "url": "https://www.solar4rvs.com.au/products/victron-solar-panel-190w-12v-mono",
+    "why": "A top-quality brand for less than the mid-range Renogy setup.",
     "downside": "570W rather than 600W.",
-    "warranty": 5
+    "warranty": 5,
+    "stores": [
+     {
+      "store": "Solar 4 RVs",
+      "price": 590.13,
+      "url": "https://www.solar4rvs.com.au/products/victron-solar-panel-190w-12v-mono"
+     }
+    ]
    },
    {
     "tier": "Premium",
