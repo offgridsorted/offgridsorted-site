@@ -806,3 +806,4 @@ html:root:not(#x){--biro:var(--ink)}
 .hero .hand-note{align-items:center;text-align:center}
 .founders h3{margin-bottom:16px}.founders p{margin-bottom:12px}
 .signup{background:color-mix(in srgb,var(--go) 16%,var(--sage-band));box-shadow:none}
+.signup .btn:not(.ghost){background:var(--sun);color:#1c1f1b;box-shadow:0 5px 0 var(--sun-dark)}.signup .btn:not(.ghost):hover{box-shadow:0 3px 0 var(--sun-dark)}
