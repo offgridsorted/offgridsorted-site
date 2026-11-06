@@ -966,3 +966,13 @@ details.what-parts[open] > summary::before{content:"－"}
 @media (max-width:560px){.how-strip{gap:4px;flex-wrap:nowrap}.how-strip li:not(.hl-arrow){font-size:.8rem;padding:6px 9px 6px 7px;gap:5px}.how-strip li .doodle{height:16px}.how-strip .hl-arrow{font-size:.9rem}}
 .how-strip li{white-space:nowrap}@media (max-width:420px){.how-strip li .doodle{display:none}.how-strip li:not(.hl-arrow){padding:7px 11px}}
 .how-strip li.answer{background:var(--go);border-color:var(--go);color:#fffdf7}.how-strip li.answer .doodle{color:#1c1f1b}.how-strip .hl-arrow{font-size:1.3rem}
+/* equation: thicker outlines everywhere; on phones, two lines with a down arrow */
+.how-strip li:not(.hl-arrow){border-width:2.5px;border-color:color-mix(in srgb,var(--go) 45%,transparent)}
+@media (max-width:560px){
+  .how-strip{flex-wrap:wrap;gap:8px 8px}
+  .how-strip li:not(.hl-arrow){font-size:1.05rem;padding:10px 16px}
+  .how-strip .hl-arrow{font-size:1.4rem}
+  .how-strip li.hl-arrow:nth-child(4){flex-basis:100%;text-align:center;font-size:0;line-height:1;margin:-2px 0}
+  .how-strip li.hl-arrow:nth-child(4)::after{content:"↓";font-size:1.6rem}
+  .how-strip li.answer{font-size:1.15rem;padding:11px 22px}
+}
