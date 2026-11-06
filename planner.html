@@ -110,7 +110,7 @@
   <p class="hint">Pick the one that sounds most like you. It fills everything in below, and you can tweak from there.</p>
   <div class="presets" role="group" aria-label="Ready-made kits">
     <button type="button" data-preset="weekender" aria-pressed="false"><b>Weekender</b><span>Two or three nights, medium fridge, lights and phones. Drive there, set up camp, come home.</span></button>
-    <button type="button" data-preset="long" aria-pressed="false"><b>Long trips</b><span>A week or more, bigger fridge, laptop. Some days parked up.</span></button>
+    <button type="button" data-preset="long" aria-pressed="false"><b>Longer trips</b><span>A week or more, bigger fridge, laptop. Some days parked up.</span></button>
     <button type="button" data-preset="living" aria-pressed="false"><b>Living in it</b><span>Full-time: fridge-freezer, work-from-van, heater, Starlink, coffee.</span></button>
   </div>
 </section>
@@ -634,7 +634,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     var dailyAh = p.daily / V;
     state.onlyFridge = APPS.every(function(a){ return !state.apps[a.id].q; }) && !state.custom.length && (parseFloat(document.getElementById("fridge").value) || 0) > 0;
     var nk = document.getElementById("ns-kit");
-    if(nk){ var kslug = dailyAh <= 55 ? "weekender" : dailyAh <= 90 ? "long-trips" : "living-in-it"; nk.href = "kits/" + kslug + ".html"; nk.textContent = "See the closest ready-made kit: " + ({"weekender":"Weekender","long-trips":"Long trips","living-in-it":"Living in it"})[kslug]; }
+    if(nk){ var kslug = dailyAh <= 55 ? "weekender" : dailyAh <= 90 ? "long-trips" : "living-in-it"; nk.href = "kits/" + kslug + ".html"; nk.textContent = "See the closest ready-made kit: " + ({"weekender":"Weekender","long-trips":"Longer trips","living-in-it":"Living in it"})[kslug]; }
     var pt = document.getElementById("res-pill-t"); if(pt) pt.textContent = p.daily > 0 ? "About " + fmt(dailyAh) + "Ah a day · See results" : "See results";
     var pn = document.getElementById("preset-note");
     if(state.preset && state.mode === "plan"){ pn.hidden = false; pn.innerHTML = "Filled in from the <b>" + state.preset + "</b> kit. " + (state.preset === "Weekender" ? "Set up for a weekend away: you drive there, stay put for two or three days, then drive home. The drive fills the battery, the battery gets you through two parked days, and a little solar stretches it. That works out to about an hour of driving a day on average. " : "") + "Change anything above and these results update. <a href=\"#s2\">Edit what you run ↑</a>"; } else { pn.hidden = true; }
