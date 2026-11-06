@@ -269,8 +269,14 @@
   <p class="preset-note" id="preset-note" hidden></p>
   <p class="verdict" id="verdict"></p>
   <div class="kit" id="kit"></div>
-  <details class="what-parts"><summary>What do these four bits mean?</summary>
-  <figure class="diagram" style="margin:6px 0 0">
+  <details class="what-parts"><summary>What do these four bits do?</summary>
+  <div class="legend-dl">
+    <div><b>Battery</b>Stores your power. Bigger battery, more days off-grid.</div>
+    <div><b>Solar</b>Tops the battery up for free. Weaker in winter.</div>
+    <div><b>DC-DC charger</b>Charges the battery from your engine while you drive.</div>
+    <div><b>Inverter</b>Turns van power into house power for normal plugs.</div>
+  </div>
+<figure class="diagram" style="margin:6px 0 0">
     <svg viewBox="0 0 360 190" role="img" aria-label="Sketch of a van: the sun charges a solar panel on the roof, the engine charges through a DC-DC charger, both fill the battery, and an inverter feeds a house plug.">
       <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--ink)">
         <!-- sun -->
@@ -311,12 +317,8 @@
       <text class="lbl" x="352" y="178" text-anchor="end">engine → DC-DC</text>
       <text class="lbl" x="8" y="178">inverter → plug</text>
     </svg>
-  </figure><div class="legend-dl">
-    <div><b>Battery</b>Stores your power. Bigger battery, more days off-grid.</div>
-    <div><b>Solar</b>Tops the battery up for free. Weaker in winter.</div>
-    <div><b>DC-DC charger</b>Charges the battery from your engine while you drive.</div>
-    <div><b>Inverter</b>Turns van power into house power for normal plugs.</div>
-  </div></details>
+  </figure>
+</details>
   <p class="more-detail" id="more-detail-p"><button type="button" class="btn ghost" id="more-detail">Want more detail? Fine-tune everything</button></p>
 
 
