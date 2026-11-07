@@ -269,6 +269,7 @@
   <p class="preset-note" id="preset-note" hidden></p>
   <p class="verdict" id="verdict"></p>
   <div class="kit" id="kit"></div>
+  <div class="reality-box" id="reality" hidden></div>
   <details class="what-parts"><summary>What do these four bits do?</summary>
   <div class="legend-dl">
     <div><b>Battery</b>Stores your power. Bigger battery, more days off-grid.</div>
@@ -768,6 +769,7 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     // Usage bar (hardest season)
     var bar = document.getElementById("bar"), legend = document.getElementById("legend");
     bar.innerHTML = ""; legend.innerHTML = "";
+    var rbox = document.getElementById("reality"); if(rbox){ rbox.hidden = true; }
     var sorted = p.L.slice().sort(function(a,b){ return b.wh - a.wh; });
     sorted.forEach(function(x, i){
       var pct = p.daily > 0 ? (x.wh / p.daily * 100) : 0;
@@ -809,6 +811,38 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
       addKit(kit, "DC-DC charger", (driveH > 0 || p.locked.dc) ? (p.dc ? p.dc + "A" : "None") : "Optional", chg("dc", "A", driveH > 0 ? "Fills up while you drive" : "Only if you drive or tow between stays (" + p.dc + "A)"), {part:"dc", unit:"A", sizes:[0,20,25,40,50], cur:p.dc, none:"No DC-DC charger"});
       addKit(kit, "Inverter", inv ? fmt(inv) + "W" : "Not needed", chg("inv", "W", inv ? "Pure sine wave" : "Everything you run is 12V"), {part:"inv", unit:"W", sizes:[0,300,600,1000,1500,2000,3000], cur:inv, none:"No inverter"});
 
+      function lc1(t){ return t.charAt(0).toLowerCase() + t.slice(1); }
+      var reality = document.getElementById("reality");
+      var bigBat = p.batType === "lith" && p.batAh > 400;
+      if(reality){
+        if(!changed && (tooMuchSolar || bigBat)){
+          var tops = sorted.filter(function(x){ return x.wh / p.daily >= 0.08; }).slice(0, 3);
+          var topTxt = tops.map(function(x){ return "your <b>" + lc1(x.n) + "</b> (" + Math.round(x.wh / p.daily * 100) + "%)"; });
+          var topJoin = topTxt.length > 1 ? topTxt.slice(0, -1).join(", ") + " and " + topTxt[topTxt.length - 1] : topTxt[0];
+          var roofW = p.roofMax, roofInWh = roofW * p.sun * SOLAR_REAL + p.driveWh, coverPct = Math.round(Math.min(1, roofInWh / p.daily) * 100);
+          var gapWh = p.daily - roofInWh, usable = p.batAh * V * p.dod, lasts = gapWh > 0 ? usable / gapWh : 0;
+          var lastsTxt = lasts >= 14 ? "a couple of weeks or more" : lasts >= 1.5 ? "about " + Math.round(lasts) + " days" : "about a day";
+          var h = '<h3>Why this setup looks different</h3>';
+          h += '<p>You\'d use about <b>' + fmt(dailyAh) + 'Ah</b> a day. That\'s a lot of power. Most of it goes on ' + topJoin + '.</p>';
+          if(tooMuchSolar){
+            h += '<p>To put all of that back with sunshine on a ' + seasonWord(p.se) + ' day, you\'d need about <b>' + fmt(p.solarW) + 'W</b> of solar panels. Most ' + VEH_NAME[p.veh] + ' roofs only fit about <b>' + roofW + 'W</b>. It\'s like a water tank with the tap running out faster than the rain can fill it.</p>';
+            h += '<p>With your roof full of panels' + (p.driveWh > 0 ? ' and your driving' : '') + ', you\'d put back about <b>' + coverPct + '%</b> of what you use each day. ' + (gapWh > 0 ? 'So the battery slowly runs down. That\'s why we\'ve made it big: <b>' + p.batAh + 'Ah</b> lasts ' + lastsTxt + ' before it needs a top-up.' : 'That covers you.') + '</p>';
+          }
+          if(bigBat){
+            var nBat = Math.ceil(p.batAh / 400);
+            h += '<p>The shop list below shows our biggest single battery (about 400Ah). For ' + p.batAh + 'Ah, your auto electrician would link about <b>' + nBat + '</b> of them together. That much lithium weighs about ' + fmt(p.batAh * KG_PER_AH.lith) + 'kg and costs a lot, so it\'s worth trying the options below first.</p>';
+          }
+          if(tooMuchSolar && p.solarW > 600 && p.roofMax > 600) h += '<p>The solar list shows <b>600W</b> (3 panels), the biggest roof set we link to. You can fit a little more if your roof has room, or add a blanket.</p>';
+          var topName = tops[0] ? lc1(tops[0].n) : "biggest user";
+          h += '<p><b>Your options, easiest first:</b></p><ul class="gaps">';
+          h += '<li><b>Use less of your ' + topName + '.</b> It\'s your biggest user. Untick it in Step 5 to see how much smaller everything gets.</li>';
+          h += '<li><b>Add a portable solar blanket</b> (200 to 400W) to set out in the sun when you\'re parked.</li>';
+          h += driveH > 0 ? '<li><b>Drive a bit more,</b> or plug in at a powered campsite every few days.</li>' : '<li><b>Plug in at a powered campsite</b> every few days, or fit a DC-DC charger and go for a drive.</li>';
+          h += '<li><b>Carry a small, quiet inverter generator</b> for long grey spells.</li></ul>';
+          h += '<p class="small">Want to test an idea? Tap <b>Change size</b> on any box above and we\'ll show you how it would go. These are estimates.</p>';
+          reality.innerHTML = h; reality.hidden = false;
+        } else { reality.hidden = true; reality.innerHTML = ""; }
+      }
       var top = sorted[0];
       var otherType = p.batType === "lith" ? "agm" : "lith";
       var otherDod = otherType === "lith" ? 0.9 : 0.5;
@@ -1008,6 +1042,8 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
   var TIERS = ["Budget","Mid-range","Premium"], TKEY = ["budget","mid","premium"];
   var shopRows = [];
   var CAT_LABEL = {battery_100:"100 to 120Ah", battery_200:"200Ah", battery_400:"about 400Ah", powerbox_100:"100 to 120Ah box", dcdc_25:"25A", dcdc_40:"40A", dcdc_50:"50A", blanket_200:"160 to 240W blanket", roof_200:"one 200W panel", roof_600:"600W (3 panels)", inverter_600:"500 to 800W", inverter_2000:"2,000W", monitor:"500A shunt"};
+  var CAT_SIZE = {battery_100:120, battery_200:200, battery_400:400, powerbox_100:120, dcdc_25:25, dcdc_40:40, dcdc_50:50, blanket_200:240, roof_200:200, roof_600:600, inverter_600:800, inverter_2000:2000};
+  var CAT_BIGGEST = {battery_400:1, dcdc_50:1, blanket_200:1, roof_600:1, inverter_2000:1, powerbox_100:1};
   function catFor(kind, n, extra){
     if(kind === "battery") return extra === "lith" ? (n <= 120 ? "battery_100" : n <= 230 ? "battery_200" : "battery_400") : null;
     if(kind === "allinone") return (extra === "lith" && n <= 120) ? "powerbox_100" : null;
@@ -1047,7 +1083,15 @@ m.querySelectorAll('.drop a').forEach(function(a){a.addEventListener('click',fun
     var head = '<tr><th class="ph">Part</th>' + TIERS.map(function(t, i){ return '<th class="c' + i + '">' + t + '</th>'; }).join("") + '</tr>';
     var body = "", totals = [0,0,0], anyCat = false;
     shopRows.forEach(function(r){
-      var showing = r.cat && CAT_LABEL[r.cat] && r.cat !== "monitor" && (r.size || "").indexOf(CAT_LABEL[r.cat]) !== 0 ? '<span class="pn pick-size">We\'ve picked <b>' + CAT_LABEL[r.cat] + '</b>' + (r.cat.indexOf("roof") === 0 || r.cat.indexOf("blanket") === 0 ? ", so you have a bit spare." : ", the closest size we have picks for.") + '</span>' : "";
+      var showing = "";
+      if(r.cat && CAT_LABEL[r.cat] && r.cat !== "monitor" && (r.size || "").indexOf(CAT_LABEL[r.cat]) !== 0){
+        var want = parseFloat(String(r.size || "").replace(/,/g, "")) || 0, have = CAT_SIZE[r.cat] || 0, isSolar = r.cat.indexOf("roof") === 0 || r.cat.indexOf("blanket") === 0;
+        var tail;
+        if(want > have && CAT_BIGGEST[r.cat]) tail = ", the biggest we have picks for. You'd want about " + fmt(want) + (r.cat.indexOf("battery") === 0 ? "Ah" : r.cat.indexOf("dcdc") === 0 ? "A" : "W") + ", so see <b>Why this setup looks different</b> above.";
+        else if(want > have) tail = ", the closest size we have picks for (a little under what you need).";
+        else tail = isSolar ? ", so you have a bit spare." : ", the closest size we have picks for.";
+        showing = '<span class="pn pick-size">We\'ve picked <b>' + CAT_LABEL[r.cat] + '</b>' + tail + '</span>';
+      }
       body += '<tr><th scope="row" class="ph"><b>' + r.name + '</b>' + (r.size ? '<span class="kp-size">' + r.size + '</span>' : "") + (r.note ? '<span class="pn">' + r.note + '</span>' : "") + showing + '</th>';
       TIERS.forEach(function(t, i){
         var cell = "";

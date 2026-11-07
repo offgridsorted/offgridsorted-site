@@ -1134,3 +1134,10 @@ body.mode-check section.step.band-b{background:var(--sage-band);box-shadow:0 0 0
 /* Sale prices: old price crossed out, new price next to it */
 s.was{color:var(--muted);font-weight:500;text-decoration-thickness:2px;text-decoration-color:#b5523b;margin-right:2px}
 .prod .price s.was,.wtb s.was{display:inline;font-size:.9em}
+/* Planner: plain-English explainer when the setup can't fit (roof or battery limits) */
+.reality-box{margin:18px 0 6px;background:var(--sun-band);border-radius:16px;padding:18px 18px 8px;border-left:5px solid var(--sun)}
+.reality-box h3{margin:0 0 12px;font-size:1.15rem}
+.reality-box p{margin:0 0 12px}
+.reality-box ul.gaps{margin:0 0 12px;padding-left:20px}
+.reality-box ul.gaps li{margin-bottom:6px}
+.reality-box .small{color:var(--muted)}
