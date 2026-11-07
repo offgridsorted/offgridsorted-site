@@ -53,6 +53,9 @@ Off-Grid Sorted is an independent Australian website that helps people work out 
 - about.html, disclosure.html, privacy.html (from content/).
 - assets/site.css: shared styles.
 
+## Deploying (Kiran's rule, 7 Nov 2026)
+- Never push to main (the live site) unless Kiran says to deploy in this conversation. Commit locally or push a branch / pull request instead, and tell her what's ready.
+
 ## Saving Netlify credits
 - Netlify's free plan gives 300 credits a month and every push to main is a production deploy costing 15 credits (about 20 deploys a month).
 - So: commit work locally or on a branch, and push to main in one batch at the end of a session, not after every change.
