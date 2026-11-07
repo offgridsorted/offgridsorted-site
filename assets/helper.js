@@ -67,6 +67,7 @@
      l:[["Contact us", pre + "contact.html"]]}
   ];
   var CHIPS = [0, 1, 2, 5, 13];
+  var FACE = '<svg class="hb-face" viewBox="0 0 56 52" aria-hidden="true" fill="none" stroke="#1c1f1b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 9l2 5M28 5v6M39 9l-2 5M8 17l4 3M48 17l-4 3"/><rect x="10" y="20" width="32" height="24" rx="6" fill="#f5cb3c"/><path d="M42 27h4v10h-4"/><circle cx="20" cy="30" r="1.6" fill="#1c1f1b" stroke="none"/><circle cx="32" cy="30" r="1.6" fill="#1c1f1b" stroke="none"/><path d="M20 36q6 5 12 0"/></svg>';
   function norm(t){ return (" " + t.toLowerCase().replace(/[^a-z0-9\- ]/g, " ") + " ").replace(/\s+/g, " "); }
   function match(text){
     var t = norm(text), best = null, bestScore = 0;
@@ -79,10 +80,10 @@
   }
   var btn = document.createElement("button");
   btn.type = "button"; btn.className = "helper-btn"; btn.setAttribute("aria-expanded", "false"); btn.setAttribute("aria-controls", "helper-panel");
-  btn.innerHTML = '<span class="hb-q" aria-hidden="true">?</span><span class="hb-t">Feeling confused? Ask me a question</span>';
+  btn.innerHTML = FACE + '<span class="hb-t"><span class="hb-1">Feeling confused?</span><span class="hb-2">Ask me a question</span></span>';
   var panel = document.createElement("div");
   panel.className = "helper-panel"; panel.id = "helper-panel"; panel.hidden = true; panel.setAttribute("role", "dialog"); panel.setAttribute("aria-label", "Ask a question");
-  panel.innerHTML = '<div class="hp-head"><b>Ask me a question</b><button type="button" class="hp-x" aria-label="Close">×</button></div>' +
+  panel.innerHTML = '<div class="hp-head"><span class="hp-who">' + FACE + '<span><b>Sunny</b><small>Your friendly power helper</small></span></span><button type="button" class="hp-x" aria-label="Close">×</button></div>' +
     '<div class="hp-log" aria-live="polite"></div>' +
     '<form class="hp-form"><input type="text" placeholder="Type your question…" aria-label="Your question" maxlength="200"><button type="submit">Ask</button></form>' +
     '<p class="hp-note">A simple helper that answers common questions from our guides. Answers are general, not advice for your exact setup.</p>';
@@ -101,7 +102,7 @@
   var started = false;
   function open(){
     panel.hidden = false; btn.setAttribute("aria-expanded", "true"); btn.classList.add("is-open");
-    if(!started){ started = true; say("Hi! I can help with the common questions about batteries, solar and chargers. Tap one below or type your own."); chips(); }
+    if(!started){ started = true; say("Hi, I'm Sunny! I can help with the common questions about batteries, solar and chargers. Tap one below or type your own."); chips(); }
     setTimeout(function(){ input.focus(); }, 50);
   }
   function close(){ panel.hidden = true; btn.setAttribute("aria-expanded", "false"); btn.classList.remove("is-open"); btn.focus(); }
