@@ -1141,3 +1141,7 @@ s.was{color:var(--muted);font-weight:500;text-decoration-thickness:2px;text-deco
 .reality-box ul.gaps{margin:0 0 12px;padding-left:20px}
 .reality-box ul.gaps li{margin-bottom:6px}
 .reality-box .small{color:var(--muted)}
+/* Planner Step 6: point unsure readers to the guides */
+.guides-nudge{display:inline-block;margin:4px 0 22px;background:var(--sage-band);border-radius:14px;padding:10px 14px;font-family:var(--font-ui);font-size:.95rem;color:var(--ink)}
+.guides-nudge a{font-weight:700;color:var(--go-dark)}
+.guides-nudge .gn-note{display:block;font-size:.82rem;color:var(--muted);margin-top:2px}
