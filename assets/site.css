@@ -1173,3 +1173,8 @@ s.was{color:var(--muted);font-weight:500;text-decoration-thickness:2px;text-deco
 @media print{.helper-btn,.helper-panel{display:none!important}}
 .helper-btn.lift{padding:10px}
 .helper-btn.lift .hb-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* Netlify preview toolbar sits bottom-right on drafts only: lift the helper above it */
+.helper-btn.np{bottom:96px}
+.helper-btn.np.lift{bottom:150px}
+.helper-btn.np + .helper-panel{bottom:156px}
+.helper-btn.np.lift + .helper-panel{bottom:210px}

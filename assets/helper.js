@@ -115,5 +115,6 @@
     if(m) answer(m);
     else say("I'm a simple helper, so I don't know that one yet. Try the <a href=\"" + PLAN + "\">Power Planner</a>, the <a href=\"" + pre + "guides/index.html\">easy guides</a>, or <a href=\"" + pre + "contact.html\">ask Kiran &amp; Mitch</a>.");
   });
+  if(/netlify\.app$/.test(location.hostname)) btn.classList.add("np");
   if(document.body.classList.contains("planner") || /planner\.html/.test(location.pathname)) btn.classList.add("lift");
 })();
