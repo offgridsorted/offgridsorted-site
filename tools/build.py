@@ -236,7 +236,7 @@ def footer(pre):
   <div class="in">
     <div class="about">
       <div style="color:var(--ink)">{logo(130, "F")}</div>
-      <p>Plain-English help to get the power setup in your van, caravan or 4WD sorted. Independent and Australian, made by Kiran and Mitch on the Gold Coast.</p>
+      <p>Plain-English help to get the power setup in your van, caravan or 4WD sorted. Independent and Australian, made by Kiran, Mitch &amp; Ziggy on the Gold Coast.</p>
       <p class="small">Some links earn us a small commission at no cost to you. <a href="{pre}disclosure.html" style="display:inline;color:var(--sign)">How we make money</a>.</p>
     </div>
     <div><p class="fh">Tools</p><a href="{pre}planner.html">Power Planner</a><a href="{pre}planner.html#check">Check what I've got</a><a href="{pre}kits/index.html">Ready-made kits</a><a href="{pre}embed.html">Put the planner on your site</a></div>
@@ -244,6 +244,7 @@ def footer(pre):
     <div><p class="fh">Off-Grid Sorted</p><a href="{pre}about.html">About</a><a href="{pre}disclosure.html">Disclosure &amp; disclaimer</a><a href="{pre}privacy.html">Privacy</a><a href="{pre}contact.html">Contact</a><a href="https://instagram.com/offgridsorted" rel="noopener">Instagram</a></div>
   </div>
   <p class="small" style="max-width:1080px;margin:0 auto;padding:0 18px 24px">© 2026 Off-Grid Sorted. Estimates only. Always have a licensed auto electrician install or check your system.</p>
+  <script src="{pre}assets/helper.js" data-pre="{pre}" defer></script>
 </footer>
 '''
 
