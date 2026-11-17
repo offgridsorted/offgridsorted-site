@@ -51,6 +51,8 @@ GUIDES = [
      "Shade, driving, theft, weight, heat and cost per watt compared, plus who each one suits and why many get both.", "live"),
     ("winter-solar-not-keeping-up", "Winter solar: why your panels aren't keeping up", "Solar",
      "Short days, a low sun and long shadows, with BOM-based winter numbers for every state and what helps.", "live"),
+    ("summer-heat-fridge-solar-battery", "Summer camping: what heat does to your fridge, solar and battery", "Fridges",
+     "Why heat makes your fridge work harder, your panels make less and your battery age faster, and the easy fixes.", "live"),
 ]
 
 LOGO = '''<svg viewBox="0 0 420 300" width="{w}" height="{h}" role="img" aria-label="Off-Grid Sorted">
@@ -138,6 +140,11 @@ FAQS = {
         ("Why is my solar not keeping up in winter?", "Shorter days, a low sun that hits flat roof panels at a glancing angle, and longer shadows. In southern Australia a winter day can hold only a quarter to a half of a summer day's sun, based on Bureau of Meteorology averages."),
         ("How much does a 200W solar panel make in winter?", "As a rough estimate after real-world losses, about 47Ah a day in Queensland, 34Ah in New South Wales, 22Ah in Victoria and 19Ah in Tasmania, using capital city averages."),
         ("How can I get more from my solar in winter?", "Point a portable panel or blanket at the sun and move it during the day, park in the open, keep panels clean, top up by driving through a DC-DC charger, and use a bit less power."),
+    ],
+    "summer-heat-fridge-solar-battery": [
+        ("Why does my 12V fridge use more power in summer?", "It works like a home air conditioner: the hotter it is around the fridge, the more often it runs. Dometic tests its CFX3 range at 32\u00b0C outside, and Snowys says a fridge in a baking toolbox can drain your battery about twice as fast."),
+        ("Do solar panels make less power on hot days?", "Yes. Most panels lose about 0.3 to 0.5% of their power for every degree above 25\u00b0C, and in full sun they run 20 to 25\u00b0C hotter than the air. Expect roughly 10 to 20% less on a hot day, more for flexible panels stuck to a roof."),
+        ("Can a lithium battery get too hot to charge?", "Yes. Many lithium batteries are rated to charge only up to about 45 to 50\u00b0C, and their built-in protection may stop charging when they get too hot. Keep the battery out of direct sun, ideally inside the van."),
     ],
 }
 
