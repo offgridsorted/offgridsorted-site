@@ -67,5 +67,6 @@ Off-Grid Sorted is an independent Australian website that helps people work out 
 
 ## Instagram look (Kiran, 17 Nov 2026)
 - The old designed cards (cream background, serif headings, fake handwriting, tilted polaroids) looked too AI. Don't make them any more.
-- Posts are photo-led carousels: one full-bleed photo per slide, softened to look like a phone photo (warmer, softer contrast, faded darks), with one short plain line of text. Template: Canva design DAHbIHRC65Y.
-- Photos: Kiran's own (assets/img) where they honestly fit, otherwise free stock that is confirmed Australian (check the photo's Info in Canva or its Pexels title). Never AI-generated, no readable number plates, never imply a stock photo is us.
+- Posts are photo-led carousels (style chosen 17 Nov 2026): one full-bleed photo per slide, softened to look like a phone photo (warmer, softer contrast, faded darks). Text sits top left over a soft dark fade: a small yellow #ecc55c label (slide number like "02 / 06"), a big white Barlow Condensed headline in capitals, and one plain white line under it. Keep text clear of the photo's subject and at least 80px from the edges (the Instagram grid trims the sides). Template: Canva design DAHbIHRC65Y.
+- Words: one surprising, sourced number or fact per slide, not tips everyone already knows ("park in the shade"). Slide 1 is the hook; the last slide is "link in bio".
+- Photos: free stock that is confirmed Australian (check the photo's Info in Canva or its Pexels title). Don't use Kiran's van photos (overused). Never AI-generated, no readable number plates, never imply a stock photo is us.
