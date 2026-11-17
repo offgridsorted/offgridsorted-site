@@ -1229,5 +1229,5 @@ s.was{color:var(--muted);font-weight:500;text-decoration-thickness:2px;text-deco
 .warm .photo{margin:6px 0 20px}
 .warm .photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:16px;filter:saturate(.88) contrast(.92) sepia(.08) brightness(1.03);background:var(--sage-band)}
 .warm .photo figcaption{font-family:var(--font-ui,Barlow,sans-serif);font-size:.78rem;color:var(--muted);margin-top:6px}
-.warm figure.photo{background:none;padding:0;box-shadow:none;transform:none;border:0;rotate:0deg}
+.warm figure.photo{background:none!important;padding:0;box-shadow:none;transform:none;border:0;rotate:0deg}
 .warm figure.photo::before,.warm figure.photo::after{display:none}
