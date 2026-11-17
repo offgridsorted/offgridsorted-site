@@ -51,6 +51,8 @@ GUIDES = [
      "Shade, driving, theft, weight, heat and cost per watt compared, plus who each one suits and why many get both.", "live"),
     ("winter-solar-not-keeping-up", "Winter solar: why your panels aren't keeping up", "Solar",
      "Short days, a low sun and long shadows, with BOM-based winter numbers for every state and what helps.", "live"),
+    ("ford-ranger-dual-battery", "Ford Ranger dual battery setup: PX and Next Gen", "4WDs",
+     "Smart alternator, where the second battery fits, the Raptor catch, and three setups from budget to premium.", "live"),
 ]
 
 LOGO = '''<svg viewBox="0 0 420 300" width="{w}" height="{h}" role="img" aria-label="Off-Grid Sorted">
@@ -138,6 +140,11 @@ FAQS = {
         ("Why is my solar not keeping up in winter?", "Shorter days, a low sun that hits flat roof panels at a glancing angle, and longer shadows. In southern Australia a winter day can hold only a quarter to a half of a summer day's sun, based on Bureau of Meteorology averages."),
         ("How much does a 200W solar panel make in winter?", "As a rough estimate after real-world losses, about 47Ah a day in Queensland, 34Ah in New South Wales, 22Ah in Victoria and 19Ah in Tasmania, using capital city averages."),
         ("How can I get more from my solar in winter?", "Point a portable panel or blanket at the sun and move it during the day, park in the open, keep panels clean, top up by driving through a DC-DC charger, and use a bit less power."),
+    ],
+    "ford-ranger-dual-battery": [
+        ("Does the Ford Ranger have a smart alternator?", "Yes. CarsGuide confirms even a 2014 Ranger has one, so treat every PX and Next Gen as smart. Use a DC-DC charger with its ignition wire connected, not a simple isolator."),
+        ("Where does the second battery go in a Ranger?", "Both the PX and Next Gen have room under the bonnet for a tray, but lithium is better in the tub, canopy or behind the rear seat, away from engine heat. The Next Gen Raptor has no engine bay spot."),
+        ("What size dual battery for a Ranger weekend?", "For a medium fridge, lights and phones, a 100 to 120Ah lithium battery with a 25A DC-DC charger is a common setup. By our estimate that runs about two and a half days with no charging."),
     ],
 }
 
