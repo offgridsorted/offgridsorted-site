@@ -64,3 +64,8 @@ Off-Grid Sorted is an independent Australian website that helps people work out 
 ## Workflow for scheduled guide runs
 - Write new guides on a branch and open a pull request for Kiran to review. Do not push guides straight to main unless she has said auto-publish is on.
 - Price and link checks: approved by Kiran on 3 Nov 2026 to commit straight to main without asking. Run them twice a week (Monday and Thursday), and only push when something actually changed (a price, stock, or a dead link), so it stays within the Netlify credit budget.
+
+## Instagram look (Kiran, 17 Nov 2026)
+- The old designed cards (cream background, serif headings, fake handwriting, tilted polaroids) looked too AI. Don't make them any more.
+- Posts are photo-led carousels: one full-bleed photo per slide, softened to look like a phone photo (warmer, softer contrast, faded darks), with one short plain line of text. Template: Canva design DAHbIHRC65Y.
+- Photos: Kiran's own (assets/img) where they honestly fit, otherwise free stock that is confirmed Australian (check the photo's Info in Canva or its Pexels title). Never AI-generated, no readable number plates, never imply a stock photo is us.
