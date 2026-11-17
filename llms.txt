@@ -26,6 +26,7 @@
 - [Caravan battery not charging while driving? A step-by-step fix](https://offgridsorted.com.au/guides/caravan-not-charging-while-driving.html): A step-by-step checklist: tow bar power, cable size, Anderson plugs, alternator, DC-DC charger and battery.
 - [Solar blanket vs fixed panel: which suits you?](https://offgridsorted.com.au/guides/solar-blanket-vs-fixed-panel.html): Shade, driving, theft, weight, heat and cost per watt compared, plus who each one suits and why many get both.
 - [Winter solar: why your panels aren't keeping up](https://offgridsorted.com.au/guides/winter-solar-not-keeping-up.html): Short days, a low sun and long shadows, with BOM-based winter numbers for every state and what helps.
+- [Summer camping: what heat does to your fridge, solar and battery](https://offgridsorted.com.au/guides/summer-heat-fridge-solar-battery.html): Why heat makes your fridge work harder, your panels make less and your battery age faster, and the easy fixes.
 
 ## About
 - [About us](https://offgridsorted.com.au/about.html)
