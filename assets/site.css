@@ -1197,3 +1197,20 @@ s.was{color:var(--muted);font-weight:500;text-decoration-thickness:2px;text-deco
 .helper-panel{border:2.5px solid var(--ink)}
 .hp-msg.bot{background:#fffdf7;border:1.5px solid #e3dcc8}
 .helper-panel{background:#fbf8f0}
+
+/* Warmer guide style (trial on the summer guide, Nov 2026) */
+.warm .scene{font-family:var(--font-display);font-size:1.32rem;line-height:1.45;color:var(--ink);margin:26px 0 18px}
+.warm .pull{font-size:1.12rem;line-height:1.55;padding:2px 0 2px 16px;border-left:4px solid var(--hi);margin:0 0 22px}
+.warm h2{margin-top:44px}
+.warm .margin-note{font-family:var(--font-hand);font-size:1.5rem;line-height:1.2;color:var(--ink);margin:-6px 0 16px;padding:2px 10px;display:inline-block;background:color-mix(in srgb,var(--hi) 12%,transparent);border-radius:6px}
+.warm .margin-note::before{content:"↑ ";}
+.warm .tbl table{background:var(--paper)}
+.warm .easy-list{list-style:none;padding:0;margin:8px 0 18px}
+.warm .easy-list li{padding:12px 0 12px 34px;border-bottom:1px solid var(--faint);position:relative}
+.warm .easy-list li::before{content:"✓";position:absolute;left:4px;top:11px;font-weight:700;color:var(--go)}
+.warm .signoff{display:flex;gap:16px;align-items:center;background:var(--sage-band);border-radius:18px;padding:16px 18px;margin:34px 0 10px}
+.warm .signoff img{width:84px;height:84px;border-radius:50%;object-fit:cover;flex:none}
+.warm .signoff p{margin:0}
+.warm .signoff .by{font-family:var(--font-hand);font-size:1.5rem;line-height:1.1;margin-bottom:4px}
+.warm .sources{font-size:.92rem;color:var(--grey,#454942)}
+@media (max-width:480px){.warm .scene{font-size:1.2rem}.warm .signoff{align-items:flex-start}.warm .signoff img{width:64px;height:64px}}
