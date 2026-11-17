@@ -53,6 +53,9 @@ Off-Grid Sorted is an independent Australian website that helps people work out 
 - about.html, disclosure.html, privacy.html (from content/).
 - assets/site.css: shared styles.
 
+## Deploying (Kiran's rule, 7 Nov 2026)
+- Never push to main (the live site) unless Kiran says to deploy in this conversation. Commit locally or push a branch / pull request instead, and tell her what's ready.
+
 ## Saving Netlify credits
 - Netlify's free plan gives 300 credits a month and every push to main is a production deploy costing 15 credits (about 20 deploys a month).
 - So: commit work locally or on a branch, and push to main in one batch at the end of a session, not after every change.
@@ -61,3 +64,9 @@ Off-Grid Sorted is an independent Australian website that helps people work out 
 ## Workflow for scheduled guide runs
 - Write new guides on a branch and open a pull request for Kiran to review. Do not push guides straight to main unless she has said auto-publish is on.
 - Price and link checks: approved by Kiran on 3 Nov 2026 to commit straight to main without asking. Run them twice a week (Monday and Thursday), and only push when something actually changed (a price, stock, or a dead link), so it stays within the Netlify credit budget.
+
+## Instagram look (Kiran, 17 Nov 2026)
+- The old designed cards (cream background, serif headings, fake handwriting, tilted polaroids) looked too AI. Don't make them any more.
+- Posts are photo-led carousels (style chosen 17 Nov 2026): one full-bleed photo per slide, softened to look like a phone photo (warmer, softer contrast, faded darks). Text sits top left over a soft dark fade: a small yellow #ecc55c label (slide number like "02 / 06"), a big white Barlow Condensed headline in capitals, and one plain white line under it. Keep text clear of the photo's subject and at least 80px from the edges (the Instagram grid trims the sides). Template: Canva design DAHbIHRC65Y.
+- Words: one surprising, sourced number or fact per slide, not tips everyone already knows ("park in the shade"). Slide 1 is the hook; the last slide is "link in bio".
+- Photos: free stock that is confirmed Australian (check the photo's Info in Canva or its Pexels title). Don't use Kiran's van photos (overused). Never AI-generated, no readable number plates, never imply a stock photo is us.
