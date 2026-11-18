@@ -50,7 +50,7 @@ GUIDES = [
     ("solar-blanket-vs-fixed-panel", "Solar blanket vs fixed panel: which suits you?", "Solar",
      "Shade, driving, theft, weight, heat and cost per watt compared, plus who each one suits and why many get both.", "live"),
     ("winter-solar-not-keeping-up", "Winter solar: why your panels aren't keeping up", "Solar",
-     "Short days, a low sun and long shadows, with BOM-based winter numbers for every state and what helps.", "live"),
+     "Short days, a low sun and long shadows, with Bureau of Meteorology winter numbers for every state and what helps.", "live"),
     ("summer-heat-fridge-solar-battery", "Summer camping: what heat does to your fridge, solar and battery", "Fridges",
      "Why heat makes your fridge work harder, your panels make less and your battery age faster, and the easy fixes.", "live"),
     ("ford-ranger-dual-battery", "Ford Ranger dual battery setup: PX and Next Gen", "4WDs",
@@ -648,7 +648,7 @@ def build_kits():
                 f'<p class="hint" style="font-size:1.15rem">{k["who"]}</p>'
                 '<div class="tldr"><h2>What it runs</h2><ul>' + ''.join(f'<li>{r}</li>' for r in k["runs"]) + '</ul></div>'
                 f'<h2>Make it yours</h2><div class="kit-choices">{choice_ui}</div>{tips}'
-                f'<h2>What\'s in the kit</h2><p class="trust-strip"><span>✓ Picked for fit, not commission</span><span>✓ Aussie shops, AUD prices</span><span>✓ Estimates, not promises</span><span>✓ Auto electrician to wire it in</span><a href="../about.html#how-we-work">How we work</a></p><p class="small">Tap <b>+ Add to my list</b> on anything you want. Your list builds at the bottom of the page with a link to each shop. Links open in a new tab.</p>{kit_table(k)}'
+                f'<h2>What\'s in the kit</h2><p class="trust-strip"><span>Picked for fit, not commission</span><span>Aussie shops, AUD prices</span><span>Estimates, not promises</span><span>Auto electrician to wire it in</span><a href="../about.html#how-we-work">How we work</a></p><p class="small">Tap <b>+ Add to my list</b> on anything you want. Your list builds at the bottom of the page with a link to each shop. Links open in a new tab.</p>{kit_table(k)}'
                 f'<div class="kit-total"><h2>What it costs all up</h2>'
                 f'<p class="small">The kit total above is parts only, using our main pick at each level. Prices checked {PRODUCTS["checked_label"]}; they change often.</p><p class="small"><b>Installation:</b> auto electricians quote roughly $300 to $2,500 for a dual battery fit-out depending on the job (The Quote Yard 2026 price guide). {k["install"]} Get a written quote.</p></div>'
                 + gear_table(k) +
