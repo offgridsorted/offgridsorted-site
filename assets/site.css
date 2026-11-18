@@ -1243,3 +1243,12 @@ s.was{color:var(--muted);font-weight:500;text-decoration-thickness:2px;text-deco
 .warm .photo.in-note{margin:0 0 10px 16px}
 @media (max-width:620px){.warm .photo.in-note{margin:6px 0 12px}}
 .warm .wb .tbl table{background:var(--paper)}
+/* photos on cards and lists */
+.hub-list li a,.hub-list li > div{grid-template-columns:64px 1fr auto}
+.hub-list .thumb{width:64px;height:64px;border-radius:14px;object-fit:cover;display:block;filter:saturate(.88) contrast(.92) sepia(.08) brightness(1.03);background:var(--sage-band)}
+.guide-list a{overflow:hidden}
+.guide-list .card-photo,.kit-card .card-photo{display:block;width:calc(100% + 32px);margin:-16px -16px 6px;max-width:none;height:auto;aspect-ratio:16/10;object-fit:cover;filter:saturate(.88) contrast(.92) sepia(.08) brightness(1.03);background:var(--sage-band)}
+.kit-card{overflow:hidden}
+.kit-card .card-photo{width:calc(100% + 2*var(--cardpad,22px));margin:calc(-1*var(--cardpad,22px)) calc(-1*var(--cardpad,22px)) 14px;aspect-ratio:12/7}
+.warm.kitpage .wb > h2:first-child{margin-top:0}
+.kit-card .card-photo{width:100%;margin:0 0 14px;border-radius:16px;aspect-ratio:12/7}

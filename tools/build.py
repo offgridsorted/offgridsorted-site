@@ -301,7 +301,9 @@ def read(p):
 def guide_card(g, pre):
     slug, title, tag, blurb, status = g
     if status == "live":
-        return f'<a href="{pre}guides/{slug}.html">{doodle(TAG_DOODLE.get(tag, "sun"), 64)}<span class="tag">{tag}</span><h3>{html.escape(title)}</h3><span class="small">{html.escape(blurb)}</span></a>'
+        ph = GUIDE_PHOTOS.get(slug)
+        top = (f'<img class="card-photo" src="{pexels_url(ph[0], 640, 400)}" width="640" height="400" loading="lazy" alt="">' if ph else doodle(TAG_DOODLE.get(tag, "sun"), 64))
+        return f'<a href="{pre}guides/{slug}.html">{top}<span class="tag">{tag}</span><h3>{html.escape(title)}</h3><span class="small">{html.escape(blurb)}</span></a>'
     return f'<div class="soon">{doodle(TAG_DOODLE.get(tag, "sun"), 64)}<span class="tag">{tag} · coming soon</span><h3>{html.escape(title)}</h3><span class="small">{html.escape(blurb)}</span></div>'
 
 
@@ -626,7 +628,7 @@ def build_kits():
     def from_price(k):
         t = combo_totals(k)["|".join(f"{c[0]}={c[3]}" for c in (k.get("choices") or []))]["t"][0]
         return money(t)
-    cards = ''.join(f'<a class="card kit-card" href="{{pre}}kits/{k["slug"]}.html">[[d:{k["doodle"]}:110]]<h3>{k["name"]}</h3><p class="kit-facts"><b>{k["parts"][0][1]}</b> · parts from {from_price(k)}</p><p>{k["who"]}</p><span class="go">See the full kit →</span></a>' for k in KITS)
+    cards = ''.join(f'<a class="card kit-card" href="{{pre}}kits/{k["slug"]}.html"><img class="card-photo" src="{pexels_url(KIT_PHOTOS[k["slug"]][0], 720, 420)}" width="720" height="420" loading="lazy" alt="{KIT_PHOTOS[k["slug"]][1]}"><h3>{k["name"]}</h3><p class="kit-facts"><b>{k["parts"][0][1]}</b> · parts from {from_price(k)}</p><p>{k["who"]}</p><span class="go">See the full kit →</span></a>' for k in KITS)
     hub = ('<main class="page"><div class="crumbs"><a href="{pre}index.html">Home</a> › Kits</div>'
            '<div class="sec-head"><h1 style="font-size:3rem;margin:4px 0 8px">Ready-made kits</h1>[[d:fridge:100]]</div>'
            '<p class="hint" style="margin-bottom:18px">Three common setups, sized with the Power Planner. Tell us what you\'re powering, then pick the kit that sounds most like you.</p>'
@@ -657,6 +659,7 @@ def build_kits():
                 '<div class="aside" style="margin:24px 0"><b>Get a pro to wire it in.</b> Have a licensed auto electrician install or check your setup, with the right cable sizes and fuses. Sizes here are estimates for typical use.</div>'
                 '<p class="small">We pick products by how well they fit the job, not by what pays us. Some links earn us a small commission at no cost to you. <a href="{pre}disclosure.html">How we make money</a>.</p>'
                 '<script src="{pre}assets/list.js" defer></script><script src="{pre}assets/kits.js" defer></script></main>')
+        body = warmify_kit(k, body)
         page(f"kits/{k['slug']}.html", f"The {k['name']} kit", f"Everything in the {k['name']} power kit for Australian vans, caravans and 4WDs: battery, solar, DC-DC charger, wiring and more, with budget to premium options.", body, "kits/index.html")
 
 
@@ -689,7 +692,7 @@ def guides_hub():
     by = {g[0]: g for g in GUIDES}
     def row(g, num=None):
         slug, title, tag, blurb, status = g
-        lead = f'<span class="n">{num}</span>' if num else doodle(TAG_DOODLE.get(tag, "sun"), 44)
+        lead = f'<span class="n">{num}</span>' if num else (guide_thumb(slug, 64) or doodle(TAG_DOODLE.get(tag, "sun"), 44))
         words = html.escape((title + " " + blurb + " " + tag).lower())
         if status != "live":
             return f'<li class="soon" data-words="{words}"><div>{lead}<span><b>{html.escape(title)}</b><span class="small">Coming soon</span></span></div></li>'
@@ -736,10 +739,12 @@ PEXELS = {"outback-red-track": 32915493, "dampier-cliffs": 33191831, "solar-cell
           "outback-path": 32915209, "cradle-mountain-picnic": 37971033, "walls-of-jerusalem": 29797569, "tasmania-sunrise": 32984696,
           "ninety-mile-straight": 34775821, "alpine-way": 4252721, "great-ocean-road": 34573960, "outback-dirt-road": 32914591,
           "oodnadatta-track": 35881458, "bush-campsite": 34360266, "eucalypt-camp": 34360246, "outback-blue-sky": 35858964,
-          "snowy-tasmania-road": 33805596, "macdonnell-ranges": 41053473, "macdonnell-view": 41077626, "macdonnell-hills": 41077182}
+          "snowy-tasmania-road": 33805596, "macdonnell-ranges": 41053473, "macdonnell-view": 41077626, "macdonnell-hills": 41077182,
+          "milky-way-desert": 32915229}
 
 # Free Pexels photos, all confirmed Australian. (photo, alt text)
 GUIDE_PHOTOS = {
+    "summer-heat-fridge-solar-battery": ("outback-red-track", "A red dirt track through the Australian outback on a hot, clear day"),
     "4wd-dual-battery-basics": ("outback-dirt-road", "A remote red dirt road through the Australian outback"),
     "battery-size-for-12v-fridge": ("cradle-mountain-picnic", "A picnic table at a bush campsite near Cradle Mountain, Tasmania"),
     "caravan-not-charging-while-driving": ("ninety-mile-straight", "The 90 Mile Straight sign on Australia's longest straight road"),
@@ -777,6 +782,23 @@ GUIDE_SCENES = {
     "solar-blanket-vs-fixed-panel": "You've found the perfect shady spot by the river. Lovely for you, not so lovely for the panel on your roof. That's the big difference between a blanket and a fixed panel.",
     "will-my-fridge-last": "It's Friday arvo, the fridge is packed, and you've got a 100Ah battery and no plans to drive till Sunday. Will the drinks still be cold?",
 }
+
+
+def pexels_url(name, w, h=None):
+    pid = PEXELS[name]
+    return f"https://images.pexels.com/photos/{pid}/pexels-photo-{pid}.jpeg?auto=compress&cs=tinysrgb&w={w}" + (f"&h={h}&fit=crop" if h else "")
+
+
+def guide_thumb(slug, size=72):
+    ph = GUIDE_PHOTOS.get(slug)
+    if not ph:
+        return ""
+    return f'<img class="thumb" src="{pexels_url(ph[0], size * 2, size * 2)}" width="{size}" height="{size}" loading="lazy" alt="">'
+
+
+KIT_PHOTOS = {"weekender": ("eucalypt-camp", "A tent among tall gum trees in an Australian forest"),
+              "long-trips": ("ninety-mile-straight", "The 90 Mile Straight sign on Australia's longest straight road"),
+              "living-in-it": ("milky-way-desert", "The Milky Way over the Australian desert at night")}
 
 
 def pexels_fig(name, alt, eager=False):
@@ -856,6 +878,17 @@ def warmify_guide(slug, body):
     else:
         rest = rest + signoff
     return '<div class="warm">\n' + top + sun + green + intro_band + rest + '\n</div>'
+
+
+def warmify_kit(k, body):
+    ph = KIT_PHOTOS.get(k["slug"])
+    body = re.sub(r'(<p class="hint" style="font-size:1.15rem">.*?</p>)', lambda m: (pexels_fig(ph[0], ph[1], eager=True) if ph else "") + m.group(1), body, count=1, flags=re.S)
+    body = re.sub(r'<div class="tldr">(.*?)</div>', lambda m: f'<section class="wb green"><div class="short">{m.group(1)}</div></section>', body, count=1, flags=re.S)
+    i = body.find("<h2>Make it yours</h2>")
+    j = body.find('<div class="cta-box">')
+    if i != -1 and j != -1:
+        body = body[:i] + warm_bands(body[i:j], ("plain", "sage", "plain", "sun")) + body[j:]
+    return body.replace('<main class="article kitpage"', '<main class="article kitpage warm"', 1)
 
 
 def warmify_page(body):
