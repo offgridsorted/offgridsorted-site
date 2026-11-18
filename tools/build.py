@@ -53,6 +53,8 @@ GUIDES = [
      "Short days, a low sun and long shadows, with BOM-based winter numbers for every state and what helps.", "live"),
     ("summer-heat-fridge-solar-battery", "Summer camping: what heat does to your fridge, solar and battery", "Fridges",
      "Why heat makes your fridge work harder, your panels make less and your battery age faster, and the easy fixes.", "live"),
+    ("ford-ranger-dual-battery", "Ford Ranger dual battery setup: PX and Next Gen", "4WDs",
+     "Smart alternator, where the second battery fits, the Raptor catch, and three setups from budget to premium.", "live"),
 ]
 
 LOGO = '''<svg viewBox="0 0 420 300" width="{w}" height="{h}" role="img" aria-label="Off-Grid Sorted">
@@ -145,6 +147,11 @@ FAQS = {
         ("Why does my 12V fridge use more power in summer?", "It works like a home air conditioner: the hotter it is around the fridge, the more often it runs. Dometic tests its CFX3 range at 32\u00b0C outside, and Snowys says a fridge in a baking toolbox can drain your battery about twice as fast."),
         ("Do solar panels make less power on hot days?", "Yes. Most panels lose about 0.3 to 0.5% of their power for every degree above 25\u00b0C, and in full sun they run 20 to 25\u00b0C hotter than the air. Expect roughly 10 to 20% less on a hot day, more for flexible panels stuck to a roof."),
         ("Can a lithium battery get too hot to charge?", "Yes. Many lithium batteries are rated to charge only up to about 45 to 50\u00b0C, and their built-in protection may stop charging when they get too hot. Keep the battery out of direct sun, ideally inside the van."),
+    ],
+    "ford-ranger-dual-battery": [
+        ("Does the Ford Ranger have a smart alternator?", "Yes. CarsGuide confirms even a 2014 Ranger has one, so treat every PX and Next Gen as smart. Use a DC-DC charger with its ignition wire connected, not a simple isolator."),
+        ("Where does the second battery go in a Ranger?", "Both the PX and Next Gen have room under the bonnet for a tray, but lithium is better in the tub, canopy or behind the rear seat, away from engine heat. The Next Gen Raptor has no engine bay spot."),
+        ("What size dual battery for a Ranger weekend?", "For a medium fridge, lights and phones, a 100 to 120Ah lithium battery with a 25A DC-DC charger is a common setup. By our estimate that runs about two and a half days with no charging."),
     ],
 }
 
