@@ -65,6 +65,12 @@ Off-Grid Sorted is an independent Australian website that helps people work out 
 - Write new guides on a branch and open a pull request for Kiran to review. Do not push guides straight to main unless she has said auto-publish is on.
 - Price and link checks: approved by Kiran on 3 Nov 2026 to commit straight to main without asking. Run them twice a week (Monday and Thursday), and only push when something actually changed (a price, stock, or a dead link), so it stays within the Netlify credit budget.
 
+## Guide look (warm style, Kiran approved 18 Nov 2026)
+- tools/build.py turns every guide into the warm style automatically (warmify_guide): soft colour bands per section (plain, sage, plain, sand), the short version in a green block, and a sign-off with our photo and a "Tell us" link.
+- Each new guide needs two entries in build.py: GUIDE_PHOTOS (one free, confirmed-Australian Pexels photo, added to PEXELS by its id, with alt text) and GUIDE_SCENES (a one or two line "picture it" opener in second person, clearly made up, never claiming it happened to us; or "first" if the guide's first paragraph already does that).
+- Photos have no "stock photo" caption, so never use one with people or a van that could read as us. No number plates, no brand logos.
+- Real stories from Kiran and Mitch go in an our-note box only when they're true and relevant. Don't force one into every guide.
+
 ## Instagram look (Kiran, 17 Nov 2026)
 - The old designed cards (cream background, serif headings, fake handwriting, tilted polaroids) looked too AI. Don't make them any more.
 - Posts are photo-led carousels (style chosen 17 Nov 2026): one full-bleed photo per slide, softened to look like a phone photo (warmer, softer contrast, faded darks). Text sits top left over a soft dark fade: a small yellow #ecc55c label (slide number like "02 / 06"), a big white Barlow Condensed headline in capitals, and one plain white line under it. Keep text clear of the photo's subject and at least 80px from the edges (the Instagram grid trims the sides). Template: Canva design DAHbIHRC65Y.

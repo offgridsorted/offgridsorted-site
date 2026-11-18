@@ -731,6 +731,138 @@ def guides_hub():
     return h + '</main>'
 
 
+# ---- Warm guide style (Nov 2026): colour bands, a "picture it" opener, photos, sign-off ----
+PEXELS = {"outback-red-track": 32915493, "dampier-cliffs": 33191831, "solar-cells": 27873240, "gum-tree-road": 35858953,
+          "outback-path": 32915209, "cradle-mountain-picnic": 37971033, "walls-of-jerusalem": 29797569, "tasmania-sunrise": 32984696,
+          "ninety-mile-straight": 34775821, "alpine-way": 4252721, "great-ocean-road": 34573960, "outback-dirt-road": 32914591,
+          "oodnadatta-track": 35881458, "bush-campsite": 34360266, "eucalypt-camp": 34360246, "outback-blue-sky": 35858964,
+          "snowy-tasmania-road": 33805596, "macdonnell-ranges": 41053473, "macdonnell-view": 41077626, "macdonnell-hills": 41077182}
+
+# Free Pexels photos, all confirmed Australian. (photo, alt text)
+GUIDE_PHOTOS = {
+    "4wd-dual-battery-basics": ("outback-dirt-road", "A remote red dirt road through the Australian outback"),
+    "battery-size-for-12v-fridge": ("cradle-mountain-picnic", "A picnic table at a bush campsite near Cradle Mountain, Tasmania"),
+    "caravan-not-charging-while-driving": ("ninety-mile-straight", "The 90 Mile Straight sign on Australia's longest straight road"),
+    "caravan-power-setup": ("macdonnell-ranges", "The MacDonnell Ranges under a big blue sky, Northern Territory"),
+    "dc-dc-chargers-explained": ("oodnadatta-track", "Road sign on the Oodnadatta Track in outback South Australia"),
+    "ford-ranger-dual-battery": ("macdonnell-hills", "Rocky red hills in the MacDonnell Ranges"),
+    "fridge-flattening-battery": ("bush-campsite", "A tent pitched at a campsite in the Australian bush"),
+    "how-much-solar-australia": ("outback-path", "A sandy track through sunny outback country"),
+    "lithium-under-the-bonnet": ("great-ocean-road", "The Great Ocean Road winding along the Victorian coast"),
+    "lithium-vs-agm": ("outback-blue-sky", "Flat outback country under a clear blue sky"),
+    "portable-power-stations": ("eucalypt-camp", "A tent among tall gum trees in an Australian forest"),
+    "smart-alternator-check": ("alpine-way", "The Alpine Way road winding through the mountains"),
+    "solar-blanket-vs-fixed-panel": ("macdonnell-view", "Looking out over the MacDonnell Ranges on a clear day"),
+    "van-power-basics": ("walls-of-jerusalem", "A still lake below the mountains at Walls of Jerusalem, Tasmania"),
+    "will-my-fridge-last": ("tasmania-sunrise", "Sunrise over the Tasmanian wilderness"),
+    "winter-solar-not-keeping-up": ("snowy-tasmania-road", "A snowy mountain road in Tasmania's southwest"),
+}
+
+# A short, clearly made-up "picture it" opener. "first" means the guide's own first paragraph already does this job.
+GUIDE_SCENES = {
+    "4wd-dual-battery-basics": "first",
+    "caravan-not-charging-while-driving": "first",
+    "winter-solar-not-keeping-up": "first",
+    "van-power-basics": "first",
+    "how-much-solar-australia": "first",
+    "battery-size-for-12v-fridge": "You've bought the fridge. Now the shop asks what battery you're after, and the shelf runs from 50Ah to 300Ah. Which one keeps the milk cold till Sunday?",
+    "caravan-power-setup": "Picture it. You've towed the van 400km, the car's alternator has been working all day, and the caravan battery has barely moved. It's not your imagination, and it's probably not a fault.",
+    "dc-dc-chargers-explained": "You've driven all day, so the second battery should be full. Then the fridge cuts out on the first night. On most newer cars, the missing piece is a small box called a DC-DC charger.",
+    "ford-ranger-dual-battery": "You've got the Ranger, the first trip's booked, and every 4WD shop has a different dual battery kit to sell you. Let's make it simple.",
+    "fridge-flattening-battery": "It's 2am. The fridge is beeping again, the battery's low, and you're lying there wondering what you did wrong. Usually it's one of five things.",
+    "lithium-under-the-bonnet": "You lift the bonnet and there it is: a spare battery tray, right next to the alternator. Perfect spot? For lithium, maybe not.",
+    "lithium-vs-agm": "You're standing at the battery shelf. One 100Ah battery costs about twice as much as the one next to it, and weighs about half as much. Here's what the extra money actually buys.",
+    "portable-power-stations": "Your mate swears by his power station. The 4WD shop says you need a proper dual battery. They can both be right, for different people.",
+    "smart-alternator-check": "You drove four hours, so the second battery should be topped up. It isn't. Before you blame the battery, check the car.",
+    "solar-blanket-vs-fixed-panel": "You've found the perfect shady spot by the river. Lovely for you, not so lovely for the panel on your roof. That's the big difference between a blanket and a fixed panel.",
+    "will-my-fridge-last": "It's Friday arvo, the fridge is packed, and you've got a 100Ah battery and no plans to drive till Sunday. Will the drinks still be cold?",
+}
+
+
+def pexels_fig(name, alt, eager=False):
+    pid = PEXELS[name]
+    u = f"https://images.pexels.com/photos/{pid}/pexels-photo-{pid}.jpeg?auto=compress&cs=tinysrgb"
+    lazy = "" if eager else ' loading="lazy"'
+    return (f'<figure class="photo"><img src="{u}&w=900" srcset="{u}&w=600 600w, {u}&w=900 900w, {u}&w=1300 1300w" '
+            f'sizes="(max-width:720px) 100vw, 720px" width="900" height="600"{lazy} alt="{alt}"></figure>\n')
+
+
+def top_level_splits(s, tag="<h2"):
+    """Positions of <h2 that are not inside a div/section/details/figure."""
+    out, depth = [], 0
+    for m in re.finditer(r'<(/?)(div|section|details|figure|aside)\b|' + re.escape(tag), s):
+        if m.group(0) == tag:
+            if depth == 0:
+                out.append(m.start())
+        elif m.group(1):
+            depth -= 1
+        else:
+            depth += 1
+    return out
+
+
+def warm_bands(body, start_cycle=("plain", "sage", "plain", "sun")):
+    """Wrap each top-level h2 section in a soft colour band, stopping at the CTA / safety box / sources."""
+    stops = [body.find(x) for x in ('<div class="cta-box">', '<div class="aside" style="margin:24px 0"><b>Get a pro', '<div class="signoff">', '<h2>Sources</h2>')]
+    stops = [x for x in stops if x != -1]
+    end = min(stops) if stops else len(body)
+    head, mid, tail = body[:end], "", body[end:]
+    cuts = top_level_splits(head)
+    if not cuts:
+        return body
+    pre, parts = head[:cuts[0]], []
+    for i, c in enumerate(cuts):
+        chunk = head[c:cuts[i + 1] if i + 1 < len(cuts) else len(head)]
+        parts.append(f'<section class="wb {start_cycle[i % len(start_cycle)]}">\n{chunk.strip()}\n</section>\n')
+    return pre + "".join(parts) + tail
+
+
+def warmify_guide(slug, body):
+    if 'class="warm"' in body:
+        return body
+    # 1. h1 + meta line stay at the top
+    m = re.search(r'<div class="meta">.*?</div>\s*', body, re.S)
+    top, rest = body[:m.end()], body[m.end():]
+    updated = re.search(r'Updated ([A-Z][a-z]+ \d{4})', top)
+    # 2. the short version becomes a green block
+    tl = re.match(r'\s*<div class="tldr">(.*?)</div>\s*', rest, re.S)
+    green = ""
+    if tl:
+        green = f'<section class="wb green"><div class="short">{tl.group(1).strip()}</div></section>\n'
+        rest = rest[tl.end():]
+    # 3. intro paragraphs (before the first h2)
+    cuts = top_level_splits(rest)
+    intro, rest = (rest[:cuts[0]], rest[cuts[0]:]) if cuts else ("", rest)
+    scene = GUIDE_SCENES.get(slug, "")
+    if scene == "first":
+        pm = re.match(r'\s*<p>(.*?)</p>\s*', intro, re.S)
+        if pm:
+            scene, intro = pm.group(1), intro[pm.end():]
+        else:
+            scene = ""
+    photo = GUIDE_PHOTOS.get(slug)
+    sun = ""
+    if photo or scene:
+        sun = '<section class="wb sun">\n' + (pexels_fig(photo[0], photo[1], eager=True) if photo else "") + (f'<p class="scene">{scene}</p>\n' if scene else "") + '</section>\n'
+    intro_band = f'<section class="wb plain">\n{intro.strip()}\n</section>\n' if intro.strip() else ""
+    # 4. sign-off, just before the sources (the FAQ slots in between later)
+    month = updated.group(1) if updated else "2026"
+    signoff = ('<div class="signoff"><img src="{pre}assets/img/three-of-us.jpg" width="84" height="84" alt="Kiran, Mitch and Ziggy">'
+               f'<div><p class="by">Kiran, Mitch &amp; Ziggy</p><p>We last checked this page in {month}. Spotted something that\'s changed, or got a question we didn\'t answer? '
+               '<a href="{pre}contact.html">Tell us</a>, we read every message.</p></div></div>\n\n')
+    rest = warm_bands(rest)
+    if "<h2>Sources</h2>" in rest:
+        rest = rest.replace("<h2>Sources</h2>", signoff + "<h2>Sources</h2>", 1)
+    else:
+        rest = rest + signoff
+    return '<div class="warm">\n' + top + sun + green + intro_band + rest + '\n</div>'
+
+
+def warmify_page(body):
+    """Info pages: just the soft colour bands."""
+    return '<div class="warm">' + warm_bands(body, ("sun", "plain", "sage", "plain")) + '</div>'
+
+
 def build():
     # Home
     LD["index.html"] = [ORG, {"@type": "WebSite", "@id": BASE + "#site", "name": "Off-Grid Sorted", "url": BASE, "inLanguage": "en-AU", "publisher": {"@id": ORG_ID}}] + PEOPLE
@@ -743,7 +875,7 @@ def build():
         slug, title, tag, blurb, status = g
         if status != "live":
             continue
-        body = read(f"content/guides/{slug}.html")
+        body = warmify_guide(slug, read(f"content/guides/{slug}.html"))
         others = [x for x in GUIDES if x[0] != slug][:4]
         rel = '<div class="related"><h2 style="font-size:1.4rem;margin:0 0 12px">Keep reading</h2><div class="guide-list">' + "".join(guide_card(x, "{pre}") for x in others) + '</div></div>'
         dd = doodle(TAG_DOODLE.get(tag, "sun"), 130, cls="doodle guide-doodle")
@@ -776,7 +908,7 @@ def build():
                               ("contact", "Contact", "How to get in touch with Off-Grid Sorted."),
                               ("big-words", "Big words, made simple", "Van, caravan and 4WD power jargon explained in everyday English: amps, amp-hours, DC-DC chargers, inverters, MPPT, lithium vs AGM and more."),
                               ("embed", "Put the Power Planner on your site", "Add the free Off-Grid Sorted Power Planner to your own website, van build or auto electrical site. Copy and paste, no sign-up.")]:
-        page(f"{name}.html", title, desc, '<main class="article"><div class="crumbs"><a href="{pre}index.html">Home</a> › ' + title + '</div>' + read(f"content/{name}.html") + '</main>', f"{name}.html" if name == "about" else "")
+        page(f"{name}.html", title, desc, '<main class="article"><div class="crumbs"><a href="{pre}index.html">Home</a> › ' + title + '</div>' + (warmify_page(read(f"content/{name}.html")) if name in ("about", "disclosure", "privacy", "contact", "big-words") else read(f"content/{name}.html")) + '</main>', f"{name}.html" if name == "about" else "")
     build_kits()
     # Refresh planner chrome
     p = read("planner.html")
