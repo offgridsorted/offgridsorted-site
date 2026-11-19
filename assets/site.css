@@ -1141,3 +1141,21 @@ s.was{color:var(--muted);font-weight:500;text-decoration-thickness:2px;text-deco
 .reality-box ul.gaps{margin:0 0 12px;padding-left:20px}
 .reality-box ul.gaps li{margin-bottom:6px}
 .reality-box .small{color:var(--muted)}
+
+/* Photos on kit cards and kit pages (Nov 2026): plain, rounded, no frames */
+.card-photo{display:block;width:100%;height:auto;aspect-ratio:720/420;object-fit:cover;border-radius:14px;background:var(--card)}
+.kit-photo{margin:18px 0 22px}
+.kit-photo img{display:block;width:100%;height:auto;aspect-ratio:9/5;object-fit:cover;border-radius:16px;background:var(--card)}
+/* Homepage: latest guides carousel */
+.latest-row{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.latest-row:focus-visible{outline:3px solid var(--sun);outline-offset:4px;border-radius:12px}
+.latest-card{flex:0 0 calc((100% - 40px) / 3);scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--ink)}
+.latest-card .card-photo{aspect-ratio:16/10}
+.latest-card h3{font-size:1.2rem;margin:0}
+.latest-card .small{color:var(--muted)}
+.latest-card:hover h3{text-decoration:underline;text-decoration-color:var(--sun);text-decoration-thickness:3px}
+.latest-nav{display:flex;justify-content:flex-end;gap:10px;margin-top:6px}
+.latest-btn{font-family:var(--font-ui);font-weight:700;font-size:1.2rem;width:46px;height:46px;border-radius:999px;border:2px solid var(--ink);background:var(--paper,#f3f0e8);color:var(--ink);cursor:pointer;box-shadow:0 3px 0 var(--ink)}
+.latest-btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+@media (max-width:900px){.latest-card{flex-basis:calc((100% - 20px) / 2)}}
+@media (max-width:600px){.latest-card{flex-basis:82%}.latest-nav{display:none}}
