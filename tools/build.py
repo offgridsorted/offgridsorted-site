@@ -297,6 +297,66 @@ def guide_card(g, pre):
     return f'<div class="soon">{doodle(TAG_DOODLE.get(tag, "sun"), 64)}<span class="tag">{tag} · coming soon</span><h3>{html.escape(title)}</h3><span class="small">{html.escape(blurb)}</span></div>'
 
 
+# ---------- Photos (Nov 2026): free Pexels photos, all confirmed Australian ----------
+PEXELS = {"outback-red-track": 32915493, "dampier-cliffs": 33191831, "gum-tree-road": 35858953,
+          "outback-path": 32915209, "cradle-mountain-picnic": 37971033, "walls-of-jerusalem": 29797569, "tasmania-sunrise": 32984696,
+          "ninety-mile-straight": 34775821, "alpine-way": 4252721, "great-ocean-road": 34573960, "outback-dirt-road": 32914591,
+          "oodnadatta-track": 35881458, "bush-campsite": 34360266, "eucalypt-camp": 34360246, "outback-blue-sky": 35858964,
+          "snowy-tasmania-road": 33805596, "macdonnell-ranges": 41053473, "macdonnell-view": 41077626, "macdonnell-hills": 41077182,
+          "rainbow-beach-4wd": 15176841, "kalbarri-van": 1545799}
+
+# (photo, alt text) for each guide
+GUIDE_PHOTOS = {
+    "summer-heat-fridge-solar-battery": ("outback-red-track", "A red dirt track through the Australian outback on a hot, clear day"),
+    "4wd-dual-battery-basics": ("outback-dirt-road", "A remote red dirt road through the Australian outback"),
+    "battery-size-for-12v-fridge": ("cradle-mountain-picnic", "A picnic table at a bush campsite near Cradle Mountain, Tasmania"),
+    "caravan-not-charging-while-driving": ("ninety-mile-straight", "The 90 Mile Straight sign on Australia's longest straight road"),
+    "caravan-power-setup": ("macdonnell-ranges", "The MacDonnell Ranges under a big blue sky, Northern Territory"),
+    "dc-dc-chargers-explained": ("oodnadatta-track", "Road sign on the Oodnadatta Track in outback South Australia"),
+    "fridge-flattening-battery": ("bush-campsite", "A tent pitched at a campsite in the Australian bush"),
+    "how-much-solar-australia": ("outback-path", "A sandy track through sunny outback country"),
+    "lithium-under-the-bonnet": ("great-ocean-road", "The Great Ocean Road winding along the Victorian coast"),
+    "lithium-vs-agm": ("outback-blue-sky", "Flat outback country under a clear blue sky"),
+    "portable-power-stations": ("eucalypt-camp", "A tent among tall gum trees in an Australian forest"),
+    "smart-alternator-check": ("alpine-way", "The Alpine Way road winding through the mountains"),
+    "solar-blanket-vs-fixed-panel": ("macdonnell-view", "Looking out over the MacDonnell Ranges on a clear day"),
+    "van-power-basics": ("walls-of-jerusalem", "A still lake below the mountains at Walls of Jerusalem, Tasmania"),
+    "will-my-fridge-last": ("tasmania-sunrise", "Sunrise over the Tasmanian wilderness"),
+    "winter-solar-not-keeping-up": ("snowy-tasmania-road", "A snowy mountain road in Tasmania's southwest"),
+}
+
+# Kit photos show the kind of trip each kit is for
+KIT_PHOTOS = {"weekender": ("rainbow-beach-4wd", "A 4WD parked on the sand at Rainbow Beach, Queensland, at sunrise"),
+              "long-trips": ("kalbarri-van", "A van on a red dirt track in Kalbarri National Park, Western Australia"),
+              "living-in-it": ("dampier-cliffs", "A campervan set up on red cliffs above the beach on the Dampier Peninsula, WA")}
+
+
+def pexels_url(name, w, h=None):
+    pid = PEXELS[name]
+    return f"https://images.pexels.com/photos/{pid}/pexels-photo-{pid}.jpeg?auto=compress&cs=tinysrgb&w={w}" + (f"&h={h}&fit=crop" if h else "")
+
+
+def kit_photo(slug, w=720, h=420, cls="card-photo", eager=False):
+    ph = KIT_PHOTOS[slug]
+    lazy = "" if eager else ' loading="lazy"'
+    return f'<img class="{cls}" src="{pexels_url(ph[0], w, h)}" srcset="{pexels_url(ph[0], w, h)} 1x, {pexels_url(ph[0], w * 2, h * 2)} 2x" width="{w}" height="{h}"{lazy} alt="{ph[1]}">'
+
+
+def latest_guides(n=6):
+    live = [g for g in GUIDES if g[4] == "live"][::-1][:n]
+    cards = []
+    for slug, title, tag, blurb, status in live:
+        ph = GUIDE_PHOTOS.get(slug)
+        img = (f'<img class="card-photo" src="{pexels_url(ph[0], 640, 400)}" srcset="{pexels_url(ph[0], 640, 400)} 1x, {pexels_url(ph[0], 1280, 800)} 2x" width="640" height="400" loading="lazy" alt="">' if ph else doodle(TAG_DOODLE.get(tag, "sun"), 64))
+        cards.append(f'<a class="latest-card" href="{{pre}}guides/{slug}.html">{img}<span class="tag">{tag}</span><h3>{html.escape(title)}</h3><span class="small">{html.escape(blurb)}</span></a>')
+    return ('<div class="latest-wrap"><div class="latest-row" tabindex="0" aria-label="Latest guides, scroll sideways for more">' + "".join(cards) + '</div>'
+            '<div class="latest-nav"><button type="button" class="latest-btn" data-dir="-1" aria-label="Previous guides">←</button>'
+            '<button type="button" class="latest-btn" data-dir="1" aria-label="More guides">→</button></div></div>'
+            '<script>document.querySelectorAll(".latest-wrap").forEach(function(w){var r=w.querySelector(".latest-row");'
+            'w.querySelectorAll(".latest-btn").forEach(function(b){b.addEventListener("click",function(){var c=r.querySelector(".latest-card");'
+            'r.scrollBy({left:(c?c.offsetWidth+20:300)*+b.dataset.dir,behavior:"smooth"});});});});</script>')
+
+
 # ---------- Ready-made kits ----------
 # Real product picks live in data/products.json (main pick + other options per tier).
 PRODUCTS = json.load(open(os.path.join(ROOT, "data", "products.json")))
@@ -618,7 +678,7 @@ def build_kits():
     def from_price(k):
         t = combo_totals(k)["|".join(f"{c[0]}={c[3]}" for c in (k.get("choices") or []))]["t"][0]
         return money(t)
-    cards = ''.join(f'<a class="card kit-card" href="{{pre}}kits/{k["slug"]}.html">[[d:{k["doodle"]}:110]]<h3>{k["name"]}</h3><p class="kit-facts"><b>{k["parts"][0][1]}</b> · parts from {from_price(k)}</p><p>{k["who"]}</p><span class="go">See the full kit →</span></a>' for k in KITS)
+    cards = ''.join(f'<a class="card kit-card" href="{{pre}}kits/{k["slug"]}.html">{kit_photo(k["slug"])}<h3>{k["name"]}</h3><p class="kit-facts"><b>{k["parts"][0][1]}</b> · parts from {from_price(k)}</p><p>{k["who"]}</p><span class="go">See the full kit →</span></a>' for k in KITS)
     hub = ('<main class="page"><div class="crumbs"><a href="{pre}index.html">Home</a> › Kits</div>'
            '<div class="sec-head"><h1 style="font-size:3rem;margin:4px 0 8px">Ready-made kits</h1>[[d:fridge:100]]</div>'
            '<p class="hint" style="margin-bottom:18px">Three common setups, sized with the Power Planner. Tell us what you\'re powering, then pick the kit that sounds most like you.</p>'
@@ -636,6 +696,7 @@ def build_kits():
                 f'[[d:{k["doodle"]}:150]]'.replace('<svg class="doodle"', '<svg class="doodle guide-doodle"') +
                 f'<h1>The {k["name"]} kit</h1><div class="meta"><span>Uses {k["daily"]}</span><a href="{{pre}}disclosure.html">How we make money</a></div>'
                 f'<p class="hint" style="font-size:1.15rem">{k["who"]}</p>'
+                f'<figure class="kit-photo">{kit_photo(k["slug"], 900, 500, cls="", eager=True)}</figure>'
                 '<div class="tldr"><h2>What it runs</h2><ul>' + ''.join(f'<li>{r}</li>' for r in k["runs"]) + '</ul></div>'
                 f'<h2>Make it yours</h2><div class="kit-choices">{choice_ui}</div>{tips}'
                 f'<h2>What\'s in the kit</h2><p class="trust-strip"><span>✓ Picked for fit, not commission</span><span>✓ Aussie shops, AUD prices</span><span>✓ Estimates, not promises</span><span>✓ Auto electrician to wire it in</span><a href="../about.html#how-we-work">How we work</a></p><p class="small">Tap <b>+ Add to my list</b> on anything you want. Your list builds at the bottom of the page with a link to each shop. Links open in a new tab.</p>{kit_table(k)}'
@@ -726,7 +787,7 @@ def guides_hub():
 def build():
     # Home
     LD["index.html"] = [ORG, {"@type": "WebSite", "@id": BASE + "#site", "name": "Off-Grid Sorted", "url": BASE, "inLanguage": "en-AU", "publisher": {"@id": ORG_ID}}] + PEOPLE
-    page("index.html", SITE, "Free plain-English power planner and guides for Australian vans, caravans and 4WDs. Work out the battery, solar and charger you need.", read("content/home.html"))
+    page("index.html", SITE, "Free plain-English power planner and guides for Australian vans, caravans and 4WDs. Work out the battery, solar and charger you need.", read("content/home.html").replace("<!--latest-guides-->", latest_guides()).replace("[[kitphoto:weekender]]", kit_photo("weekender")).replace("[[kitphoto:long-trips]]", kit_photo("long-trips")).replace("[[kitphoto:living-in-it]]", kit_photo("living-in-it")))
     # Guides hub
     hub = guides_hub()
     page("guides/index.html", "Guides", "Plain-English guides to batteries, solar, DC-DC chargers and inverters for Australian vans, caravans and 4WDs.", hub, "guides/index.html")
