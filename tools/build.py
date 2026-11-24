@@ -52,7 +52,8 @@ GUIDES = [
     ("winter-solar-not-keeping-up", "Winter solar: why your panels aren't keeping up", "Solar",
      "Short days, a low sun and long shadows, with BOM-based winter numbers for every state and what helps.", "live"),
     ("summer-heat-fridge-solar-battery", "Summer camping: what heat does to your fridge, solar and battery", "Fridges",
-     "Why heat makes your fridge work harder, your panels make less and your battery age faster, and the easy fixes.", "live"),
+     "Why heat makes your fridge work harder, your panels make less and your battery age faster, and the easy fixes.", "live"),    ("toyota-hilux-dual-battery", "Toyota Hilux dual battery setup: what to know before you buy", "4WDs",
+     "Why the Hilux's low-voltage alternator needs a DC-DC charger, where the battery fits, and three budgets.", "live"),
 ]
 
 LOGO = '''<svg viewBox="0 0 420 300" width="{w}" height="{h}" role="img" aria-label="Off-Grid Sorted">
@@ -145,6 +146,11 @@ FAQS = {
         ("Why does my 12V fridge use more power in summer?", "It works like a home air conditioner: the hotter it is around the fridge, the more often it runs. Dometic tests its CFX3 range at 32\u00b0C outside, and Snowys says a fridge in a baking toolbox can drain your battery about twice as fast."),
         ("Do solar panels make less power on hot days?", "Yes. Most panels lose about 0.3 to 0.5% of their power for every degree above 25\u00b0C, and in full sun they run 20 to 25\u00b0C hotter than the air. Expect roughly 10 to 20% less on a hot day, more for flexible panels stuck to a roof."),
         ("Can a lithium battery get too hot to charge?", "Yes. Many lithium batteries are rated to charge only up to about 45 to 50\u00b0C, and their built-in protection may stop charging when they get too hot. Keep the battery out of direct sun, ideally inside the van."),
+    ],
+    "toyota-hilux-dual-battery": [
+        ("Do I need a DC-DC charger in a Hilux?", "Yes. REDARC lists the diesel Hilux as having a temperature-compensating alternator that runs at a lower voltage, which may only charge a second battery to 60 to 70% through a simple isolator. A DC-DC charger fills it properly."),
+        ("Where does the second battery go in a Hilux?", "The 2015 to 2025 Hilux has an under-bonnet tray spot, but the trays are small (about 17 to 21kg) and lithium doesn't like engine heat. Most lithium setups go in the tub, canopy or rear of the cab."),
+        ("Does the 48V Hilux affect a dual battery setup?", "It can. On V-Active 48V Hiluxes, Toyota puts the 48V battery under the rear seats, so check any under-seat or rear-cab kit is listed for 48V models and ask your auto electrician first."),
     ],
 }
 
@@ -307,6 +313,7 @@ PEXELS = {"outback-red-track": 32915493, "dampier-cliffs": 33191831, "gum-tree-r
 
 # (photo, alt text) for each guide
 GUIDE_PHOTOS = {
+    "toyota-hilux-dual-battery": ("macdonnell-hills", "Rocky hills in the MacDonnell Ranges, Northern Territory"),
     "summer-heat-fridge-solar-battery": ("outback-red-track", "A red dirt track through the Australian outback on a hot, clear day"),
     "4wd-dual-battery-basics": ("outback-dirt-road", "A remote red dirt road through the Australian outback"),
     "battery-size-for-12v-fridge": ("cradle-mountain-picnic", "A picnic table at a bush campsite near Cradle Mountain, Tasmania"),
